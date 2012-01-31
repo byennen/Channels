@@ -1,6 +1,8 @@
 Channels::Application.routes.draw do
   
 
+  resources :channels
+
   root :to => "home#index"
 
   devise_for :users
