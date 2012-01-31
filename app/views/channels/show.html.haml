@@ -1,9 +1,1 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @channel.name
-
-= link_to 'Edit', edit_channel_path(@channel)
-\|
-= link_to 'Back', channels_path
+%h1= @channel.name
