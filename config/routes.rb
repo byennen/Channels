@@ -1,6 +1,10 @@
 Channels::Application.routes.draw do
   
 
+  get "dashboard/index"
+
+  get "dashboard/help"
+
   resources :channels
 
   root :to => "home#index"
