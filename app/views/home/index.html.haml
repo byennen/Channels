@@ -1,3 +1,17 @@
-%h1 WELCOME TO ALTIMARC
-%p Coming Soon.
-
+%div{ :style => 'background: white; -moz-border-radius: 15px; border-radius: 15px; padding: 10px; width: 400px; margin: 0 auto;' }
+  %h1 ALTIMARC
+  %strong Altmarc, is the Entertainment site that will change the way you live your life.
+  %br
+  %br
+  %p Sign up and be notified when Altimarc is ready to launch... Let us elevate your Entertainment!
+  %form{:action => "https://madmimi.com/signups/subscribe/47685", :method => "post"}
+    %fieldset
+      %legend 
+      .clearfix
+        %label{:for => "signup_email"} Email
+        .input
+          %input#signup_email{:name => "signup[email]", :type => "text"}
+      .actions
+        .clearfix
+          %input.button{:name => "commit", :type => "submit", :value => "Sign Up", :class => 'btn primary'}
+  %p{ :style => 'text-align: center;' } Invite only [closed beta] at this time.
