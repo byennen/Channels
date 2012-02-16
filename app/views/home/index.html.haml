@@ -1,8 +1,6 @@
-%div{ :style => 'background: white; -moz-border-radius: 15px; border-radius: 15px; padding: 10px; margin: 0 auto; overflow: auto;' }
-  %div
-    %div{ :style => 'margin: 0 auto; width: 380px;' }
-      = image_tag('logo.png')
-  %div{ :style => 'width: 460px; float: left; padding: 10px; clear: both;' }
+= image_tag('sample_slide.jpg')
+%div{ :style => 'margin: 40px 20px 20px; ' }
+  %div{ :style => 'width: 460px; float: left; clear: both;' }
     %p 
       %strong A new kind of entertainment destination.  
       Where you can access your favorite entertainers, sports figures  and cool games from your computer or mobile device.     Access to band rehearsals, backstage areas, green rooms and exclusive autograph signings where you can experience a brand new way of getting a digital autograph of famous celebrities!
@@ -24,12 +22,18 @@
             %input.button{:name => "commit", :type => "submit", :value => "Sign Up", :class => 'btn'}
     %p{ :style => 'text-align: center; color: black; background: yellow; padding: 5px; margin: 25px 10px;-moz-border-radius: 5px; border-radius: 5px;' } Invite only [closed beta] at this time.
 
-  %div{ :style => 'clear: both; padding: 30px 40px; border-top: 1px dashed #eee' }
-    %h2 Here's the Altimarc channel lineup:
-    %h3 The Randy Owen Channel
+%div{ :style => 'clear: both; padding: 30px 40px;' }
+  %h2 Here's the Altimarc channel lineup:
+  %h3 The Randy Owen Channel
+  .item
+    = image_tag('randy-owen-sample.jpg')
     %p The legendary Randy Owen of Alabama takes you behind the scenes both in concert and in real life.   Concerts, backstage access, custom games and trips money can't buy.  Plus, some up close and personal access to Randy, his family and his down home Ft Payne, Alabama life.  All this plus scheduled live performances!
-    %h3 Nashville New Music Now
-    %p Country music's never been hotter and this channel will introduce you to music made by artists like Megan Mullins, Seth Hopkins and Ashton Sheppard.   Our New Music Now Channel gives you the opportunity to hear their music, learn their stories of life and meet them up close and personal in ways you never imagined. This is music made in America and played for the planet.
-    %h3 Brushy Mountain Forever
+  %h3 Nashville New Music Now
+  .item
+    = image_tag('nashville-now-sample.jpg')
+    %p Country music's never been hotter and this channel will introduce you to music made by artists like Megan Mullins, Seth Hopkins and Ashton Shepherd.   Our New Music Now Channel gives you the opportunity to hear their music, learn their stories of life and meet them up close and personal in ways you never imagined. This is music made in America and played for the planet.
+  %h3 Brushy Mountain Forever
+  .item
+    = image_tag('bushy-sample.jpg')
     %p After 113 years, the state of Tennessee closed Brushy Mountain State Penitentiary in June of 2009.  But not before country music icon Mark Collie took a two year journey inside the walls of this legendary place.  While there, he learned the stories and spoke to most of the population housed there.  What emerged was music that many liken to the late Johnny Cash.  This is true Americana and the world now can access the music and an upcoming world premiere feature recorded live from the prison.  Experience it here.
 
