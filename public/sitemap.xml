@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset>
+<url>
+  <loc>http://altimarc.com/</loc>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://altimarc.com/users/sign_in</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://altimarc.com/users/sign_up</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://altimarc.com/users/password/new</loc>
+  <priority>0.64</priority>
+</url>
+</urlset>
