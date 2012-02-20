@@ -13,16 +13,19 @@
     = javascript_include_tag :application
     = csrf_meta_tags
   %body
-    = render 'shared/navigation'
     #container.container
-      %header
-        = link_to image_tag('layout/header-logo.png'), root_url
-      %div{ :style => 'overflow: auto;' }
-        = yield
-        %footer{ :style => 'text-align: center; margin: 20px 0 40px; border-top: 1px solid #9A9A9A; padding: 40px 0 20px; color: #999999 !important;' }
-          = image_tag('layout/footer-logo.png')
-          %p 
-            &copy;
-            = Time.now.year
-            = link_to 'ALTIMARC, LLC.', 'http://altimarc.com'
-            %span All rights reserved.
+      = render 'shared/navigation'
+      #wrapper
+        %header
+          = link_to image_tag('layout/header-logo.png'), root_url
+        %div{ :style => 'overflow: auto;' }
+          = render 'shared/flash_messages', :locals => { :flash => flash }
+          = yield
+          %footer{ :style => 'text-align: center; margin: 20px 0 40px;  color: #999999 !important; clear: both; border: none;' }
+            .inside{ :style => 'margin: 10px; padding: 40px 0 20px; border-top: 1px solid #9A9A9A;' }
+              = image_tag('layout/footer-logo.png')
+              %p 
+                &copy;
+                = Time.now.year
+                = link_to 'ALTIMARC, LLC.', 'http://altimarc.com'
+                %span All rights reserved.

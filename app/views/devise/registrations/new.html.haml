@@ -1,21 +1,45 @@
-%h2 Sign up
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  %p
-    = f.label :name
-    %br/
-    = f.text_field :name
-  %p
-    = f.label :email
-    %br/
-    = f.email_field :email
-  %p
-    = f.label :password
-    %br/
-    = f.password_field :password
-  %p
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation
-  %p= f.submit "Sign up"
-= render :partial => "devise/shared/links"
+-# = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :class => 'form-stacked') do |f|
+-#   %fieldset
+-#     %legend Sign Up
+-#     = devise_error_messages!
+-#     -# .clearfix
+-#     -#   = f.label :name
+-#     -#   .input
+-#     -#     = f.text_field :name, :class => 'xlarge'
+-#     .clearfix
+-#       = f.label :email
+-#       .input
+-#         = f.email_field :email, :class => 'xlarge'
+-#     .clearfix
+-#       = f.label :password
+-#       .input
+-#         = f.password_field :password, :class => 'xlarge'
+-#     .clearfix
+-#       = f.label :password_confirmation
+-#       .input
+-#         = f.password_field :password_confirmation, :class => 'xlarge'
+-#     .actions
+-#       = f.submit "Sign up", :class => 'btn primary'
+-#       = link_to "Aleady a member of Chef-Meg?", new_session_path(resource_name), :class => 'btn'
+%div{ :style => 'margin: 40px 20px 20px; ' }
+  %div{ :style => 'width: 460px; float: left; clear: both;' }
+    %p 
+      %strong A new kind of entertainment destination.  
+      Where you can access your favorite entertainers, sports figures  and cool games from your computer or mobile device.     Access to band rehearsals, backstage areas, green rooms and exclusive autograph signings where you can experience a brand new way of getting a digital autograph of famous celebrities!
+    %p Plus, our design teams are developing awesome new games that will reward your skills with real life access to events that money can't buy:  dinners with celebrities, access to exclusive sporting events, front row VIP tickets to sold out concerts, backstage access where all the action really happens.   Yes, you will have a chance at winning cool prizes that puts you in the middle of it all -  direct access to things most of us never experience.   It' s OK with us if you tell your friends and family about Altimarc.
+    %p Your membership allows you to debut exclusive, never before seen concert footage, exclusive world premiere music documentaries, scheduled live concerts, music downloads, on demand backstage moments and band rehearsals..plus, sneak peeks at the latest videos and new, just released music from tomorrow's superstars.
+  %div{ :style => 'width: 380px; float: right; padding: 10px; margin: 12px 10px 0 0; background: #eee;  -moz-border-radius: 5px; border-radius: 5px;' }
+    %h4{ :style => 'text-align: center;' } 
+      Currently, Altimarc.com is invite only.
+      %br 
+      Sign up now for an early invite!
+    %form{:action => "https://madmimi.com/signups/subscribe/47685", :method => "post"}
+      %fieldset
+        .clearfix
+          %label{:for => "signup_email"} Email
+          .input
+            %input#signup_email{:name => "signup[email]", :type => "text"}
+        .actions
+          .clearfix
+            %input.button{:name => "commit", :type => "submit", :value => "Sign Up", :class => 'btn'}
+    %p{ :style => 'text-align: center; color: black; background: yellow; padding: 5px; margin: 25px 10px;-moz-border-radius: 5px; border-radius: 5px;' } Invite only [closed beta] at this time.
