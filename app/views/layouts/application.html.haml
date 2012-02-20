@@ -13,6 +13,7 @@
     = javascript_include_tag :application
     = csrf_meta_tags
   %body
+    = render 'shared/navigation'
     #container.container
       %header
         = link_to image_tag('layout/header-logo.png'), root_url
