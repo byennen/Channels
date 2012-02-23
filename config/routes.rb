@@ -5,6 +5,11 @@ Channels::Application.routes.draw do
   root :to => "home#index"
 
   devise_for :users
+  devise_scope :user do
+    get '/login' => 'devise/sessions#new'
+    get '/logout' => 'devise/sessions#destroy'
+    get '/signup' => 'devise/registrations#new'
+  end
   resources :users, :only => :show
 
   #admin
