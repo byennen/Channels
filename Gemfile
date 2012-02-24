@@ -11,15 +11,13 @@ end
 gem 'jquery-rails'
 gem "haml", ">= 3.1.4"
 gem "devise", ">= 2.0.0"
-gem "bootstrap-sass"
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk'
-gem 'twitter-bootstrap-rails'
+gem "twitter-bootstrap-rails", "~> 2.0.1.0"
 
 group :development do
   #TODO: switch to postgres in the future -Lance
   gem 'mysql'
-  gem "haml-rails", ">= 0.3.4"
   gem 'rb-fsevent'
   gem 'growl'
   gem "heroku"
@@ -40,7 +38,7 @@ group :test do
 end
 
 group :production do
-  gem 'therubyracer-heroku'
+  #gem 'therubyracer-heroku'
   gem 'pg'
 end
 
