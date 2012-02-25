@@ -1,0 +1,52 @@
+/*
+ * Page layout styles
+ */
+body {
+	
+}
+
+header {
+  .navbar {
+    .brand {
+      background: url(<%= asset_data_uri 'layout/header-logo.png' %>) no-repeat scroll 0px 0px transparent;
+      width: 180px;
+      height: 31px;
+      color: transparent;
+      padding: 0 10px 0;
+      margin: 5px;
+    }
+  	h1 {
+		  margin-bottom: 0px;
+	  }
+  }
+}
+
+section {
+	margin: 100px auto;
+	
+	nav {
+		float:right;
+	}
+	
+	fieldset {
+		legend {
+			padding-left:15px;
+		}
+	}
+}
+
+footer {
+	background-color: #F5F5F5;
+	background-image: -moz-linear-gradient(center top , #FFFFFF, #F5F5F5);
+	background-repeat: repeat-x;
+	border: 1px solid #DDDDDD;
+	border-radius: 3px 3px 3px 3px;
+	box-shadow: 0 1px 0 #FFFFFF inset;
+	
+	p {
+		margin: 0 auto;
+		font-size: 11px;
+		text-align:center;
+	}
+}
+
