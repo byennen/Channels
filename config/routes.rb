@@ -1,13 +1,16 @@
 Channels::Application.routes.draw do
 
+  get "/about" => "pages#about"
+  get "/privacy" => "pages#privacy"
+  get "/refund" => "pages#refund"
+
   resources :channels
 
   root :to => "home#index"
 
-  devise_for :users
-  devise_scope :user do
+  devise_for :users do
     get '/login' => 'devise/sessions#new'
-    get '/logout' => 'devise/sessions#destroy'
+    delete '/logout' => 'devise/sessions#destroy'
     get '/signup' => 'devise/registrations#new'
   end
   resources :users, :only => :show
