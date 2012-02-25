@@ -1,24 +1,38 @@
-/*
- * Page layout styles
- */
 body {
-	
+  padding-top: 60px;
+  background: #F2F3F3 !important
+}
+
+.container {
+  width: 980px !important;
 }
 
 header {
   .navbar {
+    .navbar-inner {
+      background: url("layout/header-bg.png") repeat-x;
+    }
     .brand {
       background: url(<%= asset_data_uri 'layout/header-logo.png' %>) no-repeat scroll 0px 0px transparent;
       width: 180px;
       height: 31px;
       color: transparent;
-      padding: 0 10px 0;
+      padding: 0 5px 0;
       margin: 5px;
     }
   	h1 {
 		  margin-bottom: 0px;
 	  }
   }
+}
+
+.content {
+  background: #fff;
+  min-height: 1300px;
+  height: auto !important;
+  -moz-box-shadow: 0px 0px 5px #888;
+  -webkit-box-shadow: 0px 0px 5px #888;
+  box-shadow: 0px 0px 5px #888;
 }
 
 section {
@@ -41,12 +55,29 @@ footer {
 	background-repeat: repeat-x;
 	border: 1px solid #DDDDDD;
 	border-radius: 3px 3px 3px 3px;
-	box-shadow: 0 1px 0 #FFFFFF inset;
-	
+  box-shadow: 0 1px 0 #FFFFFF inset;
+  text-align: center; 
+  margin: 20px 0 40px;  
+  color: #999999;
+  border: none;
 	p {
 		margin: 0 auto;
 		font-size: 11px;
 		text-align:center;
-	}
+  }
+  .inside {
+    margin: 10px; 
+    padding: 40px 0 20px;
+    border-top: 1px solid #9A9A9A;
+  }
+  a {
+    color: #999999;
+  }
+  ul {
+    li {
+      display: inline;
+      padding-right: 10px;
+    }
+  }
 }
 

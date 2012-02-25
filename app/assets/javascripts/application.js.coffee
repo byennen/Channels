@@ -1,4 +1,5 @@
-# = require jquery
-# = require jquery_ujs
-# = require plugins/bootstrap
-# = require_tree .
+#= require jquery
+#= require jquery_ujs
+#= require twitter/bootstrap
+#= require plugins/bootstrap
+#= require_tree .
