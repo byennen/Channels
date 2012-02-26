@@ -12,6 +12,9 @@ end
 module Channels
   class Application < Rails::Application
 
+    # rack pjax
+    config.middleware.use Rack::Pjax
+
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
       g.view_specs false

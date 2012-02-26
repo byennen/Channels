@@ -1,21 +1,5 @@
 - title "Login"
 
-%div{ :style => 'width: 380px; float: left; padding: 10px; margin: 0px 50px 0 20px; background: #eee;  -moz-border-radius: 5px; border-radius: 5px;' }
-  %h4{ :style => 'text-align: center;' } 
-    Currently, Altimarc.com is invite only.
-    %br 
-    Sign up now for an early invite!
-  %form{:action => "https://madmimi.com/signups/subscribe/47685", :method => "post"}
-    %fieldset
-      .clearfix
-        %label{:for => "signup_email"} Email
-        .input
-          %input#signup_email{:name => "signup[email]", :type => "text"}
-      .actions
-        .clearfix
-          %input.button{:name => "commit", :type => "submit", :value => "Sign Up", :class => 'btn'}
-  %p{ :style => 'text-align: center; color: black; background: yellow; padding: 5px; margin: 25px 10px;-moz-border-radius: 5px; border-radius: 5px;' } Invite only [closed beta] at this time.
-
 = form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => 'form-stacked') do |f|
   %fieldset
     %legend Sign In

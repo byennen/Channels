@@ -14,6 +14,7 @@ gem "devise", ">= 2.0.0"
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk'
 gem "twitter-bootstrap-rails", "~> 2.0.1.0"
+gem "rack-pjax"
 
 group :development do
   #TODO: switch to postgres in the future -Lance

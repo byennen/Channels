@@ -19,13 +19,14 @@
   %body
     %header
       = render 'shared/navigation'
-    .adbackground
-      .container
-        = render 'shared/flash_messages', :locals => { :flash => flash }
-        .content
-          = yield
-          %footer
-            = render "layouts/footer"
+    %div{"data-pjax-container" => ""}
+      .adbackground
+        .container
+          = render 'shared/flash_messages', :locals => { :flash => flash }
+          .content
+            = yield
+            %footer
+              = render "layouts/footer"
     / Javascript
     = javascript_include_tag "application"
     = render "layouts/analytics"
