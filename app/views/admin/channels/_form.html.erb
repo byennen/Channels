@@ -1,0 +1,11 @@
+
+<div class="clearfix">
+   <%= f.label :name, t("activerecord.attributes.channel.name", :default => "Name"), :class => :label %>
+  <div class="input">
+    <%= f.text_field :name, :class => 'text_field' %>
+  </div>
+</div>
+<div class="form-actions">
+  <button class="btn primary" type="submit">Save</button> or
+	<%= link_to "Cancel", admin_channels_path %>
+</div>

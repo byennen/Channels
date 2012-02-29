@@ -1,5 +1,7 @@
 Channels::Application.routes.draw do
 
+  get "users/index"
+
   get "/about" => "pages#about"
   get "/privacy" => "pages#privacy"
   get "/refund" => "pages#refund"
@@ -25,5 +27,6 @@ Channels::Application.routes.draw do
     root :to => "dashboard#index"
     get "dashboard/help"
     resources :channels
+    resources :users, :only => :index
   end
 end

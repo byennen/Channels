@@ -21,20 +21,19 @@
             %ul.nav
               %li.active= link_to "Home", admin_root_path
               %li= link_to "Channels", admin_channels_path
-              %li= link_to "Users", admin_channels_path
+              %li= link_to "Users", admin_users_path
             %p.navbar-text.pull-right
               Logged in as
               = link_to current_user.email, edit_user_registration_path
           / /.nav-collapse
     .container-fluid
-      .span12
-        = yield
-    %hr
-      %footer
-        %p
-          &copy;
-          = Time.now.year
-          = link_to 'ALTIMARC, LLC.', 'http://altimarc.com'
+      = yield
+      %hr
+        %footer
+          %p
+            &copy;
+            = Time.now.year
+            = link_to 'ALTIMARC, LLC.', 'http://altimarc.com'
 
 
     = javascript_include_tag "application"

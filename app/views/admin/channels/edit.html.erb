@@ -1,0 +1,4 @@
+<%= form_for @channel, :url => admin_channel_path(@channel), :html => { :class => "edit_channel", :id => "edit_channel" } do |f| -%>
+  <input name="_method" type="hidden" value="put" />
+  <%= render :partial => "form", :locals => {:f => f} %>
+<% end -%>
