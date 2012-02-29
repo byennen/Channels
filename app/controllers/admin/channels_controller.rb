@@ -1,4 +1,5 @@
 class Admin::ChannelsController < ApplicationController
+  layout 'admin'
   before_filter :authenticate_user!
 
   # GET /channels
@@ -35,7 +36,7 @@ class Admin::ChannelsController < ApplicationController
 
     respond_to do |format|
       if @channel.save
-        format.html { redirect_to admin_channel_path, notice: 'Channel was successfully created.' }
+        format.html { redirect_to admin_channels_url, notice: 'Channel was successfully created.' }
         format.json { render json: @channel, status: :created, location: @channel }
       else
         format.html { render action: "new" }
@@ -51,7 +52,7 @@ class Admin::ChannelsController < ApplicationController
 
     respond_to do |format|
       if @channel.update_attributes(params[:channel])
-        format.html { redirect_to admin_channel_path, notice: 'Channel was successfully updated.' }
+        format.html { redirect_to admin_channels_url, notice: 'Channel was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -67,7 +68,7 @@ class Admin::ChannelsController < ApplicationController
     @channel.destroy
 
     respond_to do |format|
-      format.html { redirect_to channels_url }
+      format.html { redirect_to admin_channels_url }
       format.json { head :no_content }
     end
   end

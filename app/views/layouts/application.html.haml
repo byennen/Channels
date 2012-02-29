@@ -24,7 +24,11 @@
         .container
           = render 'shared/flash_messages', :locals => { :flash => flash }
           .content
-            = yield
+            - unless params[:controller] == "home"
+              .inside
+                = yield
+            - else
+              = yield
             %footer
               = render "layouts/footer"
     / Javascript

@@ -9,11 +9,11 @@
               Channels
               %b.caret
             %ul.dropdown-menu
-              %li= link_to 'Randy Owen', '#'
-              %li= link_to 'Randy Owen', '#'
-              %li= link_to 'Randy Owen', '#'
-              %li.divider
-                %li= link_to 'Randy Owen', '#'
+              - if @channels.present?
+                - @channels.each do |channel|
+                  %li= link_to channel.name, channel
+              - else
+                %li= link_to "NO CHANNELS", admin_root_path
           %li= link_to "About", about_path
           %li= link_to "Contact", "/path2"
         %ul.nav.pull-right
