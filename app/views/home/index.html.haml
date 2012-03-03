@@ -4,49 +4,49 @@
 .slider-wrapper.theme-default
   .ribbon
   #slider.nivoSlider
-    = link_to image_tag('banners/1.png'), '/users/sign_up'
-    = link_to image_tag('banners/2.png'), '/users/sign_up'
-    = link_to image_tag('banners/3.png'), '/users/sign_up'
+    = link_to image_tag('banners/1.png'), signup_path
+    = link_to image_tag('banners/2.png'), signup_path
+    = link_to image_tag('banners/3.png'), signup_path
 
 .channel
   .mosaic-block.fader
-    %a.mosaic-overlay{:href => "/users/sign_up"}
+    %a.mosaic-overlay{:href => "/signup"}
       .details
         %h4 Randy Owen
         %p The legendary Randy Owen of Alabama takes you behind the scenes both in concert and in real life. Concerts, backstage access, custom games and trips money can't buy. Plus, some up close and personal access to Randy, his family and his down home Ft Payne, Alabama life. All this plus scheduled live performances!
     .mosaic-backdrop
       = image_tag('channels/randy-owen.jpg')
-  %h4= link_to 'Randy Owen', '/users/sign_up'
+  %h4= link_to 'Randy Owen', signup_path
 
 .channel
   .mosaic-block.fader
-    %a.mosaic-overlay{:href => "/users/sign_up"}
+    %a.mosaic-overlay{:href => "/signup"}
       .details
         %h4 Brushy Mountain Forever
         %p After 113 years, the state of Tennessee closed Brushy Mountain State Penitentiary in June of 2009.  But not before country music icon Mark Collie took a two year journey inside the walls of this legendary place.  While there, he learned the stories and spoke to most of the population housed there.  What emerged was music that many liken to the late Johnny Cash.  This is true Americana and the world now can access the music and an upcoming world premiere feature recorded live from the prison.  Experience it here.
     .mosaic-backdrop
       = image_tag('channels/brushy-mountain.jpg')
-  %h4= link_to 'Brushy Mountain Forever', '/users/sign_up'
+  %h4= link_to 'Brushy Mountain Forever', signup_path
 
 .channel
   .mosaic-block.fader
-    %a.mosaic-overlay{:href => "/users/sign_up"}
+    %a.mosaic-overlay{:href => "/signup"}
       .details
         %h4 American Music Now
         %p American music has never been hotter and this channel will introduce you to music made by artists like Megan Mullins, Seth Hopkins and Ashton Shepherd.   Our New Music Now Channel gives you the opportunity to hear their music, learn their stories of life and meet them up close and personal in ways you never imagined. This is music made in America and played for the planet.
     .mosaic-backdrop
       = image_tag('channels/american-music-now.jpg')
-  %h4= link_to 'American Music Now', '/users/sign_up'
+  %h4= link_to 'American Music Now', signup_path
 
 .channel
   .mosaic-block.fader
-    %a.mosaic-overlay{:href => "/users/sign_up"}
+    %a.mosaic-overlay{:href => "/signup"}
       .details
         %h4 Sam Phillips
         %p Legendary music entrepreneur, and Sun records founder, Sam Phillips believed in music with no limits.  Tearing down racial barriers and launching careers for great artists such as BB King, Howlin Wolf, Elvis Presley, Carl Perkins, Johnny Cash, Jerry Lee Lewis, Charlie Rich, Roy Orbison and many more. That's what you will find right here. Rock-N-Roll Swag, behind the scenes footage, live performances and exclusive interviews revealing untold stories on the history of Rock-N-Roll and it's continuing influence on modern music.
     .mosaic-backdrop
       = image_tag('channels/sam-phillips.jpg')
-  %h4= link_to 'Sam Phillips', '/users/sign_up'
+  %h4= link_to 'Sam Phillips', signup_path
 
 %div
   = image_tag('sponsors-sample.png')

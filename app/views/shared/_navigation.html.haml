@@ -1,15 +1,31 @@
-#user_nav
-  %ul
-    - if user_signed_in?
-      %li
-        = link_to('Logout', destroy_user_session_path, :method=>'delete')
-    - else
-      %li
-        = link_to('Login', new_user_session_path)
-    %li - 
-    - if user_signed_in?
-      %li
-        = link_to('Edit account', edit_user_registration_path)
-    - else
-      %li
-        = link_to('Sign up', new_user_registration_path)
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      = link_to "Altimarc", root_path, :class => "brand"
+      .nav-collapse
+        %ul.nav
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown"}
+              Channels
+              %b.caret
+            %ul.dropdown-menu
+              - if @channels.present?
+                - @channels.each do |channel|
+                  %li= link_to channel.name, channel
+              - else
+                %li= link_to "NO CHANNELS", admin_root_path
+          %li= link_to "About", about_path
+          %li= link_to "Contact", "/path2"
+        %ul.nav.pull-right
+          - if user_signed_in?
+            %li
+              = link_to('Edit account', edit_user_registration_path)
+          - else
+            %li
+              = link_to('Sign up', signup_path)
+          - if user_signed_in?
+            %li
+              = link_to('Logout', logout_path, :method=>'delete')
+          - else
+            %li
+              = link_to('Login', login_path)

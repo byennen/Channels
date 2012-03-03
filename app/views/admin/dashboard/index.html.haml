@@ -1,5 +1,10 @@
-%h1 Welcome
+.row-fluid
+  .span4.box
+    %h2 Channels
+    %p Edit Channels here.
+    %p= link_to "View details", admin_channels_path, :class => "btn"
+  .span4.box
+    %h2 Users
+    %p Edit Users here.
+    %p= link_to "View details", admin_users_path, :class => "btn"
 
-%ul
-  %li= link_to 'Channels', admin_channels_path
-  %li= link_to 'Help', admin_dashboard_help_path
