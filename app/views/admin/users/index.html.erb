@@ -3,10 +3,8 @@
  <thead>
   <tr>
     <th>ID</th>
-        <th>
-      <%= t("activerecord.attributes.admin_user.email", :default => t("activerecord.labels.email", :default => "Email")) %>
-    </th>
-        <th>Created at</th>
+    <th><%= t("activerecord.attributes.admin_user.email", :default => t("activerecord.labels.email", :default => "Email")) %></th>
+    <th>Created at</th>
     <th>Actions</th>
   </tr>
   </thead>
@@ -14,9 +12,8 @@
   <% @users.each do |user| -%>
    <tr>
     <td><%= user.id %></td>
-        <td><%= link_to user.email, admin_user_path(user) %>
-    </td>
-        <td><%= user.created_at %></td>
+    <td><%= user.email %></td>
+    <td><%= user.created_at %></td>
     <td>
       <%#= link_to "Show", admin_channel_path(channel) %>
       <%#= link_to "Edit", edit_admin_channel_path(channel) %>
