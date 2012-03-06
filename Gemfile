@@ -5,7 +5,7 @@ gem 'rails', '3.2.1'
 gem 'jquery-rails'
 gem "haml", ">= 3.1.4"
 gem "devise", ">= 2.0.0"
-gem 'carrierwave'
+gem 'carrierwave', :git => "git://github.com/jnicklas/carrierwave.git", :branch => "master"
 gem 'aws-sdk'
 gem "rack-pjax"
 
@@ -35,5 +35,6 @@ end
 group :production do
   gem 'pg'
 end
+
 
 

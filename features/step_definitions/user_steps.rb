@@ -5,7 +5,7 @@ def valid_user
 end
 
 def sign_up user
-  visit '/signup'
+  visit '/users/sign_up'
   fill_in "Name", :with => user[:name]
   fill_in "Email", :with => user[:email]
   fill_in "Password", :with => user[:password]
@@ -14,7 +14,7 @@ def sign_up user
 end
 
 def sign_in user
-  visit '/login'
+  visit '/users/sign_in'
   fill_in "Email", :with => user[:email]
   fill_in "Password", :with => user[:password]
   click_button "Sign in"
@@ -22,7 +22,7 @@ end
 
 ### GIVEN ###
 Given /^I am not logged in$/ do
-  visit '/logout'
+  visit '/users/sign_out'
 end
 
 Given /^I am logged in$/ do
@@ -31,17 +31,17 @@ end
 
 Given /^I exist as a user$/ do
   sign_up valid_user
-  visit '/logout'
+  visit '/users/sign_out'
 end
 
 Given /^I do not exist as a user$/ do
   User.find(:first, :conditions => { :email => valid_user[:email] }).should be_nil
-  visit '/logout'
+  visit '/users/sign_out'
 end
 
 ### WHEN ###
 When /^I sign out$/ do
-  visit '/logout'
+  visit '/users/sign_out'
 end
 
 When /^I sign up with valid user data$/ do
