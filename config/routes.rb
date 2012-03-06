@@ -12,6 +12,7 @@ Channels::Application.routes.draw do
   devise_scope :user do
     get "/login" => "devise/sessions#new"
     delete '/logout' => 'devise/sessions#destroy'
+    get '/logout' => 'devise/sessions#destroy'
     get '/signup' => 'devise/registrations#new'
   end
 
