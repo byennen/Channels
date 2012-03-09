@@ -18,8 +18,9 @@
     -# %link{:href => "images/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}
   %body
     %header
+      = render "shared/musicplayer"
       = render 'shared/navigation'
-    %div{"data-pjax-container" => ""}
+    %div{"data-pjax-container" => "", :style => "clear: both; margin-top: 70px;"}
       .adbackground
         .container
           = render 'shared/flash_messages', :locals => { :flash => flash }

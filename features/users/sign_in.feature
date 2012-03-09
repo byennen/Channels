@@ -3,7 +3,6 @@ Feature: Sign in
   A user
   Should be able to sign in
     
-    @javascript
     Scenario: User is not signed up
       Given I do not exist as a user
       When I sign in with valid credentials
@@ -24,6 +23,3 @@ Feature: Sign in
       Then I see a successful sign in message
       When I return to the site
       Then I should be signed in
-
-    @selenium
-    Scenario: User signs in successfully with Facebook

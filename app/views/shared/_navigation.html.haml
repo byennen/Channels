@@ -14,16 +14,22 @@
                   %li= link_to channel.name, channel
               - else
                 %li= link_to "NO CHANNELS", admin_root_path
-          %li= link_to "About", about_path
-          %li= link_to "Contact", "/path2"
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown"}
+              Games
+              %b.caret
+            %ul.dropdown-menu
+              - if @channels.present?
+                - @channels.each do |channel|
+                  %li= link_to channel.name, channel
+              - else
+                %li= link_to "NO GAMES", admin_root_path
+          - unless user_signed_in?
+            %li= link_to "Signup and Pricing", "#", :class => "signup"
         %ul.nav.pull-right
           - if user_signed_in?
             %li
               = link_to('Edit account', edit_user_registration_path)
-          - else
-            %li
-              = link_to('Sign up', signup_path)
-          - if user_signed_in?
             %li
               = link_to('Logout', logout_path, :method=>'delete')
           - else

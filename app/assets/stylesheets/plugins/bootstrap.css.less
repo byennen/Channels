@@ -1,6 +1,5 @@
 @import "twitter/bootstrap";
 
-//twitter-bootstrap overrides
 .navbar {
 	border-bottom: 1px solid #CACACA;
 	
@@ -19,33 +18,41 @@
 
 // nav item typography
 .navbar .nav > li > a {
+  color: black;
 	font-weight: bold;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .navbar .nav .active > a {
 	background-color: transparent;
-	color: @textColor;
+	color: black;
 	
 	&:hover {
 		background-color: transparent;
-		color: @linkColor;
+		color: #E72427;
 	}
+}
+
+.navbar .nav > li > a.signup {
+  color: #077f12 !important;
+  &:hover {
+    color: #066c10 !important;
+  }
 }
 
 .navbar .nav > li > a:hover,
 .navbar .nav .open.dropdown .dropdown-toggle {
-	color: @linkColor !important;
+	color: #E72427 !important;
 }
 
 .navbar .nav .dropdown-toggle .caret {
-	border-top-color: @textColor;
+	border-top-color: black !important;
 	opacity: 1;
 }
 
 .navbar .nav .open.dropdown .caret,
 .navbar .nav .dropdown-toggle:hover .caret {
-	border-top-color: @linkColor !important;
+	border-top-color: #E72427 !important;
 }
 
 .subnav .nav > li > a {
