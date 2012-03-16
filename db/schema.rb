@@ -11,19 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120131175225) do
+ActiveRecord::Schema.define(:version => 20120131061807) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "roles", :force => true do |t|
-    t.string   "name"
-    t.float    "price"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "description"
+    t.boolean  "audio_feature"
+    t.boolean  "vault_feature"
+    t.boolean  "news_feature"
+    t.boolean  "events_feature"
+    t.boolean  "giving_feature"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -43,7 +42,8 @@ ActiveRecord::Schema.define(:version => 20120131175225) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
