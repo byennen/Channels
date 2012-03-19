@@ -3,9 +3,13 @@
     %legend Sign Up
     = devise_error_messages!
     .clearfix
-      = f.label :name
+      = f.label :first_name
       .input
-        = f.text_field :name, :class => 'xlarge'
+        = f.text_field :first_name, :class => 'xlarge'
+    .clearfix
+      = f.label :last_name
+      .input
+        = f.text_field :last_name, :class => 'xlarge'
     .clearfix
       = f.label :email
       .input

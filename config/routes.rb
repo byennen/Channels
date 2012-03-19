@@ -20,7 +20,12 @@ Channels::Application.routes.draw do
   namespace :admin do
     root :to => "dashboard#index"
     get "dashboard/help"
-    resources :channels
+    resources :channels do
+      resources :songs
+      resources :features, :only => :edit
+    end
+    resources :features, :only => :update
+    resources :songs
     resources :users, :only => :index
   end
 end

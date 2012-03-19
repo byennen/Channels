@@ -21,6 +21,7 @@ group :development do
   #TODO: switch to postgres in the future -Lance
   gem 'mysql'
   gem "heroku"
+  gem "thin" #fix log for ruby 1.9.3 until its cleaned up - rails s thin
 end
 
 group :development, :test do

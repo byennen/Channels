@@ -11,18 +11,34 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120131061807) do
+ActiveRecord::Schema.define(:version => 20120316221650) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.boolean  "audio_feature"
-    t.boolean  "vault_feature"
-    t.boolean  "news_feature"
-    t.boolean  "events_feature"
-    t.boolean  "giving_feature"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "features", :force => true do |t|
+    t.integer  "channel_id"
+    t.boolean  "audio"
+    t.boolean  "vault"
+    t.boolean  "news"
+    t.boolean  "events"
+    t.boolean  "giving"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "songs", :force => true do |t|
+    t.integer  "channel_id"
+    t.string   "title"
+    t.string   "album"
+    t.decimal  "song_price",  :precision => 10, :scale => 0
+    t.decimal  "album_price", :precision => 10, :scale => 0
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
   create_table "users", :force => true do |t|

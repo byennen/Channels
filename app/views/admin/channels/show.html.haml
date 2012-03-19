@@ -1,0 +1,60 @@
+.div{ :style => "margin-bottom: 20px;" }
+  %h1= @channel.name
+
+.row-fluid
+  .span4.box
+    .inside
+      %h2 Features
+      %p Edit Features here.
+      %p= link_to "Features",  edit_admin_channel_feature_path(@channel), :class => "btn"
+
+  - if @channel.feature.audio == true
+    .span4.box
+      .inside
+        %h2 Songs
+        %p Edit Songs here.
+        %p= link_to "Songs",  admin_channel_songs_path(@channel), :class => "btn"
+
+  - if @channel.feature.vault == true
+    .span4.box
+      .inside
+        %h2 Vault
+        %p Edit Vault here.
+        %p= link_to "Vault",  "#", :class => "btn"
+
+.row-fluid
+  - if @channel.feature.news == true
+    .span4.box
+      .inside
+        %h2 News
+        %p Edit News here.
+        %p= link_to "News",  "#", :class => "btn"
+
+  - if @channel.feature.events == true
+    .span4.box
+      .inside
+        %h2 Events
+        %p Edit Events here.
+        %p= link_to "Events",  "#", :class => "btn"
+
+  - if @channel.feature.giving == true
+    .span4.box
+      .inside
+        %h2 Giving
+        %p Edit Giving here.
+        %p= link_to "Giving",  "#", :class => "btn"
+
+.row-fluid
+  .span4.box
+    .inside
+      %h2 Videos
+      %p Edit Videos here.
+      %p= link_to "Videos",  "#", :class => "btn"
+
+  .span4.box
+    .inside
+      %h2 Photos
+      %p Edit Photos here.
+      %p= link_to "Photos",  "#", :class => "btn"
+
+
