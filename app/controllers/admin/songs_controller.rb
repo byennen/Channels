@@ -17,7 +17,7 @@ class Admin::SongsController < ApplicationController
   # GET /songs/new.json
   def new
     @song = Song.new
-    @channel = Channel.find(params[:id])
+    #@channel = Channel.find(params[:id])
 
     respond_to do |format|
       format.html # new.html.erb
