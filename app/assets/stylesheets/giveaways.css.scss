@@ -1,0 +1,41 @@
+.giveaway {
+  text-align: center;
+  ul {
+    margin: 30px 0;
+    li {
+      list-style: none;
+    }
+  }
+  form {
+    font-size: 20px;
+    color: red;
+    overflow: auto;
+    input {
+      padding: 0 5px;
+      font-size: 20px;
+      width: 240px;
+      margin: 0 15px;
+      height: 26px;
+      float: left;
+      line-height: 24px;
+    }
+    strong {
+      float: left;
+      margin: 2px 0 0 200px;
+    }
+    .btn {
+      float: left;
+    }
+  }
+  address {
+    margin: 20px;
+  }
+  .message {
+    margin: 0 0 10px;
+    font-size: 12px;
+  }
+  .rules {
+    color: #666;
+    text-align: left;
+  }
+}

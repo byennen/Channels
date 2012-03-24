@@ -3,30 +3,19 @@ Channels::Application.routes.draw do
   root :to => "home#index"
 
   match "/about" => "pages#about"
-  match "/privacy" => "pages#privacy"
-  match "/refund" => "pages#refund"
 
-  resources :channels, :only => :show
+  match "/kentucky-derby-with-randy-owen" => "giveaways#derby", :as => "derby"
+  match "/cma-fanfest-with-randy-owen" => "giveaways#cma", :as => "cma"
+  match "/thank-you" => "giveaways#thankyou", :as => "thankyou"
 
-  devise_for :users
-  devise_scope :user do
-    get "/login" => "devise/sessions#new"
-    delete '/logout' => 'devise/sessions#destroy'
-    get '/logout' => 'devise/sessions#destroy'
-    get '/signup' => 'devise/registrations#new'
-  end
+  match "/create_derby(/:id)" => "giveaways#create_derby"
+  match "/create_cma(/:id)" => "giveaways#create_cma"
 
-  #admin
-  namespace :admin do
-    root :to => "dashboard#index"
-    get "dashboard/help"
-    resources :channels do
-      resources :songs
-      resources :features, :only => :edit
-    end
-    resources :features, :only => :update
-    resources :songs
-    resources :users, :only => :index
-  end
+
+  #resources :giveaways, :only => "create"
+
+  # match "/privacy" => "pages#privacy"
+  # match "/refund" => "pages#refund"
+
 end
 
