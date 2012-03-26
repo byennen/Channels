@@ -2,6 +2,7 @@
 #= require jquery_ujs
 #= require twitter/bootstrap
 #= require jquery.pjax
+#= require musicplayer
 #= require_tree .
 
 jQuery ->
