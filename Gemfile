@@ -8,6 +8,7 @@ gem "devise", ">= 2.0.0"
 gem 'carrierwave', :git => "git://github.com/jnicklas/carrierwave.git", :branch => "master"
 gem 'aws-sdk'
 gem "rack-pjax"
+gem 'spine-rails'
 
 group :assets do
   #TODO: remove sass -Lance
