@@ -21,6 +21,7 @@ group :development do
   #TODO: switch to postgres in the future -Lance
   gem 'mysql'
   gem "heroku"
+  gem 'pry-rails'
 end
 
 group :development, :test do
