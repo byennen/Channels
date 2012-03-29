@@ -33,7 +33,7 @@ class Admin::SongsController < ApplicationController
   # POST /songs
   # POST /songs.json
   def create
-    @song = Song.new(params[:song])
+    @song = Song.new(params[:song][:channel_id])
 
     respond_to do |format|
       if @song.save

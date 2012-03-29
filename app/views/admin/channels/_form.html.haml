@@ -1,8 +1,9 @@
-.clearfix
-  = f.label :name, t("activerecord.attributes.channel.name", :default => "Name"), :class => :label
-  .input
-    = f.text_field :name, :class => 'text_field'
-.form-actions
-  %button.btn.primary{:type => "submit"} Save
-  or
-  \#{link_to "Cancel", admin_channels_path}
+= form_for([:admin, @channel]) do |f|
+  .clearfix
+    = f.label :name, t("activerecord.attributes.channel.name", :default => "Name"), :class => :label
+    .input
+      = f.text_field :name, :class => 'text_field'
+  .form-actions
+    %button.btn.primary{:type => "submit"} Save
+    or
+    = link_to "Cancel", admin_channels_path

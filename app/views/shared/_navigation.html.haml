@@ -6,13 +6,40 @@
         %ul.nav
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown"}
+              Channels
+              %b.caret
+            %ul.dropdown-menu
+              - if @channels.present?
+                - @channels.each do |channel|
+                  %li= link_to channel.name, channel
+              - else
+                %li= link_to "NO CHANNELS", admin_root_path
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown"}
+              Games
+              %b.caret
+            %ul.dropdown-menu
+              - if @channels.present?
+                - @channels.each do |channel|
+                  %li= link_to channel.name, channel
+              - else
+                %li= link_to "NO GAMES", admin_root_path
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown"}
               Giveaways
               %b.caret
             %ul.dropdown-menu
               %li= link_to "Kentucky Derby", derby_path
               %li= link_to "CMA FanFest", cma_path
-          %li= link_to 'Facebook', 'https://www.facebook.com/pages/Altimarc/243050725779865', :target => '_blank'
-          %li= link_to 'Twitter', 'https://twitter.com/altimarc', :target => '_blank'
+          - unless user_signed_in?
+            %li= link_to "Signup and Pricing", "#", :class => "signup"
         %ul.nav.pull-right
-          %li= link_to' Altimarc.com - Launching Soon - More Info Here', about_path
+          - if user_signed_in?
+            %li
+              = link_to('Edit account', edit_user_registration_path)
+            %li
+              = link_to('Logout', logout_path, :method=>'delete')
+          - else
+            %li
+              = link_to('Login', login_path)
 

@@ -2,7 +2,7 @@ class Channel < ActiveRecord::Base
   has_one :feature
   has_many :songs
 
-  attr_accessible :id
+  attr_accessible :id, :name
 
   after_create :set_default_features
 
