@@ -12,13 +12,32 @@
 #= require_tree ./views
 
 class Musicplayer extends Spine.Controller
+
+  events:
+    "click #player_previous": "previousTrack"
+    "click #player_next":     "nextTrack"
+    "click #player_play":     "playMusic"
+
+  elements:
+    "#cover-art": "coverArt"
+    "#track-meta-data": "metaData"
+    "#link-to-album": "albumLink"
+    "#link-to_artist": "artistLink"
+    "#track" : "track"
+
   constructor: ->
     super
-    
-    # Initialize controllers:
-    #  @append(@items = new Musicplayer.Items)
-    #  ...
-    
-    Spine.Route.setup()    
+    Spine.Route.setup()
+  
+  previousTrack: (event) ->
+    console.log "previos track clicked"
 
-window.Musicplayer = Musicplayer
+  nextTrack: (event) ->
+    console.log "next track clicked"
+
+  playMusic: (event) ->
+    console.log @track
+    #@track.play()
+    console.log "play music now"
+
+window.Musicplayer = new Musicplayer(el: $('#player'))
