@@ -28,6 +28,7 @@ class Musicplayer extends Spine.Controller
   constructor: ->
     super
     Spine.Route.setup()
+    @track = $(@el).find("#track")[0]
   
   previousTrack: (event) ->
     console.log "previos track clicked"
@@ -36,8 +37,12 @@ class Musicplayer extends Spine.Controller
     console.log "next track clicked"
 
   playMusic: (event) ->
-    console.log @track
-    #@track.play()
-    console.log "play music now"
+    if @track.paused
+      @track.play()
+      console.log "Play music"
+    else
+      @track.pause()
+      console.log "Stop music"
+
 
 window.Musicplayer = new Musicplayer(el: $('#player'))
