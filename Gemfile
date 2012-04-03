@@ -5,10 +5,14 @@ gem 'rails', '3.2.1'
 gem 'jquery-rails'
 gem "haml", ">= 3.1.4"
 gem "devise", ">= 2.0.0"
-gem 'aws-sdk'
 gem "rack-pjax"
 gem "mail"
 gem "twitter-bootstrap-rails"
+
+#uploads
+gem "rack-cache", :require => "rack/cache"
+gem "dragonfly", '~>0.9.11'
+gem "fog"
 
 group :assets do
   #TODO: remove sass -Lance
