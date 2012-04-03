@@ -3,6 +3,14 @@
     = f.label :name, t("activerecord.attributes.channel.name", :default => "Name"), :class => :label
     .input
       = f.text_field :name, :class => 'text_field'
+  .clearfix
+    = f.label :subdomain, t("activerecord.attributes.channel.name", :default => "Sub-Domain"), :class => :label
+    .input
+      = f.text_field :subdomain, :class => 'text_field'
+  .clearfix
+    = f.label :description, t("activerecord.attributes.channel.name", :default => "Description"), :class => :label
+    .input
+      = f.text_area :description, :class => 'text_field'
   .form-actions
     %button.btn.primary{:type => "submit"} Save
     or

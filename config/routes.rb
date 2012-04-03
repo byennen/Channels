@@ -1,6 +1,6 @@
 Channels::Application.routes.draw do
-
-  root :to => "home#index"
+  #subdomains
+  match "", to: "channels#show", constraints: lambda {|r| r.subdomain.present? && r.subdomain != 'www'}
 
   #static pages
   match "/about" => "pages#about"
@@ -41,5 +41,6 @@ Channels::Application.routes.draw do
     resources :users, :only => :index
   end
 
-end
+  root :to => "home#index"
 
+end
