@@ -20,12 +20,12 @@ Channels::Application.routes.draw do
   resources :channels, :only => :show
 
   #users
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions'}
   devise_scope :user do
-    get "/login" => "devise/sessions#new"
-    delete '/logout' => 'devise/sessions#destroy'
-    get '/logout' => 'devise/sessions#destroy'
-    get '/signup' => 'devise/registrations#new'
+    get "/login" => "sessions#new"
+    delete '/logout' => 'sessions#destroy'
+    get '/logout' => 'sessions#destroy'
+    get '/signup' => 'registrations#new'
   end
 
   #admin

@@ -29,8 +29,6 @@
               = yield
             %footer
               = render "layouts/footer"
-    - if params[:controller] == "Devise::Registrations"
-      lance
     - else
       .background-wrapper
         %div{"data-pjax-container" => ""}
@@ -38,9 +36,14 @@
             =# render 'shared/musicplayer'
             = render 'shared/navigation'
           .container
-            = render 'shared/flash_messages', :locals => { :flash => flash }
-            .content
+            - if params[:controller] == "registrations"
               = yield
+            - elsif params[:controller] == "sessions"
+              = yield
+            - else
+              = render 'shared/flash_messages', :locals => { :flash => flash }
+              .content
+                = yield
             %footer
               = render "layouts/footer"
     / Javascript
