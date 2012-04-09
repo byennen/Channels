@@ -14,6 +14,8 @@ module Channels
 
     # rack pjax
     config.middleware.use Rack::Pjax
+    # dragonfly
+    config.middleware.insert 1, 'Dragonfly::Middleware', :images
 
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
@@ -65,6 +67,7 @@ module Channels
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.assets.paths << "#{Rails.root}/app/assets/music"
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

@@ -1,6 +1,33 @@
 body {
-  padding-top: 60px;
-  background: #ededed !important
+  background: #ededed !important;
+  padding-top: 0 !important;
+  .background-wrapper {
+    padding-top: 80px;
+  }
+}
+
+.navbar {
+  .navbar-inner {
+    background: url(<%= asset_data_uri 'layout/header-bg.png' %>) repeat-x;
+  }
+  .brand {
+    background: url(<%= asset_data_uri 'layout/header-logo.png' %>) no-repeat scroll 0px 0px transparent;
+    width: 180px;
+    height: 31px;
+    color: transparent;
+    padding: 0 5px 0;
+    margin: 5px;
+  }
+}
+
+.navbar {
+	border-bottom: 1px solid #CACACA;
+	
+	.brand {
+		font-size: 20px;
+		font-weight: bold;
+		color: transparent;
+	}
 }
 
 h2 a { 
@@ -28,13 +55,13 @@ a {
 
 header {
   .navbar {
+    background: #c2c2c2 url(<%= asset_data_uri 'layout/header-bg.png' %>) repeat-x;
+    -moz-box-shadow: 0 4px 4px -4px #a09f9f;
+    -webkit-box-shadow: 0 4px 4px -4px #a09f9f;
+    box-shadow: 0 4px 4px -4px #a09f9f;
+    border-bottom: 1px solid #a09f9f;
     top: 0px;
     .navbar-inner {
-      background: #c2c2c2 url(<%= asset_data_uri 'layout/header-bg.png' %>) repeat-x;
-      -moz-box-shadow: 0 4px 4px -4px #a09f9f;
-      -webkit-box-shadow: 0 4px 4px -4px #a09f9f;
-      box-shadow: 0 4px 4px -4px #a09f9f;
-      border-bottom: 1px solid #a09f9f;
     }
     .brand {
       background: url(<%= asset_data_uri 'layout/header-logo.png' %>) no-repeat scroll 0px 0px transparent;
@@ -55,6 +82,7 @@ header {
   -moz-box-shadow: 0px 0px 5px #888;
   -webkit-box-shadow: 0px 0px 5px #888;
   box-shadow: 0px 0px 5px #888;
+  min-height: 800px;
   .inside {
     padding: 20px;
   }

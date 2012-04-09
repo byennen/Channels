@@ -17,15 +17,30 @@
     -# %link{:href => "images/apple-touch-icon-72x72.png", :rel => "apple-touch-icon", :sizes => "72x72"}
     -# %link{:href => "images/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}
   %body
-    %div{"data-pjax-container" => ""}
-      %header
-        = render 'shared/navigation'
-      .container
-        = render 'shared/flash_messages', :locals => { :flash => flash }
-        .content
-          = yield
-        %footer
-          = render "layouts/footer"
+    - if params[:controller] == "channels"
+      .background-wrapper{ :style => "background: url('#{@channel.background_image.url}') repeat-x #000; %>)" }
+        %div{"data-pjax-container" => ""}
+          %header
+            =# render 'shared/musicplayer'
+            = render 'shared/navigation'
+          .container
+            = render 'shared/flash_messages', :locals => { :flash => flash }
+            .content
+              = yield
+            %footer
+              = render "layouts/footer"
+    - else
+      .background-wrapper
+        %div{"data-pjax-container" => ""}
+          %header
+            =# render 'shared/musicplayer'
+            = render 'shared/navigation'
+          .container
+            = render 'shared/flash_messages', :locals => { :flash => flash }
+            .content
+              = yield
+            %footer
+              = render "layouts/footer"
     / Javascript
     = javascript_include_tag "application"
     = render "layouts/analytics"

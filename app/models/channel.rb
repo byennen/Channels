@@ -2,7 +2,9 @@ class Channel < ActiveRecord::Base
   has_one :feature
   has_many :songs
 
-  attr_accessible :id, :name, :subdomain, :description
+  attr_accessible :id, :name, :subdomain, :description, :background_image, :banner_image
+  image_accessor :background_image
+  image_accessor :banner_image
 
   after_create :set_default_features
 

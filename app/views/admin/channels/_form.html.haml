@@ -1,16 +1,27 @@
-= form_for([:admin, @channel]) do |f|
+= form_for([:admin, @channel], :html => {:multipart => true}) do |f|
   .clearfix
     = f.label :name, t("activerecord.attributes.channel.name", :default => "Name"), :class => :label
     .input
       = f.text_field :name, :class => 'text_field'
   .clearfix
-    = f.label :subdomain, t("activerecord.attributes.channel.name", :default => "Sub-Domain"), :class => :label
+    = f.label :subdomain, t("activerecord.attributes.channel.subdomain", :default => "Sub-Domain"), :class => :label
     .input
       = f.text_field :subdomain, :class => 'text_field'
   .clearfix
-    = f.label :description, t("activerecord.attributes.channel.name", :default => "Description"), :class => :label
+    = f.label :description, t("activerecord.attributes.channel.description", :default => "Description"), :class => :label
     .input
       = f.text_area :description, :class => 'text_field'
+  .clearfix
+    = f.label :background_image, t("activerecord.attributes.channel.background_image", :default => "Background Image"), :class => :label
+    .input
+      = f.file_field :background_image
+      = image_tag @channel.background_image.thumb('100x100#').url if @channel.background_image_uid
+  .clearfix
+    = f.label :background_image, t("activerecord.attributes.channel.banner_image", :default => "Banner Image"), :class => :label
+    .input
+      = f.file_field :banner_image
+      = image_tag @channel.banner_image.thumb('100x100#').url if @channel.banner_image_uid
+
   .form-actions
     %button.btn.primary{:type => "submit"} Save
     or
