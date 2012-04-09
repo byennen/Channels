@@ -32,7 +32,7 @@
               %li= link_to "Kentucky Derby", derby_url(subdomain: "www")
               %li= link_to "CMA FanFest", cma_url(subdomain: "www")
           - unless user_signed_in?
-            %li= link_to "Signup and Pricing", root_url(subdomain: "www"), :class => "signup"
+            %li= link_to "Signup and Pricing", signup_url(subdomain: "www"), :class => "signup"
         %ul.nav.pull-right
           - if user_signed_in?
             %li

@@ -29,6 +29,8 @@
               = yield
             %footer
               = render "layouts/footer"
+    - if params[:controller] == "Devise::Registrations"
+      lance
     - else
       .background-wrapper
         %div{"data-pjax-container" => ""}
