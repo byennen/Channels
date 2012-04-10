@@ -1,51 +1,135 @@
-.inside
-  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :class => 'form-stacked') do |f|
-    %fieldset
-      %legend Sign Up
+:css
+  .leftcolumn {
+    background: white;
+    -moz-box-shadow: 5px 8px 5px #888;
+    -webkit-box-shadow: 5px 8px 5px #888;
+    box-shadow: 5px 8px 5px #888;
+    margin: 0 0 20px;
+  }
+  h2 {
+    font-size: 16px;
+    line-height: 22px;
+    background: #3777D3;
+    color: white;
+    border-bottom: #d5d5d5 solid 1px;
+    padding: 10px 15px;
+  }
+  h3 {
+    margin: 0 0 20px 80px;
+  }
+  .basics h3 {
+    color: #376D00;
+    background: url(assets/payments/step-1.png) no-repeat;
+    padding-left: 35px;
+    font-size: 14px;
+  }
+  .payment h3 {
+    color: #376D00;
+    background: url(assets/payments/step-2.png) no-repeat;
+    padding-left: 35px;
+    font-size: 12px;
+    line-height: 1.3em;
+  }
+  .already_member {
+    margin: 15px 0 15px;
+    padding: 5px 15px;
+    background: #FFC;
+    line-height: 1.4em;
+    height: 45px;
+  }
+  .password {
+    border-bottom: 1px solid #ccc;
+    margin: 0 0 20px 20px;
+    padding: 0 0 5px;
+  }
+  .payment {
+    border-bottom: 1px solid #ccc;
+    margin: 10px 0 20px 20px;
+    padding: 0 0 20px;
+  }
+  .payment strong {
+    font-size: 11px;
+  }
+  .help-block {
+    color: #999;
+    font-size: 11px;
+  }
+  .credit_card {
+    width: 370px;
+    float: left;
+    clear: both;
+  }
+
+.leftcolumn.span9
+  %h2 You're just 60 seconds away from your new Altimarc account.
+  .already_member.span6
+    %strong Already have a Altimarc account?
+    %br
+      %p
+        = link_to "Sign in here", login_url(subdomain: "www")
+        to skip this form and use the email you already have.
+  .form.span6
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-horizontal'}) do |f|
       = devise_error_messages!
-      .clearfix
-        = f.label :first_name
-        .input
-          = f.text_field :first_name, :class => 'xlarge'
-      .clearfix
-        = f.label :last_name
-        .input
-          = f.text_field :last_name, :class => 'xlarge'
-      .clearfix
-        = f.label :email
-        .input
-          = f.email_field :email, :class => 'xlarge'
-      .clearfix
-        = f.label :password
-        .input
-          = f.password_field :password, :class => 'xlarge'
-      .clearfix
-        = f.label :password_confirmation
-        .input
-          = f.password_field :password_confirmation, :class => 'xlarge'
+
+      .basics.span8
+        %h3 The basics
+
+        //first name
+        .control-group
+          = f.label :first_name, :class => "control-label"
+          .controls
+            = f.text_field :first_name, :class => 'input-large'
+        
+        //last name
+        .control-group
+          = f.label :last_name, :class => "control-label"
+          .controls
+            = f.text_field :last_name, :class => 'input-large'
+
+        //email
+        .control-group
+          = f.label :email, :class => "control-label"
+          .controls
+            = f.email_field :email, :class => 'input-large'
+
+      .password.span8
+        %h3 Now choose a password
+
+        //password
+        .control-group
+          = f.label :password, :class => "control-label"
+          .controls
+            = f.password_field :password, :class => 'input-large'
+            %p.help-block
+              6 characters or longer with at least one number is safest.
+
+        //confirm password
+        .control-group
+          = f.label :password_confirmation, :class => "control-label"
+          .controls
+            = f.password_field :password_confirmation, :class => 'input-large'
+
+      .payment.span8
+        %h3 Thanks for paying. Your hard earned money goes towards making Altimarc an even better product.
+
+        //credit card
+        .control-group.credit_card
+          %label.control-label{:for => "input01"} Credit Card
+          .controls
+            %input#input01.input-large{:type => "text"}
+              %p.help-block Supporting help text
+        
+        //credit card icons
+        .span
+          = image_tag('payments/icon-lock.png')
+          %strong Secure
+          = image_tag('payments/img-creditcards.png')
+
+        //credit card 
+
+      .coupon.span8
+        = link_to "Got a Coupon Code?", "#"
+
       .actions
         = f.submit "Sign up", :class => 'btn primary'
-        = link_to "Aleady a member of Altimarc?", new_session_path(resource_name), :class => 'btn'
--# - else
--#   %div{ :style => 'margin: 40px 20px 20px; ' }
--#     %div{ :style => 'width: 460px; float: left; clear: both;' }
--#       %p 
--#         %strong A new kind of entertainment destination.  
--#         Where you can access your favorite entertainers, sports figures  and cool games from your computer or mobile device.     Access to band rehearsals, backstage areas, green rooms and exclusive autograph signings where you can experience a brand new way of getting a digital autograph of famous celebrities!
--#       %p Plus, our design teams are developing awesome new games that will reward your skills with real life access to events that money can't buy:  dinners with celebrities, access to exclusive sporting events, front row VIP tickets to sold out concerts, backstage access where all the action really happens.   Yes, you will have a chance at winning cool prizes that puts you in the middle of it all -  direct access to things most of us never experience.   It' s OK with us if you tell your friends and family about Altimarc.
--#       %p Your membership allows you to debut exclusive, never before seen concert footage, exclusive world premiere music documentaries, scheduled live concerts, music downloads, on demand backstage moments and band rehearsals..plus, sneak peeks at the latest videos and new, just released music from tomorrow's superstars.
--#     %div{ :style => 'width: 380px; float: right; padding: 10px; margin: 12px 10px 0 0; background: #eee;  -moz-border-radius: 5px; border-radius: 5px;' }
--#       %h4{ :style => 'text-align: center;' } 
--#         Currently, Altimarc.com is invite only.
--#         %br 
--#         Sign up now for an early invite!
--#       %form{:action => "https://madmimi.com/signups/subscribe/47685", :method => "post"}
--#         %fieldset
--#           .clearfix
--#             %label{:for => "signup_email"} Email
--#             .input
--#               %input#signup_email{:name => "signup[email]", :type => "text"}
--#           .actions
--#             .clearfix
--#               %input.button{:name => "commit", :type => "submit", :value => "Sign Up", :class => 'btn'}
--#       %p{ :style => 'text-align: center; color: black; background: yellow; padding: 5px; margin: 25px 10px;-moz-border-radius: 5px; border-radius: 5px;' } Invite only [closed beta] at this time.
