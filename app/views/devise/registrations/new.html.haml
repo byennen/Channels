@@ -44,7 +44,7 @@
   }
   .payment {
     border-bottom: 1px solid #ccc;
-    margin: 10px 0 20px 20px;
+    margin: 10px 0 5px 20px;
     padding: 0 0 20px;
   }
   .payment strong {
@@ -58,6 +58,33 @@
     width: 370px;
     float: left;
     clear: both;
+  }
+  .billing_zip {
+    width: 370px;
+    float: left;
+    clear: both;
+  }
+  .coupon {
+    margin: 15px 0px 15px 20px;
+  }
+  .coupon a {
+    font-size:12px;
+    color: #888;
+  }
+  .info {
+    background: #FFC;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+  .info p {
+    margin: 15px 20px;
+    line-height: 1.3em;
+  }
+  .policy {
+    margin: 10px 0 10px 20px;
+  }
+  .actions {
+    margin: 5px 0 30px 20px;
   }
 
 .leftcolumn.span9
@@ -118,7 +145,6 @@
           %label.control-label{:for => "input01"} Credit Card
           .controls
             %input#input01.input-large{:type => "text"}
-              %p.help-block Supporting help text
         
         //credit card icons
         .span
@@ -126,10 +152,37 @@
           %strong Secure
           = image_tag('payments/img-creditcards.png')
 
-        //credit card 
+        //credit card billing zip
+        .control-group.billing_zip
+          %label.control-label{:for => "input01"} Billing ZIP
+          .controls
+            %input#input01.input-small{:type => "text"}
+              %p.help-block (or Postal Code if not in the USA)
 
+
+      //coupon
       .coupon.span8
         = link_to "Got a Coupon Code?", "#"
 
-      .actions
-        = f.submit "Sign up", :class => 'btn primary'
+      //info
+      .info.span8
+        %p
+          %strong Your 24-hour free trial lasts until
+          - trail_end_time = Time.now + 1.days
+          %strong= trail_end_time.strftime("%I:%M%p %m-%d-%y")
+          If you don't want to continue using Altimarc, just cancel before the trial ends and you won't be charged. Otherwise, you'll pay just $9.95/month for the service as long as your account is open. You can cancel any time.
+
+      //policy
+      .policy.span8
+        %p 
+          By clicking Create my account you agree to the
+          = link_to "Terms of Service,", "#"
+          = link_to "Privacy,", "#"
+          %span and
+          = link_to "Refund policies.", "#"
+
+      .actions.span8
+        = f.submit "Create my account", :class => 'btn-primary btn-success btn-large'
+.rightcolumn.span3
+  = image_tag('payments/thanks.png')
+
