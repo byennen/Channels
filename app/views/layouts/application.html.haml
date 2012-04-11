@@ -18,7 +18,7 @@
     -# %link{:href => "images/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}
   %body
     - if params[:controller] == "channels"
-      .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image.url}') repeat-x #000; %>)" }
+      .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x #000; %>)" }
         %div{"data-pjax-container" => ""}
           %header
             =# render 'shared/musicplayer'
@@ -27,8 +27,8 @@
             = render 'shared/flash_messages', :locals => { :flash => flash }
             .content
               = yield
-            %footer
-              = render "layouts/footer"
+          %footer
+            = render "layouts/footer"
     - else
       .background-wrapper
         %div{"data-pjax-container" => ""}
