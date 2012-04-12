@@ -1,6 +1,9 @@
 = image_tag @channel.banner_image.url if @channel.banner_image_uid
 
-.inside
-  %h1= @channel.name
+#channel{:style => "margin: 20px 0 0;"}
+  .span9
+    %h1= @channel.name
 
-  %p= @channel.description
+    %p= @channel.description
+  .span3
+    social media here
