@@ -15,7 +15,6 @@ $().ready ->
       myPlayer = this
       myPlayer.width(980)
       myPlayer.height(551)
-      myPlayer.buffered(50)
       myPlayer.play()
 
       @addEvent "ended", ->
