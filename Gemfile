@@ -12,7 +12,6 @@ gem 'spine-rails'
 gem 'newrelic_rpm'
 gem 'thin'
 
-
 #uploads
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.11'

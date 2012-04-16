@@ -7,4 +7,7 @@ class PagesController < ApplicationController
 
   def refund
   end
+
+  def randy_owen_coming_soon_video
+  end
 end

@@ -1,6 +1,5 @@
-$(document).ajaxComplete ->
-  $("#slider").nivoSlider()
+$().ajaxComplete ->
   $(".fader").mosaic()
-$(document).ready ->
-  $("#slider").nivoSlider()
+
+$().ready ->
   $(".fader").mosaic()

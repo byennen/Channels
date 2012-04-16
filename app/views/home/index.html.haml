@@ -1,5 +1,7 @@
+- title "Altimarc: Coming Soon"
 - @keywords = "music, music channels, music tv, watch live, live video production, stream music online, music broadcast, country music, music downloads, music videos, online music, games, free online games, free games, online games, video games, powerball, powerball numbers, powerball winning numbers"
 - @description = "Entertainment, Games, and once in a life time opportunities to meet celebrities. Join today!"
+- javascript "home"
 
 .div{ :style => "height: 645px;" }
   = image_tag('randy-owen-giveaway-altimarc.png')
@@ -25,5 +27,10 @@
       = image_tag('cma.jpg')
   %h2{ :style => 'text-align: center; color: red;' }
     CMA FanFest
+.span12{:style => "text-align: center;margin: 40px 0;font-size: 25px;"}
+  = link_to "Replay Randy Owen Altimarc Coming Soon Video", randy_owen_video_url(:subdomain => "www")
 
 = image_tag('chips.png', :style => "margin-bottom: -4px;")
+
+= javascript_include_tag "video_effect"
+
