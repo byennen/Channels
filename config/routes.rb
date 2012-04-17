@@ -20,26 +20,26 @@ Channels::Application.routes.draw do
   match "/giveaways/create_cma(/:id)" => "giveaways#create_cma"
 
   #users
-  devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions'}
-  devise_scope :user do
-    get "/login" => "sessions#new"
-    delete '/logout' => 'sessions#destroy'
-    get '/logout' => 'sessions#destroy'
-    #get '/signup' => 'registrations#new'
-  end
+  # devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions'}
+  # devise_scope :user do
+  #   get "/login" => "sessions#new"
+  #   delete '/logout' => 'sessions#destroy'
+  #   get '/logout' => 'sessions#destroy'
+  #   #get '/signup' => 'registrations#new'
+  # end
 
   #admin
-  namespace :admin do
-    root :to => "dashboard#index"
-    get "dashboard/help"
-    resources :channels do
-      resources :songs
-      resources :features, :only => :edit
-    end
-    resources :features, :only => :update
-    resources :songs
-    resources :users, :only => :index
-  end
+  # namespace :admin do
+  #   root :to => "dashboard#index"
+  #   get "dashboard/help"
+  #   resources :channels do
+  #     resources :songs
+  #     resources :features, :only => :edit
+  #   end
+  #   resources :features, :only => :update
+  #   resources :songs
+  #   resources :users, :only => :index
+  # end
 
   root :to => "home#index"
 
