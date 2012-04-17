@@ -16,8 +16,8 @@ Channels::Application.routes.draw do
   match "giveaways/thank-you" => "giveaways#thankyou", :as => "thankyou"
 
   #giveaways email
-  match "/create_derby(/:id)" => "giveaways#create_derby"
-  match "/create_cma(/:id)" => "giveaways#create_cma"
+  match "/giveaways/create_derby(/:id)" => "giveaways#create_derby"
+  match "/giveaways/create_cma(/:id)" => "giveaways#create_cma"
 
   #users
   devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions'}
