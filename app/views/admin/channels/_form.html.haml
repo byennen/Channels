@@ -1,13 +1,8 @@
-= form_for([:admin, @channel], :html => { :multipart => true }) do |f|
-  -if @channel.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@channel.errors.count, "error")} prohibited this channel from being saved:"
-      %ul
-        - @channel.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .actions
-    = f.submit 'Save'
+.clearfix
+  = f.label :name, t("activerecord.attributes.channel.name", :default => "Name"), :class => :label
+  .input
+    = f.text_field :name, :class => 'text_field'
+.form-actions
+  %button.btn.primary{:type => "submit"} Save
+  or
+  \#{link_to "Cancel", admin_channels_path}

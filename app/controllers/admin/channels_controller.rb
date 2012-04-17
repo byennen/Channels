@@ -37,11 +37,20 @@ class Admin::ChannelsController < ApplicationController
     respond_to do |format|
       if @channel.save
         format.html { redirect_to admin_channels_url, notice: 'Channel was successfully created.' }
-        format.json { render json: @channel, status: :created, location: @channel }
+        format.json { render json: admin_channels_url, status: :created, location: @channel }
       else
         format.html { render action: "new" }
         format.json { render json: @channel.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def show
+    @channel = Channel.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @channel }
     end
   end
 

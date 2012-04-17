@@ -1,14 +1,24 @@
 body {
   padding-top: 60px;
-  background: #F2F3F3 !important
+  background: #ededed !important
+}
+
+h2 a { 
+  color: red; 
+  a:hover {
+  color: red !important;
+    text-decoration: none !important;
+  }
 }
 
 a {
   outline: 0 none;
   -moz-outline: 0 none;
+  color: red;
   a:hover, a:active, a:focus {
     outline: 0 none;
     -moz-outline: 0 none;
+    text-decoration: none !important;
   }
 }
 
@@ -18,7 +28,7 @@ a {
 
 header {
   .navbar {
-    top: 65px;
+    top: 0px;
     .navbar-inner {
       background: #c2c2c2 url(<%= asset_data_uri 'layout/header-bg.png' %>) repeat-x;
       -moz-box-shadow: 0 4px 4px -4px #a09f9f;
@@ -69,6 +79,7 @@ footer {
   margin: 20px 0 40px;  
   color: #999999;
   border: none;
+  clear: both;
 	p {
 		margin: 0 auto;
 		font-size: 11px;
@@ -76,8 +87,6 @@ footer {
   }
   .inside {
     margin: 10px; 
-    padding: 40px 0 20px;
-    border-top: 1px solid #9A9A9A;
   }
   a {
     color: #999999;

@@ -4,7 +4,7 @@
   overflow: hidden
   width: 400px
   height: 250px
-  background: #111111 url(../mosaic/progress.gif) no-repeat center center
+  background: #111111 url(<%= asset_data_uri 'mosaic/progress.gif' %>) no-repeat center center
   border: 1px solid #fff
   -moz-box-shadow: 0px 0px 5px #888
   -webkit-box-shadow: 0px 0px 5px #888
@@ -30,7 +30,7 @@
   opacity: 0
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=00)"
   filter: alpha(opacity = 0)
-  background: url(../mosaic/bg-black.png)
+  background: url(<%= asset_data_uri 'mosaic/bg-black.png' %>)
 
 .fader
   color: white

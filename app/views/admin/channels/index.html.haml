@@ -1,19 +1,18 @@
-%h1 Listing channels
-
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - @channels.each do |channel|
+%h1 Channels
+%table.table.table-striped
+  %thead
     %tr
-      %td= channel.name
-      %td= link_to 'Show', channel
-      %td= link_to 'Edit', edit_admin_channel_path(channel)
-      %td= link_to 'Destroy', admin_channel_path(channel), :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Channel', new_admin_channel_path
+      %th ID
+      %th
+        = t("activerecord.attributes.admin_channel.name", :default => t("activerecord.labels.name", :default => "Name"))
+      %th Actions
+  %tbody
+    - @channels.each do |channel|
+      %tr
+        %td= channel.id
+        %td
+          = link_to channel.name, admin_channel_path(channel)
+        %td
+          = link_to "Edit", edit_admin_channel_path(channel)
+          = link_to "Destroy", admin_channel_path(channel), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+= link_to "New", new_admin_channel_path, :class => 'btn btn-primary'

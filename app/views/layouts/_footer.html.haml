@@ -1,12 +1,6 @@
 .inside
-  = image_tag('layout/footer-logo.png')
   %p 
     &copy;
     = Time.now.year
     = link_to 'ALTIMARC, LLC.', root_url
     %span All rights reserved.
-  %ul
-    %li= link_to 'Facebook', 'https://www.facebook.com/pages/Altimarc/243050725779865', :target => '_blank'
-    %li= link_to 'Twitter', 'https://twitter.com/altimarc', :target => '_blank'
-    %li= mail_to 'press@altimarc.com', 'Press'
-    %li= mail_to 'ads@altimarc.com', 'Ad Sales'

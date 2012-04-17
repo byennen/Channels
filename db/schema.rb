@@ -11,12 +11,42 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120131061807) do
+ActiveRecord::Schema.define(:version => 20120321211243) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "features", :force => true do |t|
+    t.integer  "channel_id"
+    t.boolean  "audio"
+    t.boolean  "vault"
+    t.boolean  "news"
+    t.boolean  "events"
+    t.boolean  "giving"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "giveaways", :force => true do |t|
+    t.string   "email"
+    t.boolean  "derby",      :default => false
+    t.boolean  "cma",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "songs", :force => true do |t|
+    t.integer  "channel_id"
+    t.string   "title"
+    t.string   "album"
+    t.decimal  "song_price",  :precision => 10, :scale => 0
+    t.decimal  "album_price", :precision => 10, :scale => 0
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -36,7 +66,8 @@ ActiveRecord::Schema.define(:version => 20120131061807) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
