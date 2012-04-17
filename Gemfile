@@ -23,6 +23,8 @@ gem 'carrierwave', :git => "git://github.com/jnicklas/carrierwave.git", :branch 
 gem 'aws-sdk'
 gem "rack-pjax"
 gem 'spine-rails'
+gem "mail"
+gem "twitter-bootstrap-rails"
 
 group :assets do
   #TODO: remove sass -Lance
@@ -35,6 +37,7 @@ group :development do
   #TODO: switch to postgres in the future -Lance
   gem 'mysql'
   gem 'heroku'
+  gem "heroku"
   gem 'pry-rails'
 end
 
