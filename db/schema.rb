@@ -46,11 +46,12 @@ ActiveRecord::Schema.define(:version => 20120417060611) do
     t.integer  "channel_id"
     t.string   "title"
     t.string   "album"
-    t.decimal  "song_price",  :precision => 10, :scale => 0
-    t.decimal  "album_price", :precision => 10, :scale => 0
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.decimal  "song_price",   :precision => 10, :scale => 0
+    t.decimal  "album_price",  :precision => 10, :scale => 0
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
     t.string   "filename"
+    t.string   "file_preview"
     t.boolean  "active"
   end
 
