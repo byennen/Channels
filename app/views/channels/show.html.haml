@@ -1,12 +1,11 @@
+- title @channel.name
+
 = image_tag @channel.banner_image.url if @channel.banner_image_uid
 
 #channel{:style => "margin: 20px 0 0;"}
   .span9
-    %h1= @channel.name
-
     %p= @channel.description
   .span3
-    social media here
-    Facebook:  https://www.facebook.com/markcollieofficial
-    Twitter:  https://twitter.com/MarkCollie2
-    Reverbnation:  http://www.reverbnation.com/markcollieofficial
+    = link_to image_tag('icons/facebook-64x64.png'), "https://www.facebook.com/markcollieofficial", :style => "margin-left: 6px;"
+    = link_to image_tag('icons/twitter-64x64.png'), "https://twitter.com/MarkCollie2", :style => "margin-left: 6px;"
+    = link_to image_tag('icons/reverbnation-64x64.png'), "http://www.reverbnation.com/markcollieofficial", :style => "margin-left: 6px;"
