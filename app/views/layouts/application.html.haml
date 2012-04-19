@@ -21,6 +21,7 @@
     :javascript
       _V_.options.flash.swf = "assets/video-js.swf";
   %body
+    = render "layouts/facebook_sdk"
     - if params[:controller] == "channels"
       .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x #000;" }
         %div{"data-pjax-container" => ""}

@@ -5,8 +5,10 @@
 .div{ :style => "height: 645px;" }
   = image_tag('randy-owen-giveaway-altimarc.png')
 
-%h1{ :style => 'text-align: center; margin: 20px 0; color: red;'} 
-  Win a meet and greet with Randy Owen!
+%h1{ :style => 'text-align: center; margin: 20px 0; color: green;'} 
+  Randy's ready to meet you at the Kentucky Derby!
+  %br
+  You can also register to win a trip to Fan Fest!
 .channel
   .mosaic-block.fader
     %a.mosaic-overlay{:href => "/kentucky-derby-with-randy-owen"}
@@ -25,9 +27,18 @@
     .mosaic-backdrop
       = image_tag('cma.jpg')
   %h2{ :style => 'text-align: center; color: red;' }
-    CMA FanFest
-.span12{:style => "text-align: center;margin: 40px 0;font-size: 25px;"}
-  = link_to "Replay Randy Owen Altimarc Coming Soon Video", randy_owen_video_url(:subdomain => "www")
+
+-# .row
+-#   .span4{:style => "background: blue;"}
+-#     = link_to "Replay Randy Owen Altimarc Coming Soon Video", randy_owen_video_url(:subdomain => "www")
+-#   .span4{:style => "background: yellow;"}
+-#     %a.twitter-follow-button{"data-show-count" => "false", "data-size" => "large", :href => "https://twitter.com/altimarc"} Follow @altimarc
+-#     :javascript
+-#       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+-#   .span4{:style => "background: red;"}
+-#     .fb-like-box{"data-header" => "false", "data-href" => "http://www.facebook.com/altimarc", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "292"}
+
+
 
 = image_tag('chips.png', :style => "margin-bottom: -4px;")
 
