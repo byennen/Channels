@@ -5,7 +5,7 @@
 .div{ :style => "height: 645px;" }
   = image_tag('randy-owen-giveaway-altimarc.png')
 
-%h1{ :style => 'text-align: center; margin: 20px 0; color: green;'} 
+%h1{ :style => 'text-align: center; margin: 20px 0; color: #3366FF;'} 
   Randy's ready to meet you at the Kentucky Derby!
   %br
   You can also register to win a trip to Fan Fest!
@@ -27,20 +27,28 @@
     .mosaic-backdrop
       = image_tag('cma.jpg')
   %h2{ :style => 'text-align: center; color: red;' }
+    CMA FanFest
 
--# .row
--#   .span4{:style => "background: blue;"}
--#     = link_to "Replay Randy Owen Altimarc Coming Soon Video", randy_owen_video_url(:subdomain => "www")
--#   .span4{:style => "background: yellow;"}
--#     %a.twitter-follow-button{"data-show-count" => "false", "data-size" => "large", :href => "https://twitter.com/altimarc"} Follow @altimarc
--#     :javascript
--#       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
--#   .span4{:style => "background: red;"}
--#     .fb-like-box{"data-header" => "false", "data-href" => "http://www.facebook.com/altimarc", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "292"}
+.social{:style => "margin: 20px 20px; width: 960; float: left; border-top: 2px solid #eee; padding: 30px 0 20px;"}
+  .span4{:style => "margin-left: 0;"}
+    = link_to image_tag("replay-coming-soon-video.png"), randy_owen_video_url(:subdomain => "www")
+  .span4
+    = image_tag('twitter-icon.png')
+    .tweet
+    %div{:style => "margin-left: 60px;"}
+      %a.twitter-follow-button{"data-show-count" => "false", "data-size" => "large", :href => "https://twitter.com/altimarc"} Follow @altimarc
+  .span4
+    .fb-like-box{"data-header" => "false", "data-href" => "http://www.facebook.com/altimarc", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "292"}
 
 
 
 = image_tag('chips.png', :style => "margin-bottom: -4px;")
 
-= javascript_include_tag "video_effect"
+= javascript_include_tag "video_effect", "plugins/twitter"
 
+:javascript
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+  $(document).ready(function() {
+    $(".tweet").tweet({ count: 3, username: "altimarc" });
+  });
