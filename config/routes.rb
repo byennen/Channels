@@ -11,8 +11,8 @@ Channels::Application.routes.draw do
   #giveaways
   match "/giveaways/kentucky-derby-with-randy-owen" => "giveaways#derby", :as => "derby"
   match "/kentucky-derby-with-randy-owen" => redirect("/giveaways/kentucky-derby-with-randy-owen")
-  match "/giveaways/cma-fanfest" => "giveaways#cma", :as => "cma"
-  match "/cma-fanfest-with-randy-owen" => redirect("/giveaways/cma-fanfest")
+  match "/giveaways/cma-music-fest" => "giveaways#cma", :as => "cma"
+  match "/cma-fanfest-with-randy-owen" => redirect("/giveaways/cma-music-fest")
   match "giveaways/thank-you" => "giveaways#thankyou", :as => "thankyou"
 
   #giveaways email
