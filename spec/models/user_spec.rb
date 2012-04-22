@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe User do
+  let(:attrs) { { :name => "Example User",
+                  :email => "user@example.com",
+                  :password => "foobar",
+                  :password_confirmation => "foobar" } }
+
   before(:each) do
-    @attr = { 
-      :name => "Example User",
-      :email => "user@example.com",
-      :password => "foobar",
-      :password_confirmation => "foobar"
-    }
+    @attr = attrs
   end
   
   xit "should create a new instance given a valid attribute" do
@@ -96,6 +96,5 @@ describe User do
     xit "should set the encrypted password attribute" do
       @user.encrypted_password.should_not be_blank
     end
-
   end
 end
