@@ -20,7 +20,13 @@ Channels::Application.routes.draw do
   match "/create_cma(/:id)" => "giveaways#create_cma"
 
   #channels
-  resources :channels, :only => :show
+  resources :channels, :only => :show do
+    get :next_song, :on => :collection
+  end
+
+  resources :songs, :only => :show do
+    get :next_song, :on => :collection
+  end
 
   #users
   devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions'}
