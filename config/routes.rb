@@ -21,15 +21,11 @@ Channels::Application.routes.draw do
 
   #channels
   resources :channels, :only => :show do
-    member do
-      get "next_song"
-    end
+    get :next_song, :on => :collection
   end
 
   resources :songs, :only => :show do
-    member do
-      get "next_song"
-    end
+    get :next_song, :on => :collection
   end
 
   #users

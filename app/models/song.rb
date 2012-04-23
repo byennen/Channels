@@ -8,6 +8,6 @@ class Song < ActiveRecord::Base
   end
 
   def self.next_channel_song(channel)
-    Song.find(:first, :conditions => {:channel_id => channel}, :order => "rand()")
+    Song.available.find(:first, :conditions => {:channel_id => channel}, :order => "rand()")
   end
 end

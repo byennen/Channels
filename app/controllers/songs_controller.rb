@@ -5,8 +5,11 @@ class SongsController < ApplicationController
     render :json => @songs
   end
 
+  def show
+  end
+
   def next_song
-    @songs = Song.find(:first, :order => "rand()")
+    render :json => Song.next_song()
   end
 
 end
