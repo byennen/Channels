@@ -1,95 +1,9 @@
-:css
-  .leftcolumn {
-    background: white;
-    -moz-box-shadow: 5px 8px 5px #888;
-    -webkit-box-shadow: 5px 8px 5px #888;
-    box-shadow: 5px 8px 5px #888;
-    margin: 0 0 20px;
-  }
-  h2 {
-    font-size: 16px;
-    line-height: 22px;
-    background: #3777D3;
-    color: white;
-    border-bottom: #d5d5d5 solid 1px;
-    padding: 10px 15px;
-  }
-  h3 {
-    margin: 0 0 20px 80px;
-  }
-  .basics h3 {
-    color: #376D00;
-    background: url(assets/payments/step-1.png) no-repeat;
-    padding-left: 35px;
-    font-size: 14px;
-  }
-  .payment h3 {
-    color: #376D00;
-    background: url(assets/payments/step-2.png) no-repeat;
-    padding-left: 35px;
-    font-size: 12px;
-    line-height: 1.3em;
-  }
-  .already_member {
-    margin: 15px 0 15px;
-    padding: 5px 15px;
-    background: #FFC;
-    line-height: 1.4em;
-    height: 45px;
-  }
-  .password {
-    border-bottom: 1px solid #ccc;
-    margin: 0 0 20px 20px;
-    padding: 0 0 5px;
-  }
-  .payment {
-    border-bottom: 1px solid #ccc;
-    margin: 10px 0 5px 20px;
-    padding: 0 0 20px;
-  }
-  .payment strong {
-    font-size: 11px;
-  }
-  .help-block {
-    color: #999;
-    font-size: 11px;
-  }
-  .credit_card {
-    width: 370px;
-    float: left;
-    clear: both;
-  }
-  .billing_zip {
-    width: 370px;
-    float: left;
-    clear: both;
-  }
-  .coupon {
-    margin: 15px 0px 15px 20px;
-  }
-  .coupon a {
-    font-size:12px;
-    color: #888;
-  }
-  .info {
-    background: #FFC;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-  }
-  .info p {
-    margin: 15px 20px;
-    line-height: 1.3em;
-  }
-  .policy {
-    margin: 10px 0 10px 20px;
-  }
-  .actions {
-    margin: 5px 0 30px 20px;
-  }
+- javascript "registrations"
+- stylesheet "registrations"
 
 .leftcolumn.span9
   %h2 You're just 60 seconds away from your new Altimarc account.
-  .already_member.span6
+  .already_member
     %strong Already have a Altimarc account?
     %br
       %p
@@ -121,7 +35,7 @@
             = f.email_field :email, :class => 'input-large'
 
       .password.span8
-        %h3 Now choose a password
+        = image_tag('payments/password.png', :class => 'password_image')
 
         //password
         .control-group
@@ -162,7 +76,12 @@
 
       //coupon
       .coupon.span8
-        = link_to "Got a Coupon Code?", "#"
+        = link_to "Got a Coupon Code?", "", :id => "coupon_link"
+        .control-group#coupon_code
+          %label.control-label{:for => "input01"} Coupon Code
+          .controls
+            %input#input01.input-small{:type => "text"}
+
 
       //info
       .info.span8
@@ -185,4 +104,5 @@
         = f.submit "Create my account", :class => 'btn-primary btn-success btn-large'
 .rightcolumn.span3
   = image_tag('payments/thanks.png')
+  = image_tag('payments/24hour.png', :class => 'trial_time')
 

@@ -1,3 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$().ajaxComplete ->
+  $("#coupon_code").hide()
+  $("a#coupon_link").click ->
+    $("#coupon_code").show()
+
+$(document).ready ->
+  $("#coupon_code").hide()
+  $("a#coupon_link").click ->
+    $("#coupon_code").show()
