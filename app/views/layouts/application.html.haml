@@ -25,7 +25,6 @@
       .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x #000;" }
         %div{"data-pjax-container" => ""}
           %header
-            =# render 'shared/musicplayer'
             = render 'shared/navigation'
           .container
             = render 'shared/flash_messages', :locals => { :flash => flash }
@@ -40,7 +39,6 @@
       .background-wrapper
         %div{"data-pjax-container" => ""}
           %header
-            =# render 'shared/musicplayer'
             = render 'shared/navigation'
           .container
             - if params[:controller] == "registrations"
@@ -53,5 +51,6 @@
                 = yield
             %footer
               = render "layouts/footer"
+    = render 'shared/musicplayer'
     / Javascript
     = render "layouts/analytics"
