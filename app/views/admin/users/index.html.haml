@@ -1,0 +1,17 @@
+%h1 Users
+
+= link_to 'New user', new_admin_user_path
+
+%table{:class=>"table table-striped"}
+  %thead
+    %tr
+      %th ID
+      %th= t("activerecord.attributes.admin_user.email", :default => t("activerecord.labels.email", :default => "Email"))
+      %th Created at
+      %th Actions
+  %tbody
+    - @users.each do |user|
+      = render user
+
+= link_to 'New user', new_admin_user_path
+

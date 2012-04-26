@@ -32,6 +32,8 @@
               = link_to current_user.email, edit_user_registration_path
           / /.nav-collapse
     .container-fluid
+      .container-fluid
+        = render 'shared/flash_messages', :locals => { :flash => flash }
       = yield
       %hr
         %footer

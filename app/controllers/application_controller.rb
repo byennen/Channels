@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
   def load_channel
     @channel = Channel.find_by_subdomain!(request.subdomain)
   end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
 end
