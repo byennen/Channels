@@ -1,17 +1,22 @@
-%h1 Users
+%h1.inline Users
 
-= link_to 'New user', new_admin_user_path
+-#%a.btn.btn-primary{:href => new_admin_user_path}
+  -#%i.icon-plus-sign.icon-white
+  -#New user
 
 %table{:class=>"table table-striped"}
   %thead
     %tr
       %th ID
       %th= t("activerecord.attributes.admin_user.email", :default => t("activerecord.labels.email", :default => "Email"))
-      %th Created at
-      %th Actions
+      %th Created
+      %th Role
+      %th
   %tbody
     - @users.each do |user|
       = render user
 
-= link_to 'New user', new_admin_user_path
+%a.btn.btn-primary{:href => new_admin_user_path}
+  %i.icon-plus-sign.icon-white
+  New user
 

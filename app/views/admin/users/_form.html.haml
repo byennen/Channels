@@ -1,5 +1,16 @@
-= simple_form_for [:admin, user] do |f|
+= simple_form_for [:admin, user], :html => {:class => 'form-horizontal'} do |f|
+  .well.form-horizontal.roles
+    = f.label :role, :label => "Role"
+    .btn-group.controls{:'data-toggle' => 'buttons-radio'}
+      - User::ROLES.each do |role|
+        %button{:type => 'button', :value => role, :class => 'btn', :'data-toggle' => 'button'}
+          = role.humanize.titleize
+    = f.input :role, :as => :hidden
+    = f.association :channel, :class => 'channel-select'
+
   = f.input :email
   = f.input :password
   = f.input :password_confirmation
   = f.button :submit
+  or
+  = link_to 'go back', url_for(:back)

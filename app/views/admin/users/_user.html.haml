@@ -1,7 +1,14 @@
 %tr
   %td= user.id
   %td= user.email
-  %td= user.created_at
+  %td #{distance_of_time_in_words_to_now user.created_at} ago
   %td
-    = link_to "Edit", edit_admin_user_path(user)
-    -#= link_to "Destroy", admin_channel_path(channel), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+    = user.role.try(:humanize).try(:titleize)
+    - if user.role == 'channel_master'
+      (#{user.channel.name})
+  %td
+    %a.btn{:href => edit_admin_user_path(user)}
+      %i.icon-pencil
+      Edit
+    -#%a.btn.btn-danger{:href => admin_user_path(user), :rel => 'nofollow', :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?') }
+      -#%i.icon-trash.icon-white
