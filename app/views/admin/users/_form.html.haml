@@ -3,7 +3,7 @@
     = f.label :role, :label => "Role"
     .btn-group.controls{:'data-toggle' => 'buttons-radio'}
       - User::ROLES.each do |role|
-        %button{:type => 'button', :value => role, :class => 'btn', :'data-toggle' => 'button'}
+        %button{:type => 'button', :value => role, :class => 'btn btn-info', :'data-toggle' => 'button'}
           = role.humanize.titleize
     = f.input :role, :as => :hidden
     = f.association :channel, :class => 'channel-select'

@@ -21,7 +21,6 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me, :role, :channel_id
 
-  def admin?
-    role == 'admin'
-  end
+  validates :role, :presence => true
+  validates :channel, :presence => true, :if => :channel_master?
 end

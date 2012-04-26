@@ -29,8 +29,7 @@ class Ability
       can :manage, :all
       can :manage, :admin_pages
     elsif user.channel_master?
-      #can :manage, Channel, :
-
+      can :manage, Channel, :id => user.channel_id
     end
   end
 end
