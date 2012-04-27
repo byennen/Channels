@@ -2,34 +2,9 @@
 - @description = "Entertainment, Games, and once in a life time opportunities to meet celebrities. Join today!"
 - javascript "home"
 
-.div{ :style => "height: 645px;" }
-  = image_tag('randy-owen-giveaway-altimarc.png')
+.div{ :style => "height: 420px;" }
+  = link_to image_tag('cma-music-fest-banner-homepage.png'), cma_url(:subdomain => "www")
 
-%h1{ :style => 'text-align: center; margin: 20px 0; color: #3366FF;'} 
-  Randy's ready to meet you at the Kentucky Derby!
-  %br
-  You can also register to win a trip to Fan Fest!
-.channel
-  .mosaic-block.fader
-    %a.mosaic-overlay{:href => "/kentucky-derby-with-randy-owen"}
-      .details
-        %h1{ :style => 'text-align: center; margin: 80px 0 0; color: black;' } CLICK HERE TO REGISTER AND WIN!
-    .mosaic-backdrop
-      = image_tag('derby.jpg')
-  %h2{ :style => 'text-align: center; color: red;' }
-    Kentucky Derby
-  %p{:style => "text-align: center; font-weight: bold;"} May 4-6
-
-.channel
-  .mosaic-block.fader
-    %a.mosaic-overlay{:href => "/cma-fanfest-with-randy-owen"}
-      .details
-        %h1{ :style => 'text-align: center; margin: 80px 0 0; color: black;' } CLICK HERE TO REGISTER AND WIN!
-    .mosaic-backdrop
-      = image_tag('cma.jpg')
-  %h2{ :style => 'text-align: center; color: red;' }
-    CMA Music Fest
-  %p{:style => "text-align: center; font-weight: bold;"} June 8-10
 .social{:style => "margin: 20px 20px; width: 960; float: left; border-top: 2px solid #eee; padding: 30px 0 20px;"}
   .span4{:style => "margin-left: 0;"}
     = link_to image_tag("replay-coming-soon-video.png"), randy_owen_video_url(:subdomain => "www")
@@ -40,10 +15,6 @@
       %a.twitter-follow-button{"data-show-count" => "false", "data-size" => "large", :href => "https://twitter.com/altimarc"} Follow @altimarc
   .span4
     .fb-like-box{"data-header" => "false", "data-href" => "http://www.facebook.com/altimarc", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "292"}
-
-
-
-= image_tag('chips.png', :style => "margin-bottom: -4px;")
 
 = javascript_include_tag "video_effect", "plugins/twitter"
 
