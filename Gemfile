@@ -22,6 +22,8 @@ gem "haml", ">= 3.1.4"
 gem "devise", ">= 2.0.0"
 gem "simple_form"
 
+gem 'stripe'
+
 gem 'carrierwave', :git => "git://github.com/jnicklas/carrierwave.git", :branch => "master"
 gem 'aws-sdk'
 gem "rack-pjax"

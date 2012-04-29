@@ -1,3 +1,8 @@
+- javascript "https://js.stripe.com/v1/", "registrations"
+- stylesheet "registrations"
+- content_for :head do
+  %meta{:name => "stripe-key", :content => STRIPE_PUBLIC_KEY}
+
 #registration_form
   .leftcolumn.span8
     %h2 You're just 60 seconds away from your new Altimarc account.
@@ -8,64 +13,54 @@
           = link_to "Sign in here", login_url(subdomain: "www")
           to skip this form and use the email you already have.
     .form
-      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-horizontal'}) do |f|
-        = devise_error_messages!
+      = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-horizontal'}) do |f|
+        = f.error_notification
+
+        #stripe_error.error_explanation
+          %noscript JavaScript is not enabled and is required for this form. First enable it in your web browser settings.
 
         .basics.span
           %h3 The basics
 
-          //first name
-          .control-group
-            = f.label :first_name, :class => "control-label"
-            .controls
-              = f.text_field :first_name, :class => 'input-large'
-          
-          //last name
-          .control-group
-            = f.label :last_name, :class => "control-label"
-            .controls
-              = f.text_field :last_name, :class => 'input-large'
-
-          //email
-          .control-group
-            = f.label :email, :class => "control-label"
-            .controls
-              = f.email_field :email, :class => 'input-large'
+          = f.input :first_name
+          = f.input :last_name
+          = f.input :email, :required => true
 
         .password.span
           = image_tag('payments/password.png', :class => 'password_image')
 
           //password
-          = f.label :password
-          = f.password_field :password, :class => "input-large span"
-          %span.help-block 6 characters or longer with at least one number is safest.
-
-          //confirm password
-          = f.label :password_confirmation
-          = f.password_field :password_confirmation, :class => "input-large span"
+          = f.input :password, :required => true
+          = f.input :password_confirmation, :hint => '6 characters or longer with at least one number is safest.', :required => true
 
         .payment.span
           %h3 Thanks for paying. Your hard earned money goes towards making Altimarc an even better product.
 
           //credit card
           .control-group.credit_card
-            %label.control-label{:for => "input01"} Credit Card
+            %label.control-label{:for => "credit_card"} Credit Card
             .controls
-              %input#input01.input-large{:type => "text"}
-          
+              %input#card_number.input-large{:type => "text"}
+
           //credit card icons
           .span
             = image_tag('payments/icon-lock.png')
             %strong Secure
             = image_tag('payments/img-creditcards.png')
 
-          //credit card billing zip
-          .control-group.billing_zip
-            %label.control-label{:for => "input01"} Billing ZIP
+          //credit card cvv
+          .control-group.security_code
+            %label.control-label{:for => "security_code"} Security Code on Card (CVV)
             .controls
-              %input#input01.input-small{:type => "text"}
-                %p.help-block (or Postal Code if not in the USA)
+              %input#security_code.input-small{:type => "text", :size => '4', :maxlength => '4'}
 
+          .control-group.card_expiration
+            %label.control-label{:for => "card_month"} Card Expiration
+            .controls
+              = select_month nil, {add_month_numbers: true, :use_short_month => true}, {name: nil, id: "card_month", :class => 'input-small'}
+              = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'input-small'}
+
+          = f.hidden_field :stripe_card_token
 
         //coupon
         .coupon.span

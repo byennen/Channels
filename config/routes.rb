@@ -32,7 +32,7 @@ Channels::Application.routes.draw do
   end
 
   #users
-  devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions'}
+  devise_for :users #, :controllers => {:registrations => 'registrations', :sessions => 'sessions'}
   devise_scope :user do
     get "/login" => "sessions#new"
     delete '/logout' => 'sessions#destroy'

@@ -224,6 +224,8 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    stripe (1.6.3)
+      rest-client (~> 1.4)
     term-ansicolor (1.0.7)
     therubyracer (0.9.10)
       libv8 (~> 3.3.10)
@@ -281,6 +283,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   simple_form
   spine-rails
+  stripe
   thin
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)

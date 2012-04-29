@@ -58,10 +58,10 @@ ActiveRecord::Schema.define(:version => 20120507181507) do
     t.integer  "channel_id"
     t.string   "title"
     t.string   "album"
-    t.decimal  "song_price",   :precision => 10, :scale => 0
-    t.decimal  "album_price",  :precision => 10, :scale => 0
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.decimal  "song_price"
+    t.decimal  "album_price"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "filename"
     t.string   "file_preview"
     t.boolean  "active"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20120507181507) do
     t.string   "last_name"
     t.string   "role"
     t.integer  "channel_id"
+    t.string   "stripe_customer_token"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

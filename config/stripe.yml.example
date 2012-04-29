@@ -1,0 +1,4 @@
+---
+:api_key: "<stripe aip key>"
+:public_key: "<stripe public key>"
+

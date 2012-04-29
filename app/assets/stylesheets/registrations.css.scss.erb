@@ -5,6 +5,112 @@
     width: 100px !important;
     text-align: left !important;
   }
+  .leftcolumn {
+    background: white;
+    -moz-box-shadow: 5px 8px 5px #888;
+    -webkit-box-shadow: 5px 8px 5px #888;
+    box-shadow: 5px 8px 5px #888;
+    margin: 0 0 20px;
+  }
+  h2 {
+    font-size: 22px !important;
+    line-height: 22px;
+    background: #3777D3;
+    color: white !important;
+    border-bottom: #d5d5d5 solid 1px;
+    padding: 10px 15px;
+  }
+  h3 {
+    margin: 0 0 20px 80px;
+  }
+  .basics h3 {
+    color: #376D00;
+    background: url(<%= asset_data_uri 'payments/step-1.png' %>) no-repeat;
+    padding-left: 35px !important;
+    font-size: 14px !important;
+  }
+  .payment h3 {
+    color: #376D00;
+    background: url(<%= asset_data_uri 'payments/step-2.png' %>) no-repeat;
+    padding-left: 35px !important;
+    font-size: 12px !important;
+    line-height: 1.3em !important;
+    height: 50px;
+    padding-top: 5px;
+  }
+  .already_member {
+    margin: 15px 0 15px 0;
+    padding: 5px 15px;
+    background: #FFC;
+    line-height: 1.4em;
+    height: 45px;
+    width: 400px !important;
+  }
+  form#new_user {
+    > .password {
+      border-bottom: 1px solid #ccc;
+      margin: 0 0 20px 20px;
+      padding: 0 0 5px;
+    }
+    .password_image {
+      margin: 0 !important;
+    }
+  }
+  .payment {
+    border-bottom: 1px solid #ccc;
+    margin: 10px 0 5px 20px;
+    padding: 0 0 20px;
+  }
+  .payment strong {
+    font-size: 11px;
+  }
+  .help-block {
+    color: #999;
+    font-size: 11px;
+  }
+  .credit_card {
+    width: 370px;
+    float: left;
+    clear: both;
+  }
+  .security_code {
+    clear: both;
+    input {
+      width: auto;
+    }
+  }
+  .coupon {
+    margin: 15px 0px 15px 20px;
+  }
+  .coupon a {
+    font-size:12px;
+    color: #888;
+  }
+  .info {
+    background: #FFC;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+  .info p {
+    margin: 15px 20px;
+    line-height: 1.3em;
+  }
+  .policy {
+    margin: 10px 0 10px 20px;
+  }
+  .actions {
+    margin: 5px 0 30px 20px;
+  }
+  .trial_time {
+    margin-top: 345px;
+  }
+  .help-block {
+    margin-top: 3px !important;
+    color: #999 !important;
+  }
+  #coupon_code {
+    padding-top: 20px;
+  }
 
   .form-horizontal .controls {
     margin-left: 110px !important;
@@ -53,14 +159,6 @@
     line-height: 1.4em;
     height: 45px;
     width: 400px !important;
-  }
-  .password {
-    border-bottom: 1px solid #ccc;
-    margin: 0 0 20px 20px;
-    padding: 0 0 30px;
-  }
-  .password_image {
-    margin: 0 !important;
   }
   .payment {
     border-bottom: 1px solid #ccc;

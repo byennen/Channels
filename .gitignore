@@ -26,6 +26,7 @@ tmp/*
 .sass-cache
 /config/config.yml
 /config/database.yml
+/config/stripe.yml
 /coverage.data
 /coverage/
 /db/*.javadb/
