@@ -23,6 +23,9 @@
   %body
     = render "layouts/facebook_sdk"
     - if params[:controller] == "channels"
+      #video{:style => "margin: 100px auto 0px;"}
+        .container
+          = render 'layouts/mark_collie_video'
       .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x #000;" }
         %div{"data-pjax-container" => ""}
           %header

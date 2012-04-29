@@ -6,6 +6,10 @@
   .span9
     %p= @channel.description
   .span3
-    = link_to image_tag('icons/facebook-64x64.png'), "https://www.facebook.com/markcollieofficial", :style => "margin-left: 6px;", :target => "_blank"
-    = link_to image_tag('icons/twitter-64x64.png'), "https://twitter.com/MarkCollie2", :style => "margin-left: 6px;", :target => "_blank"
-    = link_to image_tag('icons/reverbnation-64x64.png'), "http://www.reverbnation.com/markcollieofficial", :style => "margin-left: 6px;", :target => "_blank"
+    = link_to image_tag('icons/facebook-64x64.png'), "https://www.facebook.com/markcollieofficial", :style => "margin-left: 6px;", :target => "_blank"    
+    = link_to image_tag('icons/twitter-64x64.png'), "https://twitter.com/MarkCollie2", :style => "margin: 0 0 6px 6px; height: 64px; width: 64px;", :target => "_blank"
+    = link_to image_tag('icons/reverbnation-64x64.png'), "http://www.reverbnation.com/markcollieofficial", :style => "margin: 6px; height: 64px; width: 64px;", :target => "_blank"
+  -# .span4
+  -#   .fb-like-box{"data-header" => "false", "data-href" => "https://www.facebook.com/markcollieofficial", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "292"}
+
+= javascript_include_tag "mark_collie_video_effect"

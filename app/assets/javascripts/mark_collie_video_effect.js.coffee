@@ -1,6 +1,6 @@
 $().ready ->
-  # randy owen video homepage
-  if $.cookie("randy-owen-coming-soon")
+# mark collie video
+  if $.cookie("mark-collie-coming-soon")
     $(".fader").mosaic()
   else
     $("#video").show()
@@ -12,11 +12,13 @@ $().ready ->
       "width": "100%"
       "height": "100%"
 
-    _V_("randy-owen-coming-soon").ready ->
+    _V_("mark-collie-coming-soon").ready ->
       myPlayer = this
       myPlayer.width(980)
       myPlayer.height(551)
-      myPlayer.play()
+      howMuchIsDownloaded = myPlayer.bufferedPercent();
+      if howMuchIsDownloaded = 1
+        myPlayer.play()
 
       @addEvent "ended", ->
         $("#video").fadeOut 100
@@ -27,4 +29,4 @@ $().ready ->
           "background-color": "#ededed"
           "width": "100%"
           "height": "100%"
-        $.cookie "randy-owen-coming-soon", "cookie_value", { expires: 365, useLocalStorage: false }
+        $.cookie "mark-collie-coming-soon", "cookie_value", { expires: 365, useLocalStorage: false }
