@@ -16,9 +16,7 @@ $().ready ->
       myPlayer = this
       myPlayer.width(980)
       myPlayer.height(551)
-      howMuchIsDownloaded = myPlayer.bufferedPercent();
-      if howMuchIsDownloaded = 1
-        myPlayer.play()
+      myPlayer.play()
 
       @addEvent "ended", ->
         $("#video").fadeOut 100
