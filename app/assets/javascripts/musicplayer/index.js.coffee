@@ -49,9 +49,9 @@ class Musicplayer extends Spine.Controller
   playNextSong: () ->
     response = $.getJSON("/songs/next_song.json", (data)=>
       if window.currentUser > 0
-        @setSong(data["filename"])
+        echo @setSong(data["filename"])
       else
-        @setSong(data["file_preview"])
+        echo @setSong(data["file_preview"])
     )
 
   setSong: (song_filename) ->
