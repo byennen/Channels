@@ -11,7 +11,9 @@
 #= require_tree ./views
 #= require_self
 
+
 class Musicplayer extends Spine.Controller
+  echo = console.log
 
   events:
     "click #player_previous": "previousTrack"
@@ -31,18 +33,26 @@ class Musicplayer extends Spine.Controller
     @track = $(@el).find("#track")[0]
   
   previousTrack: (event) ->
-    console.log "previos track clicked"
+    echo "previos track clicked"
 
   nextTrack: (event) ->
-    console.log "next track clicked"
+    echo "next track clicked"
 
   playMusic: (event) ->
     if @track.paused
       @track.play()
-      console.log "Play music"
+      echo "Play music"
     else
       @track.pause()
-      console.log "Stop music"
+      echo "Stop music"
+
+  playNextSong: () ->
+    response = $.getJSON("/songs/next_song.json", (data)=>
+      @setSong(data["filename"])
+    )
+
+  setSong: (song_filename) ->
+    echo song_filename
 
 
 window.Musicplayer = new Musicplayer(el: $('#player'))

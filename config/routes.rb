@@ -24,7 +24,7 @@ Channels::Application.routes.draw do
     get :next_song, :on => :collection
   end
 
-  resources :songs, :only => :show do
+  resources :songs, :only => [:index] do
     get :next_song, :on => :collection
   end
 
