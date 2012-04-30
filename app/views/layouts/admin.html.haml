@@ -19,7 +19,7 @@
             %span.icon-bar
           %a.brand{:href => admin_root_path } Altimarc Admin
           .nav-collapse
-            =# render "layouts/#{current_user.role}_nav"
+            = render "layouts/#{current_user.role}_nav"
             %p.navbar-text.pull-right
               Logged in as
               = link_to current_user.email, edit_user_registration_path
