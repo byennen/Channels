@@ -8,6 +8,7 @@
  *= require musicplayer
  *= require home
  *= require giveaways
+ *= require registrations
  *= require plugins/mosaic
  *= require plugins/video
 */
