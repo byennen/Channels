@@ -47,7 +47,7 @@ Channels::Application.routes.draw do
     end
     resources :features, :only => :update
     resources :songs
-    resources :users, :only => :index
+    resources :users
   end
 
   root :to => "home#index"

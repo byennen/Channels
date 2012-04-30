@@ -214,6 +214,9 @@ GEM
       ffi (~> 1.0)
       multi_json (~> 1.0)
       rubyzip
+    simple_form (2.0.1)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     slop (2.4.4)
     spine-rails (0.1.0)
       rails (>= 3.1.0)
@@ -276,6 +279,7 @@ DEPENDENCIES
   rails (= 3.2.1)
   rspec-rails (>= 2.8.1)
   sass-rails (~> 3.2.3)
+  simple_form
   spine-rails
   thin
   twitter-bootstrap-rails
