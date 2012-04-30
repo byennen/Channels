@@ -4,8 +4,10 @@ Channels::Application.routes.draw do
 
   #static pages
   match "/about" => "pages#about"
-  match "/privacy" => "pages#privacy"
-  match "/refund" => "pages#refund"
+  match "/privacy" => "pages#privacy", :as => "privacy"
+  match "/refund" => "pages#refund", :as => "refund"
+  match "/terms" => "pages#terms", :as => "terms"
+  match "/copyrights" => "pages#copyrights", :as => "copyrights"
   match "/randy-owen-altimarc-coming-soon-video" => "pages#randy_owen_coming_soon_video", :as => "randy_owen_video"
 
   #giveaways

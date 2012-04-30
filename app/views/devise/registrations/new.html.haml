@@ -88,10 +88,11 @@
         .policy.span
           %p 
             By clicking Create my account you agree to the
-            = link_to "Terms of Service,", "#"
-            = link_to "Privacy,", "#"
+            = link_to "Terms of Service,", terms_url(:subdomain => "www")
+            = link_to "Privacy,", privacy_url(:subdomain => "www")
             %span and
-            = link_to "Refund policies.", "#"
+            = succeed "." do
+              = link_to "Refund policies", refund_url(:subdomain => "www")
 
         .actions.span
           = f.submit "Create my account", :class => 'btn-primary btn-success btn-large'
