@@ -8,4 +8,6 @@ class ChannelsController < ApplicationController
     end
   end
 
+  def mark_collie_coming_soon_video
+  end
 end

@@ -27,7 +27,7 @@
         .container
           = render 'layouts/mark_collie_video'
       .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x #000;" }
-        %div{"data-pjax-container" => ""}
+        %div
           %header
             =# render 'shared/musicplayer'
             = render 'shared/navigation'

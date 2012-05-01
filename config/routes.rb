@@ -7,6 +7,7 @@ Channels::Application.routes.draw do
   # match "/privacy" => "pages#privacy"
   # match "/refund" => "pages#refund"
   match "/randy-owen-altimarc-coming-soon-video" => "pages#randy_owen_coming_soon_video", :as => "randy_owen_video"
+  match "/mark-collie-altimarc-coming-soon-video" => "channels#mark_collie_coming_soon_video", :as => "mark_collie_video"
 
   #giveaways
   match "/giveaways/kentucky-derby-with-randy-owen" => "giveaways#derby", :as => "derby"

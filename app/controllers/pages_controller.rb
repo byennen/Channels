@@ -10,4 +10,5 @@ class PagesController < ApplicationController
 
   def randy_owen_coming_soon_video
   end
+
 end
