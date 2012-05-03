@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  before_filter :load_channels
+  
   def about
   end
 
@@ -6,6 +8,12 @@ class PagesController < ApplicationController
   end
 
   def refund
+  end
+  
+  def terms
+  end
+
+  def copyrigths
   end
 
   def randy_owen_coming_soon_video

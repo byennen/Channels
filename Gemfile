@@ -5,6 +5,7 @@ gem 'rails', '3.2.1'
 gem 'jquery-rails'
 gem 'haml', '>= 3.1.4'
 gem 'devise', '>= 2.0.0'
+gem 'cancan'
 gem 'rack-pjax'
 gem 'mail'
 gem 'twitter-bootstrap-rails'
@@ -19,6 +20,8 @@ gem 'fog'
 
 gem "haml", ">= 3.1.4"
 gem "devise", ">= 2.0.0"
+gem "simple_form"
+
 gem 'carrierwave', :git => "git://github.com/jnicklas/carrierwave.git", :branch => "master"
 gem 'aws-sdk'
 gem "rack-pjax"

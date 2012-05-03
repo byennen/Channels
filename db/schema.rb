@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120417060611) do
+ActiveRecord::Schema.define(:version => 20120426042649) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
@@ -46,11 +46,12 @@ ActiveRecord::Schema.define(:version => 20120417060611) do
     t.integer  "channel_id"
     t.string   "title"
     t.string   "album"
-    t.decimal  "song_price",  :precision => 10, :scale => 0
-    t.decimal  "album_price", :precision => 10, :scale => 0
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.decimal  "song_price",   :precision => 10, :scale => 0
+    t.decimal  "album_price",  :precision => 10, :scale => 0
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
     t.string   "filename"
+    t.string   "file_preview"
     t.boolean  "active"
   end
 
@@ -73,6 +74,8 @@ ActiveRecord::Schema.define(:version => 20120417060611) do
     t.datetime "updated_at",                             :null => false
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "role"
+    t.integer  "channel_id"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
