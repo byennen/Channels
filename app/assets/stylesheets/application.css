@@ -11,4 +11,5 @@
  *= require registrations
  *= require plugins/mosaic
  *= require plugins/video
+ *= require plugins/slideshow
 */

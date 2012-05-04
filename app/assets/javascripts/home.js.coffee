@@ -1,7 +1,7 @@
 $().ajaxComplete ->
-  $(".fader").mosaic()
+  console.log "ajax"
   $("#slider").nivoSlider()
 
 $().ready ->
-  $(".fader").mosaic()
+  console.log "ready"
   $("#slider").nivoSlider()
