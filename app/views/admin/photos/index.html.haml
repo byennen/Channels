@@ -1,0 +1,20 @@
+%h1 Listing photos
+%table.table.table-striped
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Paid
+      %th
+      %th
+      %th
+  %tbody
+    - @photos.each do |photo|
+      %tr
+        %td= photo.title
+        %td= photo.description
+        %td= photo.paid
+        %td 
+          =# link_to 'Edit', edit_admin_channel_photo_path(photo)
+          =# link_to 'Destroy', admin_channel_photo_path(photo), confirm: 'Are you sure?', method: :delete
+= link_to 'New', new_admin_channel_photo_path, :class => 'btn btn-primary'

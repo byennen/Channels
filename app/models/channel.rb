@@ -2,6 +2,7 @@ class Channel < ActiveRecord::Base
   has_many :channel_masters, :class_name => 'User'
   has_one :feature
   has_many :songs
+  has_many :photos
 
   attr_accessible :id, :name, :subdomain, :description, :background_image, :banner_image
   image_accessor :background_image

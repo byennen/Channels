@@ -2,19 +2,24 @@
 %table.table.table-striped
   %thead
     %tr
-      %th ID
+      %th Song
+      %th Album
+      %th Active
       %th
-        = t("activerecord.attributes.song.channel_id", :default => t("activerecord.labels.channel_id", :default => "Channel_id"))
-      %th Created at
-      %th Actions
   %tbody
     - @songs.each do |song|
       %tr
-        %td= song.id
+        %td= song.title
+        %td= song.album
+        %td= song.active
         %td
-          = link_to song.channel_id, song_path(song)
-        %td= song.created_at
-        %td
-          = link_to "Edit", edit_admin_song_path(song)
-          = link_to "Destroy", admin_song_path(song), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
-= link_to "New", new_admin_channel_song_path, :class => 'btn btn-primary'
+          %a.btn{:href => edit_admin_channel_song_path(parent, song)}
+            %i.icon-pencil
+            Edit
+          %a.btn.btn-danger{:href => admin_channel_song_path(parent, song), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
+            %i.icon-trash.icon-white
+            Destroy
+
+%a.btn.btn-primary{:href => new_admin_channel_song_path(parent)}
+  %i.icon-plus-sign.icon-white
+  New Song

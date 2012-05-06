@@ -1,20 +1,8 @@
-= form_for([:admin, @song], :html => { :multipart => true }) do |f|
-  .clearfix
-    = f.label :title, t("activerecord.attributes.song.title", :default => "Title"), :class => :label
-    .input
-      = f.text_field :title, :class => 'text_field'
-  .clearfix
-    = f.label :album, t("activerecord.attributes.song.album", :default => "Album"), :class => :label
-    .input
-      = f.text_field :album, :class => 'text_field'
-  .clearfix
-    = f.label :song_price, t("activerecord.attributes.song.song_price", :default => "Song price"), :class => :label
-    .input
-      = f.number_field :song_price, :class => 'number_field'
-  .clearfix
-    = f.label :album_price, t("activerecord.attributes.song.album_price", :default => "Album price"), :class => :label
-    .input
-      = f.number_field :album_price, :class => 'number_field'
+= simple_form_for [:admin, parent, resource], :html => { :multipart => true, :class => 'form-horizontal' } do |f|
+  = f.input :title
+  = f.input :album
+  = f.input :song_price
+  = f.input :album_price
   .form-actions
     %button.btn.primary{:type => "submit"} Save
     or

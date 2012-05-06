@@ -4,6 +4,7 @@ class Admin::FeaturesController < ApplicationController
 
   def edit
     @feature = Feature.find(params[:id])
+    @channel = Channel.find(params[:id])
   end
 
   def update

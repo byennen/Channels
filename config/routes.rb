@@ -1,5 +1,6 @@
 Channels::Application.routes.draw do
-  #subdomains
+
+  #subdomains - Keep at top
   match "", to: "channels#show", constraints: lambda {|r| r.subdomain.present? && r.subdomain != 'www'}
 
   #static pages
@@ -39,16 +40,18 @@ Channels::Application.routes.draw do
     get '/signup' => 'registrations#new'
   end
 
-  #admin
+  #admin - Clean up!
   namespace :admin do
     root :to => "dashboard#index"
     get "dashboard/help"
     resources :channels do
       resources :songs
       resources :features, :only => :edit
+      resources :photos
     end
     resources :features, :only => :update
-    resources :songs
+    resources :songs, :only => :index
+    resources :photos
     resources :users
   end
 

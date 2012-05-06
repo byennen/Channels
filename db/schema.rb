@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120426042649) do
+ActiveRecord::Schema.define(:version => 20120504232354) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
@@ -40,6 +40,17 @@ ActiveRecord::Schema.define(:version => 20120426042649) do
     t.boolean  "cma",        :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "photos", :force => true do |t|
+    t.integer  "channel_id"
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "paid"
+    t.boolean  "active"
+    t.string   "image_uid"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "songs", :force => true do |t|

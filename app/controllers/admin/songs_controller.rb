@@ -1,9 +1,9 @@
-class Admin::SongsController < ApplicationController
+class Admin::SongsController < Admin::ApplicationController
   layout 'admin'
   before_filter :authenticate_user!
 
-  # GET /songs
-  # GET /songs.json
+  helper_method :parent, :resource
+
   def index
     @songs = Song.all
 
@@ -13,11 +13,8 @@ class Admin::SongsController < ApplicationController
     end
   end
 
-  # GET /songs/new
-  # GET /songs/new.json
   def new
-    @song = Song.new
-    #@channel = Channel.find(params[:id])
+    build_resource
 
     respond_to do |format|
       format.html # new.html.erb
@@ -25,15 +22,12 @@ class Admin::SongsController < ApplicationController
     end
   end
 
-  # GET /songs/1/edit
   def edit
-    @song = Song.find(params[:id])
+    @song = resource
   end
 
-  # POST /songs
-  # POST /songs.json
   def create
-    @song = Song.new(params[:song][:channel_id])
+    build_resource
 
     respond_to do |format|
       if @song.save
@@ -46,10 +40,8 @@ class Admin::SongsController < ApplicationController
     end
   end
 
-  # PUT /songs/1
-  # PUT /songs/1.json
   def update
-    @song = Song.find(params[:id])
+    @song = resource
 
     respond_to do |format|
       if @song.update_attributes(params[:song])
@@ -62,10 +54,8 @@ class Admin::SongsController < ApplicationController
     end
   end
 
-  # DELETE /songs/1
-  # DELETE /songs/1.json
   def destroy
-    @song = Song.find(params[:id])
+    @song = resource
     @song.destroy
 
     respond_to do |format|
@@ -73,4 +63,13 @@ class Admin::SongsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def parent_name
+    "channel"
+  end
+
+  def resource_name
+    "song"
+  end
+
 end

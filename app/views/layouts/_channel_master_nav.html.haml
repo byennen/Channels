@@ -1,2 +1,30 @@
-%ul.nav
-  %li.active= link_to current_user.channel.name, admin_channel_path(current_user.channel_id)
+%a.brand{:href => admin_channel_path(current_user.channel_id) } Altimarc Admin
+.nav-collapse
+  %ul.nav
+    %li= link_to "Features",  edit_admin_channel_feature_path(@channel)
+
+    - if @channel.feature.audio == true
+      %li= link_to "Songs",  admin_channel_songs_path(@channel)
+
+    - if @channel.feature.vault == true
+      %li= link_to "Vault",  "#"
+
+    - if @channel.feature.news == true
+      %li= link_to "News",  "#"
+
+    - if @channel.feature.events == true
+      %li= link_to "Events",  "#"
+
+    - if @channel.feature.giving == true
+      %li= link_to "Giving",  "#"
+
+    %li= link_to "Videos",  "#"
+
+    %li= link_to "Photos",  admin_channel_photos_path(@channel)
+
+  %p.navbar-text.pull-right
+    Logged in as
+    = link_to current_user.email, edit_user_registration_path
+    = link_to('Logout', logout_url(subdomain: "www"), :method=>'delete')
+
+

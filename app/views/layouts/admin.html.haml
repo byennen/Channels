@@ -17,16 +17,9 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => admin_root_path } Altimarc Admin
-          .nav-collapse
-            = render "layouts/#{current_user.role}_nav"
-            %p.navbar-text.pull-right
-              Logged in as
-              = link_to current_user.email, edit_user_registration_path
-          / /.nav-collapse
+          = render "layouts/#{current_user.role}_nav"
     .container-fluid
-      .container-fluid
-        = render 'shared/flash_messages', :locals => { :flash => flash }
+      = render 'shared/flash_messages', :locals => { :flash => flash }
       = yield
       %hr
         %footer

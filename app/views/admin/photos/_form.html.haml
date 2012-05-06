@@ -1,0 +1,11 @@
+= simple_form_for [:admin, @photo], :html => {:class => 'form-horizontal'} do |f|
+  = f.input :title
+  = f.input :description
+  = f.input :active
+  = f.input :paid
+  = f.file_field :image_uid
+  = image_tag @photo.image.thumb('100x100#').url if @photo.image_uid
+  .form-actions
+    %button.btn.primary{:type => "submit"} Save
+    or
+    = link_to "Cancel", admin_channel_photos_path

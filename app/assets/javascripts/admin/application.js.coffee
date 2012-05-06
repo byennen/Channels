@@ -1,9 +1,17 @@
 #= require jquery
 #= require jquery_ujs
 #= require twitter/bootstrap
-#= require jquery.pjax
 #= require_tree .
 
-jQuery ->
-  $('a').pjax('[data-pjax-container]')
-
+$ ->
+  $(".alert-message").alert()
+  $(".tabs").button()
+  $(".carousel").carousel()
+  $(".collapse").collapse()
+  $(".dropdown-toggle").dropdown()
+  $(".modal").modal()
+  $("a[rel]").popover()
+  $(".navbar").scrollspy()
+  $(".tab").tab "show"
+  $(".tooltip").tooltip()
+  $(".typeahead").typeahead() 
