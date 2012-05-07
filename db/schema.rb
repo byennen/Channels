@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120504232354) do
+ActiveRecord::Schema.define(:version => 20120507181507) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20120504232354) do
     t.string   "subdomain"
     t.string   "background_image_uid"
     t.string   "banner_image_uid"
+    t.string   "background_color"
   end
 
   create_table "features", :force => true do |t|

@@ -22,7 +22,7 @@
       _V_.options.flash.swf = "assets/video-js.swf";
   %body
     - if params[:controller] == "channels"
-      .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x #000;" }
+      .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
         %div{"data-pjax-container" => ""}
           %header
             = render 'shared/navigation'

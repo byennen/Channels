@@ -2,10 +2,20 @@
   = f.input :name, :input_html => {:class => "input-xlarge"}
   = f.input :subdomain, :input_html => {:class => "input-xlarge" }
   = f.input :description, :input_html => {:class => "input-xlarge"}
+
+  .control-group
+    %label.control-label{:for => "prependedInput"} Background Color
+    .controls
+      .input-prepend
+        %span.add-on #
+        = f.text_field :background_color, :id => "prependedInput", :class => "span2"
+      %p.help-block #000000 Hex Color for the Web
+
   = f.input :background_image, :as => :file
   = image_tag @channel.background_image.thumb('100x100#').url if @channel.background_image_uid
   = f.input :banner_image, :as => :file
   = image_tag @channel.banner_image.thumb('100x100#').url if @channel.banner_image_uid
+
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     or 

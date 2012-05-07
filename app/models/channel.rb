@@ -4,7 +4,7 @@ class Channel < ActiveRecord::Base
   has_many :songs
   has_many :photos
 
-  attr_accessible :id, :name, :subdomain, :description, :background_image, :banner_image
+  attr_accessible :id, :name, :subdomain, :description, :background_image, :banner_image, :background_color
   image_accessor :background_image
   image_accessor :banner_image
 

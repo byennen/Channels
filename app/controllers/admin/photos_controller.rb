@@ -1,6 +1,6 @@
 class Admin::PhotosController < Admin::ApplicationController
   layout 'admin'
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :load_channels
 
   # GET /photos
   # GET /photos.json

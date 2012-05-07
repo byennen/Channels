@@ -1,12 +1,21 @@
 %a.brand{:href => admin_root_path } Altimarc Admin
 .nav-collapse
   %ul.nav
-    %li= link_to "Channels", admin_channels_path
+    %li.dropdown
+      %a.dropdown-toggle{"data-toggle" => "dropdown"}
+        Channels
+        %b.caret
+      %ul.dropdown-menu
+        - if @channels.present?
+          - @channels.each do |channel|
+            %li= link_to channel.name, admin_channel_path(channel, subdomain: "www")
+        - else
+          %li= link_to "NO CHANNELS", admin_root_url(subdomain: "www")
     %li= link_to "Giveaways", "#"
     %li= link_to "Games", "#"
     %li= link_to "Ads", "#"
     %li= link_to "Reporting", "#"
-    %li= link_to "Users", admin_users_path
+    %li= link_to "Users", admin_users_path(subdomain: "www")
   %p.navbar-text.pull-right
     Logged in as
     = link_to current_user.email, edit_user_registration_path

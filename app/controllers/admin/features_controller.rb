@@ -1,6 +1,6 @@
 class Admin::FeaturesController < ApplicationController
   layout 'admin'
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :load_channels
 
   def edit
     @feature = Feature.find(params[:id])

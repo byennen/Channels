@@ -3,6 +3,10 @@ class Admin::ApplicationController < ApplicationController
   before_filter :authorize_admin
 
   private
+  def load_channels
+    @channels = Channel.all
+  end
+
   def authorize_admin
     authorize! :manage, :admin_pages
   end
