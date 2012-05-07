@@ -1,25 +1,13 @@
-= form_for([:admin, @feature], :html => { :multipart => true }) do |f|
-  .clearfix
-    = f.label :audio, t("activerecord.attributes.feature.audio", :default => "Audio"), :class => :label
-    .input
-      = f.check_box :audio, :class => 'check_box'
-  .clearfix
-    = f.label :vault, t("activerecord.attributes.feature.vault", :default => "Vault"), :class => :label
-    .input
-      = f.check_box :vault, :class => 'check_box'
-  .clearfix
-    = f.label :news, t("activerecord.attributes.feature.news", :default => "News"), :class => :label
-    .input
-      = f.check_box :news, :class => 'check_box'
-  .clearfix
-    = f.label :events, t("activerecord.attributes.feature.events", :default => "Events"), :class => :label
-    .input
-      = f.check_box :events, :class => 'check_box'
-  .clearfix
-    = f.label :giving, t("activerecord.attributes.feature.giving", :default => "Giving"), :class => :label
-    .input
-      = f.check_box :giving, :class => 'check_box'
+%h1.form-title Channel Features
+
+= simple_form_for [:admin, @feature], :html => {:multipart => true, :class => 'form-horizontal'} do |f|
+  = f.input :audio
+  = f.input :vault
+  = f.input :news
+  = f.input :events
+  = f.input :giving
+
   .form-actions
-    %button.btn.primary{:type => "submit"} Save
+    = f.button :submit, :class => 'btn-primary'
     or
-    = link_to "Cancel", admin_channel_path
+    = link_to 'Go Back', url_for(:back), :class => 'btn'
