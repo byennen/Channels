@@ -2,17 +2,22 @@
 %table.table.table-striped
   %thead
     %tr
-      %th ID
+      %th Name
+      %th Banner Image
       %th
-        = t("activerecord.attributes.admin_channel.name", :default => t("activerecord.labels.name", :default => "Name"))
-      %th Actions
   %tbody
     - @channels.each do |channel|
       %tr
-        %td= channel.id
+        %td= link_to channel.name, admin_channel_path(channel)
+        %td= image_tag channel.banner_image.thumb('50x50#').url if channel.background_image_uid
         %td
-          = link_to channel.name, admin_channel_path(channel)
-        %td
-          = link_to "Edit", edit_admin_channel_path(channel)
-          = link_to "Destroy", admin_channel_path(channel), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
-= link_to "New", new_admin_channel_path, :class => 'btn btn-primary'
+          %a.btn{:href => edit_admin_channel_path(channel)}
+            %i.icon-pencil
+            Edit
+          %a.btn.btn-danger{:href => admin_channel_path(channel), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
+            %i.icon-trash.icon-white
+            Destroy
+
+%a.btn.btn-primary{:href => new_admin_channel_path,}
+  %i.icon-plus-sign.icon-white
+  New Channel
