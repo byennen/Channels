@@ -1,25 +1,17 @@
 class Admin::SongsController < Admin::ApplicationController
   layout 'admin'
   before_filter :authenticate_user!, :load_channels
+  load_and_authorize_resource
 
   helper_method :parent, :resource
+  respond_to :html, :json
 
   def index
-    @songs = Song.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @songs }
-    end
+    @song = Song.includes(:channel_id)
   end
 
   def new
     build_resource
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @song }
-    end
   end
 
   def edit
@@ -28,40 +20,24 @@ class Admin::SongsController < Admin::ApplicationController
 
   def create
     build_resource
-
-    respond_to do |format|
-      if @song.save
-        format.html { redirect_to admin_channel_songs_url, notice: 'Song was successfully created.' }
-        format.json { render json: admin_channel_songs_url, status: :created, location: @song }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @song.errors, status: :unprocessable_entity }
-      end
+    if @song.save
+      flash[:notice] = "Song was successfully created"
     end
+    respond_with @song, :location => admin_channel_songs_url
   end
 
   def update
     @song = resource
-
-    respond_to do |format|
-      if @song.update_attributes(params[:song])
-        format.html { redirect_to admin_channel_songs_url, notice: 'Song was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @song.errors, status: :unprocessable_entity }
-      end
+    if @song.update_attributes(params[:song])
+      flash[:notice] = "Song was successfully updated."
     end
+    respond_with @song, :location => admin_channel_songs_ur
   end
 
   def destroy
     @song = resource
     @song.destroy
-
-    respond_to do |format|
-      format.html { redirect_to admin_channel_songs_url }
-      format.json { head :no_content }
-    end
+    redirect_to admin_songs_url
   end
 
   def parent_name

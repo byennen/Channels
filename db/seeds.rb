@@ -6,7 +6,6 @@ puts "New user created: " << user.email
 puts "Password: " << user.password
 puts ""
 
-
 puts "***CREATING CHANNELS***"
 background_dir = Rails.root.join('creatives', 'channels', 'background')
 banner_dir = Rails.root.join('creatives', 'channels', 'banner')
