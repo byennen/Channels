@@ -8,10 +8,10 @@
     = f.input :role, :as => :hidden
     = f.association :channel, :class => 'channel-select'
 
-  = f.input :email
-  = f.input :password
-  = f.input :password_confirmation
+  = f.input :email, :input_html => {:class => "input-xlarge"}
+  = f.input :password, :input_html => {:class => "input-xlarge"}
+  = f.input :password_confirmation, :input_html => {:class => "input-xlarge"}
   .form-actions
-    = f.button :submit
+    = f.button :submit, :class => 'btn-primary'
     or
-    = link_to 'go back', url_for(:back)
+    = link_to 'go back', url_for(:back), :class => 'btn'
