@@ -11,15 +11,13 @@
     / HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-    = javascript_include_tag "application", "video"
+    = javascript_include_tag "application"
     = yield :head
     = stylesheet_link_tag "application", :media => "all"
     = favicon_link_tag 
     -# %link{:href => "images/apple-touch-icon.png", :rel => "apple-touch-icon"}
     -# %link{:href => "images/apple-touch-icon-72x72.png", :rel => "apple-touch-icon", :sizes => "72x72"}
     -# %link{:href => "images/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}
-    :javascript
-      _V_.options.flash.swf = "assets/video-js.swf";
   %body
     - if params[:controller] == "channels"
       .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
@@ -33,9 +31,6 @@
           %footer
             = render "layouts/footer"
     - else
-      #video{:style => "margin: 100px auto 0px;"}
-        .container
-          = render 'layouts/video'
       .background-wrapper
         %div{"data-pjax-container" => ""}
           %header
