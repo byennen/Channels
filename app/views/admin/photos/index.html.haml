@@ -1,20 +1,25 @@
-%h1 Listing photos
+%h1 Photos
 %table.table.table-striped
   %thead
     %tr
-      %th Title
-      %th Description
-      %th Paid
-      %th
+      %th Photo
+      %th Name
+      %th Paid?
+      %th Active?
       %th
       %th
   %tbody
     - @photos.each do |photo|
       %tr
+        %td= image_tag photo.image.thumb('50x50#').url if photo.image_uid
         %td= photo.title
-        %td= photo.description
         %td= photo.paid
-        %td 
-          =# link_to 'Edit', edit_admin_channel_photo_path(photo)
-          =# link_to 'Destroy', admin_channel_photo_path(photo), confirm: 'Are you sure?', method: :delete
+        %td
+          %a.btn{:href => edit_admin_channel_photo_path(parent, photo)}
+            %i.icon-pencil
+            Edit
+          %a.btn.btn-danger{:href => admin_channel_photo_path(parent, photo), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
+            %i.icon-trash.icon-white
+            Destroy
+
 = link_to 'New', new_admin_channel_photo_path, :class => 'btn btn-primary'

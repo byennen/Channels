@@ -1,11 +1,6 @@
-class Admin::ApplicationController < ApplicationController
+class Admin::ApplicationController < ActionController::Base
   before_filter :authenticate_user!
   before_filter :authorize_admin
-
-  private
-  def load_channels
-    @channels = Channel.all
-  end
 
   def authorize_admin
     authorize! :manage, :admin_pages
@@ -53,5 +48,11 @@ class Admin::ApplicationController < ApplicationController
 
   def resource
     resource_class.find(params[:id])
+  end
+
+
+  private
+  def load_channels
+    @channels = Channel.all
   end
 end

@@ -7,7 +7,7 @@ class Admin::SongsController < Admin::ApplicationController
   respond_to :html, :json
 
   def index
-    @song = Song.includes(:channel_id)
+    @song = Song.all
   end
 
   def new
@@ -31,13 +31,13 @@ class Admin::SongsController < Admin::ApplicationController
     if @song.update_attributes(params[:song])
       flash[:notice] = "Song was successfully updated."
     end
-    respond_with @song, :location => admin_channel_songs_ur
+    respond_with @song, :location => admin_channel_songs_url
   end
 
   def destroy
     @song = resource
     @song.destroy
-    redirect_to admin_songs_url
+    redirect_to admin_channel_songs_url
   end
 
   def parent_name
