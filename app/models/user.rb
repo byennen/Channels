@@ -29,14 +29,10 @@ class User < ActiveRecord::Base
   validates :role, :presence => true
   validates :channel, :presence => true, :if => :channel_master?
   
-  before_validation :set_role, :if => :stripe_card_token
-  after_validation :process_payment, :if => :stripe_card_token
+  before_validation :make_paid_member!, :if => :stripe_card_token
+  after_validation :process_payment, :if => :paid_member?
 
   private
-
-  def set_role
-    self.role = 'paid_member'
-  end
 
   def process_payment
     customer = Stripe::Customer.create(:email => email, :plan => STRIPE_PLAN_ID, :card => stripe_card_token)
@@ -44,6 +40,6 @@ class User < ActiveRecord::Base
   rescue Stripe::InvalidRequestError => e
     logger.error "Stripe error while creating customer: #{e.message}"
     errors.add :base, "There was a problem with your credit card."
-    return false
+    false
   end
 end
