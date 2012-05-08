@@ -1,4 +1,4 @@
-class Admin::ApplicationController < ActionController::Base
+class Admin::ApplicationController < ApplicationController
   before_filter :authenticate_user!
   before_filter :authorize_admin
 
@@ -28,6 +28,7 @@ class Admin::ApplicationController < ActionController::Base
       the_parent = parent_class.find(params["#{parent_name}_id"])
       instance_variable_set("@#{parent_name}", the_parent)
     end
+    Rails.logger.info the_parent.inspect
     the_parent
   end
 
@@ -42,7 +43,9 @@ class Admin::ApplicationController < ActionController::Base
 
   def build_resource
     unless instance_variable_get("@#{resource_name}")
-      instance_variable_set("@#{resource_name}", resource_class.new(resource_params))
+      the_resource = resource_class.new(resource_params)
+      instance_variable_set("@#{resource_name}", the_resource)
+      Rails.logger.info the_resource.inspect
     end
   end
 

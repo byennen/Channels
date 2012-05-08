@@ -15,10 +15,10 @@
         %td= photo.title
         %td= photo.paid
         %td
-          %a.btn{:href => edit_admin_channel_photo_path(parent, photo)}
+          %a.btn{:href => edit_admin_channel_photo_path(@channel, photo)}
             %i.icon-pencil
             Edit
-          %a.btn.btn-danger{:href => admin_channel_photo_path(parent, photo), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
+          %a.btn.btn-danger{:href => admin_channel_photo_path(@channel, photo), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
             %i.icon-trash.icon-white
             Destroy
 

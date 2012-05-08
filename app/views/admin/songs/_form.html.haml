@@ -1,4 +1,4 @@
-= simple_form_for [:admin, parent, @song], :html => { :multipart => true, :class => 'form-horizontal' } do |f|
+= simple_form_for [:admin, @channel, @song], :html => { :multipart => true, :class => 'form-horizontal' } do |f|
   = f.input :title
   = f.input :album
   = f.input :song_price
