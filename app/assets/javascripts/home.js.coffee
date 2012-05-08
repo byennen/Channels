@@ -1,4 +1,4 @@
-$().ajaxComplete ->
+$().ajaxSuccess ->
   console.log "ajax"
   $("#slider").nivoSlider()
 
