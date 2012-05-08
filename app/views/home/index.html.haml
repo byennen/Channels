@@ -5,6 +5,6 @@
   .ribbon
   #slider.nivoSlider
     - @channels.each do |channel|
-      -# = link_to image_tag(channel.banner_image.url), channel.name
+      = link_to image_tag(channel.banner_image), channel.name
       = link_to image_tag('banners/1.png'), '/users/sign_up'
 
