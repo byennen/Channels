@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :load_channels
 
   #password for staging
   if (ENV["RAILS_ENV"] == "staging")

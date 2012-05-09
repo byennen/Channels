@@ -1,6 +1,6 @@
 class Admin::VideosController < Admin::ApplicationController
   layout 'admin'
-  before_filter :authenticate_user!, :load_channels
+  before_filter :authenticate_user!
   load_and_authorize_resource :channel
   load_and_authorize_resource :video, :through => :channel
 

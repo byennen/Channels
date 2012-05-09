@@ -1,5 +1,4 @@
 class GiveawaysController < ApplicationController
-  before_filter :load_channels
 
   def derby
     @giveaway = Giveaway.new

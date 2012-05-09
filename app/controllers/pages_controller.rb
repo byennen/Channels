@@ -1,6 +1,4 @@
 class PagesController < ApplicationController
-  before_filter :load_channels
-  
   def about
   end
 

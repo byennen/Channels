@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   layout 'admin'
-  before_filter :authenticate_user!, :load_channels
+  before_filter :authenticate_user!
   load_and_authorize_resource
 
   respond_to :html
