@@ -16,6 +16,14 @@
   = f.input :banner_image, :as => :file
   = image_tag @channel.banner_image.thumb('100x100#').url if @channel.banner_image_uid
 
+  = f.simple_fields_for :feature_attributes, f.object.feature do |f|
+    - f.with_options :as => :boolean do |f|
+      = f.input :audio
+      = f.input :vault
+      = f.input :news
+      = f.input :events
+      = f.input :giving
+
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     or 

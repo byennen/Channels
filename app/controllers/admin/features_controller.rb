@@ -1,6 +1,4 @@
-class Admin::FeaturesController < ApplicationController
-  layout 'admin'
-  before_filter :authenticate_user!
+class Admin::FeaturesController < Admin::ApplicationController
   load_and_authorize_resource :channel
 
   respond_to :html

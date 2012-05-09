@@ -1,9 +1,8 @@
 class Admin::ApplicationController < ApplicationController
+  layout 'admin'
   before_filter :authenticate_user!
-  before_filter :authorize_admin
 
   def authorize_admin
     authorize! :manage, :admin_pages
   end
-
 end

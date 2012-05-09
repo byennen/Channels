@@ -1,8 +1,12 @@
 class Admin::DashboardController < Admin::ApplicationController
-  layout 'admin'
-  before_filter :authenticate_user!
-  
+  before_filter :authorize_admin, :except => [:index]
+
   def index
+    if current_user.channel_master?
+      redirect_to admin_channel_path(current_user.channel)
+    else
+      authorize_admin
+    end
   end
 
   def help

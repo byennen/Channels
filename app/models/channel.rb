@@ -5,7 +5,9 @@ class Channel < ActiveRecord::Base
   has_many :photos
   has_many :videos
 
-  attr_accessible :id, :name, :subdomain, :description, :background_image, :banner_image, :background_color
+  attr_accessible :id, :name, :subdomain, :description, :background_image, :banner_image, :background_color, :feature_attributes
+  accepts_nested_attributes_for :feature
+
   image_accessor :background_image
   image_accessor :banner_image
 

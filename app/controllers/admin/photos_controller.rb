@@ -1,6 +1,4 @@
-class Admin::PhotosController < ApplicationController
-  layout 'admin'
-  before_filter :authenticate_user!
+class Admin::PhotosController < Admin::ApplicationController
   load_and_authorize_resource :channel
   load_and_authorize_resource :photo, :through => :channel
 

@@ -2,12 +2,6 @@
   %h1= @channel.name
 
 .row-fluid
-  .span4.box
-    .inside
-      %h2 Features
-      %p Edit Features here.
-      %p= link_to "Features",  edit_admin_channel_feature_path(@channel), :class => "btn"
-
   - if @channel.feature.audio == true
     .span4.box
       .inside

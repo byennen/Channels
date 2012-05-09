@@ -1,7 +1,6 @@
 class Admin::SongsController < ApplicationController
-  layout 'admin'
-  before_filter :authenticate_user!
-  load_and_authorize_resource
+  load_and_authorize_resource :channel
+  load_and_authorize_resource :song, :through => :channel
 
   helper_method :parent, :resource
   respond_to :html, :json

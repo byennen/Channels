@@ -1,8 +1,6 @@
 %a.brand{:href => admin_channel_path(current_user.channel_id) } Altimarc Admin
 .nav-collapse
   %ul.nav
-    %li= link_to "Features",  edit_admin_channel_feature_path(@channel)
-
     - if @channel.feature.audio == true
       %li= link_to "Songs",  "#"
 
