@@ -1,4 +1,4 @@
-class Admin::ChannelsController < Admin::ApplicationController
+class Admin::ChannelsController < ApplicationController
   layout 'admin'
   before_filter :authenticate_user!
   load_and_authorize_resource :channel

@@ -1,13 +1,12 @@
-class Admin::FeaturesController < Admin::ApplicationController
+class Admin::FeaturesController < ApplicationController
   layout 'admin'
   before_filter :authenticate_user!
-  load_and_authorize_resource
+  load_and_authorize_resource :channel
 
   respond_to :html
 
   def edit
     @feature = Feature.find(params[:id])
-    @channel = Channel.find(params[:id])
   end
 
   def update

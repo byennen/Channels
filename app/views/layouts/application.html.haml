@@ -36,12 +36,10 @@
           %header
             = render 'shared/navigation'
           .container
+            = render 'shared/flash_messages', :locals => { :flash => flash }
             - if params[:controller] == "registrations"
               = yield
-            - elsif params[:controller] == "sessions"
-              = yield
             - else
-              = render 'shared/flash_messages', :locals => { :flash => flash }
               .content
                 = yield
             %footer

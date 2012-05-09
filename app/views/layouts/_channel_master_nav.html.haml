@@ -4,7 +4,7 @@
     %li= link_to "Features",  edit_admin_channel_feature_path(@channel)
 
     - if @channel.feature.audio == true
-      %li= link_to "Songs",  admin_channel_songs_path(@channel)
+      %li= link_to "Songs",  "#"
 
     - if @channel.feature.vault == true
       %li= link_to "Vault",  "#"

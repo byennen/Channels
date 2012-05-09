@@ -1,4 +1,4 @@
-class Admin::SongsController < Admin::ApplicationController
+class Admin::SongsController < ApplicationController
   layout 'admin'
   before_filter :authenticate_user!
   load_and_authorize_resource
