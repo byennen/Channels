@@ -1,0 +1,13 @@
+= simple_form_for [:admin, @channel, @video], :html => {:multipart => true, :class => 'form-horizontal'} do |f|
+  .form-inputs
+    = f.input :title, :input_html => {:class => "input-xlarge"}
+    = f.input :description, :input_html => {:class => "input-xlarge"}
+    = f.input :image, :as => :file, :label => "Image"
+    = image_tag @video.image.thumb('100x100#').url if @video.image
+    = f.input :short_video, :as => :file, :label => "Short Video"
+    = f.input :full_video, :as => :file, :label => "Full Video"
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    or
+    = link_to 'Go Back', url_for(:back), :class => 'btn'
+

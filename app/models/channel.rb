@@ -3,6 +3,7 @@ class Channel < ActiveRecord::Base
   has_one :feature
   has_many :songs
   has_many :photos
+  has_many :videos
 
   attr_accessible :id, :name, :subdomain, :description, :background_image, :banner_image, :background_color
   image_accessor :background_image

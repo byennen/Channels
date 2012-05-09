@@ -48,10 +48,12 @@ Channels::Application.routes.draw do
       resources :songs
       resources :features, :only => :edit
       resources :photos
+      resources :videos
     end
     resources :features, :only => :update
     resources :songs, :only => :index
-    resources :photos
+    resources :photos, :only => :index
+    resources :videos, :only => :index
     resources :users
   end
 

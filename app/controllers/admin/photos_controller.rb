@@ -33,7 +33,6 @@ class Admin::PhotosController < Admin::ApplicationController
   end
 
   def destroy
-    @photo = Photo.find(params[:id])
     @photo.destroy
     redirect_to admin_channel_photos_url
   end

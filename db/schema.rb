@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120507181507) do
+ActiveRecord::Schema.define(:version => 20120508220615) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
@@ -94,5 +94,18 @@ ActiveRecord::Schema.define(:version => 20120507181507) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "videos", :force => true do |t|
+    t.integer  "channel_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "short_video_uid"
+    t.string   "full_video_uid"
+    t.string   "image_uid"
+    t.boolean  "paid"
+    t.boolean  "active"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
 end
