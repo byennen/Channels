@@ -9,7 +9,7 @@
     - @channels.each do |channel|
       %tr
         %td= link_to channel.name, admin_channel_path(channel)
-        %td= image_tag channel.banner_image.thumb('50x50#').url if channel.background_image_uid
+        %td= image_tag channel.banner_image.thumb('50x50#').url if channel.banner_image_uid
         %td
           %a.btn{:href => edit_admin_channel_path(channel)}
             %i.icon-pencil
