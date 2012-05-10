@@ -1,0 +1,24 @@
+%h1 Albums
+%table.table.table-striped
+  %thead
+    %tr
+      %th Photo
+      %th Title
+      %th
+      %th
+  %tbody
+    - @albums.each do |album|
+      %tr
+        %td= image_tag album.image.thumb('50x50#').url if album.image_uid
+        %td= album.title
+        %td
+          %a.btn{:href => edit_admin_channel_album_path(@channel, album)}
+            %i.icon-pencil
+            Edit
+          %a.btn.btn-danger{:href => admin_channel_album_path(@channel, album), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
+            %i.icon-trash.icon-white
+            Destroy
+%a.btn.btn-primary{:href => new_admin_channel_album_path}
+  %i.icon-plus-sign.icon-white
+  New Album
+

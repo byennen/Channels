@@ -27,7 +27,7 @@
   - if @channel.feature.events == true
     .span4.box
       .inside
-        %h2 Events
+        %h2 Event
         %p Edit Events here.
         %p= link_to "Events",  "#", :class => "btn"
 
@@ -37,6 +37,7 @@
         %h2 Giving
         %p Edit Giving here.
         %p= link_to "Giving",  "#", :class => "btn"
+
 
 .row-fluid
   .span4.box
@@ -50,5 +51,12 @@
       %h2 Photos
       %p Edit Photos here.
       %p= link_to "Photos",  admin_channel_photos_path(@channel), :class => "btn"
+
+  .span4.box
+    .inside
+      %h2 Albums
+      %p Edit Albums here.
+      %p= link_to "Albums",  admin_channel_albums_path(@channel), :class => "btn"
+
 
 

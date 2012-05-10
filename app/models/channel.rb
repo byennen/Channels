@@ -1,7 +1,7 @@
 class Channel < ActiveRecord::Base
   has_many :channel_masters, :class_name => 'User'
   has_one :feature
-  has_many :songs
+  has_many :albums
   has_many :photos
   has_many :videos
 
