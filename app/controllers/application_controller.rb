@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   private
 
   def load_channels
-    @channels = Channel.all
+    @channels = Channel.order('name ASC')
   end
 
   def load_channel
