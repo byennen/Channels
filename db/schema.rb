@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120514154558) do
+ActiveRecord::Schema.define(:version => 20120514161935) do
 
   create_table "albums", :force => true do |t|
     t.integer  "channel_id"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20120514154558) do
     t.string   "filename"
     t.string   "file_preview"
     t.boolean  "active"
+    t.integer  "album_id"
   end
 
   create_table "users", :force => true do |t|
