@@ -14,7 +14,7 @@ class Player
       ended: @playEnded
       play: @playing
       error: (event) ->
-        echo event
+        echo event.jPlayer.error.type
     })
     @el.find("#controls a#player_play").click(@play)
 
