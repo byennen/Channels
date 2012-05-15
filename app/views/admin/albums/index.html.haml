@@ -1,4 +1,3 @@
-%h1 Albums
 %table.table.table-striped
   %thead
     %tr
@@ -9,8 +8,10 @@
   %tbody
     - @albums.each do |album|
       %tr
-        %td= image_tag album.image.thumb('50x50#').url if album.image_uid
-        %td= album.title
+        %td
+          - if album.image_uid
+            = link_to image_tag(album.image.thumb('50x50#').url), admin_channel_album_songs_path(@channel, album)
+        %td= link_to album.title, admin_channel_album_songs_path(@channel, album)
         %td
           %a.btn{:href => edit_admin_channel_album_path(@channel, album)}
             %i.icon-pencil
@@ -18,7 +19,9 @@
           %a.btn.btn-danger{:href => admin_channel_album_path(@channel, album), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
             %i.icon-trash.icon-white
             Destroy
-%a.btn.btn-primary{:href => new_admin_channel_album_path}
-  %i.icon-plus-sign.icon-white
-  New Album
-
+.form-actions
+  %a.btn.btn-primary{:href => new_admin_channel_album_path}
+    %i.icon-plus-sign.icon-white
+    New Album
+  or
+  = link_to 'Go Back', url_for(:back), :class => 'btn'

@@ -17,10 +17,11 @@ ActiveRecord::Schema.define(:version => 20120514161935) do
     t.integer  "channel_id"
     t.string   "title"
     t.text     "description"
+    t.decimal  "price",       :precision => 8, :scale => 2
     t.string   "image_uid"
     t.boolean  "active"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   create_table "channels", :force => true do |t|
@@ -66,13 +67,13 @@ ActiveRecord::Schema.define(:version => 20120514161935) do
 
   create_table "songs", :force => true do |t|
     t.string   "title"
-    t.decimal  "song_price",   :precision => 10, :scale => 0
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.string   "filename"
     t.string   "file_preview"
     t.boolean  "active"
     t.integer  "album_id"
+    t.decimal  "price",        :precision => 8, :scale => 2
   end
 
   create_table "users", :force => true do |t|

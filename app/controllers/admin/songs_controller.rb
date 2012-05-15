@@ -1,50 +1,36 @@
-class Admin::SongsController < ApplicationController
+class Admin::SongsController < Admin::ApplicationController
   load_and_authorize_resource :channel
-  load_and_authorize_resource :song, :through => :channel
-
-  helper_method :parent, :resource
+  load_and_authorize_resource :album
+  load_and_authorize_resource :song, :through => :album
+  
   respond_to :html, :json
 
   def index
-    @song = Song.all
   end
 
   def new
-    build_resource
   end
 
   def edit
-    @song = resource
   end
 
   def create
-    build_resource
     if @song.save
       flash[:notice] = "Song was successfully created"
     end
-    respond_with @song, :location => admin_channel_songs_url
+    respond_with @song, :location => admin_channel_album_songs_url
   end
 
   def update
-    @song = resource
     if @song.update_attributes(params[:song])
       flash[:notice] = "Song was successfully updated."
     end
-    respond_with @song, :location => admin_channel_songs_url
+    respond_with @song, :location => admin_channel_album_songs_url
   end
 
   def destroy
-    @song = resource
     @song.destroy
-    redirect_to admin_channel_songs_url
-  end
-
-  def parent_name
-    "channel"
-  end
-
-  def resource_name
-    "song"
+    redirect_to admin_channel_album_songs_url
   end
 
 end

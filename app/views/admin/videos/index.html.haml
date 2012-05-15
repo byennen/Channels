@@ -1,4 +1,3 @@
-%h1 Videos
 %table.table.table-striped
   %thead
     %tr
@@ -19,6 +18,11 @@
           %a.btn.btn-danger{:href => admin_channel_video_path(@channel, video), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
             %i.icon-trash.icon-white
             Destroy
-%a.btn.btn-primary{:href => new_admin_channel_video_path}
-  %i.icon-plus-sign.icon-white
-  New Photo
+
+.form-actions
+  %a.btn.btn-primary{:href => new_admin_channel_video_path}
+    %i.icon-plus-sign.icon-white
+    New Photo
+  or
+  = link_to 'Go Back', url_for(:back), :class => 'btn'
+

@@ -1,16 +1,13 @@
-.div{ :style => "margin-bottom: 20px;" }
-  %h1= @channel.name
-
 .row-fluid
   - if @channel.feature.audio == true
-    .span4.box
+    .box
       .inside
         %h2 Songs
         %p Edit Songs here.
         %p= link_to "Songs",  "#", :class => "btn"
 
   - if @channel.feature.vault == true
-    .span4.box
+    .box
       .inside
         %h2 Vault
         %p Edit Vault here.
@@ -18,21 +15,21 @@
 
 .row-fluid
   - if @channel.feature.news == true
-    .span4.box
+    .box
       .inside
         %h2 News
         %p Edit News here.
         %p= link_to "News",  "#", :class => "btn"
 
   - if @channel.feature.events == true
-    .span4.box
+    .box
       .inside
         %h2 Event
         %p Edit Events here.
         %p= link_to "Events",  "#", :class => "btn"
 
   - if @channel.feature.giving == true
-    .span4.box
+    .box
       .inside
         %h2 Giving
         %p Edit Giving here.
@@ -40,19 +37,19 @@
 
 
 .row-fluid
-  .span4.box
+  .box
     .inside
       %h2 Videos
       %p Edit Videos here.
       %p= link_to "Videos",  admin_channel_videos_path(@channel), :class => "btn"
 
-  .span4.box
+  .box
     .inside
       %h2 Photos
       %p Edit Photos here.
       %p= link_to "Photos",  admin_channel_photos_path(@channel), :class => "btn"
 
-  .span4.box
+  .box
     .inside
       %h2 Albums
       %p Edit Albums here.

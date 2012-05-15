@@ -22,10 +22,14 @@ puts "New channel master user created: " << user.email
 puts "Password: " << user.password
 puts ""
 
+puts "***CREATING ALBUMS***"
+album_dir = Rails.root.join('creatives', 'albums')
+album = Album.create(:channel => channel, :title => "Demo", :description => "Demo", :price => "9.99", :active => true, :image => File.new(File.join(album_dir, 'brushy-mountain/mark-collie.png')) )
+puts ""
 
 puts "***CREATING SONGS***"
-Song.create(:channel => channel, :title => "Breaking Bad", :filename => "song.mp3", :active => true)
-Song.create(:channel => channel, :title => "D.V.N.O.", :filename => "dvno.mp3", :active => true)
-Song.create(:channel => channel, :title => "Genesis", :filename => "genesis.mp3", :active => true)
-Song.create(:channel => channel, :title => "Threee Paaarrrtyyy", :filename => "party.mp3", :active => true)
+Song.create(:album => album, :title => "Breaking Bad", :filename => "song.mp3", :active => true, :price => "1.00")
+Song.create(:album => album, :title => "D.V.N.O.", :filename => "dvno.mp3", :active => true, :price => "1.00")
+Song.create(:album => album, :title => "Genesis", :filename => "genesis.mp3", :active => true, :price => "1.00")
+Song.create(:album => album, :title => "Threee Paaarrrtyyy", :filename => "party.mp3", :active => true, :price => "1.00")
 puts ""

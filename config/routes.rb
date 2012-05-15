@@ -45,14 +45,14 @@ Channels::Application.routes.draw do
     root :to => "dashboard#index"
     get "dashboard/help"
     resources :channels do
-      resources :songs
       resources :features, :only => :edit
       resources :photos
-      resources :albums
       resources :videos
+      resources :albums do
+        resources :songs
+      end
     end
     resources :features, :only => :update
-    resources :songs, :only => :index
     resources :photos, :only => :index
     resources :videos, :only => :index
     resources :albums, :only => :index

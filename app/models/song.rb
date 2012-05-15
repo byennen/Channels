@@ -1,5 +1,7 @@
 class Song < ActiveRecord::Base
-  belongs_to :channel
+  belongs_to :album
+
+  attr_accessible :id, :album_id, :title, :price, :filename, :file_preview, :active, :album
 
   scope :available, where(:active => true)
 

@@ -1,25 +1,27 @@
-%h1 Songs
 %table.table.table-striped
   %thead
     %tr
       %th Song
-      %th Album
       %th Active
+      %th Price
       %th
   %tbody
     - @songs.each do |song|
       %tr
         %td= song.title
-        %td= song.album
+        %td= song.price
         %td= song.active
         %td
-          %a.btn{:href => edit_admin_channel_song_path(parent, song)}
+          %a.btn{:href => edit_admin_channel_album_song_path(@channel, @album, song)}
             %i.icon-pencil
             Edit
-          %a.btn.btn-danger{:href => admin_channel_song_path(parent, song), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
+          %a.btn.btn-danger{:href => admin_channel_album_song_path(@channel, @album, song), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
             %i.icon-trash.icon-white
             Destroy
 
-%a.btn.btn-primary{:href => new_admin_channel_song_path(parent)}
-  %i.icon-plus-sign.icon-white
-  New Song
+.form-actions
+  %a.btn.btn-primary{:href => new_admin_channel_album_song_path(@channel, @album)}
+    %i.icon-plus-sign.icon-white
+    New Song
+  or
+  = link_to 'Go Back', url_for(:back), :class => 'btn'

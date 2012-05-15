@@ -19,14 +19,20 @@
             %span.icon-bar
           = render "layouts/#{current_user.role}_nav"
     .container-fluid
-      = render 'shared/flash_messages', :locals => { :flash => flash }
-      = yield
-      %hr
-        %footer
-          %p
-            &copy;
-            = Time.now.year
-            = link_to 'ALTIMARC, LLC.', 'http://altimarc.com'
+      - if params[:controller] == "admin/dashboard" || params[:controller] == "admin/channels" && params[:action] == "show"
+        .content-boxes
+          = render 'shared/flash_messages', :locals => { :flash => flash }
+          = yield
+      - else
+        .content-background
+          = render "admin/shared/sub_nav"
+          = render 'shared/flash_messages', :locals => { :flash => flash }
+          = yield
+    %footer
+      %p
+        &copy;
+        = Time.now.year
+        = link_to 'ALTIMARC, LLC.', 'http://altimarc.com'
 
 
     = javascript_include_tag "admin/application"
