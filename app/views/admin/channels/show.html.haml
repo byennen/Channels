@@ -1,59 +1,62 @@
-.row-fluid
-  - if @channel.feature.audio == true
-    .box
-      .inside
-        %h2 Songs
-        %p Edit Songs here.
-        %p= link_to "Songs",  "#", :class => "btn"
-
-  - if @channel.feature.vault == true
-    .box
-      .inside
-        %h2 Vault
-        %p Edit Vault here.
-        %p= link_to "Vault",  "#", :class => "btn"
-
-.row-fluid
-  - if @channel.feature.news == true
-    .box
-      .inside
-        %h2 News
-        %p Edit News here.
-        %p= link_to "News",  "#", :class => "btn"
-
-  - if @channel.feature.events == true
-    .box
-      .inside
-        %h2 Event
-        %p Edit Events here.
-        %p= link_to "Events",  "#", :class => "btn"
-
-  - if @channel.feature.giving == true
-    .box
-      .inside
-        %h2 Giving
-        %p Edit Giving here.
-        %p= link_to "Giving",  "#", :class => "btn"
-
-
-.row-fluid
+- if @channel.feature.audio == true
   .box
     .inside
-      %h2 Videos
-      %p Edit Videos here.
-      %p= link_to "Videos",  admin_channel_videos_path(@channel), :class => "btn"
+      %h2 Songs
+      %p Edit Songs here.
+      %p= link_to "Songs",  "#", :class => "btn"
 
+- if @channel.feature.vault == true
   .box
     .inside
-      %h2 Photos
-      %p Edit Photos here.
-      %p= link_to "Photos",  admin_channel_photos_path(@channel), :class => "btn"
+      %h2 Vault
+      %p Edit Vault here.
+      %p= link_to "Vault",  "#", :class => "btn"
 
+- if @channel.feature.news == true
   .box
     .inside
-      %h2 Albums
-      %p Edit Albums here.
-      %p= link_to "Albums",  admin_channel_albums_path(@channel), :class => "btn"
+      %h2 News
+      %p Edit News here.
+      %p= link_to "News",  "#", :class => "btn"
+
+- if @channel.feature.events == true
+  .box
+    .inside
+      %h2 Event
+      %p Edit Events here.
+      %p= link_to "Events",  "#", :class => "btn"
+
+- if @channel.feature.giving == true
+  .box
+    .inside
+      %h2 Giving
+      %p Edit Giving here.
+      %p= link_to "Giving",  "#", :class => "btn"
+
+.box
+  .inside
+    %h2 Videos
+    %p Edit Videos here.
+    %p= link_to "Videos",  admin_channel_videos_path(@channel), :class => "btn"
+
+.box
+  .inside
+    %h2 Photos
+    %p Edit Photos here.
+    %p= link_to "Photos",  admin_channel_photos_path(@channel), :class => "btn"
+
+.box
+  .inside
+    %h2 Albums
+    %p Edit Albums here.
+    %p= link_to "Albums",  admin_channel_albums_path(@channel), :class => "btn"
+
+.box
+  .inside
+    %h2 Help
+    %p Edit Albums here.
+    %p= link_to "Help",  admin_channel_help_path, :class => "btn"
+
 
 
 

@@ -1,5 +1,5 @@
 class Admin::DashboardController < Admin::ApplicationController
-  before_filter :authorize_admin, :except => [:index]
+  load_and_authorize_resource :channel
 
   def index
     if current_user.channel_master?
@@ -9,6 +9,6 @@ class Admin::DashboardController < Admin::ApplicationController
     end
   end
 
-  def help
+  def channel_help
   end
 end

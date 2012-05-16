@@ -40,10 +40,13 @@ Channels::Application.routes.draw do
     get '/signup' => 'registrations#new'
   end
 
-  #admin - Clean up!
+  #admin
   namespace :admin do
-    root :to => "dashboard#index"
-    get "dashboard/help"
+    resources :features, :only => :update
+    resources :photos, :only => :index
+    resources :videos, :only => :index
+    resources :albums, :only => :index
+    resources :users
     resources :channels do
       resources :features, :only => :edit
       resources :photos
@@ -52,11 +55,8 @@ Channels::Application.routes.draw do
         resources :songs
       end
     end
-    resources :features, :only => :update
-    resources :photos, :only => :index
-    resources :videos, :only => :index
-    resources :albums, :only => :index
-    resources :users
+    match "/channels-help" => "dashboard#channel_help", :as => "channel_help"
+    root :to => "dashboard#index"
   end
 
   root :to => "home#index"

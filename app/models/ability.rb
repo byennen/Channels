@@ -33,6 +33,8 @@ class Ability
       can :manage, Channel, :id => user.channel_id
       can :manage, Photo, :channel => {:id => user.channel_id}
       can :manage, Video, :channel => {:id => user.channel_id}
+      can :manage, Album, :channel => {:id => user.channel_id}
+      can :manage, Song, :channel => {:id => user.channel_id}
     end
   end
 end

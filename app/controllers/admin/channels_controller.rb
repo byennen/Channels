@@ -2,7 +2,7 @@ class Admin::ChannelsController < Admin::ApplicationController
   before_filter :authorize_admin, :except => [:show]
   load_and_authorize_resource :channel
   load_and_authorize_resource :album
-  
+
 
   respond_to :html
 

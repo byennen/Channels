@@ -19,14 +19,13 @@
             %span.icon-bar
           = render "layouts/#{current_user.role}_nav"
     .container-fluid
-      - if params[:controller] == "admin/dashboard" || params[:controller] == "admin/channels" && params[:action] == "show"
+      = render 'shared/flash_messages', :locals => { :flash => flash }
+      - if params[:controller] == "admin/dashboard" && params[:action] == "index" || params[:controller] == "admin/channels" && params[:action] == "show"
         .content-boxes
-          = render 'shared/flash_messages', :locals => { :flash => flash }
           = yield
       - else
         .content-background
           = render "admin/shared/sub_nav"
-          = render 'shared/flash_messages', :locals => { :flash => flash }
           = yield
     %footer
       %p
