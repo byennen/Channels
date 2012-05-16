@@ -4,6 +4,7 @@ class Player
   constructor: ->
     @el = $("#player .container")
     @player = $('#jplayer')
+    @player.status = ""
     @player.jPlayer({
       swfPath: "/assets/",
       ready: (event) ->
@@ -15,8 +16,15 @@ class Player
       play: @playing
       error: (event) ->
         echo event.jPlayer.error.type
+      playing: ->
+        echo "playing....."
+      canplay: ->
+        echo "I can play all day"
+      timeupdate: (event) ->
+        @player.status event.jPlayer.status.paused
     })
     @el.find("#controls a#player_play").click(@play)
+
 
   playEnded: (event)->
     echo "I stopped playing"
@@ -27,12 +35,12 @@ class Player
     echo "playing..."
 
   playNext: ->
-    echo "playing next song..."
+    echo "playing next song..." + @player.status
     response = $.getJSON("/songs/next_song.json", (data)=>
+      echo data["filename"]
       @player.jPlayer("setMedia", {
-        mp3: data["filename"]
-      })
-      @player.jPlayer("play")
+        mp3: "/assets/" + data["filename"]
+      }).jPlayer("play")
     )
 
   setSong: (song_filename) ->
