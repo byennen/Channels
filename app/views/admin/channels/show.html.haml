@@ -1,9 +1,20 @@
-- if @channel.feature.audio == true
-  .box
-    .inside
-      %h2 Songs
-      %p Edit Songs here.
-      %p= link_to "Songs",  "#", :class => "btn"
+.box
+  .inside
+    %h2 Albums
+    %p Edit Albums here.
+    %p= link_to "Albums",  admin_channel_albums_path(@channel), :class => "btn"
+
+.box
+  .inside
+    %h2 Videos
+    %p Edit Videos here.
+    %p= link_to "Videos",  admin_channel_videos_path(@channel), :class => "btn"
+
+.box
+  .inside
+    %h2 Photos
+    %p Edit Photos here.
+    %p= link_to "Photos",  admin_channel_photos_path(@channel), :class => "btn"
 
 - if @channel.feature.vault == true
   .box
@@ -35,26 +46,8 @@
 
 .box
   .inside
-    %h2 Videos
-    %p Edit Videos here.
-    %p= link_to "Videos",  admin_channel_videos_path(@channel), :class => "btn"
-
-.box
-  .inside
-    %h2 Photos
-    %p Edit Photos here.
-    %p= link_to "Photos",  admin_channel_photos_path(@channel), :class => "btn"
-
-.box
-  .inside
-    %h2 Albums
-    %p Edit Albums here.
-    %p= link_to "Albums",  admin_channel_albums_path(@channel), :class => "btn"
-
-.box
-  .inside
     %h2 Help
-    %p Edit Albums here.
+    %p FAQ's and more here.
     %p= link_to "Help",  admin_channel_help_path, :class => "btn"
 
 

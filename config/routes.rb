@@ -1,5 +1,7 @@
 Channels::Application.routes.draw do
 
+  get "pages/channel_help"
+
   #subdomains - Keep at top
   match "", to: "channels#show", constraints: lambda {|r| r.subdomain.present? && r.subdomain != 'www'}
 
@@ -55,7 +57,7 @@ Channels::Application.routes.draw do
         resources :songs
       end
     end
-    match "/channels-help" => "dashboard#channel_help", :as => "channel_help"
+    match "/pages/channels-help" => "pages#channel_help", :as => "channel_help"
     root :to => "dashboard#index"
   end
 

@@ -4,7 +4,7 @@ class Admin::UsersController < Admin::ApplicationController
   respond_to :html
 
   def index
-    @users = User.all
+    @users = User.order('role ASC')
   end
   
   def new

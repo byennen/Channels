@@ -1,24 +1,25 @@
 %a.brand{:href => admin_channel_path(current_user.channel_id) } Altimarc Admin
 .nav-collapse
   %ul.nav
-    -# - if @channel.feature.audio == true
-    -#   %li= link_to "Songs",  "#"
+    %li= link_to "Albums", admin_channel_albums_path(@channel)
 
-    -# - if @channel.feature.vault == true
-    -#   %li= link_to "Vault",  "#"
+    %li= link_to "Videos", admin_channel_videos_path(@channel)
 
-    -# - if @channel.feature.news == true
-    -#   %li= link_to "News",  "#"
+    %li= link_to "Photos",  admin_channel_photos_path(@channel)
 
-    -# - if @channel.feature.events == true
-    -#   %li= link_to "Events",  "#"
+    - if @channel.feature.vault == true
+      %li= link_to "Vault",  "#"
 
-    -# - if @channel.feature.giving == true
-    -#   %li= link_to "Giving",  "#"
+    - if @channel.feature.news == true
+      %li= link_to "News",  "#"
 
-    -# %li= link_to "Videos",  "#"
+    - if @channel.feature.events == true
+      %li= link_to "Events",  "#"
 
-    -# %li= link_to "Photos",  admin_channel_photos_path(@channel)
+    - if @channel.feature.giving == true
+      %li= link_to "Giving",  "#"
+
+    %li= link_to "Help", admin_channel_help_path
 
   %p.navbar-text.pull-right
     Logged in as
