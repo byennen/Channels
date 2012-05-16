@@ -20,12 +20,12 @@
           = render "layouts/#{current_user.role}_nav"
     .container-fluid
       = render 'shared/flash_messages', :locals => { :flash => flash }
-      - if params[:controller] == "admin/dashboard" && params[:action] == "index" || params[:controller] == "admin/channels"
+      - if params[:controller] == "admin/dashboard" && params[:action] == "index" || params[:controller] == "admin/channels" && params[:action] == "show"
         .content-boxes
           = yield
       - else
         .content-background
-          - unless params[:action] == "show" || params[:controller] = "admin/pages"
+          - unless params[:controller] = "admin/pages"
             = render "admin/shared/sub_nav"
           = yield
     %footer
