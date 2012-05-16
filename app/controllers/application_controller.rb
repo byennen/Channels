@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   def verifies_staging_user
-    unless request.cookies["altimarc"].to_s.blank?
+    unless cookies[:altimarc]
       authenticate_or_request_with_http_basic do |username, password|
         username == "altimarc" && password == "altimarc2012"
         cookies[:altimarc] = {:value => "staging", :expires => 5.days.from_now.utc}
