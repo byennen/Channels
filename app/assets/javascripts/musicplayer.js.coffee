@@ -3,6 +3,7 @@ echo = console.log
 class Player
   constructor: ->
     @el = $("#player .container")
+    @status = false
     @player = $('#jplayer')
     @player.jPlayer({
       swfPath: "/assets/",
@@ -11,22 +12,18 @@ class Player
       play: @playing
       error: (event) ->
         echo event.jPlayer.error.type
-      playing: ->
-        echo "playing....."
-      canplay: ->
-        echo "I can play all day"
+      playing: @playing
       timeupdate: (event) ->
-        @player.status event.jPlayer.status.paused
+        @status = event.jPlayer.status.paused
     })
     @el.find("#controls a#player_play").click(@play)
-
+    @el.find("#controls a#player_next").click(@playNext)
+    @el.find("#controls a#player_previous").click(@playPrevious)
 
   playEnded: (event) ->
     echo "I stopped playing"
+    @status = false
     @playNext()
-
-  playDummy: ->
-    echo "dummy, dummy, dummy"
 
   playing: ->
     echo "playing..."
@@ -37,17 +34,20 @@ class Player
       $('#jplayer').jPlayer("setMedia", {
         mp3: "/assets/" + data["filename"]
       }).jPlayer("play")
+      @status = true
     )
 
-  setSong: (song_filename) ->
-    echo song_filename
+  playPrevious: ->
+    echo "What am I supposed to play now?"
 
   play: ->
-    @player.jPlayer("play")
-    echo "play music..."
-
-  pause: ->
-    @player.jPlayer("pause")
-    echo "pausing play"
+    if @status
+      $("#jplayer").jPlayer("play")
+      @status = false
+      echo "play music..."
+    else
+      $("#jplayer").jPlayer("pause")
+      @status = true
+      echo "pause music..."
 
 window.Player = Player
