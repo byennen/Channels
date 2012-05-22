@@ -43,10 +43,12 @@ class Player
   play: ->
     if @status
       $("#jplayer").jPlayer("play")
+      $("#controls a#player_play").addClass("playing").removeClass("paused")
       @status = false
       echo "play music..."
     else
       $("#jplayer").jPlayer("pause")
+      $("#controls a#player_play").addClass("paused").removeClass("playing")
       @status = true
       echo "pause music..."
 
