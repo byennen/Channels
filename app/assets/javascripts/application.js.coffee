@@ -5,6 +5,3 @@
 #= require musicplayer
 #= require plugins/jquery.cookie
 #= require plugins/mosanic
-
-$ ->
-  $('a').pjax('[data-pjax-container]')
