@@ -11,4 +11,4 @@
 
 $ ->
   $('a').pjax('[data-pjax-container]')
-  window.player = new Player
+  window.player = new Player(el: "#player .container")

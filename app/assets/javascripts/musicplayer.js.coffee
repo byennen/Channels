@@ -1,9 +1,10 @@
 echo = console.log
 
 class Player
-  constructor: ->
-    @el = $("#player .container")
-    @status = false
+
+  status: false
+
+  constructor: (@player, @el)->
     @player = $('#jplayer')
     @player.jPlayer({
       swfPath: "/assets/",
@@ -16,9 +17,10 @@ class Player
       timeupdate: (event) ->
         @status = event.jPlayer.status.paused
     })
-    @el.find("#controls a#player_play").click(@play)
-    @el.find("#controls a#player_next").click(@playNext)
-    @el.find("#controls a#player_previous").click(@playPrevious)
+    el = $("#player .container")
+    el.find("#controls a#player_play").click(@play)
+    el.find("#controls a#player_next").click(@playNext)
+    el.find("#controls a#player_previous").click(@playPrevious)
 
   playEnded: (event) ->
     echo "I stopped playing"
@@ -28,13 +30,20 @@ class Player
   playing: ->
     echo "playing..."
 
+  setClass: (name, className)->
+    artistEl = $("#player .container").find(className)
+    artistEl.attr("title", name)
+    artistEl.text(name)
+
   playNext: ->
-    response = $.getJSON("/songs/next_song.json", (data)=>
+    response = $.getJSON("/songs/next_song.json", (data)->
       echo "playing next song: " + data["filename"]
       $('#jplayer').jPlayer("setMedia", {
         mp3: "/assets/" + data["filename"]
       }).jPlayer("play")
-      @status = true
+      player.setClass(data["title"], ".trackName")
+      player.setClass(data["album"], ".artist")
+      player.status = true
     )
 
   playPrevious: ->
@@ -45,11 +54,9 @@ class Player
       $("#jplayer").jPlayer("play")
       $("#controls a#player_play").addClass("playing").removeClass("paused")
       @status = false
-      echo "play music..."
     else
       $("#jplayer").jPlayer("pause")
       $("#controls a#player_play").addClass("paused").removeClass("playing")
       @status = true
-      echo "pause music..."
 
 window.Player = Player
