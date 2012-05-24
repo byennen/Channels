@@ -38,24 +38,20 @@
           %footer
             = render "layouts/footer"
     - else
-      #video{:style => "margin: 100px auto 0px;"}
-        .container
-          = render 'layouts/video'
       .background-wrapper
-        %div{"data-pjax-container" => ""}
-          %header
-            =# render 'shared/musicplayer'
-            = render 'shared/navigation'
-          .container
-            - if params[:controller] == "registrations"
+        %header
+          =# render 'shared/musicplayer'
+          = render 'shared/navigation'
+        .container
+          - if params[:controller] == "registrations"
+            = yield
+          - elsif params[:controller] == "sessions"
+            = yield
+          - else
+            = render 'shared/flash_messages', :locals => { :flash => flash }
+            .content
               = yield
-            - elsif params[:controller] == "sessions"
-              = yield
-            - else
-              = render 'shared/flash_messages', :locals => { :flash => flash }
-              .content
-                = yield
-            %footer
-              = render "layouts/footer"
+          %footer
+            = render "layouts/footer"
     / Javascript
     = render "layouts/analytics"
