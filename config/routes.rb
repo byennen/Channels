@@ -28,6 +28,7 @@ Channels::Application.routes.draw do
 
   resources :songs, :only => [:index] do
     get :next_song, :on => :collection
+    get :intro, :on => :collection
   end
 
   #users

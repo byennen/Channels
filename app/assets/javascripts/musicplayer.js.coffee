@@ -3,6 +3,8 @@ echo = console.log
 class Player
 
   status: false
+  playCount: 0
+  intro: true
 
   constructor: (@player, @el)->
     @player = $('#jplayer')
@@ -31,20 +33,35 @@ class Player
     echo "playing..."
 
   setClass: (name, className)->
-    artistEl = $("#player .container").find(className)
-    artistEl.attr("title", name)
-    artistEl.text(name)
+    el = $("#player .container").find(className)
+    el.attr("title", name)
+    el.text(name)
 
-  playNext: ->
-    response = $.getJSON("/songs/next_song.json", (data)->
-      echo "playing next song: " + data["filename"]
-      $('#jplayer').jPlayer("setMedia", {
-        mp3: "/assets/" + data["filename"]
-      }).jPlayer("play")
-      player.setClass(data["title"], ".trackName")
-      player.setClass(data["album"], ".artist")
-      player.status = true
-    )
+  playIntro: ->
+    r = $.getJSON("/songs/intro.json", (data)->
+        echo "playing intro" + data["filename"]
+        $('#jplayer').jPlayer("setMedia", {
+          mp3: "/assets/" + data["filename"]
+        }).jPlayer("play")        
+        player.setClass("Welcome", ".trackName")
+        player.setClass("", ".artist")
+        player.status = true
+        player.intro = false
+      )
+
+  playNext: =>
+    if @intro
+      @playIntro()
+    else 
+      r = $.getJSON("/songs/next_song.json", (data)->
+        echo "playing next song: " + data["filename"]
+        $('#jplayer').jPlayer("setMedia", {
+          mp3: "/assets/" + data["filename"]
+        }).jPlayer("play")
+        player.setClass(data["title"], ".trackName")
+        player.setClass(data["album"], ".artist")
+        player.status = true
+      )
 
   playPrevious: ->
     echo "What am I supposed to play now?"
