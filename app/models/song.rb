@@ -1,7 +1,8 @@
 class Song < ActiveRecord::Base
   belongs_to :album
+  has_many :uploads, as: :uploadable
 
-  attr_accessible :id, :album_id, :title, :price, :filename, :file_preview, :active, :album
+  attr_accessible :id, :album_id, :title, :price, :active, :album
 
   scope :available, where(:active => true)
 

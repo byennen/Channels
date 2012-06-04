@@ -1,8 +1,14 @@
-= simple_form_for [:admin, @channel, @album, @song], :html => { :multipart => true, :class => 'form-horizontal' } do |f|
+#video{ 'data-s3-bucket' => ENV['S3_UPLOADER_BUCKET'] }
+  = s3_uploader create_resource_url: admin_songs_create_song_upload_url
+  #uploading_files
+   
+= @song.uploads.inspect
+%hr  
+= @song.inspect
+
+= simple_form_for [:admin, @channel, @album, @song], :html => { :multipart => true, :class => 'form-horizontal', :style => "clear:both;" } do |f|
   = f.input :title, :input_html => {:class => "input-xlarge"}
   = f.input :price, :input_html => {:class => "input-xlarge"}
-  = f.input :filename, :as => :file, :label => "Song"
-  = f.input :file_preview, :as => :file, :label => "Song Preview"
   = f.input :active
   .form-actions
     = f.button :submit, :class => 'btn-primary'

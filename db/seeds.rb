@@ -27,8 +27,15 @@ album = Album.create(:channel => channel, :title => "Demo", :description => "Dem
 puts ""
 
 puts "***CREATING SONGS***"
-Song.create(:album => album, :title => "Breaking Bad", :filename => "song.mp3", :active => true, :price => "1.00")
-Song.create(:album => album, :title => "D.V.N.O.", :filename => "dvno.mp3", :active => true, :price => "1.00")
-Song.create(:album => album, :title => "Genesis", :filename => "genesis.mp3", :active => true, :price => "1.00")
-Song.create(:album => album, :title => "Threee Paaarrrtyyy", :filename => "party.mp3", :active => true, :price => "1.00")
+song = Song.create(:album => album, :title => "Breaking Bad", :active => true, :price => "1.00")
+Song.create(:album => album, :title => "D.V.N.O.", :active => true, :price => "1.00")
+Song.create(:album => album, :title => "Genesis", :active => true, :price => "1.00")
+Song.create(:album => album, :title => "Threee Paaarrrtyyy", :active => true, :price => "1.00")
+puts ""
+
+puts "***CREATING SONG ATTACHMENTS***"
+SongAttachment.create(:song => song, :filename => "song.mp3")
+SongAttachment.create(:song => song, :filename => "dvno.mp3")
+SongAttachment.create(:song => song, :filename => "genesis.mp3")
+SongAttachment.create(:song => song, :filename => "party.mp3")
 puts ""

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120514161935) do
+ActiveRecord::Schema.define(:version => 20120603161500) do
 
   create_table "albums", :force => true do |t|
     t.integer  "channel_id"
@@ -67,14 +67,24 @@ ActiveRecord::Schema.define(:version => 20120514161935) do
 
   create_table "songs", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
-    t.string   "filename"
-    t.string   "file_preview"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.boolean  "active"
     t.integer  "album_id"
-    t.decimal  "price",        :precision => 8, :scale => 2
+    t.decimal  "price",      :precision => 8, :scale => 2
   end
+
+  create_table "uploads", :force => true do |t|
+    t.string   "file_name"
+    t.string   "file_type"
+    t.string   "file_size"
+    t.integer  "uploadable_id"
+    t.string   "uploadable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "uploads", ["uploadable_id", "uploadable_type"], :name => "index_uploads_on_uploadable_id_and_uploadable_type"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

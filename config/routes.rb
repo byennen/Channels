@@ -1,7 +1,5 @@
 Channels::Application.routes.draw do
 
-  get "pages/channel_help"
-
   #subdomains - Keep at top
   match "", to: "channels#show", constraints: lambda {|r| r.subdomain.present? && r.subdomain != 'www'}
 
@@ -22,7 +20,7 @@ Channels::Application.routes.draw do
 
   #giveaways email
   match "/create_derby(/:id)" => "giveaways#create_derby"
-  match "/create_cma(/:id)" => "giveaways#create_cma"
+  match "/create_cma(/:id)" => "giveaways#create_cm:wa"
 
   #channels
   resources :channels, :only => :show do
@@ -49,6 +47,9 @@ Channels::Application.routes.draw do
     resources :videos, :only => :index
     resources :albums, :only => :index
     resources :users
+    match "/songs/create_song_upload" => "songs#create_song_upload", :via => [:post]
+    
+    #admin/channels
     resources :channels do
       resources :features, :only => :edit
       resources :photos
