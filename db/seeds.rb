@@ -33,9 +33,9 @@ Song.create(:album => album, :title => "Genesis", :active => true, :price => "1.
 Song.create(:album => album, :title => "Threee Paaarrrtyyy", :active => true, :price => "1.00")
 puts ""
 
-puts "***CREATING SONG ATTACHMENTS***"
-SongAttachment.create(:song => song, :filename => "song.mp3")
-SongAttachment.create(:song => song, :filename => "dvno.mp3")
-SongAttachment.create(:song => song, :filename => "genesis.mp3")
-SongAttachment.create(:song => song, :filename => "party.mp3")
-puts ""
+# puts "***CREATING SONG ATTACHMENTS***"
+# SongAttachment.create(:song => song, :filename => "song.mp3")
+# SongAttachment.create(:song => song, :filename => "dvno.mp3")
+# SongAttachment.create(:song => song, :filename => "genesis.mp3")
+# SongAttachment.create(:song => song, :filename => "party.mp3")
+# puts ""
