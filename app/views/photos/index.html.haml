@@ -1,0 +1,8 @@
+= render "shared/channel_menu"
+
+.span12
+  %h1 Photos:
+  - @photos.each do |photo|
+    %ul
+      - if album.image_uid
+        %li= link_to image_tag(photo.image.thumb('50x50#').url), "#"

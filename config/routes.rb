@@ -22,9 +22,10 @@ Channels::Application.routes.draw do
   match "/create_cma(/:id)" => "giveaways#create_cm:wa"
 
   #channels
+  resources :videos, :only => [:show, :index]
+  resources :photos, :only => [:show, :index] 
   resources :channels, :only => :show do
     get :next_song, :on => :collection
-    resources :videos, :only => [:show, :index] 
   end
 
   resources :songs, :only => [:index] do

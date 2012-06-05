@@ -1,0 +1,24 @@
+:css
+  #channel_menu {
+    margin: 1em 0;
+  }
+  #channel_menu ul li {
+    display: inline;
+  }
+#channel_menu.span12
+  %ul
+    %li= link_to "Channel Name Here", "#", :class => "btn"
+    / %li= link_to channel.name, root_url(subdomain: channel.subdomain)
+    %li= link_to "Videos",  videos_path, :class => "btn"
+    %li= link_to "Photos",  photos_path, :class => "btn"
+    / - if @channel.feature.audio == true
+    /   %li= link_to "Albums",  channel_albums_path(@channel), :class => "btn"
+    / - if @channel.feature.news == true
+    /   %li= link_to "News",  channel_posts_path(@channel), :class => "btn"
+    / - if @channel.feature.events == true
+    /   %li= link_to "Events",  channel_events_path(@channel), :class => "btn"
+    / - if @channel.feature.vault == true
+    /   %li= link_to "Vault", channel_vaults_path(@channel), :class => "btn"
+    / - if @channel.feature.giving == true
+    /   %li= link_to "Giving",  channel_gives_path(@channel), :class => "btn"
+    /   %li= link_to "Living",  channel_lifes_path(@channel), :class => "btn"
