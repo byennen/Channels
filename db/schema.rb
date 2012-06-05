@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120529003014) do
+ActiveRecord::Schema.define(:version => 20120605013730) do
+
+  create_table "albums", :force => true do |t|
+    t.integer  "channel_id"
+    t.string   "title"
+    t.text     "description"
+    t.decimal  "price",       :precision => 8, :scale => 2
+    t.string   "image_uid"
+    t.boolean  "active"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
 
   create_table "channels", :force => true do |t|
     t.string   "name"
@@ -21,6 +32,30 @@ ActiveRecord::Schema.define(:version => 20120529003014) do
     t.string   "subdomain"
     t.string   "background_image_uid"
     t.string   "banner_image_uid"
+    t.string   "background_color"
+  end
+
+  create_table "contents", :force => true do |t|
+    t.datetime "date"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "title"
+    t.text     "description"
+    t.string   "logo_uid"
+    t.string   "link"
+    t.string   "location"
+    t.integer  "contentable_id"
+    t.string   "contentable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "contents", ["contentable_id", "contentable_type"], :name => "index_contents_on_contentable_id_and_contentable_type"
+
+  create_table "events", :force => true do |t|
+    t.integer  "channel_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "features", :force => true do |t|
@@ -42,18 +77,56 @@ ActiveRecord::Schema.define(:version => 20120529003014) do
     t.datetime "updated_at",                    :null => false
   end
 
-  create_table "songs", :force => true do |t|
+  create_table "gives", :force => true do |t|
+    t.integer  "channel_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "lives", :force => true do |t|
+    t.integer  "channel_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "photos", :force => true do |t|
     t.integer  "channel_id"
     t.string   "title"
-    t.string   "album"
-    t.decimal  "song_price",  :precision => 10, :scale => 0
-    t.decimal  "album_price", :precision => 10, :scale => 0
-    t.datetime "created_at",                                                    :null => false
-    t.datetime "updated_at",                                                    :null => false
-    t.string   "filename"
+    t.text     "description"
+    t.boolean  "paid"
     t.boolean  "active"
-    t.boolean  "intro",                                      :default => false
+    t.string   "image_uid"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
+
+  create_table "posts", :force => true do |t|
+    t.integer  "channel_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "songs", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at",                                                  :null => false
+    t.datetime "updated_at",                                                  :null => false
+    t.boolean  "active"
+    t.integer  "album_id"
+    t.decimal  "price",      :precision => 8, :scale => 2
+    t.boolean  "intro",                                    :default => false
+  end
+
+  create_table "uploads", :force => true do |t|
+    t.string   "file_name"
+    t.string   "file_type"
+    t.string   "file_size"
+    t.integer  "uploadable_id"
+    t.string   "uploadable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "uploads", ["uploadable_id", "uploadable_type"], :name => "index_uploads_on_uploadable_id_and_uploadable_type"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -76,10 +149,28 @@ ActiveRecord::Schema.define(:version => 20120529003014) do
     t.string   "last_name"
     t.string   "role"
     t.integer  "channel_id"
+    t.string   "stripe_customer_token"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "vaults", :force => true do |t|
+    t.integer  "channel_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "videos", :force => true do |t|
+    t.integer  "channel_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "image_uid"
+    t.boolean  "paid"
+    t.boolean  "active"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
 end

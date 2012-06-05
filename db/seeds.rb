@@ -24,8 +24,8 @@ puts ""
 
 puts "***CREATING SONGS***"
 #Song.create(:channel => channel, :title => "Breaking Bad", :filename => "song.mp3", :active => true)
-Song.create(:channel => channel, :title => "D.V.N.O.", :filename => "dvno.mp3", :active => true)
-Song.create(:channel => channel, :title => "Genesis", :filename => "genesis.mp3", :active => true)
-Song.create(:channel => channel, :title => "Threee Paaarrrtyyy", :filename => "party.mp3", :active => true)
+#Song.create(:channel => channel, :title => "D.V.N.O.", :filename => "dvno.mp3", :active => true)
+#Song.create(:channel => channel, :title => "Genesis", :filename => "genesis.mp3", :active => true)
+#Song.create(:channel => channel, :title => "Threee Paaarrrtyyy", :filename => "party.mp3", :active => true)
 puts "***ADDING INTRO***"
-Song.create(:title => "Welcome to Altimarc", :filename => "song.mp3", :active => true, :intro => true)
+#Song.create(:title => "Welcome to Altimarc", :filename => "song.mp3", :active => true, :intro => true)
