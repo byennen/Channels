@@ -1,0 +1,2 @@
+module Admin::VaultsHelper
+end

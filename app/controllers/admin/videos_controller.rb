@@ -15,7 +15,7 @@ class Admin::VideosController < Admin::ApplicationController
   end
 
   def create
-    @video = Video.new(params[:video].merge(:channel => @channel))
+    # @video = Video.new(params[:video].merge(:channel => @channel))
     if @video.save
       flash[:notice] = "Video was successfully created."
     end

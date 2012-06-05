@@ -1,5 +1,11 @@
 Channels::Application.routes.draw do
 
+  get "vaults/index"
+
+  get "vaults/edit"
+
+  get "vaults/new"
+
   #subdomains - Keep at top
   match "", to: "channels#show", constraints: lambda {|r| r.subdomain.present? && r.subdomain != 'www'}
 
@@ -46,6 +52,7 @@ Channels::Application.routes.draw do
     resources :photos, :only => :index
     resources :videos, :only => :index
     resources :albums, :only => :index
+    resources :vaults, :only => :index
     resources :users
     match "/songs/create_song_upload" => "songs#create_song_upload", :via => [:post]
     
@@ -54,6 +61,7 @@ Channels::Application.routes.draw do
       resources :features, :only => :edit
       resources :photos
       resources :videos
+      resources :vaults
       resources :albums do
         resources :songs
       end
