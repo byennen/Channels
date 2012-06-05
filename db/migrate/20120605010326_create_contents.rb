@@ -9,8 +9,10 @@ class CreateContents < ActiveRecord::Migration
       t.string :logo_uid
       t.string :link
       t.string :location
+      t.belongs_to :contentable, polymorphic: true
 
       t.timestamps
     end
+    add_index :contents, [:contentable_id, :contentable_type]
   end
 end

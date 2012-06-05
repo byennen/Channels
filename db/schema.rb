@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605010326) do
+ActiveRecord::Schema.define(:version => 20120605010900) do
 
   create_table "albums", :force => true do |t|
     t.integer  "channel_id"
@@ -44,9 +44,13 @@ ActiveRecord::Schema.define(:version => 20120605010326) do
     t.string   "logo_uid"
     t.string   "link"
     t.string   "location"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "contentable_id"
+    t.string   "contentable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
+
+  add_index "contents", ["contentable_id", "contentable_type"], :name => "index_contents_on_contentable_id_and_contentable_type"
 
   create_table "features", :force => true do |t|
     t.integer  "channel_id"
@@ -126,6 +130,12 @@ ActiveRecord::Schema.define(:version => 20120605010326) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "vaults", :force => true do |t|
+    t.integer  "channel_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "videos", :force => true do |t|
     t.integer  "channel_id"

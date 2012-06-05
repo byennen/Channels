@@ -46,4 +46,12 @@ puts ""
 puts "***CREATING VIDEO UPLOADS***"
 video.uploads.create(:file_name => "movie.mov")
 puts ""
+
+puts "***CREATING VAULT***"
+vault = Vault.create(:channel => channel)
+puts ""
+
+puts "***CREATING VIDEO UPLOADS***"
+vault.contents.create(:title => "movie.mov")
+puts ""
      
