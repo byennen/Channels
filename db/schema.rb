@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120604235029) do
+ActiveRecord::Schema.define(:version => 20120605010326) do
 
   create_table "albums", :force => true do |t|
     t.integer  "channel_id"
@@ -33,6 +33,19 @@ ActiveRecord::Schema.define(:version => 20120604235029) do
     t.string   "background_image_uid"
     t.string   "banner_image_uid"
     t.string   "background_color"
+  end
+
+  create_table "contents", :force => true do |t|
+    t.datetime "date"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "title"
+    t.text     "description"
+    t.string   "logo_uid"
+    t.string   "link"
+    t.string   "location"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "features", :force => true do |t|
