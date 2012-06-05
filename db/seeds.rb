@@ -14,7 +14,6 @@ Channel.create(:id => "2", :name => "Mark Collie", :subdomain => "mark-collie", 
 Channel.create(:id => "3", :name => "Sam Phillips", :subdomain => "sam-phillips", :background_color => "FFFFFF", :banner_image => File.new(File.join(banner_dir, 'sam-phillips.png')), :description => "Legendary music entrepreneur, and Sun records founder, Sam Phillips believed in music with no limits.  Tearing down racial barriers and launching careers for great artists such as BB King, Howlin Wolf, Elvis Presley, Carl Perkins, Johnny Cash, Jerry Lee Lewis, Charlie Rich, Roy Orbison and many more. That's what you will find right here. Rock-N-Roll Swag, behind the scenes footage, live performances and exclusive interviews revealing untold stories on the history of Rock-N-Roll and it's continuing influence on modern music.")
 puts ""
 
-
 puts "***SETTING UP CHANNEL MASTER USER LOGIN***"
 user = User.create! :first_name => "Alison", :last_name => "Owen", :email => "channel@altimarc.com", :password => "please", :password_confirmation => "please", :role => "channel_master", :channel_id => "1"
 puts "New channel master user created: " << user.email
@@ -38,5 +37,13 @@ song.uploads.create(:file_name => "song.mp3")
 song.uploads.create(:file_name => "dvno.mp3")
 song.uploads.create(:file_name => "genesis.mp3")
 song.uploads.create(:file_name => "party.mp3")
+puts ""
+
+puts "***CREATING VIDEOS***"
+video = Video.create(:channel => channel, :title => "This is a movie demo", :description => "Description")
+puts ""
+
+puts "***CREATING VIDEO UPLOADS***"
+video.uploads.create(:file_name => "movie.mov")
 puts ""
      

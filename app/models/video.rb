@@ -2,8 +2,6 @@ class Video < ActiveRecord::Base
   belongs_to :channel
   has_many :uploads, as: :uploadable
   
-  attr_accessible :id, :channel_id, :title, :description, :short_video, :full_video, :image, :paid, :active, :channel
-  image_accessor :short_video
-  image_accessor :full_video
+  attr_accessible :id, :channel_id, :title, :description, :image, :paid, :active, :channel
   image_accessor :image
 end
