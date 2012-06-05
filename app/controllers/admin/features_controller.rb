@@ -1,5 +1,6 @@
 class Admin::FeaturesController < Admin::ApplicationController
   load_and_authorize_resource :channel
+  # load_and_authorize_resource :feature, :through => :channel
 
   respond_to :html
 

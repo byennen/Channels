@@ -1,11 +1,5 @@
 .box
   .inside
-    %h2 Albums
-    %p Edit Albums here.
-    %p= link_to "Albums",  admin_channel_albums_path(@channel), :class => "btn"
-
-.box
-  .inside
     %h2 Videos
     %p Edit Videos here.
     %p= link_to "Videos",  admin_channel_videos_path(@channel), :class => "btn"
@@ -16,12 +10,12 @@
     %p Edit Photos here.
     %p= link_to "Photos",  admin_channel_photos_path(@channel), :class => "btn"
 
-- if @channel.feature.vault == true
+- if @channel.feature.audio == true
   .box
     .inside
-      %h2 Vault
-      %p Edit Vault here.
-      %p= link_to "Vault",  "#", :class => "btn"
+      %h2 Albums
+      %p Edit Albums here.
+      %p= link_to "Albums",  admin_channel_albums_path(@channel), :class => "btn"
 
 - if @channel.feature.news == true
   .box
@@ -36,6 +30,13 @@
       %h2 Event
       %p Edit Events here.
       %p= link_to "Events",  "#", :class => "btn"
+      
+- if @channel.feature.vault == true
+  .box
+    .inside
+      %h2 Vault
+      %p Edit Vault here.
+      %p= link_to "Vault", admin_channel_vaults_path(@channel), :class => "btn"
 
 - if @channel.feature.giving == true
   .box
