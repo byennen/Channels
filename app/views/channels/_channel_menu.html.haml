@@ -1,0 +1,14 @@
+%ul
+  %li= link_to "Videos",  channel_videos_path(@channel), :class => "btn"
+  / %li= link_to "Photos",  channel_photos_path(@channel), :class => "btn"
+  / - if @channel.feature.audio == true
+  /   %li= link_to "Albums",  channel_albums_path(@channel), :class => "btn"
+  / - if @channel.feature.news == true
+  /   %li= link_to "News",  channel_posts_path(@channel), :class => "btn"
+  / - if @channel.feature.events == true
+  /   %li= link_to "Events",  channel_events_path(@channel), :class => "btn"
+  / - if @channel.feature.vault == true
+  /   %li= link_to "Vault", channel_vaults_path(@channel), :class => "btn"
+  / - if @channel.feature.giving == true
+  /   %li= link_to "Giving",  channel_gives_path(@channel), :class => "btn"
+  /   %li= link_to "Living",  channel_lifes_path(@channel), :class => "btn"

@@ -4,7 +4,7 @@ gem 'rails', '3.2.5'
 
 gem 'jquery-rails'
 gem 'haml', '>= 3.1.4'
-gem 'devise', '>= 2.0.0'
+gem 'devise', '2.0.4'
 gem 'cancan'
 gem 'rack-pjax'
 gem 'mail'

@@ -24,13 +24,14 @@ Channels::Application.routes.draw do
   #channels
   resources :channels, :only => :show do
     get :next_song, :on => :collection
+    resources :videos, :only => [:show, :index] 
   end
 
   resources :songs, :only => [:index] do
     get :next_song, :on => :collection
     get :intro, :on => :collection
   end
-
+  
   #users
   devise_for :users #, :controllers => {:registrations => 'registrations', :sessions => 'sessions'}
   devise_scope :user do
@@ -47,6 +48,10 @@ Channels::Application.routes.draw do
     resources :videos, :only => :index
     resources :albums, :only => :index
     resources :vaults, :only => :index
+    resources :events, :only => :index
+    resources :posts, :only => :index
+    resources :lifes, :only => :index
+    resources :gives, :only => :index  
     resources :users
     match "/songs/create_song_upload" => "songs#create_song_upload", :via => [:post]
     
@@ -56,6 +61,10 @@ Channels::Application.routes.draw do
       resources :photos
       resources :videos
       resources :vaults
+      resources :events
+      resources :posts
+      resources :lifes
+      resources :gives
       resources :albums do
         resources :songs
       end

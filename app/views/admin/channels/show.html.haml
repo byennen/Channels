@@ -22,14 +22,14 @@
     .inside
       %h2 News
       %p Edit News here.
-      %p= link_to "News",  "#", :class => "btn"
+      %p= link_to "News",  admin_channel_posts_path(@channel), :class => "btn"
 
 - if @channel.feature.events == true
   .box
     .inside
       %h2 Event
       %p Edit Events here.
-      %p= link_to "Events",  "#", :class => "btn"
+      %p= link_to "Events",  admin_channel_events_path(@channel), :class => "btn"
       
 - if @channel.feature.vault == true
   .box
@@ -43,7 +43,14 @@
     .inside
       %h2 Giving
       %p Edit Giving here.
-      %p= link_to "Giving",  "#", :class => "btn"
+      %p= link_to "Giving",  admin_channel_gives_path(@channel), :class => "btn"
+      
+/ - if @channel.feature.living == true
+.box
+  .inside
+    %h2 Living
+    %p Edit Living here.
+    %p= link_to "Living",  admin_channel_lifes_path(@channel), :class => "btn"
 
 .box
   .inside
