@@ -78,4 +78,11 @@ puts ""
 puts "***CREATING LIFE CONTENTS***"
 life.contents.create(:title => "movie.mov")
 puts ""
-     
+
+puts "***CREATING GIVE***"
+give = Give.create(:channel => channel)
+puts ""
+
+puts "***CREATING GIVE CONTENTS***"
+give.contents.create(:title => "movie.mov")
+puts ""
