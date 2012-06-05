@@ -55,7 +55,7 @@ puts "***CREATING VAULT CONTENTS***"
 vault.contents.create(:title => "movie.mov")
 puts ""
 
-puts "***CREATING EVENTS***"
+puts "***CREATING EVENTS**"
 event = Event.create(:channel => channel)
 puts ""
 
@@ -63,11 +63,19 @@ puts "***CREATING EVENT CONTENTS***"
 event.contents.create(:title => "movie.mov")
 puts ""
 
-puts "***CREATING POSTS***"
+puts "***CREATING POST***"
 post = Post.create(:channel => channel)
 puts ""
 
 puts "***CREATING POST CONTENTS***"
 post.contents.create(:title => "movie.mov")
+puts ""
+
+puts "***CREATING LIFE***"
+life = Life.create(:channel => channel)
+puts ""
+
+puts "***CREATING LIFE CONTENTS***"
+life.contents.create(:title => "movie.mov")
 puts ""
      

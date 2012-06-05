@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605012526) do
+ActiveRecord::Schema.define(:version => 20120605012907) do
 
   create_table "albums", :force => true do |t|
     t.integer  "channel_id"
@@ -75,6 +75,12 @@ ActiveRecord::Schema.define(:version => 20120605012526) do
     t.boolean  "cma",        :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "lives", :force => true do |t|
+    t.integer  "channel_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "photos", :force => true do |t|
