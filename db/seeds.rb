@@ -59,7 +59,15 @@ puts "***CREATING EVENTS***"
 event = Event.create(:channel => channel)
 puts ""
 
-puts "***CREATING EVENTS CONTENTS***"
+puts "***CREATING EVENT CONTENTS***"
 event.contents.create(:title => "movie.mov")
+puts ""
+
+puts "***CREATING POSTS***"
+post = Post.create(:channel => channel)
+puts ""
+
+puts "***CREATING POST CONTENTS***"
+post.contents.create(:title => "movie.mov")
 puts ""
      
