@@ -1,22 +1,4 @@
 Channels::Application.routes.draw do
-  get "gives/index"
-
-  get "gives/edit"
-
-  get "gives/new"
-
-  get "lifes/index"
-
-  get "lifes/edit"
-
-  get "lifes/new"
-
-  get "posts/index"
-
-  get "posts/edit"
-
-  get "posts/new"
-
   #subdomains - Keep at top
   match "", to: "channels#show", constraints: lambda {|r| r.subdomain.present? && r.subdomain != 'www'}
 
@@ -42,13 +24,14 @@ Channels::Application.routes.draw do
   #channels
   resources :channels, :only => :show do
     get :next_song, :on => :collection
+    resources :videos, :only => [:show, :index] 
   end
 
   resources :songs, :only => [:index] do
     get :next_song, :on => :collection
     get :intro, :on => :collection
   end
-
+  
   #users
   devise_for :users #, :controllers => {:registrations => 'registrations', :sessions => 'sessions'}
   devise_scope :user do
