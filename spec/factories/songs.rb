@@ -8,8 +8,7 @@ FactoryGirl.define do
     active true
   end
 
-  factory :song4real, :class => Song do
-    filename "dvno.mp3"
-    channel_id 1
+  factory :album_song, :class => Song do
+    association :album, factory: :album, strategy: :build
   end
 end
