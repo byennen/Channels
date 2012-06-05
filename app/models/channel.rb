@@ -4,6 +4,7 @@ class Channel < ActiveRecord::Base
   has_many :albums
   has_many :photos
   has_many :videos
+  has_many :songs, :through => :albums
 
   attr_accessible :id, :name, :subdomain, :description, :background_image, :banner_image, :background_color, :feature_attributes
   accepts_nested_attributes_for :feature
