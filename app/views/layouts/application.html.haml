@@ -44,6 +44,8 @@
                 = yield
             %footer
               = render "layouts/footer"
-    = render 'shared/musicplayer'
     / Javascript
     = render "layouts/analytics"
+    = render "shared/current_user"
+
+    = render 'shared/musicplayer'

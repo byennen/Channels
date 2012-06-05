@@ -12,4 +12,7 @@ class SongsController < ApplicationController
     render :json => Song.next_song()
   end
 
+  def intro
+  	render :json => Song.intro_song()
+  end
 end
