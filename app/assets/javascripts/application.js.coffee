@@ -4,7 +4,6 @@
 #= require plugins/circle.player.js
 #= require twitter/bootstrap
 #= require jquery.pjax
-#= require registrations
 #= require plugins/jquery.cookie
 #= require plugins/slideshow
 #= require plugins/mosanic
