@@ -6,6 +6,9 @@ class Channel < ActiveRecord::Base
   has_many :videos
   has_many :songs, :through => :albums
 
+  scope :available, where(:active => true)
+  scope :intro, where(:intro => true)
+
   attr_accessible :id, :name, :subdomain, :description, :background_image, :banner_image, :background_color, :feature_attributes
   accepts_nested_attributes_for :feature
 
@@ -17,4 +20,9 @@ class Channel < ActiveRecord::Base
   def set_default_features
     Feature.create(:channel_id => self.id, :audio => false, :vault => false, :news => false, :events => false, :giving => false)
   end
+
+  def next_song
+    self.songs.available.find(:first, :order => "rand()")
+  end
+
 end

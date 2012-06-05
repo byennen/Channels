@@ -4,8 +4,7 @@ FactoryGirl.define do
   factory :song do
     title "My Song"
     album "First Album"
-    song_price "1.99"
-    album_price "9.99"
+    price "1.99"
     active true
   end
 

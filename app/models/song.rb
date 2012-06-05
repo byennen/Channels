@@ -15,7 +15,4 @@ class Song < ActiveRecord::Base
   	Song.available.intro.find(:first, :order => "rand()")
   end
 
-  def self.next_channel_song(channel)
-    Song.available.find(:first, :conditions => {:channel_id => channel}, :order => "rand()")
-  end
 end
