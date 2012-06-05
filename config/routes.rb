@@ -1,11 +1,4 @@
 Channels::Application.routes.draw do
-
-  get "vaults/index"
-
-  get "vaults/edit"
-
-  get "vaults/new"
-
   #subdomains - Keep at top
   match "", to: "channels#show", constraints: lambda {|r| r.subdomain.present? && r.subdomain != 'www'}
 
