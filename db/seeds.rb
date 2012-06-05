@@ -51,7 +51,15 @@ puts "***CREATING VAULT***"
 vault = Vault.create(:channel => channel)
 puts ""
 
-puts "***CREATING VIDEO UPLOADS***"
+puts "***CREATING VAULT CONTENTS***"
 vault.contents.create(:title => "movie.mov")
+puts ""
+
+puts "***CREATING EVENTS***"
+event = Event.create(:channel => channel)
+puts ""
+
+puts "***CREATING EVENTS CONTENTS***"
+event.contents.create(:title => "movie.mov")
 puts ""
      

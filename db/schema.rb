@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605010900) do
+ActiveRecord::Schema.define(:version => 20120605011954) do
 
   create_table "albums", :force => true do |t|
     t.integer  "channel_id"
@@ -51,6 +51,12 @@ ActiveRecord::Schema.define(:version => 20120605010900) do
   end
 
   add_index "contents", ["contentable_id", "contentable_type"], :name => "index_contents_on_contentable_id_and_contentable_type"
+
+  create_table "events", :force => true do |t|
+    t.integer  "channel_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "features", :force => true do |t|
     t.integer  "channel_id"
