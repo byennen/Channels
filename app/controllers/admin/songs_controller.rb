@@ -35,7 +35,6 @@ class Admin::SongsController < Admin::ApplicationController
   end
   
   def create_song_upload
-    logger.debug("Creating upload")
     @song = @album.songs.create(title: "test", price: 3.50)
     #@upload = Upload.new(params[:upload] || params.delete_if{ |p| !Upload.attribute_names.include?(p) })
     @song_upload = @song.uploads.new(file_name: params[:file_name],
