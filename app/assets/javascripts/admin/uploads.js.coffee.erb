@@ -34,7 +34,6 @@ jQuery ->
 
         $(".uploading_file[data-uuid=#{data.uuid}]").remove()
 
-        console.log($("iframe").attr("data-create-resource-url"));
         $.ajax $('iframe').attr("data-create-resource-url"),
           type: 'POST',
           data: data

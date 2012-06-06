@@ -1,6 +1,6 @@
 class Admin::PostsController < Admin::ApplicationController
   load_and_authorize_resource :channel
-  #load_and_authorize_resource :post, :through => :channel
+  load_and_authorize_resource :post, :through => :channel
 
   respond_to :html
 
