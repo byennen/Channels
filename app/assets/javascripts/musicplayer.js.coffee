@@ -43,25 +43,27 @@ class Player
         $('#jplayer').jPlayer("setMedia", {
           mp3: "/assets/" + data["filename"]
         }).jPlayer("play")        
-        player.setClass("Welcome", ".trackName")
-        player.setClass("", ".artist")
+        player.setClass("Welcome", ".title")
+        player.setClass("", ".album")
         player.status = true
         player.intro = false
       )
 
   playNext: =>
-    if @intro
-      @playIntro()
+    if channel_id > 0
+      url = "/channels/next_song.json"
     else 
-      r = $.getJSON("/songs/next_song.json", (data)->
-        echo "playing next song: " + data["filename"]
-        $('#jplayer').jPlayer("setMedia", {
-          mp3: "/assets/" + data["filename"]
-        }).jPlayer("play")
-        player.setClass(data["title"], ".trackName")
-        player.setClass(data["album"], ".artist")
-        player.status = true
-      )
+      url = "/songs/next_song.json"
+    r = $.getJSON(url, (data)->
+      echo "playing next song: " + data["filename"]
+      $('#jplayer').jPlayer("setMedia", {
+        mp3: "/assets/" + data["filename"]
+      }).jPlayer("play")
+      echo data
+      player.setClass(data["title"], ".trackName")
+      player.setClass(data["album"], ".artist")
+      player.status = true  
+    )
 
   playPrevious: ->
     echo "What am I supposed to play now?"

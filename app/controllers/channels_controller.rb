@@ -4,4 +4,8 @@ class ChannelsController < ApplicationController
   def show
   end
 
+  def next_song
+    render :json => @channel.next_song()
+  end
+
 end

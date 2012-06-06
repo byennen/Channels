@@ -29,7 +29,9 @@ class ApplicationController < ActionController::Base
   end
 
   def load_channel
-    @channel = Channel.find_by_subdomain!(request.subdomain)
+    if request.subdomain.present?
+      @channel = Channel.find_by_subdomain!(request.subdomain) 
+    end
   end
 
   rescue_from CanCan::AccessDenied do |exception|
