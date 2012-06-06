@@ -1,4 +1,8 @@
 Channels::Application.routes.draw do
+  get "ads/index"
+
+  get "ads/next"
+
   #subdomains - Keep at top
   match "", to: "channels#show", constraints: lambda {|r| r.subdomain.present? && r.subdomain != 'www'}
 
@@ -23,7 +27,8 @@ Channels::Application.routes.draw do
 
   #channels
   resources :videos, :only => [:show, :index]
-  resources :photos, :only => [:show, :index] 
+  resources :photos, :only => [:show, :index]
+
   resources :channels, :only => :show do
     get :next_song, :on => :collection
   end

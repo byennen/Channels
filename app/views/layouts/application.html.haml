@@ -18,6 +18,14 @@
     -# %link{:href => "images/apple-touch-icon.png", :rel => "apple-touch-icon"}
     -# %link{:href => "images/apple-touch-icon-72x72.png", :rel => "apple-touch-icon", :sizes => "72x72"}
     -# %link{:href => "images/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}
+    -if @channel.present?
+      %script
+        window.channel_id = #{@channel.id}
+        window.channel_subdomain = "#{@channel.subdomain}"
+    -else
+      %script
+        window.channel_id = 0
+        window.channel_subdomain = ""
   %body
     - if params[:controller] == "channels"
       .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }

@@ -23,7 +23,14 @@ class Channel < ActiveRecord::Base
   end
 
   def next_song
-    self.songs.available.find(:first, :order => "rand()")
+    output = {}
+    s = self.songs.available.find(:first, :order => "rand()")
+    if s.present?
+      output[:title] = s.title
+      output[:album] = s.album.title
+      output[:filename] = s.uploads.first.file_name
+    end
+    output
   end
 
 end

@@ -11,8 +11,4 @@ class Song < ActiveRecord::Base
     Song.available.find(:first, :order => "rand()")
   end
 
-  def self.intro_song
-  	Song.available.intro.find(:first, :order => "rand()")
-  end
-
 end

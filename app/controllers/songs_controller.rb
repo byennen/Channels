@@ -9,7 +9,11 @@ class SongsController < ApplicationController
   end
 
   def next_song
-    render :json => Song.next_song()
+    if @channels.present?
+      render :json => {:title => "Channel song", :channels => @channels}
+    else
+      render :json => Song.next_song()
+    end
   end
 
   def intro
