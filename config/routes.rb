@@ -54,7 +54,7 @@ Channels::Application.routes.draw do
     resources :lifes, :only => :index
     resources :gives, :only => :index  
     resources :users
-    match "/songs/create_song_upload" => "songs#create_song_upload", :via => [:post]
+    #match "channels/:channel_id/albums/:album_id/songs/create_song_upload" => "songs#create_song_upload", :via => [:post], :as => 'create_song_upload'
     
     #admin/channels
     resources :channels do
@@ -67,7 +67,11 @@ Channels::Application.routes.draw do
       resources :lifes
       resources :gives
       resources :albums do
-        resources :songs
+        resources :songs do
+          collection do
+            post 'create_song_upload'
+          end
+        end
       end
     end
     match "/pages/channels-help" => "pages#channel_help", :as => "channel_help"

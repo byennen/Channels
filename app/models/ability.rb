@@ -6,7 +6,7 @@ class Ability
 
     if user.admin?
       can :manage, :all
-      can :manage, :admin_pages
+      can :manage, :admin_pages 
     elsif user.channel_master?
       can :manage, Channel, :id => user.channel_id
       can :manage, Photo, :channel => {:id => user.channel_id}

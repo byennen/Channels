@@ -1,5 +1,5 @@
 #video{ 'data-s3-bucket' => ENV['S3_UPLOADER_BUCKET'] }
-  = s3_uploader create_resource_url: admin_songs_create_song_upload_url
+  = s3_uploader create_resource_url: create_song_upload_admin_channel_album_songs_url(@channel.id, @album.id)
   #uploading_files
    
 = @song.uploads.inspect
