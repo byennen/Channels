@@ -33,13 +33,27 @@
               %li= link_to "CMA FanFest", cma_url(subdomain: "www")
           - unless user_signed_in?
             %li= link_to "Signup and Pricing", signup_url(subdomain: "www"), :class => "signup"
-        %ul.nav.pull-right
           - if user_signed_in?
-            %li
-              = link_to('Edit account', edit_user_registration_url(subdomain: "www"))
-            %li
-              = link_to('Logout', logout_url(subdomain: "www"), :method=>'delete')
+            %ul.nav.pull-right
+              %li
+                = link_to('Edit account', edit_user_registration_url(subdomain: "www"))
+              %li
+                = link_to('Logout', logout_url(subdomain: "www"), :method=>'delete')
           - else
-            %li
-              = link_to('Login', login_url(subdomain: "www"))
+            %ul#login_nav.nav.pull-right
+              %li#login
+                %a#login-trigger{:href => "#"}
+                  Log in
+                  %span ▼
+                #login-content
+                  %form
+                    %fieldset#inputs
+                      %input#username{:name => "Email", :placeholder => "Your email address", :required => "", :type => "email"}
+                        %input#password{:name => "Password", :placeholder => "Password", :required => "", :type => "password"}
+                    %fieldset#actions
+                      %input#submit{:type => "submit", :value => "Log in"}
+                        %label
+                          %input{:checked => "checked", :type => "checkbox"} Keep me signed in
+              %li#signup
+                %a{:href => ""} Sign up FREE
 
