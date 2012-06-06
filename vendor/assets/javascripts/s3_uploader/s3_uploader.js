@@ -1,6 +1,6 @@
 jQuery(function() {
 
-  var host = 'http://channels.dev';
+  var host = 'http://www.channels.dev';
 
   var params = decodeURIComponent(location.href).split('?')[1].split('&');
   var s3BucketUrl;
