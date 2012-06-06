@@ -5,6 +5,7 @@ class Channel < ActiveRecord::Base
   has_many :photos
   has_many :videos
   has_many :songs, :through => :albums
+  has_many :posts
 
   scope :available, where(:active => true)
   scope :intro, where(:intro => true)
