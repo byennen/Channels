@@ -1,7 +1,7 @@
 .navbar.navbar-fixed-top
   .navbar-inner
     .container
-      = link_to "Altimarc", root_url(subdomain: "www"), :class => "brand"
+      = link_to "Altimarc", root_url(subdomain: "www"), :class => "brand pjax"
       .nav-collapse
         %ul.nav
           %li.dropdown
@@ -11,7 +11,7 @@
             %ul.dropdown-menu
               - if @channels.present?
                 - @channels.each do |channel|
-                  %li= link_to channel.name, root_url(subdomain: channel.subdomain)
+                  %li= link_to channel.name, root_url(subdomain: channel.subdomain), :class => "pjax"
               - else
                 %li= link_to "NO CHANNELS", admin_root_url(subdomain: "www")
           -# %li.dropdown
@@ -29,31 +29,28 @@
               Giveaways
               %b.caret
             %ul.dropdown-menu
-              %li= link_to "Kentucky Derby", derby_url(subdomain: "www")
-              %li= link_to "CMA FanFest", cma_url(subdomain: "www")
-          - unless user_signed_in?
-            %li= link_to "Signup and Pricing", signup_url(subdomain: "www"), :class => "signup"
-          - if user_signed_in?
-            %ul.nav.pull-right
-              %li
-                = link_to('Edit account', edit_user_registration_url(subdomain: "www"))
-              %li
-                = link_to('Logout', logout_url(subdomain: "www"), :method=>'delete')
-          - else
-            %ul#login_nav.nav.pull-right
-              %li#login
-                %a#login-trigger{:href => "#"}
-                  Log in
-                  %span ▼
-                #login-content
-                  %form
-                    %fieldset#inputs
-                      %input#username{:name => "Email", :placeholder => "Your email address", :required => "", :type => "email"}
-                        %input#password{:name => "Password", :placeholder => "Password", :required => "", :type => "password"}
-                    %fieldset#actions
-                      %input#submit{:type => "submit", :value => "Log in"}
-                        %label
-                          %input{:checked => "checked", :type => "checkbox"} Keep me signed in
-              %li#signup
-                %a{:href => ""} Sign up FREE
+              %li= link_to "Kentucky Derby", derby_url(subdomain: "www"), :class => "pjax"
+              %li= link_to "CMA FanFest", cma_url(subdomain: "www"), :class => "pjax"
+        - if user_signed_in?
+          %ul.nav.pull-right
+            %li
+              = link_to('Edit account', edit_user_registration_url(subdomain: "www"), :class => "pjax")
+            %li
+              = link_to('Logout', logout_url(subdomain: "www"), :method=>'delete', :class => "pjax")
+        - else
+          %ul#login_nav.nav.pull-right
+            %li#signup= link_to "Signup and Pricing", signup_url(subdomain: "www"), :class => "signup pjax"
+            %li#login
+              %a#login-trigger{:href => "#"}
+                Log in
+                %span ▼
+              #login-content
+                %form
+                  %fieldset#inputs
+                    %input#username{:name => "Email", :placeholder => "Your email address", :required => "", :type => "email"}
+                      %input#password{:name => "Password", :placeholder => "Password", :required => "", :type => "password"}
+                  %fieldset#actions
+                    %input#submit{:type => "submit", :value => "Log in", :class => "btn"}
+                      %label
+                        %input{:checked => "checked", :type => "checkbox"} Keep me signed in
 

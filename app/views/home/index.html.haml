@@ -11,12 +11,23 @@
   %h1 Welcome to Altimarc...
 
 .span7
-  %h2 Feature Channels
+  %h2 Top Video's
+  
+
+.span7
+  %h3 What's New
   - @channels.each do |channel|
     %ul
-      %li= link_to image_tag(channel.banner_image.thumb('500x150#').url), root_url(subdomain: channel.subdomain) if channel.banner_image
+      %li
+        = link_to image_tag(channel.banner_image.thumb('301x170#').url), root_url(subdomain: channel.subdomain) if channel.banner_image
+        %p
+          %strong= channel.name
+        %p= truncate(channel.description, :length => 80, :omission =>  "...")
+
 .span3
-  %h3 Top Plays:
+  %h3 Top Songs:
   / - @songs.each do |song|
   /   %ul
   /     %li= link_to song.title, root_url(subdomain: channel.subdomain)
+.span3
+  %h3 Top Albums:

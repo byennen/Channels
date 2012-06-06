@@ -1,7 +1,2 @@
-$().ajaxSuccess ->
-  console.log "ajax"
-  $("#slider").nivoSlider()
-
-$().ready ->
-  console.log "ready"
+$(document).on "ready pjax:success", ->
   $("#slider").nivoSlider()

@@ -1,63 +1,11 @@
-#login_nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  position: relative;
-  float: right;
-  background: #eee;
-  border-bottom: 1px solid #fff;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-}
-
-#login_nav li {
-  float: left;
-}
-
-#login_nav #login {
-  border-right: 1px solid #ddd;
-  -moz-box-shadow: 1px 0 0 #fff;
-  -webkit-box-shadow: 1px 0 0 #fff;
-  box-shadow: 1px 0 0 #fff;
-}
-
-#login_nav #login-trigger,
-#login_nav #signup a {
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
-  height: 25px;
-  line-height: 25px;
-  font-weight: bold;
-  padding: 0 8px;
-  text-decoration: none;
-  color: #444;
-  text-shadow: 0 1px 0 #fff;
-}
-
-#login_nav #signup a {
-  -moz-border-radius: 0 3px 3px 0;
-  -webkit-border-radius: 0 3px 3px 0;
-  border-radius: 0 3px 3px 0;
-}
-
-#login_nav #login-trigger {
-  -moz-border-radius: 3px 0 0 3px;
-  -webkit-border-radius: 3px 0 0 3px;
-  border-radius: 3px 0 0 3px;
-}
-
-#login_nav #login-trigger:hover,
-#login_nav #login .active,
-#login_nav #signup a:hover {
+#login_nav #login .active {
   background: #fff;
 }
 
 #login_nav #login-content {
   display: none;
   position: absolute;
-  top: 24px;
+  top: 39px;
   right: 0;
   z-index: 999;
   background: #fff;

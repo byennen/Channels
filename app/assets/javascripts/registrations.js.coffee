@@ -1,11 +1,5 @@
-$().ajaxComplete ->
+$(document).on "ready pjax:success", ->
   $("#coupon_code").hide()
-  $("a#coupon_link").click ->
-    $("#coupon_code").show()
-
-jQuery ->
-  $("#coupon_code").hide()
-
   $("a#coupon_link").click ->
     $("#coupon_code").show()
 
