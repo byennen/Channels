@@ -15,6 +15,7 @@ gem 'thin'
 gem 'simple_form'
 gem 'stripe'
 
+gem 'capistrano'
 #uploads
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.11'
@@ -45,7 +46,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
+  gem 'mysql2'
 end
 
 
