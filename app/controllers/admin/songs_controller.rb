@@ -4,6 +4,8 @@ class Admin::SongsController < Admin::ApplicationController
   load_and_authorize_resource :song, :through => :album
   load_and_authorize_resource :upload, :through => :song
   
+  skip_before_filter  :verify_authenticity_token, only: :create
+  
   respond_to :html, :json
 
   def index
