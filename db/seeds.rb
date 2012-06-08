@@ -26,19 +26,19 @@ album = Album.create(:channel => channel, :title => "Demo", :description => "Dem
 puts ""
 
 puts "***CREATING SONGS***"
-Song.create(:album => album, :title => "Breaking Bad", :active => true, :price => "1.00").uploads.create(:file_name => "song.mp3")
-Song.create(:album => album, :title => "D.V.N.O.", :active => true, :price => "1.00").uploads.create(:file_name => "dvno.mp3")
-Song.create(:album => album, :title => "Genesis", :active => true, :price => "1.00").uploads.create(:file_name => "genesis.mp3")
-Song.create(:album => album, :title => "Threee Paaarrrtyyy", :active => true, :price => "1.00").uploads.create(:file_name => "party.mp3")
+Song.create(:album => album, :title => "Breaking Bad", :active => true, :price => "1.00", :song => "song.mp3")
+Song.create(:album => album, :title => "D.V.N.O.", :active => true, :price => "1.00", :song => "dvno.mp3")
+Song.create(:album => album, :title => "Genesis", :active => true, :price => "1.00", :song => "genesis.mp3")
+Song.create(:album => album, :title => "Threee Paaarrrtyyy", :active => true, :price => "1.00", :song => "party.mp3")
 puts ""
 
 puts "***CREATING VIDEOS***"
 video = Video.create(:channel => channel, :title => "This is a movie demo", :description => "Description")
 puts ""
-
-puts "***CREATING VIDEO UPLOADS***"
-video.uploads.create(:file_name => "movie.mov")
-puts ""
+# 
+# puts "***CREATING VIDEO UPLOADS***"
+# video.uploads.create(:file_name => "movie.mov")
+# puts ""
 
 puts "***CREATING VAULT***"
 vault = Vault.create(:channel => channel)
