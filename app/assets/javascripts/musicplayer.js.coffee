@@ -14,7 +14,7 @@ class Player
       ended: @playNext
       play: @playing
       error: (event) ->
-        echo event.jPlayer.error.type
+        console.log(event.jPlayer.error.type)
       playing: @playing
       timeupdate: (event) ->
         @status = event.jPlayer.status.paused
@@ -30,7 +30,7 @@ class Player
     @playNext()
 
   playing: ->
-    echo "playing..."
+    console.log("playing...")
 
   setClass: (name, className)->
     el = $("#player .container").find(className)
@@ -39,7 +39,6 @@ class Player
 
   playIntro: ->
     r = $.getJSON("/songs/intro.json", (data)->
-        echo "playing intro" + data["filename"]
         $('#jplayer').jPlayer("setMedia", {
           mp3: "/assets/" + data["filename"]
         }).jPlayer("play")        
@@ -55,11 +54,9 @@ class Player
     else 
       url = "/songs/next_song.json"
     r = $.getJSON(url, (data)->
-      echo "playing next song: " + data["filename"]
       $('#jplayer').jPlayer("setMedia", {
-        mp3: "/assets/" + data["filename"]
+        mp3: data["filename"]
       }).jPlayer("play")
-      echo data
       player.setClass(data["title"], ".trackName")
       player.setClass(data["album"], ".artist")
       player.status = true  
