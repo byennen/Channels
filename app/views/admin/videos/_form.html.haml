@@ -1,25 +1,11 @@
-#video.form-horizontal{ 'data-s3-bucket' => ENV['S3_UPLOADER_BUCKET'] }
-  .control-group
-    %label.control-label Video
-    .controls
-      / link up create_resource_url
-      = s3_uploader create_resource_url: root_url
-      #uploading_files
-
-#video_preview.form-horizontal{ 'data-s3-bucket' => ENV['S3_UPLOADER_BUCKET'] }
-  .control-group
-    %label.control-label Video Preview
-    .controls
-      / boolean should be set to true for Song Preview - Inside the Uploads table add Preview column
-      = s3_uploader create_resource_url: root_url
-      #uploading_files
-
 = simple_form_for [:admin, @channel, @video], :html => {:multipart => true, :class => 'form-horizontal'} do |f|
   .form-inputs
     = f.input :title, :input_html => {:class => "input-xlarge"}
-    = f.input :description, :input_html => {:class => "input-xlarge"}
+    = f.input :description, :input_html => {:class => "input-xlarge", :rows => 5, :cols => 300, :style => "width: 400px;"}
     = f.input :image, :as => :file, :label => "Image"
     = image_tag @video.image.thumb('100x100#').url if @video.image
+    = f.input :video, :as => :file, :label => "Video"
+    = f.input :preview, :as => :file, :label => "Video Preview"
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     or

@@ -38,6 +38,7 @@ tmp/*
 /public/stylesheets/compiled
 /public/system
 /public/song
+/public/video
 /spec/tmp/*
 /cache
 /capybara*

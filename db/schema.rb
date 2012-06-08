@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120608153716) do
+ActiveRecord::Schema.define(:version => 20120608162448) do
 
   create_table "ads", :force => true do |t|
     t.integer  "channel_id"
@@ -180,6 +180,8 @@ ActiveRecord::Schema.define(:version => 20120608153716) do
     t.boolean  "active"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "video"
+    t.string   "preview"
   end
 
 end
