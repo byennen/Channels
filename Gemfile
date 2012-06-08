@@ -14,13 +14,17 @@ gem 'newrelic_rpm'
 gem 'thin'
 gem 'simple_form'
 gem 'stripe'
+gem 'money', :git => 'https://github.com/collectiveidea/money.git'  
 
+# deploy
 gem 'capistrano'
+
 #uploads
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.11'
 gem 'fog'
 gem 'aws-s3', :require => 'aws/s3'
+gem 'carrierwave'
 
 group :test do
   gem 'rspec-rails', '>= 2.8.1'
