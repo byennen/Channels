@@ -45,8 +45,8 @@ group :development do
   gem 'pry-rails'
 end
 
-group :production do
-  gem 'mysql2'
+group :production, :staging do
+  gem 'pg'
 end
 
 
