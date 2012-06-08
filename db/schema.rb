@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120606164221) do
+ActiveRecord::Schema.define(:version => 20120608153716) do
 
   create_table "ads", :force => true do |t|
     t.integer  "channel_id"
@@ -115,12 +115,13 @@ ActiveRecord::Schema.define(:version => 20120606164221) do
 
   create_table "songs", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at",                                                  :null => false
-    t.datetime "updated_at",                                                  :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.boolean  "active"
     t.integer  "album_id"
-    t.decimal  "price",      :precision => 8, :scale => 2
-    t.boolean  "intro",                                    :default => false
+    t.string   "preview"
+    t.string   "song"
+    t.integer  "price_in_cents"
   end
 
   create_table "uploads", :force => true do |t|
@@ -131,6 +132,7 @@ ActiveRecord::Schema.define(:version => 20120606164221) do
     t.string   "uploadable_type"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.boolean  "preview"
   end
 
   add_index "uploads", ["uploadable_id", "uploadable_type"], :name => "index_uploads_on_uploadable_id_and_uploadable_type"

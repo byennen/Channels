@@ -37,6 +37,7 @@ tmp/*
 /public/cache
 /public/stylesheets/compiled
 /public/system
+/public/song
 /spec/tmp/*
 /cache
 /capybara*

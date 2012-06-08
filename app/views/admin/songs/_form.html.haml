@@ -1,22 +1,10 @@
-#song.form-horizontal{ 'data-s3-bucket' => ENV['S3_UPLOADER_BUCKET'] }
-  .control-group
-    %label.control-label Song
-    .controls
-      = s3_uploader create_resource_url: create_song_upload_admin_channel_album_songs_url(@channel, @album)
-      #uploading_files
-
-#song_preview.form-horizontal{ 'data-s3-bucket' => ENV['S3_UPLOADER_BUCKET'] }
-  .control-group
-    %label.control-label Song Preview
-    .controls
-      / boolean should be set to true for Song Preview - Inside the Uploads table add Preview column
-      = s3_uploader create_resource_url: create_song_upload_admin_channel_album_songs_url(@channel, @album)
-      #uploading_files
-
 = simple_form_for [:admin, @channel, @album, @song], :html => { :multipart => true, :class => 'form-horizontal', :style => "clear:both;" } do |f|
   = f.input :title, :input_html => {:class => "input-xlarge"}
   = f.input :price, :input_html => {:class => "input-xlarge"}
-  = f.input :active
+  = f.input :song, as: :file
+  = f.input :preview, as: :file
+
+	
     
   .form-actions
     = f.button :submit, :class => 'btn-primary'
