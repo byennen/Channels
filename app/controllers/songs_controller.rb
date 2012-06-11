@@ -17,6 +17,6 @@ class SongsController < ApplicationController
   end
 
   def intro
-  	render :json => Song.intro_song()
+    render :json => Song.intro_song()
   end
 end
