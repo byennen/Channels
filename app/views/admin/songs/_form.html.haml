@@ -2,10 +2,8 @@
   = f.input :title, :input_html => {:class => "input-xlarge"}
   = f.input :price, :input_html => {:class => "input-xlarge"}
   = f.input :song, as: :file
-  = f.input :preview, as: :file
-
-	
-    
+  = f.input :preview, as: :file  
+  = f.input :active, as: :boolean
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     or
