@@ -10,6 +10,8 @@ class Song < ActiveRecord::Base
     mount_uploader t, SongUploader
   end
   
+  before_create :set_title_and_price
+  
   money :price
   
   scope :available, where(:active => true)
@@ -29,5 +31,13 @@ class Song < ActiveRecord::Base
       "delete_type" => "DELETE" 
     }
   end
+  
+  protected
+  
+    def set_title_and_price
+      self.title = File.basename(self.song.url)
+      self.price = 0.99
+    end
+  
 
 end
