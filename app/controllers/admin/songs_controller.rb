@@ -14,9 +14,19 @@ class Admin::SongsController < Admin::ApplicationController
   def create
     @song.attributes = params[:song]
     if @song.save
-      flash[:notice] = "Song was successfully created"
+      respond_to do |format|
+        format.html {  
+          render :json => [@song.to_jq_upload].to_json, 
+          :content_type => 'text/html',
+          :layout => false
+        }
+        format.json {  
+          render :json => [@song.to_jq_upload].to_json			
+        }
+      end
+    else 
+      render :json => [{:error => "custom_failure"}], :status => 304
     end
-    respond_with @song, :location => admin_channel_album_songs_url
   end
 
   def update
@@ -32,3 +42,4 @@ class Admin::SongsController < Admin::ApplicationController
   end
 
 end
+  

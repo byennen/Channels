@@ -1,4 +1,4 @@
-<%= form_for Song.new, :html => { :multipart => true, :id => "fileupload"  } do |f| %>
+<%= form_for Song.new, :url => admin_channel_album_songs_path(@channel, @album), :html => { :multipart => true, :id => "fileupload"  } do |f| %>
         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
         <div class="row fileupload-buttonbar">
             <div class="span7">
@@ -6,7 +6,7 @@
                 <span class="btn btn-success fileinput-button">
                     <i class="icon-plus icon-white"></i>
                     <span>Add files...</span>
-                    <%= f.file_field :path %>
+                    <%= f.file_field :song %>
                 </span>
                 <button type="submit" class="btn btn-primary start">
                     <i class="icon-upload icon-white"></i>
@@ -111,14 +111,15 @@
 
 
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
-<%= javascript_include_tag 'jquery.ui.widget.js' %>
+<%= javascript_include_tag 'plugins/jquery-file-upload/vendor/jquery.ui.widget.js' %>
 <!-- The Templates and Load Image plugins are included for the FileUpload user interface -->
 <script src="http://blueimp.github.com/JavaScript-Templates/tmpl.min.js"></script>
 <script src="http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"></script>
 <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-<%= javascript_include_tag 'jquery.iframe-transport.js' %>
-<%= javascript_include_tag 'jquery.fileupload.js' %>
-<%= javascript_include_tag 'jquery.fileupload-ui.js' %>
+<%= javascript_include_tag 'plugins/jquery-file-upload/jquery.iframe-transport.js' %>
+<%= javascript_include_tag 'plugins/jquery-file-upload/jquery.fileupload.js' %>
+<%= javascript_include_tag 'plugins/jquery-file-upload/jquery.fileupload-ui.js' %>
+<%= javascript_include_tag 'plugins/jquery-file-upload/locale.js' %>
 <!-- add include_tag js files to config.assets.precompile in ...environments/production.rb if you have it in vendor/ assets -->
 
 <script type="text/javascript" charset="utf-8">
