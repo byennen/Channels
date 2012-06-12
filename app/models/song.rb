@@ -36,7 +36,7 @@ class Song < ActiveRecord::Base
   
     def set_title_and_price
       self.title = File.basename(self.song.url)
-      self.price = 0.99
+      self.price = 1.00
     end
   
 
