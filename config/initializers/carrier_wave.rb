@@ -4,7 +4,7 @@ if Rails.env.test? or Rails.env.development?
    end
 end
 
-if Rails.staging?
+if Rails.env.staging?
    CarrierWave.configure do |config|
      config.storage = :fog     
      config.fog_credentials = {
@@ -16,7 +16,7 @@ if Rails.staging?
    end
 end
 
-if Rails.production?
+if Rails.env.production?
    CarrierWave.configure do |config|
      config.storage = :fog     
      config.fog_credentials = {
