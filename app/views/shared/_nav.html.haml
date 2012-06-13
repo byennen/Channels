@@ -1,0 +1,45 @@
+.navbar-inner
+  .container
+    .row
+      .span8
+        %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to "Altimarc", root_url(subdomain: "www"), :class => "brand pjax"
+        .nav-collapse
+          %ul#ldd_menu.ldd_menu
+            %li
+              %span
+                = link_to "Channels", channels_url(subdomain: "www"), :class => "pjax"
+            %li
+              %span
+                = link_to "Music", giveaways_url(subdomain: "www"), :class => "pjax"
+            %li
+              %span
+                = link_to "Videos", giveaways_url(subdomain: "www"), :class => "pjax"
+            %li
+              %span
+                = link_to "Giveaways", giveaways_url(subdomain: "www"), :class => "pjax"
+            - if user_signed_in?
+              %li
+                %span
+                  = link_with_icon("Invite", giveaways_url(subdomain: "www"), "icon-plus icon-white", "btn btn-warning pjax")
+
+        / /.nav-collapse
+      .span4.pull-right
+        .btn-group.pull-right
+          - if user_signed_in?
+            %a.btn.btn-primary{"data-toggle" => "dropdown", :href => "#"}
+              %i.icon-user.icon-white
+              Me
+            %a.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                = link_with_icon("Edit account", edit_user_registration_url(subdomain: "www"), "icon-pencil", "pjax")
+              %li
+                = link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", "pjax")
+          - else
+            = link_with_icon("Login / Signup", signup_url(subdomain: "www"), "icon-user", "btn pjax")
+            

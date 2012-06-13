@@ -1,0 +1,18 @@
+.row
+  .span12
+    .row
+      .span12
+        .page-header
+          %h1 Channels
+    %ul.thumbnails
+      - @channels.each do |channel|
+        %li.span4
+          .thumbnail
+            = link_to image_tag(channel.banner_image.thumb('301x170#').url), root_url(subdomain: channel.subdomain) if channel.banner_image
+            .caption
+              %h5= channel.name
+              %p= truncate(channel.description, :length => 80, :omission =>  "...")
+              
+.row
+  .span12
+    .space_filler{:style => 'padding: 0 0 34%;'}
