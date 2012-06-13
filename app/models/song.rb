@@ -10,7 +10,7 @@ class Song < ActiveRecord::Base
     mount_uploader t, SongUploader
   end
   
-  before_create :set_title_and_price
+  before_create :set_price
   
   money :price
   
@@ -23,6 +23,8 @@ class Song < ActiveRecord::Base
   
   #one convenient method to pass jq_upload the necessary information
   def to_jq_upload
+    s = read_attribute(:song)
+    logger.debug("song is #{s.inspect}")
     {
       "name" => read_attribute(:song),
       "size" => song.size,
@@ -34,8 +36,7 @@ class Song < ActiveRecord::Base
   
   protected
   
-    def set_title_and_price
-      self.title = File.basename(self.song.url)
+    def set_price
       self.price = 1.00
     end
   

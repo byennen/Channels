@@ -13,6 +13,7 @@ class Admin::SongsController < Admin::ApplicationController
 
   def create
     @song.attributes = params[:song]
+    @song.title = params[:song][:song].original_filename
     if @song.save
       respond_to do |format|
         format.html {  

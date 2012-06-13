@@ -15,11 +15,21 @@ class Admin::VideosController < Admin::ApplicationController
   end
 
   def create
-    # @video = Video.new(params[:video].merge(:channel => @channel))
+    @video.attributes = params[:video]
     if @video.save
-      flash[:notice] = "Video was successfully created."
+      respond_to do |format|
+        format.html {  
+          render :json => [@video.to_jq_upload].to_json, 
+          :content_type => 'text/html',
+          :layout => false
+        }
+        format.json {  
+          render :json => [@video.to_jq_upload].to_json			
+        }
+      end
+    else 
+      render :json => [{:error => "custom_failure"}], :status => 304
     end
-    respond_with @video, :location => admin_channel_videos_url
   end
 
   def update
