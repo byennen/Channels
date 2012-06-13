@@ -1,0 +1,30 @@
+.row
+  .span12
+    .row
+      .span12
+        .page-header
+          %h1 Current Giveaways
+        %p Sorry, we currently have no Giveaways. Please come back soon!
+    .row
+      .span12
+        .page-header
+          %h2 Past Giveaways
+        %ul.thumbnails
+          %li.span4
+            .thumbnail
+              = link_to image_tag('cma-banner-icon.png'), cma_url
+              .caption
+                %h5 Thumbnail label
+                %p Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+          %li.span4
+            .thumbnail
+              = link_to image_tag('derby-banner-icon.png'), derby_url
+              .caption
+                %h5 Thumbnail label
+                %p Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+                
+
+
+.row
+  .span12
+    .space_filler{:style => 'padding: 0 0 22%;'}

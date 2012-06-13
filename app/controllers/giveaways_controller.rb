@@ -1,4 +1,6 @@
 class GiveawaysController < ApplicationController
+  def index
+  end
 
   def derby
     @giveaway = Giveaway.new

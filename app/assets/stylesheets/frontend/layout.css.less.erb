@@ -1,0 +1,208 @@
+body {
+  background: url(<%= asset_data_uri 'bg.png' %>) repeat-x 0 140px #eee;
+  padding-top: 140px;
+	font-size: 14px;
+	min-height: 100%;
+  .background-wrapper {
+    padding-top: 80px;
+    height: 100% !important;
+    overflow: auto;
+  }
+}
+
+.navbar {
+  .brand {
+    background: url(<%= asset_data_uri 'layout/logo.png' %>) no-repeat scroll 0px 0px transparent;
+    color: transparent;
+    width: 65px;
+    height: 45px;
+    margin: 2px 0 0 -10px !important;
+    padding: 0 !important;
+  }
+}
+
+div#logo{
+	margin-bottom: 15px;
+    margin-top: 15px;	
+}
+
+header div#ribbon{
+    background: none repeat scroll 0 0 #343434;
+    border-bottom: 2px solid #000;
+    border-radius: 5px 5px 5px 5px;
+    color: #777777;
+    height: 38px;
+    padding: 20px 0;
+    position: absolute;
+    top: -78px;
+    width: 100%;
+    z-index: 9999;
+}
+
+header {
+  background: url(<%= asset_data_uri 'layout/header-bg.png' %>) repeat-x;
+}
+
+header div.navbar div.navbar-inner div.container{
+	background: #343434;
+	padding:0px 20px 0px 20px;
+}
+
+
+header ul.ldd_menu li a{
+	color: #fff;	
+}
+
+header ul.ldd_menu li span a{
+	text-transform: uppercase;
+}
+header ul.ldd_menu li span a:hover,
+header ul.ldd_menu li span a:active
+{
+	color: #D13E49;
+}
+
+/**Slidedeck**/
+div.skin-slidedeck{	
+	margin-bottom: 20px;
+}
+
+.skin-slidedeck dl.slidedeck  dd div.hero-unit {
+	margin-top: 8px;
+	padding: 10px;
+	min-height: 320px;
+}
+.skin-slidedeck dl.slidedeck  dd div.hero-unit h1{
+	font-size: 40px;
+	margin-bottom: 15px;
+}
+
+.skin-slidedeck dl.slidedeck  dd div.hero-unit .wrap-image{
+	width:260px; 
+	margin-left:5px;
+}
+
+.skin-slidedeck dl.slidedeck  dd div.hero-unit .wrap-intro{
+	width:370px; 
+	margin-left:0px;
+}
+/**End Slidedeck**/
+
+/**
+BODY
+**/
+div.body div.container{
+  background: none repeat scroll 0 0 #FFFFFF;    
+  padding: 20px;
+}
+
+
+
+div.body blockquote {
+    font-family: Rationale;
+    margin: 0px 20px 20px 20px;
+    padding-left: 50px;
+    background: transparent url(quote.gif) no-repeat; 
+    border-left: none;
+}
+div.body blockquote h3{
+    font-size: 23px;
+}
+div.body blockquote small{
+    color: #777;
+    font-size: 16px;
+}
+
+div.body ul.entry-title{	
+    padding:0px;	
+	border: 0px;
+}
+
+div.body ul.entry-title{	
+  padding: 7px 14px;
+  margin: 0 0 18px;
+  list-style: none;
+  background-color: #fbfbfb;
+  background-image: -moz-linear-gradient(top, #ffffff, #f5f5f5);
+  background-image: -ms-linear-gradient(top, #ffffff, #f5f5f5);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f5f5f5));
+  background-image: -webkit-linear-gradient(top, #ffffff, #f5f5f5);
+  background-image: -o-linear-gradient(top, #ffffff, #f5f5f5);
+  background-image: linear-gradient(top, #ffffff, #f5f5f5);
+  background-repeat: repeat-x;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0);
+  -webkit-box-shadow: inset 0 1px 0 #ffffff;
+     -moz-box-shadow: inset 0 1px 0 #ffffff;
+          box-shadow: inset 0 1px 0 #ffffff;
+}
+div.body ul.entry-title li{	
+	font-family: Rationale,sans-serif;
+	font-size: 22px;
+}
+
+div.body div.rightsidebar,
+div.body div.leftsidebar{
+	border-right: 1px solid #F0F0F0;
+	margin-bottom: 20px;
+}
+
+div.body div.rightsidebar{
+	border-right: 0px;
+	border-left: 1px solid #F0F0F0;	
+}
+
+div.body div.rightsidebar div.span4,
+div.body div.leftsidebar div.span4{
+	width:290px;	
+}
+
+div.body div.rightsidebar div.span4,
+div.body div.rightsidebar div.span1,
+div.body div.rightsidebar div.span3{
+	margin-left: 28px;
+}
+
+div.body div.rightsidebar h3,
+div.body div.leftsidebar h3{
+	line-height: 36px;
+}
+
+div.body div.rightsidebar div.items,
+div.body div.leftsidebar div.items{
+	margin-top: 20px;
+}
+
+div.body div.rightsidebar div.last,
+div.body div.leftsidebar div.last{
+	margin-bottom: 20px;
+}
+
+div.body div.rightsidebar div.items div.span3,
+div.body div.leftsidebar div.items div.span3{
+	margin: 0 5px;
+}
+
+
+div#about {
+    background: none repeat scroll 0 0 #484848;
+    padding: 20px;
+	color: #fff;
+}
+
+div#footer {
+    background: none repeat scroll 0 0 #343434;
+    padding: 10px 20px;
+	color: #f0f0f0;
+}
+
+div#footer p{
+    margin-bottom: 0px;
+}
+
+#ads {
+  margin: 0 -20px 0 0;
+}

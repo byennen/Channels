@@ -1,8 +1,4 @@
 Channels::Application.routes.draw do
-  get "ads/index"
-
-  get "ads/next"
-
   #subdomains - Keep at top
   match "", to: "channels#show", constraints: lambda {|r| r.subdomain.present? && r.subdomain != 'www'}
 
@@ -26,10 +22,11 @@ Channels::Application.routes.draw do
   match "/create_cma(/:id)" => "giveaways#create_cm:wa"
 
   #channels
+  resources :giveaways, :only => [:index]
   resources :videos, :only => [:show, :index]
   resources :photos, :only => [:show, :index]
 
-  resources :channels, :only => :show do
+  resources :channels, :only => [:show, :index] do
     get :next_song, :on => :collection
   end
 
