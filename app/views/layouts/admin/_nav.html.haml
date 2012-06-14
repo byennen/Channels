@@ -1,0 +1,44 @@
+/ This id is used for the cookies
+/ Top navigation bar
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container-fluid
+      %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+        %span.i-bar
+        %span.i-bar
+        %span.i-bar
+      .nav-collapse
+        %ul.nav
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              Messages
+              %span.label.label-info 10
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "#"} Welcome to Altimarc
+              %li
+                %a{:href => "#"} Channel weekly stats
+              %li
+                %a{:href => "#"} Channel weekly profit
+              %li.divider
+              %li
+                %a{:href => "#"} Older messages...
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              Settings
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "#"} Personal Info
+              %li
+                %a{:href => "#"} Preferences
+              %li
+                %a{:href => "#"} Alerts
+              %li
+                %a#cookie_delete{:href => "#"} Delete Cookies
+          %li= link_to "Help", "#"
+        %p.navbar-text.pull-right
+          Logged in as
+          %a{:href => "#"}Users Name
+          =# link_to current_user.email, edit_user_registration_path
