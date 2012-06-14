@@ -11,7 +11,6 @@
 $(document).on "ready pjax:success", ->
   $('.content a').pjax('[data-pjax-container]')
   $('.pjax').pjax('[data-pjax-container]')
-  window.player = new Player(el: "#player .container")
 
 
 # debugging
@@ -19,3 +18,6 @@ $(document).on "pjax:success", ->
   console.log "pjax!"
 $().ready ->
   console.log "ready"
+
+$().ready ->
+  window.player = new Player(el: "#player .container")

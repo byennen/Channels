@@ -23,6 +23,7 @@ class Player
     el.find("#controls a#player_play").click(@play)
     el.find("#controls a#player_next").click(@playNext)
     el.find("#controls a#player_previous").click(@playPrevious)
+    echo "By your command!"
 
   playEnded: (event) ->
     echo "I stopped playing"
@@ -41,7 +42,7 @@ class Player
     r = $.getJSON("/songs/intro.json", (data)->
         $('#jplayer').jPlayer("setMedia", {
           mp3: "/assets/" + data["filename"]
-        }).jPlayer("play")        
+        }).jPlayer("play")
         player.setClass("Welcome", ".title")
         player.setClass("", ".album")
         player.status = true
@@ -51,7 +52,7 @@ class Player
   playNext: =>
     if channel_id > 0
       url = "/channels/next_song.json"
-    else 
+    else
       url = "/songs/next_song.json"
     r = $.getJSON(url, (data)->
       $('#jplayer').jPlayer("setMedia", {
@@ -59,7 +60,7 @@ class Player
       }).jPlayer("play")
       player.setClass(data["title"], ".trackName")
       player.setClass(data["album"], ".artist")
-      player.status = true  
+      player.status = true
     )
 
   playPrevious: ->
