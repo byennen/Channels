@@ -18,6 +18,10 @@ class VideoUploader < CarrierWave::Uploader::Base
   def file_prefix
     original_filename.split('.').first
   end
+  
+  def host
+    Rails.env.production? ? 'www.altimarc.com' : 'www.altimarc-staging.com'
+  end
 
   private 
 
@@ -27,21 +31,21 @@ class VideoUploader < CarrierWave::Uploader::Base
                                               :output => [{:base_url => "s3://#{fog_directory}/#{store_dir}",
                                                            :filename => "#{file_prefix}.mp4",
                                                            :label => "mp4",
-                                                           :notifications => [zencoder_callback_url(:protocol => 'http', :host => 'www.altimarc-staging.com')],
+                                                           :notifications => [zencoder_callback_url(:protocol => 'http', :host => host)],
                                                            :quality => 3,
                                                            :format => "mp4",
                                                            :public => 1},
                                                           {:base_url => "s3://#{fog_directory}/#{store_dir}",
                                                            :filename => "#{file_prefix}.ogg",
                                                            :label => "ogg",
-                                                           :notifications => [zencoder_callback_url(:protocol => 'http', :host => 'www.altimarc-staging.com')],
+                                                           :notifications => [zencoder_callback_url(:protocol => 'http', :host => host)],
                                                            :quality => 3,
                                                            :format => "ogg",
                                                            :public => 1},
                                                           {:base_url => "s3://#{fog_directory}/#{store_dir}",
-                                                           :filename => "#{file_prefix}.ogg",
+                                                           :filename => "#{file_prefix}.webm",
                                                            :label => "webm",
-                                                           :notifications => [zencoder_callback_url(:protocol => 'http', :host => 'www.altimarc-staging.com')],
+                                                           :notifications => [zencoder_callback_url(:protocol => 'http', :host => host)],
                                                            :quality => 3,
                                                            :format => "webm",
                                                            :public => 1}]
