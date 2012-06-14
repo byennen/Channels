@@ -10,7 +10,7 @@ class Player
     @player = $('#jplayer')
     @player.jPlayer({
       swfPath: "/assets/",
-      ready: @playNext
+      ready: @setNext
       ended: @playNext
       play: @playing
       error: (event) ->
@@ -19,11 +19,10 @@ class Player
       timeupdate: (event) ->
         @status = event.jPlayer.status.paused
     })
-    el = $("#player .container")
+    el = $("#player")
     el.find("#controls a#player_play").click(@play)
     el.find("#controls a#player_next").click(@playNext)
     el.find("#controls a#player_previous").click(@playPrevious)
-    echo "By your command!"
 
   playEnded: (event) ->
     echo "I stopped playing"
@@ -34,7 +33,7 @@ class Player
     console.log("playing...")
 
   setClass: (name, className)->
-    el = $("#player .container").find(className)
+    el = $("#player").find(className)
     el.attr("title", name)
     el.text(name)
 
@@ -50,6 +49,9 @@ class Player
       )
 
   playNext: =>
+    @setNext()
+
+  setNext: =>
     if channel_id > 0
       url = "/channels/next_song.json"
     else
@@ -57,7 +59,7 @@ class Player
     r = $.getJSON(url, (data)->
       $('#jplayer').jPlayer("setMedia", {
         mp3: data["filename"]
-      }).jPlayer("play")
+      })
       player.setClass(data["title"], ".trackName")
       player.setClass(data["album"], ".artist")
       player.status = true

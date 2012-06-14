@@ -20,6 +20,15 @@ class Song < ActiveRecord::Base
   def self.next_song
     Song.available.find(:first, :order => "rand()")
   end
+
+  def get_url
+    filename = self.uploads.first.file_name
+    if filename.include? "http"
+      return filename
+    else
+      return "/assets/#{filename}"
+    end
+  end
   
   #one convenient method to pass jq_upload the necessary information
   def to_jq_upload

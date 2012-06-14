@@ -28,7 +28,7 @@ class Channel < ActiveRecord::Base
     if s.present?
       output[:title] = s.title
       output[:album] = s.album.title
-      output[:filename] = s.song_url
+      output[:filename] = s.get_url
     end
     output
   end
