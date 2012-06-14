@@ -32,6 +32,10 @@ Song.create(:album => album, :title => "Genesis", :active => true, :price => "1.
 Song.create(:album => album, :title => "Threee Paaarrrtyyy", :active => true, :price => "1.00", :song => "party.mp3")
 puts ""
 
+puts "***MAKING ADS***"
+Ads.create(:published => true, :ad_file => "ad.m4a")
+puts""
+
 puts "***CREATING VIDEOS***"
 video = Video.create(:channel => channel, :title => "This is a movie demo", :description => "Description")
 puts ""

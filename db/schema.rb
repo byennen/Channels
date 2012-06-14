@@ -115,13 +115,14 @@ ActiveRecord::Schema.define(:version => 20120613224136) do
 
   create_table "songs", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.boolean  "active"
     t.integer  "album_id"
+    t.boolean  "intro",          :default => false
+    t.integer  "price_in_cents"
     t.string   "preview"
     t.string   "song"
-    t.integer  "price_in_cents"
   end
 
   create_table "uploads", :force => true do |t|
