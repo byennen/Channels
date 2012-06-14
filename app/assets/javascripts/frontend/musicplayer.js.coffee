@@ -50,6 +50,7 @@ class Player
 
   playNext: =>
     @setNext()
+    setTimeout('$("#jplayer").jPlayer("play")', 500)
 
   setNext: =>
     if channel_id > 0
