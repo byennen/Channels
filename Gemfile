@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'rake'
 gem 'rails', '3.2.5'
 
 gem 'jquery-rails'
@@ -14,7 +15,7 @@ gem 'newrelic_rpm'
 gem 'thin'
 gem 'simple_form'
 gem 'stripe'
-#gem 'money', :git => 'https://github.com/collectiveidea/money.git'  
+gem 'money', :git => 'https://github.com/collectiveidea/money.git'  
 
 # deploy
 gem 'capistrano'

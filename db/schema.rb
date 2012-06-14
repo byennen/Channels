@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120608162448) do
+ActiveRecord::Schema.define(:version => 20120613224136) do
 
   create_table "ads", :force => true do |t|
     t.integer  "channel_id"
@@ -178,10 +178,12 @@ ActiveRecord::Schema.define(:version => 20120608162448) do
     t.string   "image_uid"
     t.boolean  "paid"
     t.boolean  "active"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "video"
     t.string   "preview"
+    t.string   "zencoder_output_id"
+    t.boolean  "processed"
   end
 
 end

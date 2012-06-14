@@ -21,6 +21,8 @@ Channels::Application.routes.draw do
   match "/create_derby(/:id)" => "giveaways#create_derby"
   match "/create_cma(/:id)" => "giveaways#create_cm:wa"
 
+  post "zencoder-callback" => "zencoder_callback#create", :as => "zencoder_callback"
+  
   #channels
   resources :giveaways, :only => [:index]
   resources :videos, :only => [:show, :index]
