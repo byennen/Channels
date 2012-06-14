@@ -1,0 +1,82 @@
+.row-fluid
+  .span12
+    #box_3.box.grad_colour_dark_blue
+      %h2.box_head.round_top Video Uploader
+      %a.settings.box_button_3{:href => "#", :title => "config"}  
+      %a.toggle.box_button_2{:href => "#", :title => "toggle"}  
+      %a.destroy.box_button_1{:href => "#", :title => "close"}  
+      .toggle_container
+        .block.box_content.round_bottom.padding_20
+          .page-header
+            %h1 Video Uploader
+          %blockquote
+            %p
+              Video Uploader widget with multiple file selection, and drag&drop support!
+          %br
+            / The file upload form used as target for the file upload widget
+            %form#fileupload{:action => "js/blueimp-jQuery-File-Upload/server/php/", :enctype => "multipart/form-data", :method => "POST"}
+              / The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload
+              .row-fluid.fileupload-buttonbar
+                .span7
+                  / The fileinput-button span is used to style the file input field as button
+                  %span.btn.btn-success.fileinput-button
+                    %span
+                      %i.icon-plus.icon-white
+                      Add files...
+                    %input{:multiple => "", :name => "files[]", :type => "file"}
+                  %button.btn.btn-primary.start{:type => "submit"}
+                    %i.icon-upload.icon-white
+                    Start upload
+                  %button.btn.btn-warning.cancel{:type => "reset"}
+                    %i.icon-ban-circle.icon-white
+                    Cancel upload
+                  %button.btn.btn-danger.delete{:type => "button"}
+                    %i.icon-trash.icon-white
+                    Delete
+                  %input.toggle{:type => "checkbox"}
+                .span5
+                  / The global progress bar
+                  .progress.progress-success.progress-striped.active.fade
+                    .bar{:style => "width:0%;"}
+              / The loading indicator is shown during image processing
+              .fileupload-loading
+              %br
+                / The table listing the files available for upload/download
+                %table.table.table-striped
+                  %tbody.files{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
+            %br
+              .well
+                %h3 Notes
+                %ul
+                  %li
+                    The maximum file size for photo uploads is
+                    %strong 500 MB
+                  %li
+                    Only image files (
+                    %strong> MOV, MP4, OGG, MWEB, AVI
+                    ) are allowed (.mp4 or .mov is preferred).
+                  %li
+                    You can
+                    %strong drag & drop
+                    files from your desktop on this webpage with Google Chrome, Mozilla Firefox and Apple Safari.
+
+              / modal-gallery
+              #modal-gallery.modal.modal-gallery.hide.fade
+                .modal-header
+                  %a.close{"data-dismiss" => "modal"} ×
+                  %h3.modal-title
+                .modal-body
+                  .modal-image
+                .modal-footer
+                  %a.btn.btn-primary.modal-next
+                    Next
+                    %i.icon-arrow-right.icon-white
+                  %a.btn.btn-info.modal-prev
+                    %i.icon-arrow-left.icon-white
+                    Previous
+                  %a.btn.btn-success.modal-play.modal-slideshow{"data-slideshow" => "5000"}
+                    %i.icon-play.icon-white
+                    Slideshow
+                  %a.btn.modal-download{:target => "_blank"}
+                    %i.icon-download
+                    Download

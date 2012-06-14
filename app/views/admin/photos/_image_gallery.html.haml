@@ -1,0 +1,78 @@
+.row-fluid
+  .span12
+    .box.grad_colour_dark_blue
+      %h2.box_head.round_top Photo Gallery
+      %a.settings.box_button_3{:href => "#", :title => "config"}  
+      %a.toggle.box_button_2{:href => "#", :title => "toggle"}  
+      %a.destroy.box_button_1{:href => "#", :title => "close"}  
+      .toggle_container
+        .block.box_content.round_bottom.padding_20
+          %header
+            %h1 Photo Albums
+            %blockquote
+              %p It features photo drag and drop support for creating albums.
+            %p
+              %button#start-slideshow.ui-button-success.btn.btn-success{"data-selector" => "#gallery a[rel=gallery]", "data-slideshow" => "5000", "data-target" => "#modal-gallery"} New Album
+          %hr
+            #gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
+              / put images here
+              %ul
+                - (1..3).each do |i|
+                  %li
+                    = link_to image_tag('admin/gallery/flowers/adfish_rose_thumb.jpg'), '#'
+                    %br
+                    %span Album Name
+        .block.box_content.round_bottom.padding_20
+          %header
+            %h1 Photo Gallery
+            %blockquote
+              %p It features mouse and keyboard navigation, transition effects, fullscreen mode and slideshow functionality.
+            %p
+              %button#start-slideshow.ui-button-success.btn.btn-large.btn-success{"data-selector" => "#gallery a[rel=gallery]", "data-slideshow" => "5000", "data-target" => "#modal-gallery"} Start Slideshow
+              %button#toggle-fullscreen.ui-button-primary.btn.btn-large.btn-primary{"data-toggle" => "button"} Toggle Fullscreen
+          %hr
+            %form.form-horizontal
+              .control-group
+                %label.control-label Select Albu
+                .controls.docs-input-sizes              
+                  %select.span3
+                    %option Album 1
+                    %option Album 2
+                    %option Album 3
+                    %option Album 4
+                    %option Album 5
+          %hr
+            #gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
+              / put images here
+              - (1..20).each do |i|
+                %a{:href => "../../../../../assets/admin/gallery/flowers/adfish_rose.jpg", :rel => "gallery", :title => "Rose"}
+                  %img{:src => "../../../../../assets/admin/gallery/flowers/adfish_rose_thumb.jpg"}
+
+            %hr
+              %br
+                / modal-gallery
+                #modal-gallery.modal.modal-gallery.hide.fade
+                  .modal-header
+                    %a.close{"data-dismiss" => "modal"} ×
+                    %h3.modal-title
+                  .modal-body
+                    .modal-image
+                  .modal-footer
+                    %a.btn.btn-primary.modal-next
+                      Next
+                      %i.icon-arrow-right.icon-white
+                    %a.btn.btn-info.modal-prev
+                      %i.icon-arrow-left.icon-white
+                      Previous
+                    %a.btn.btn-success.modal-play.modal-slideshow{"data-slideshow" => "5000"}
+                      %i.icon-play.icon-white
+                      Slideshow
+                    %a.btn.modal-download{:target => "_blank"}
+                      %i.icon-download
+                      Download
+                    %a.btn.btn-warning.modal-prev.pull-left
+                      %i.icon-edit.icon-white
+                      Edit
+                    %a.btn.btn-danger.modal-prev.pull-left
+                      %i.icon-trash.icon-white
+                      Delete
