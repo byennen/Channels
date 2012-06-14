@@ -1,7 +1,5 @@
 Channels::Application.routes.draw do
   #subdomains - Keep at top
-  match "", to: "channels#show", constraints: lambda {|r| r.subdomain.present? && r.subdomain != 'www'}
-
   #static pages
   match "/about" => "pages#about"
   match "/privacy" => "pages#privacy", :as => "privacy"
@@ -81,7 +79,8 @@ Channels::Application.routes.draw do
     match "/pages/channels-help" => "pages#channel_help", :as => "channel_help"
     root :to => "dashboard#index"
   end
+  
 
+  root :to => "channels#show", constraints: lambda {|r| (r.subdomain.present? && r.subdomain != 'www') || !r.host.in?(%w(altimarc.com channels.dev localhost))}
   root :to => "home#index"
-
 end

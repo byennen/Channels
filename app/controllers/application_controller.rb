@@ -23,15 +23,18 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  
+  def host_base
+    request.host.match(/(.*)\.\w{3}$/)[1]
+  end
+  
+  def load_channel
+    channel_key = request.subdomain.present? ? request.subdomain : host_base
+    @channel = Channel.find_by_subdomain!(channel_key)
+  end
 
   def load_channels
     @channels = Channel.order('name ASC')
-  end
-
-  def load_channel
-    if request.subdomain.present?
-      @channel = Channel.find_by_subdomain!(request.subdomain) 
-    end
   end
 
   rescue_from CanCan::AccessDenied do |exception|
