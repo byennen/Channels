@@ -20,4 +20,7 @@ $().ready ->
   console.log "ready"
 
 $().ready ->
-  window.player = new Player(el: "#player .container")
+  if window.channel_id > 0
+    window.player = new Player(el: "#player .container")
+  else
+    $("#player").hide()
