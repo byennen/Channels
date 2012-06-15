@@ -53,10 +53,15 @@ class Player
     setTimeout('$("#jplayer").jPlayer("play")', 500)
 
   setNext: =>
+    @playCount++
+    echo @playCount
     if channel_id > 0
       url = "/channels/next_song.json"
     else
       url = "/songs/next_song.json"
+    if @playCount > 3
+      url = "/ads/next.json"
+      @playCount = 0
     r = $.getJSON(url, (data)->
       $('#jplayer').jPlayer("setMedia", {
         mp3: data["filename"]

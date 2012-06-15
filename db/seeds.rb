@@ -33,7 +33,8 @@ Song.create(:album => album, :title => "Threee Paaarrrtyyy", :active => true, :p
 puts ""
 
 puts "***MAKING ADS***"
-Ads.create(:published => true, :ad_file => "ad.m4a")
+Ad.create(:published => true).uploads << Upload.new(:file_name => "ad.m4a")
+Ad.create(:published => true).uploads << Upload.new(:file_name => "ad.m4a")
 puts""
 
 puts "***CREATING VIDEOS***"

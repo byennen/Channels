@@ -30,6 +30,9 @@ Channels::Application.routes.draw do
     get :next_song, :on => :collection
   end
 
+  # Ads
+  get "/ads/next" => "ads#next"
+
   resources :songs, :only => [:index] do
     get :next_song, :on => :collection
     get :intro, :on => :collection

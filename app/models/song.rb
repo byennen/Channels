@@ -22,7 +22,11 @@ class Song < ActiveRecord::Base
   end
 
   def get_url
-    filename = self.uploads.first.file_name
+    if self.uploads.first.present?
+      filename = self.uploads.first.file_name
+    else
+      return {}
+    end
     if filename.include? "http"
       return filename
     else
