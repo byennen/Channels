@@ -64,3 +64,6 @@ tmp/*
 
 # vim artifacts
 **.swp
+
+#ec2
+*.pem
