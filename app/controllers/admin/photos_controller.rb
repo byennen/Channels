@@ -16,12 +16,21 @@ class Admin::PhotosController < Admin::ApplicationController
   end
 
   def create
-    @photo = Photo.new(params[:photo].merge(:channel => @channel))
-
+    @photo = Photo.new(params[:photo].merge(:photo_album => @photo_album))
     if @photo.save
-      flash[:notice] ='Photo was successfully created.'
+      respond_to do |format|
+        format.html {  
+          render :json => [@photo.to_jq_upload].to_json, 
+          :content_type => 'text/html',
+          :layout => false
+        }
+        format.json {  
+          render :json => [@photo.to_jq_upload].to_json			
+        }
+      end
+    else 
+      render :json => [{:error => "custom_failure"}], :status => 304
     end
-    respond_with @photo, :location => admin_channel_photos_url
   end
 
   def update

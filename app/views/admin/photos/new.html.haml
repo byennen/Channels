@@ -16,7 +16,7 @@
                     %i{class: "icon-plus icon-white"}
                     %span 
                       Add files...
-                    = f.file_field :song
+                    = f.file_field :image
                   %button{type: "submit", class: "btn btn-primary start"}
                     %i{class: "icon-upload icon-white"}
                     %span Start upload
@@ -35,13 +35,8 @@
               %br
               %table{class: "table table-striped"}
                 %tbody{:class => "files", "data-toggle" => "modal-gallery", "data-target" => "#modal-gallery"}
-              = render partial: '/shared/file_upload/templates'
-            = javascript_include_tag 'plugins/jquery-file-upload/vendor/jquery.ui.widget.js'
+            = render partial: '/shared/file_upload/templates'
             %script{src: "http://blueimp.github.com/JavaScript-Templates/tmpl.min.js"}
             %script{src: "http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"}
-            = javascript_include_tag "plugins/jquery-file-upload/jquery.iframe-transport.js"
-            = javascript_include_tag "plugins/jquery-file-upload/jquery.fileupload.js"
-            = javascript_include_tag "plugins/jquery-file-upload/jquery.fileupload-ui.js"
-            = javascript_include_tag "plugins/jquery-file-upload/locale.js"
             = render partial: '/shared/file_upload/script'
 
