@@ -64,7 +64,9 @@ Channels::Application.routes.draw do
     #admin/channels
     resources :channels do
       resources :features, :only => :edit
-      resources :photos
+      resources :photo_albums do
+        resources :photos
+      end
       resources :videos
       resources :vaults
       resources :events
@@ -72,11 +74,7 @@ Channels::Application.routes.draw do
       resources :lifes
       resources :gives
       resources :albums do
-        resources :songs do
-          collection do
-            post 'create_song_upload'
-          end
-        end
+        resources :songs
       end
     end
     match "/pages/channels-help" => "pages#channel_help", :as => "channel_help"

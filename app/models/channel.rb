@@ -2,9 +2,10 @@ class Channel < ActiveRecord::Base
   has_many :channel_masters, :class_name => 'User'
   has_one :feature
   has_many :albums
-  has_many :photos
+  has_many :songs, :through => :albums  
+  has_many :photo_albums
+  has_many :photos, :through => :photo_albums
   has_many :videos
-  has_many :songs, :through => :albums
   has_many :posts
 
   scope :available, where(:active => true)

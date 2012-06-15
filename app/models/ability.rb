@@ -9,6 +9,7 @@ class Ability
       can :manage, :admin_pages 
     elsif user.channel_master?
       can :manage, Channel, :id => user.channel_id
+      can :manage, PhotoAlbum, :channel => {:id => user.channel_id}
       can :manage, Photo, :channel => {:id => user.channel_id}
       can :manage, Video, :channel => {:id => user.channel_id}
       can :manage, Album, :channel => {:id => user.channel_id}

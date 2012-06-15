@@ -1,6 +1,7 @@
 class Admin::PhotosController < Admin::ApplicationController
-  # load_and_authorize_resource :channel
-  # load_and_authorize_resource :photo, :through => :channel
+  load_and_authorize_resource :channel
+  load_and_authorize_resource :photo_album
+  load_and_authorize_resource :photo, :through => :photo_album
 
   respond_to :html, :json
 
