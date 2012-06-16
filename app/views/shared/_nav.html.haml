@@ -14,7 +14,7 @@
                 = link_to "Channels", channels_url(subdomain: "www"), :class => "pjax"
             %li
               %span
-                = link_to "Music", giveaways_url(subdomain: "www"), :class => "pjax"
+                = link_to "Music", music_url(subdomain: "www"), :class => "pjax"
             %li
               %span
                 = link_to "Videos", videos_url(subdomain: "www"), :class => "pjax"
@@ -41,5 +41,5 @@
               %li
                 = link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", "pjax")
           - else
-            = link_with_icon("Login / Signup", signup_url(subdomain: "www"), "icon-user", "btn pjax")
+            = link_with_icon("Login or Register", join_url(subdomain: "www"), "icon-user", "btn pjax")
             

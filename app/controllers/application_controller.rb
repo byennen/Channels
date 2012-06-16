@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  layout 'layouts/frontend/application'
   protect_from_forgery
   before_filter :load_channels
 

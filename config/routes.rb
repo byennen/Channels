@@ -24,6 +24,7 @@ Channels::Application.routes.draw do
   #channels
   resources :giveaways, :only => [:index]
   resources :videos, :only => [:show, :index]
+  match "/music" => "music#index", :as => "music"
   resources :photos, :only => [:show, :index]
 
   resources :channels, :only => [:show, :index] do
@@ -44,7 +45,7 @@ Channels::Application.routes.draw do
     get "/login" => "sessions#new"
     delete '/logout' => 'sessions#destroy'
     get '/logout' => 'sessions#destroy'
-    get '/signup' => 'registrations#new'
+    get '/join' => 'registrations#new'
   end
 
   #admin

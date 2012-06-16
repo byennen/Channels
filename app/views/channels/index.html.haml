@@ -1,9 +1,12 @@
+- title "Channels"
+
 .row
   .span12
-    .row
-      .span12
-        .page-header
-          %h1 Channels
+    %ul.breadcrumb.entry-title
+      %li.active= Channels
+
+.row
+  .span12
     %ul.thumbnails
       - @channels.each do |channel|
         %li.span4
