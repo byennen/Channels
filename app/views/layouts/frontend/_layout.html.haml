@@ -1,0 +1,14 @@
+#ribbon
+%header
+  .navbar.navbar-fixed-top
+    = render 'shared/musicplayer'
+    = render 'shared/nav'
+.background-wrapper
+  .content
+    .container
+      .test
+        = yield
+
+  = render 'layouts/frontend/first_time_visitor'
+
+  = render 'layouts/frontend/footer'

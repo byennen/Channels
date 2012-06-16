@@ -1,0 +1,14 @@
+#ribbon
+%header
+  .navbar.navbar-fixed-top
+    = render 'shared/musicplayer'
+    = render 'shared/nav'
+.background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
+  .content
+    .container
+      .test
+        = yield
+
+  = render 'layouts/frontend/first_time_visitor'
+
+  = render 'layouts/frontend/footer'

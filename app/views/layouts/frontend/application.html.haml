@@ -30,20 +30,16 @@
       %script
         window.channel_id = 0
         window.channel_subdomain = ""
-  %body
-    #ribbon
-    %header
-      .navbar.navbar-fixed-top
-        = render 'shared/musicplayer'
-        = render 'shared/nav'
-    .background
-      .content
-        .container{"data-pjax-container" => ""}
-          = yield
+  %body{"data-pjax-container" => ""}
+    - if params[:controller] == "registrations"
+      = render 'layouts/frontend/registration_layout'
+    - elsif params[:controller] == "sessions"
+      .container
+        = yield
+    -elsif params[:controller] == "channels" && params[:action] == "show"
+      = render 'layouts/frontend/channels_show_layout'
+    -else
+      = render 'layouts/frontend/layout'
 
-    = render 'layouts/frontend/first_time_visitor'
-
-        
-    = render 'layouts/frontend/footer'
 
 

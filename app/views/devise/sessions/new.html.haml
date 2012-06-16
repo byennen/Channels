@@ -20,23 +20,5 @@
     %div= f.submit "Sign in"
   = render :partial => "devise/shared/links"
 
--# = form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => 'form-stacked') do |f|
--#   %fieldset
--#     %legend Sign In
--#     .clearfix
--#       = f.label 'Email'
--#       .input
--#         = f.email_field :email
--#     .clearfix
--#       = f.label :password
--#       .input
--#         = f.password_field :password
--#     .input
--#       %ul.inputs-list
--#         - if devise_mapping.rememberable?
--#           %label
--#             = f.check_box :remember_me
--#             %span= f.label :remember_me
--#     .actions
--#       = f.submit "Sign in", :class => 'btn primary'
--#       = link_to "Forgot your password?", new_password_path(resource_name), :class => 'btn'
+:javascript 
+  $.backstretch("assets/test.jpg");
