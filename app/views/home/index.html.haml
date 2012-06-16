@@ -5,7 +5,7 @@
 = render 'home/quote'
 = render 'home/new'
 = render 'home/music'
-= render 'home/videos'
+= render 'shared/latest_videos'
 
 :javascript
   $(function(){
@@ -18,37 +18,8 @@
   		scroll: false
   	});
   });
-
-
-/ .slider-wrapper.theme-default
-/   .ribbon
-/   #slider.nivoSlider
-/     - @channels.each do |channel|
-/       = link_to image_tag(channel.banner_image.url), root_url(subdomain: channel.subdomain) if channel.banner_image 
-/ .row
-/   .span12
-/     %h1 Welcome to Altimarc...
-/ 
-/ .row
-/   .span7
-/     %h2 Top Video's
-/   
-/ 
-/   .span7
-/     %h3 What's New
-/     - @channels.each do |channel|
-/       %ul
-/         %li
-/           = link_to image_tag(channel.banner_image.thumb('301x170#').url), root_url(subdomain: channel.subdomain) if channel.banner_image
-/           %p
-/             %strong= channel.name
-/           %p= truncate(channel.description, :length => 80, :omission =>  "...")
-/ 
-/ .row
-/   .span3
-/     %h3 Top Songs:
-/     / - @songs.each do |song|
-/     /   %ul
-/     /     %li= link_to song.title, root_url(subdomain: channel.subdomain)
-/   .span3
-/     %h3 Top Albums:
+  $(function(){
+    $(".carousel").carousel({
+      interval: 5000000
+    });
+  });
