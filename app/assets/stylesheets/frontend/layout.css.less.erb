@@ -1,6 +1,5 @@
 body {
-  background: url(<%= asset_data_uri 'bg.png' %>) repeat-x 0 140px #eee;
-  padding-top: 140px;
+  margin-top: 50px;
 	font-size: 14px;
 	min-height: 100%;
   .background-wrapper {
@@ -10,7 +9,13 @@ body {
   }
 }
 
+.background {
+  background: url(<%= asset_data_uri 'bg.png' %>) repeat-x #eee;
+  clear: both;
+}
+
 .navbar {
+  background: url(<%= asset_data_uri 'layout/header-bg.png' %>) repeat-x;
   .brand {
     background: url(<%= asset_data_uri 'layout/logo.png' %>) no-repeat scroll 0px 0px transparent;
     color: transparent;
@@ -21,12 +26,9 @@ body {
   }
 }
 
-div#logo{
-	margin-bottom: 15px;
-    margin-top: 15px;	
-}
-
-header div#ribbon{
+header {
+  margin-bottom: 10px;
+  div#ribbon{
     background: none repeat scroll 0 0 #343434;
     border-bottom: 2px solid #000;
     border-radius: 5px 5px 5px 5px;
@@ -37,29 +39,22 @@ header div#ribbon{
     top: -78px;
     width: 100%;
     z-index: 9999;
-}
-
-header {
-  background: url(<%= asset_data_uri 'layout/header-bg.png' %>) repeat-x;
-}
-
-header div.navbar div.navbar-inner div.container{
-	background: #343434;
-	padding:0px 20px 0px 20px;
-}
-
-
-header ul.ldd_menu li a{
-	color: #fff;	
-}
-
-header ul.ldd_menu li span a{
-	text-transform: uppercase;
-}
-header ul.ldd_menu li span a:hover,
-header ul.ldd_menu li span a:active
-{
-	color: #D13E49;
+  }
+  div.navbar div.navbar-inner div.container{
+  	background: #343434;
+  	padding:0px 20px 0px 20px;
+  	clear: both;
+  }
+  ul.ldd_menu li a{
+  	color: #fff;	
+  }
+  ul.ldd_menu li span a{
+  	text-transform: uppercase;
+  }
+  ul.ldd_menu li span a:hover,
+  ul.ldd_menu li span a:active {
+  	color: #D13E49;
+  }
 }
 
 /**Slidedeck**/
@@ -91,34 +86,35 @@ div.skin-slidedeck{
 /**
 BODY
 **/
-div.body div.container{
+div.content div.container{
   background: none repeat scroll 0 0 #FFFFFF;    
   padding: 20px;
+  clear: both;
 }
 
 
 
-div.body blockquote {
+div.content blockquote {
     font-family: Rationale;
     margin: 0px 20px 20px 20px;
     padding-left: 50px;
-    background: transparent url(quote.gif) no-repeat; 
+    background: transparent url(<%= asset_data_uri 'quote.gif' %>) no-repeat; 
     border-left: none;
 }
-div.body blockquote h3{
+div.content blockquote h3{
     font-size: 23px;
 }
-div.body blockquote small{
+div.content blockquote small{
     color: #777;
     font-size: 16px;
 }
 
-div.body ul.entry-title{	
+div.content ul.entry-title{	
     padding:0px;	
 	border: 0px;
 }
 
-div.body ul.entry-title{	
+div.content ul.entry-title{	
   padding: 7px 14px;
   margin: 0 0 18px;
   list-style: none;
@@ -139,50 +135,50 @@ div.body ul.entry-title{
      -moz-box-shadow: inset 0 1px 0 #ffffff;
           box-shadow: inset 0 1px 0 #ffffff;
 }
-div.body ul.entry-title li{	
+div.content ul.entry-title li{	
 	font-family: Rationale,sans-serif;
 	font-size: 22px;
 }
 
-div.body div.rightsidebar,
-div.body div.leftsidebar{
+div.content div.rightsidebar,
+div.content div.leftsidebar{
 	border-right: 1px solid #F0F0F0;
 	margin-bottom: 20px;
 }
 
-div.body div.rightsidebar{
+div.content div.rightsidebar{
 	border-right: 0px;
 	border-left: 1px solid #F0F0F0;	
 }
 
-div.body div.rightsidebar div.span4,
-div.body div.leftsidebar div.span4{
+div.content div.rightsidebar div.span4,
+div.content div.leftsidebar div.span4{
 	width:290px;	
 }
 
-div.body div.rightsidebar div.span4,
-div.body div.rightsidebar div.span1,
-div.body div.rightsidebar div.span3{
+div.content div.rightsidebar div.span4,
+div.content div.rightsidebar div.span1,
+div.content div.rightsidebar div.span3{
 	margin-left: 28px;
 }
 
-div.body div.rightsidebar h3,
-div.body div.leftsidebar h3{
+div.content div.rightsidebar h3,
+div.content div.leftsidebar h3{
 	line-height: 36px;
 }
 
-div.body div.rightsidebar div.items,
-div.body div.leftsidebar div.items{
+div.content div.rightsidebar div.items,
+div.content div.leftsidebar div.items{
 	margin-top: 20px;
 }
 
-div.body div.rightsidebar div.last,
-div.body div.leftsidebar div.last{
+div.content div.rightsidebar div.last,
+div.content div.leftsidebar div.last{
 	margin-bottom: 20px;
 }
 
-div.body div.rightsidebar div.items div.span3,
-div.body div.leftsidebar div.items div.span3{
+div.content div.rightsidebar div.items div.span3,
+div.content div.leftsidebar div.items div.span3{
 	margin: 0 5px;
 }
 

@@ -22,5 +22,6 @@ $().ready ->
 $().ready ->
   if window.channel_id > 0
     window.player = new Player(el: "#player .container")
+    $("header").css('height', '82px')
   else
     $("#player").hide()
