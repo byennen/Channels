@@ -10,19 +10,19 @@
   .span12
     #gallery
       = image_tag @channel.banner_image.url if @channel.banner_image_uid
-      = image_tag @channel.banner_image.url if @channel.banner_image_uid
+      / = image_tag @channel.banner_image.url if @channel.banner_image_uid
       / %img{:src => "assets/demo_images/3.jpg"}/
-      %img{:src => "demo_images/4.jpg"}/
-      %img{:src => "demo_images/5.jpg"}/
-      %img{:src => "demo_images/6.jpg"}/
-    #thumbs
-      %img{:src => "demo_images/11.jpg"}/
-      %img{:src => "demo_images/22.jpg"}/
-      %img{:src => "demo_images/33.jpg"}/
-      %img{:src => "demo_images/44.jpg"}/
-      %img{:src => "demo_images/55.jpg"}/
-      %img{:src => "demo_images/66.jpg"}/
-    %a#next{:href => "javascript:;;"}
+    /   %img{:src => "demo_images/4.jpg"}/
+    /   %img{:src => "demo_images/5.jpg"}/
+    /   %img{:src => "demo_images/6.jpg"}/
+    / #thumbs
+    /   %img{:src => "demo_images/11.jpg"}/
+    /   %img{:src => "demo_images/22.jpg"}/
+    /   %img{:src => "demo_images/33.jpg"}/
+    /   %img{:src => "demo_images/44.jpg"}/
+    /   %img{:src => "demo_images/55.jpg"}/
+    /   %img{:src => "demo_images/66.jpg"}/
+    / %a#next{:href => "javascript:;;"}
 .row
   .span12
     .page-header
@@ -58,18 +58,18 @@
           .row
             .span12
               %ul.thumbnails
-                %li.span3
-                  .thumbnail
-                    %img{:alt => "", :src => "demo_images/dslr1.jpg"}/
-                %li.span3
-                  .thumbnail
-                    %img{:alt => "", :src => "demo_images/dslr2.jpg"}/
-                %li.span3
-                  .thumbnail
-                    %img{:alt => "", :src => "demo_images/dslr3.jpg"}/
-                %li.span3
-                  .thumbnail
-                    %img{:alt => "", :src => "demo_images/dslr1.jpg"}/
+                / %li.span3
+                /   .thumbnail
+                /     %img{:alt => "", :src => "demo_images/dslr1.jpg"}/
+                / %li.span3
+                /   .thumbnail
+                /     %img{:alt => "", :src => "demo_images/dslr2.jpg"}/
+                / %li.span3
+                /   .thumbnail
+                /     %img{:alt => "", :src => "demo_images/dslr3.jpg"}/
+                / %li.span3
+                /   .thumbnail
+                /     %img{:alt => "", :src => "demo_images/dslr1.jpg"}/
     
   .span4
     .rightsidebar
