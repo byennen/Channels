@@ -14,21 +14,21 @@
         - if @channels.present?
           - @channels.each do |channel|
             %li
-              %a{:href => edit_admin_channel_url(1)}
+              %a{:href => edit_admin_channel_url(channel, subdomain: "www")}
                 = image_tag('admin/icons/grey/Television.png')
                 = channel.name
                 %span.icon  
               %ul
                 %li
-                  %a{:href => "#"}
+                  %a{:href => admin_channel_albums_url(channel, subdomain: "www")}
                     = image_tag('admin/icons/grey/Radio.png')
                     Music
                 %li
-                  %a{:href => admin_channel_videos_url(1)}
+                  %a{:href => admin_channel_videos_url(channel, subdomain: "www")}
                     = image_tag('admin/icons/grey/film_camera.png')
                     Videos
                 %li
-                  %a{:href => admin_channel_photo_albums_url(1)}
+                  %a{:href => admin_channel_photo_albums_url(channel, subdomain: "www")}
                     = image_tag('admin/icons/grey/Camera.png')
                     Photos
 
