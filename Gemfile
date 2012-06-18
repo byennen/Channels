@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rake'
 gem 'rails', '3.2.5'
+gem 'mysql'
 
 gem 'jquery-rails'
 gem 'haml', '>= 3.1.4'
@@ -44,9 +45,6 @@ group :assets do
 end
 
 group :development do
-  #TODO: switch to postgres in the future -Lance
-  gem 'mysql'
-  gem 'heroku'
   gem 'pry-rails'
 end
 

@@ -114,14 +114,6 @@ GEM
     gherkin (2.11.0)
       json (>= 1.4.6)
     haml (3.1.6)
-    heroku (2.26.3)
-      heroku-api (~> 0.2.1)
-      launchy (>= 0.3.2)
-      netrc (~> 0.7.2)
-      rest-client (~> 1.6.1)
-      rubyzip
-    heroku-api (0.2.1)
-      excon (~> 0.13.3)
     highline (1.6.12)
     hike (1.2.1)
     hpricot (0.8.6)
@@ -156,7 +148,6 @@ GEM
     net-ssh (2.5.2)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
-    netrc (0.7.4)
     newrelic_rpm (3.3.5)
     nokogiri (1.5.4)
     orm_adapter (0.0.7)
@@ -280,7 +271,6 @@ DEPENDENCIES
   factory_girl_rails (~> 3.0)
   fog
   haml (>= 3.1.4)
-  heroku
   jquery-rails
   launchy (>= 2.0.5)
   mail
