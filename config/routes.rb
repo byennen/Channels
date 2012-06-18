@@ -45,7 +45,7 @@ Channels::Application.routes.draw do
     get "/login" => "sessions#new"
     delete '/logout' => 'sessions#destroy'
     get '/logout' => 'sessions#destroy'
-    get '/join' => 'registrations#new'
+    get '/join' => 'registrations#new', :as => 'signup'
   end
 
   #admin
