@@ -7,8 +7,8 @@ if Rails.env.production?
   app.configure do |c|
     c.datastore = Dragonfly::DataStorage::S3DataStore.new(
       :bucket_name => 'altimarc-production',
-      :access_key_id => ENV['S3_KEY'],
-      :secret_access_key => ENV['S3_SECRET']
+      :access_key_id => 'AKIAIPHZNJZ5QBOUOTHA',
+      :secret_access_key => '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'
     )
   end
 end
@@ -17,8 +17,8 @@ if Rails.env.staging?
   app.configure do |c|
     c.datastore = Dragonfly::DataStorage::S3DataStore.new(
       :bucket_name => 'altimarc-staging',
-      :access_key_id => ENV['S3_KEY'],
-      :secret_access_key => ENV['S3_SECRET']
+      :access_key_id => 'AKIAIPHZNJZ5QBOUOTHA',
+      :secret_access_key => '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'
     )
   end
 end
