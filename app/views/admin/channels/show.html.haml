@@ -8,7 +8,7 @@
   .inside
     %h2 Photos
     %p Edit Photos here.
-    %p= link_to "Photos",  admin_channel_photos_path(@channel), :class => "btn"
+    %p= link_to "Photos",  admin_channel_photo_albums_path(@channel), :class => "btn"
 
 - if @channel.feature.audio == true
   .box
