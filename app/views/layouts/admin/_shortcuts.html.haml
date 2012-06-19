@@ -1,6 +1,6 @@
 .row-fluid
   .span12.shortcut
-    %a.btn.btn-shortcut{:href => "#"}
+    %a.btn.btn-shortcut{:href => admin_root_url(:subdomain => "www")}
       = image_tag('admin/icons/grey/Home.png', :alt => "Dashboard")
       Dashboard
       %span.label.label-success 9
@@ -8,17 +8,16 @@
       = image_tag('admin/icons/grey/speech_bubbles.png', :alt => "Comments")
       Comments
       %span.label.label-warning 9
-    %a.btn.btn-shortcut{:href => "#"}
+    %a.btn.btn-shortcut{:href => new_admin_channel_url(:subdomain => "www")}
       = image_tag('admin/icons/grey/Graph.png', :alt => "Graph")
-      Statistics
-      %span.label.label-info 9
+      New Channel
       
-    %a.stat-column{:href => "#"}
-      %span.number 452
-      %span Members
-    %a.stat-column{:href => "#"}
-      %span.number $2,512
-      %span Revenue
-    %a.stat-column{:href => "#"}
-      %span.number 348
-      %span Subscribers
+    / %a.stat-column{:href => "#"}
+    /   %span.number 452
+    /   %span Members
+    / %a.stat-column{:href => "#"}
+    /   %span.number $2,512
+    /   %span Revenue
+    / %a.stat-column{:href => "#"}
+    /   %span.number 348
+    /   %span Subscribers

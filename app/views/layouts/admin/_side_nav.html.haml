@@ -2,11 +2,11 @@
   %span#logo.logo  
   %ul.clearfix
     %li
-      %a.round_top{:href => admin_root_url}
+      %a.round_top{:href => admin_root_url(:subdomain => "www")}
         = image_tag('admin/icons/grey/Laptop.png')
         %span Dashboard
     %li
-      %a{:href => channels_url}
+      %a{:href => admin_channels_url(:subdomain => "www")}
         = image_tag('admin/icons/grey/Television.png')
         %span Channels
         %span.icon
@@ -36,6 +36,10 @@
                   %a{:href => admin_channel_photo_albums_url(channel, subdomain: "www")}
                     = image_tag('admin/icons/grey/Camera.png')
                     Photos
+                %li
+                  %a{:href => edit_admin_channel_url(channel, subdomain: "www")}
+                    = image_tag('admin/icons/grey/Camera.png')
+                    Edit Channel
 
         - else
           = link_to "NO CHANNELS", admin_root_url(subdomain: "www")

@@ -9,6 +9,7 @@
 #= require plugins/jquery-file-upload/jquery.fileupload-ui
 #= require plugins/jquery-file-upload/locale
 
+
 $ ->
   $(".alert-message").alert()
   $(".tabs").button()
