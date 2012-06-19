@@ -1,25 +1,34 @@
-%table.table.table-striped
-  %thead
-    %tr
-      %th Name
-      %th Banner Image
-      %th
-  %tbody
-    - @channels.each do |channel|
-      %tr
-        %td= link_to channel.name, admin_channel_path(channel)
-        %td= image_tag channel.banner_image.thumb('50x50#').url if channel.banner_image_uid
-        %td
-          %a.btn{:href => edit_admin_channel_path(channel)}
-            %i.icon-pencil
-            Edit
-          %a.btn.btn-danger{:href => admin_channel_path(channel), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
-            %i.icon-trash.icon-white
-            Destroy
+.row-fluid
+  .span12
+    .box.grad_colour_dark_blue
+      %h2.box_head.round_top Channels
+      %a.settings.box_button_3{:href => "#", :title => "config"}  
+      %a.toggle.box_button_2{:href => "#", :title => "toggle"}  
+      %a.destroy.box_button_1{:href => "#", :title => "close"}  
+      .toggle_container
+        .block.box_content.round_bottom.padding_20
+          %table.table.table-striped
+            %thead
+              %tr
+                %th Name
+                %th Banner Image
+                %th
+            %tbody
+              - @channels.each do |channel|
+                %tr
+                  %td= link_to channel.name, edit_admin_channel_path(channel)
+                  %td= image_tag channel.banner_image.thumb('50x50#').url if channel.banner_image_uid
+                  %td
+                    %a.btn{:href => edit_admin_channel_path(channel)}
+                      %i.icon-pencil
+                      Edit
+                    %a.btn.btn-danger{:href => admin_channel_path(channel), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
+                      %i.icon-trash.icon-white
+                      Destroy
 
-.form-actions
-  %a.btn.btn-primary{:href => new_admin_channel_path}
-    %i.icon-plus-sign.icon-white
-    New Channel
-  or
-  = link_to 'Go Back', url_for(:back), :class => 'btn'
+          .form-actions
+            %a.btn.btn-primary{:href => new_admin_channel_path}
+              %i.icon-plus-sign.icon-white
+              New Channel
+            or
+            = link_to 'Go Back', url_for(:back), :class => 'btn'

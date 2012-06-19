@@ -1,50 +1,91 @@
+///// old design
 .row-fluid
   .span12
-    .box.grad_colour_dark_blue
-      %h2.box_head.round_top Video Gallery
+    #box_3.box.grad_colour_dark_blue
+      %h2.box_head.round_top All Videos
       %a.settings.box_button_3{:href => "#", :title => "config"}  
       %a.toggle.box_button_2{:href => "#", :title => "toggle"}  
       %a.destroy.box_button_1{:href => "#", :title => "close"}  
       .toggle_container
         .block.box_content.round_bottom.padding_20
-          %header
-            %h1 Video Gallery
-            %blockquote
-              %p It features click to play, transition effects, and fullscreen mode functionality.
-              %i add modal window to play video
-
-          %hr
-            #gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
-              / put video here
-              - (1..20).each do |i|
-                %a{:href => "../../../../../assets/admin/gallery/flowers/adfish_rose.jpg", :rel => "gallery", :title => "Rose"}
-                  %img{:src => "../../../../../assets/admin/gallery/flowers/adfish_rose_thumb.jpg"}
-
-            %hr
-              %br
-                / modal-gallery
-                #modal-gallery.modal.modal-gallery.hide.fade
-                  .modal-header
-                    %a.close{"data-dismiss" => "modal"} ×
-                    %h3.modal-title
-                  .modal-body
-                    .modal-image
-                  .modal-footer
-                    %a.btn.btn-primary.modal-next
-                      Next
-                      %i.icon-arrow-right.icon-white
-                    %a.btn.btn-info.modal-prev
-                      %i.icon-arrow-left.icon-white
-                      Previous
-                    %a.btn.btn-success.modal-play.modal-slideshow{"data-slideshow" => "5000"}
-                      %i.icon-play.icon-white
-                      Slideshow
-                    %a.btn.modal-download{:target => "_blank"}
-                      %i.icon-download
-                      Download
-                    %a.btn.btn-warning.modal-prev.pull-left
-                      %i.icon-edit.icon-white
+          %blockquote
+            %p
+              Edit each video to add a title and thumbnail image to make your video active.
+          %br
+          %table.table.table-striped
+            %thead
+              %tr
+                %th Image
+                %th Title
+                %th
+                %th
+                %th
+            %tbody
+              - @videos.each do |video|
+                %tr
+                  %td
+                    - if video.image_uid
+                      = link_to image_tag(video.image.thumb('50x50#').url), admin_channel_video_path(@channel, video)
+                  %td= video.title
+                  %td
+                    %a.btn{:href => edit_admin_channel_video_path(@channel, video)}
+                      %i.icon-pencil
                       Edit
-                    %a.btn.btn-danger.modal-prev.pull-left
+                    %a.btn.btn-danger{:href => admin_channel_video_path(@channel, video), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
                       %i.icon-trash.icon-white
-                      Delete
+                      Destroy
+
+
+
+///new design below
+
+/ .row-fluid
+/   .span12
+/     .box.grad_colour_dark_blue
+/       %h2.box_head.round_top Video Gallery
+/       %a.settings.box_button_3{:href => "#", :title => "config"}  
+/       %a.toggle.box_button_2{:href => "#", :title => "toggle"}  
+/       %a.destroy.box_button_1{:href => "#", :title => "close"}  
+/       .toggle_container
+/         .block.box_content.round_bottom.padding_20
+/           %header
+/             %h1 Video Gallery
+/             %blockquote
+/               %p It features click to play, transition effects, and fullscreen mode functionality.
+/               %i add modal window to play video
+/ 
+/           %hr
+/             #gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
+/               / put video here
+/               - (1..20).each do |i|
+/                 %a{:href => "../../../../../assets/admin/gallery/flowers/adfish_rose.jpg", :rel => "gallery", :title => "Rose"}
+/                   %img{:src => "../../../../../assets/admin/gallery/flowers/adfish_rose_thumb.jpg"}
+/ 
+/             %hr
+/               %br
+/                 / modal-gallery
+/                 #modal-gallery.modal.modal-gallery.hide.fade
+/                   .modal-header
+/                     %a.close{"data-dismiss" => "modal"} ×
+/                     %h3.modal-title
+/                   .modal-body
+/                     .modal-image
+/                   .modal-footer
+/                     %a.btn.btn-primary.modal-next
+/                       Next
+/                       %i.icon-arrow-right.icon-white
+/                     %a.btn.btn-info.modal-prev
+/                       %i.icon-arrow-left.icon-white
+/                       Previous
+/                     %a.btn.btn-success.modal-play.modal-slideshow{"data-slideshow" => "5000"}
+/                       %i.icon-play.icon-white
+/                       Slideshow
+/                     %a.btn.modal-download{:target => "_blank"}
+/                       %i.icon-download
+/                       Download
+/                     %a.btn.btn-warning.modal-prev.pull-left
+/                       %i.icon-edit.icon-white
+/                       Edit
+/                     %a.btn.btn-danger.modal-prev.pull-left
+/                       %i.icon-trash.icon-white
+/                       Delete

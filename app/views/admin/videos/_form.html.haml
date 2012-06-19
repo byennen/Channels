@@ -4,8 +4,6 @@
     = f.input :description, :input_html => {:class => "input-xlarge", :rows => 5, :cols => 300, :style => "width: 400px;"}
     = f.input :image, :as => :file, :label => "Image"
     = image_tag @video.image.thumb('100x100#').url if @video.image
-    = f.input :video, :as => :file, :label => "Video"
-    = f.input :preview, :as => :file, :label => "Video Preview"
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     or
