@@ -19,8 +19,8 @@
                 %tr
                   %td
                     - if album.image_uid
-                      = link_to image_tag(album.image.thumb('50x50#').url), new_admin_channel_album_song_path(@channel, album)
-                  %td= link_to album.title, new_admin_channel_album_song_path(@channel, album)
+                      = link_to image_tag(album.image.thumb('50x50#').url), admin_channel_album_songs_path(@channel, album)
+                  %td= link_to album.title, admin_channel_album_songs_path(@channel, album)
                   %td
                     %a.btn{:href => edit_admin_channel_album_path(@channel, album)}
                       %i.icon-pencil

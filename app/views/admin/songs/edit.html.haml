@@ -9,4 +9,12 @@
         .block.box_content.round_bottom.padding_20
           %header
             %h1 Edit Song
-            = render "form"
+            = simple_form_for [:admin, @channel, @album, @song], :html => { :multipart => true, :class => 'form-horizontal', :style => "clear:both;" } do |f|
+              = f.input :title, :input_html => {:class => "input-xlarge"}
+              = f.input :price, :input_html => {:class => "input-xlarge"}
+              = f.input :preview, as: :file  
+              = f.input :active, as: :boolean
+              .form-actions
+                = f.button :submit, :class => 'btn-primary'
+                or
+                = link_to 'Go Back', url_for(:back), :class => 'btn'
