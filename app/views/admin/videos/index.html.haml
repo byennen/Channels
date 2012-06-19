@@ -1,6 +1,6 @@
 = render 'video_uploader'
 
-//can only see channels videos here.
-= render 'video_gallery'
+- if @channel.videos.present?
+  = render 'video_gallery'
 
 

@@ -1,26 +1,26 @@
 .row-fluid
   .span12
     #box_3.box.grad_colour_dark_blue
-      %h2.box_head.round_top Video Uploader
+      %h2.box_head.round_top Song Uploader
       %a.settings.box_button_3{:href => "#", :title => "config"}  
       %a.toggle.box_button_2{:href => "#", :title => "toggle"}  
       %a.destroy.box_button_1{:href => "#", :title => "close"}  
       .toggle_container
         .block.box_content.round_bottom.padding_20
           .page-header
-            %h1 Video Uploader
+            %h1 Song Uploader
           %blockquote
             %p
-              Video Uploader widget with multiple file selection, and drag&drop support!
+              Song Uploader widget with multiple file selection, and drag&drop support!
           %br
-          = form_for Video.new, :url => admin_channel_videos_path(@channel), :html => { :multipart => true, :id => "fileupload"  } do |f|
+          = form_for Song.new, :url => admin_channel_album_songs_path(@channel, @album), :html => { :multipart => true, :id => "fileupload"  } do |f|
             %div{class: "row fileupload-buttonbar"}
               %div{class: "span7"}
                 %span{class: "btn btn-success fileinput-button"}
                   %i{class: "icon-plus icon-white"}
                   %span 
                     Add files...
-                    = f.file_field :video
+                    = f.file_field :song
                 %button{type: "submit", class: "btn btn-primary start"}
                   %i{class: "icon-upload icon-white"}
                   %span Start upload
@@ -60,3 +60,4 @@
                   You can
                   %strong drag & drop
                   files from your desktop on this webpage with Google Chrome, Mozilla Firefox and Apple Safari.
+
