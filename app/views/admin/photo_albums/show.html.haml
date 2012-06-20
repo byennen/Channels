@@ -11,3 +11,6 @@
             %h1= @photo_album.title
             %p
               %a.btn.btn-primary{:href => new_admin_channel_photo_album_photo_path(@channel.id, @photo_album.id)} Add Photos
+            - @photo_album.photos.each do |photo|
+              .photo
+                = image_tag(photo.image.thumb('200x200#').url)
