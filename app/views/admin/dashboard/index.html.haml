@@ -1,3 +1,6 @@
+/ stats
+- javascript 'admin/plugins/excanvas.min', 'admin/plugins/altimarc.charts', 'admin/plugins/jquery.dataTables'
+
 = render 'visitor_stats'
 
 .row-fluid
@@ -7,3 +10,9 @@
 .row-fluid
   = render 'facebook_stats'
   = render 'twitter_stats'
+  
+:javascript
+  $('#datatable').dataTable( {
+    "bJQueryUI": true,
+    "sPaginationType": "full_numbers"
+  });

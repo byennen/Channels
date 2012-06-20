@@ -7,7 +7,7 @@
     /[if lt IE 9]
       %script{:src => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
     = stylesheet_link_tag "admin/application", :media => "all"
-    = javascript_include_tag "admin/application"  
+    = javascript_include_tag "admin/application"
     = yield :head  
     = favicon_link_tag
     = csrf_meta_tag
@@ -21,6 +21,15 @@
           = render 'layouts/admin/shortcuts'
           = render 'layouts/admin/breadcrumb'
           = yield
-    
-    //javascript
-    = javascript_include_tag "admin/application"
+
+    = javascript_include_tag 'admin/plugins/jquery-file-upload/locale'
+    = javascript_include_tag 'admin/plugins/jquery-file-upload/vendor/jquery.ui.widget'
+    = javascript_include_tag 'admin/plugins/jquery-file-upload/jquery.fileupload'
+    = javascript_include_tag 'admin/plugins/jquery-file-upload/jquery.iframe-transport'
+    = javascript_include_tag 'admin/plugins/jquery-file-upload/jquery.fileupload-ui'
+    = javascript_include_tag "admin/plugins/jquery.hoverIntent.minified"
+    = javascript_include_tag "admin/plugins/jquery.flot.min"
+    = javascript_include_tag "admin/plugins/jquery.flot.resize"
+    = javascript_include_tag "admin/plugins/jquery.flot.selection"
+    = javascript_include_tag "admin/plugins/jquery.ui.totop"
+    = javascript_include_tag "admin/plugins/altimarc"

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	// Left side navigation: Minimize
+    // Left side navigation: Minimize
 	$("#side_nav a.minimize").click(function(){
 		$("#side_nav").toggleClass('closed', 800);
 		$("#side_nav > ul li a > span").fadeToggle();
@@ -281,12 +281,6 @@ $(document).ready(function(){
 	 
 	// dropdown used in top nav
 	$('.dropdown-toggle').dropdown();
-	 
-	// datatable
-	$('#datatable').dataTable( {
-		"bJQueryUI": true,
-		"sPaginationType": "full_numbers"
-	} );	
 	
 	// shortcut popover
 	$(".popover_shortcut_on").popover({
@@ -304,153 +298,5 @@ $(document).ready(function(){
 	// alerts
 	$(".alert-message").alert();
 
-	//Pretty print make code pretty
-    window.prettyPrint && prettyPrint();	
 	
-	// Select theme color (load from cookie)
-	var ckie = $.cookie("AdminThemeColor");
-	if (ckie && ckie != '')	{
-		$(".box").attr('class', 'box '+ ckie);
-	}
-	
-	// events for changing theme		
-	$("#lightblue").click(function() {			
-		$(".box").attr('class', 'box grad_colour_light_blue');
-		$.cookie("AdminThemeColor", "grad_colour_light_blue", { expires: 365 });
-	});
-	
-	$("#darkblue").click(function() {			
-		$(".box").attr('class', 'box grad_colour_dark_blue');
-		$.cookie("AdminThemeColor", "grad_colour_dark_blue", { expires: 365 });
-	});
-	
-	$("#red").click(function() {			
-		$(".box").attr('class', 'box grad_colour_red');
-		$.cookie("AdminThemeColor", "grad_colour_red", { expires: 365 });
-	});
-	
-	$("#green").click(function() {			
-		$(".box").attr('class', 'box grad_colour_green');
-		$.cookie("AdminThemeColor", "grad_colour_green", { expires: 365 });
-	});
-	
-	$("#orange").click(function() {			
-		$(".box").attr('class', 'box grad_colour_orange');
-		$.cookie("AdminThemeColor", "grad_colour_orange", { expires: 365 });
-	});
-	
-	$("#grey").click(function() {			
-		$(".box").attr('class', 'box grad_colour_grey');
-		$.cookie("AdminThemeColor", "grad_colour_grey", { expires: 365 });
-	});
-	
-	$("#black").click(function() {			
-		$(".box").attr('class', 'box grad_colour_black');
-		$.cookie("AdminThemeColor", "grad_colour_black", { expires: 365 });
-	});
-	
-	// Background from cookie
-	var ckie = $.cookie("AdminBackground");
-	if (ckie && ckie != '')	{
-		var split = ckie.split(',');
-		if(split[1]) {
-			$("#logo").removeClass("dark").addClass("dark");
-		} else {
-			$("#logo").removeClass("dark");
-		}
-		$("body").attr('class', split[0]);
-	}
-	
-	// Backgrounds set events
-	$('#pattern01').click(function() {			
-		$("body").attr('class', 'bg_main_01');
-		$("#logo").removeClass("dark");
-		$.cookie("AdminBackground", 'bg_main_01', { expires: 365 });
-	});
-	$('#pattern02').click(function() {			
-		$("body").attr('class', 'bg_main_02');
-		$("#logo").removeClass("dark");
-		$.cookie("AdminBackground", 'bg_main_02', { expires: 365 });
-	});
-	$('#pattern03').click(function() {			
-		$("body").attr('class', 'bg_main_03');
-		$("#logo").removeClass("dark");
-		$.cookie("AdminBackground", 'bg_main_03', { expires: 365 });
-	});
-	$('#pattern04').click(function() {			
-		$("body").attr('class', 'bg_main_04');
-		$("#logo").removeClass("dark");
-		$.cookie("AdminBackground", 'bg_main_04', { expires: 365 });
-	});
-	$('#pattern05').click(function() {			
-		$("body").attr('class', 'bg_main_05');
-		$("#logo").removeClass("dark").addClass("dark");
-		$.cookie("AdminBackground", 'bg_main_05,dark', { expires: 365 });
-	});
-	$('#pattern06').click(function() {			
-		$("body").attr('class', 'bg_main_06');
-		$("#logo").removeClass("dark");
-		$.cookie("AdminBackground", 'bg_main_06', { expires: 365 });
-	});
-	$('#pattern07').click(function() {			
-		$("body").attr('class', 'bg_main_07');
-		$("#logo").removeClass("dark").addClass("dark");
-		$.cookie("AdminBackground", 'bg_main_07,dark', { expires: 365 });
-	});
-	$('#pattern08').click(function() {			
-		$("body").attr('class', 'bg_main_08');
-		$("#logo").removeClass("dark").addClass("dark");
-		$.cookie("AdminBackground", 'bg_main_08,dark', { expires: 365 });
-	});
-	
-	$('#pattern09').click(function() {			
-		$("body").attr('class', 'bg_main_09');
-		$("#logo").removeClass("dark");
-		$.cookie("AdminBackground", 'bg_main_09', { expires: 365 });
-	});
-	$('#pattern10').click(function() {			
-		$("body").attr('class', 'bg_main_10');
-		$("#logo").removeClass("dark").addClass("dark");
-		$.cookie("AdminBackground", 'bg_main_10,dark', { expires: 365 });
-	});
-	$('#pattern11').click(function() {			
-		$("body").attr('class', 'bg_main_11,dark');
-		$("#logo").removeClass("dark").addClass("dark");
-		$.cookie("AdminBackground", 'bg_main_11,dark', { expires: 365 });
-	});
-	$('#pattern12').click(function() {			
-		$("body").attr('class', 'bg_main_12');
-		$("#logo").removeClass("dark");
-		$.cookie("AdminBackground", 'bg_main_12', { expires: 365 });
-	});
-	$('#pattern13').click(function() {			
-		$("body").attr('class', 'bg_main_13');
-		$.cookie("AdminBackground", 'bg_main_13', { expires: 365 });
-	});
-	$('#pattern14').click(function() {			
-		$("body").attr('class', 'bg_main_14');
-		$("#logo").removeClass("dark");
-		$.cookie("AdminBackground", 'bg_main_14', { expires: 365 });
-	});
-	$('#pattern15').click(function() {			
-		$("body").attr('class', 'bg_main_15');
-		$("#logo").removeClass("dark");
-		$.cookie("AdminBackground", 'bg_main_15', { expires: 365 });
-	});
-	$('#pattern16').click(function() {			
-		$("body").attr('class', 'bg_main_16');
-		$("#logo").removeClass("dark");
-		$.cookie("AdminBackground", 'bg_main_16', { expires: 365 });
-	});
-	$('#pattern17').click(function() {			
-		$("body").attr('class', 'bg_main_17');
-		$("#logo").removeClass("dark");
-		$.cookie("AdminBackground", 'bg_main_17', { expires: 365 });
-	});
-	$('#pattern18').click(function() {			
-		$("body").attr('class', 'bg_main_18');
-		$("#logo").removeClass("dark");
-		$.cookie("AdminBackground", 'bg_main_18', { expires: 365 });
-	});
-	
-});  		
+});
