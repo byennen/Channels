@@ -140,9 +140,9 @@ ActiveRecord::Schema.define(:version => 20120621204138) do
     t.datetime "updated_at",     :null => false
     t.boolean  "active"
     t.integer  "album_id"
+    t.integer  "price_in_cents"
     t.string   "preview"
     t.string   "song"
-    t.integer  "price_in_cents"
   end
 
   create_table "uploads", :force => true do |t|

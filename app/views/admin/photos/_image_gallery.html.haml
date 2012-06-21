@@ -41,10 +41,10 @@
                     %a.btn.modal-download{:target => "_blank"}
                       %i.icon-download
                       Download
-                    %a.btn.btn-warning.pull-left{:href => edit_admin_channel_photo_album_photo_path(@channel, @photo_album, "1")}
+                    %a.btn.btn-warning.modal-prev.pull-left{:href => edit_admin_channel_photo_album_photo_path(@channel, @photo_album, "1")}
                       %i.icon-edit.icon-white
                       Edit
-                    %a.btn.btn-danger.pull-left{:href => admin_channel_photo_album_photo_path(@channel, @photo_album, "1"), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
+                    %a.btn.btn-danger.modal-prev.pull-left{:href => admin_channel_photo_album_photo_path(@channel, @photo_album, "1"), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
                       %i.icon-trash.icon-white
                       Delete
                       
