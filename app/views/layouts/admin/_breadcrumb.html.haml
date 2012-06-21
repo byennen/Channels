@@ -3,4 +3,7 @@
   .span12
     %ul.breadcrumb
       %li.active Dashboard
+      %li >>
+      %li.active
+        = link_to params[:controller].split('/').last.capitalize, :controller => params[:controller], :action => :index
   / /span
