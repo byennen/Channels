@@ -47,6 +47,8 @@ Channels::Application.routes.draw do
     get '/logout' => 'sessions#destroy'
     get '/join' => 'registrations#new'
   end
+  
+  #match '/media/*dragonfly', :to => Dragonfly[:images]
 
   #admin
   namespace :admin do

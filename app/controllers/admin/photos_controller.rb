@@ -13,6 +13,7 @@ class Admin::PhotosController < Admin::ApplicationController
 
   def create
     @photo = Photo.new(params[:photo].merge(:photo_album => @photo_album))
+    @photo.title = params[:photo].original_filename
     if @photo.save
       respond_to do |format|
         format.html {  

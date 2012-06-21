@@ -12,11 +12,11 @@ class Admin::PostsController < Admin::ApplicationController
   end
 
   def new
-    @post = post.contents.new
+    @post = @channel.posts.new
   end
 
   def create
-    if @post.contents.save
+    if @post.save
       flash[:notice] = "post was successfully created."
     end
     respond_with @post, :location => admin_channel_posts_url
