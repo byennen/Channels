@@ -18,7 +18,7 @@
           %hr
             #gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
               - @photos.each do |photo|
-                = link_to image_tag(photo.image.thumb('100x100#').url), photo.image.url, :rel => "gallery", :title => photo.title if photo.image_uid
+                = link_to image_tag(photo.image.thumb('100x100#').url), photo.image.url, :rel => "gallery", :id => "photo-#{@channel.id}-#{@photo_album.id}-#{photo.id}", :title => photo.title if photo.image_uid
             %hr
               %br
                 / modal-gallery is the modal dialog used for the image gallery
@@ -41,10 +41,10 @@
                     %a.btn.modal-download{:target => "_blank"}
                       %i.icon-download
                       Download
-                    %a.btn.btn-warning.modal-prev.pull-left{:href => edit_admin_channel_photo_album_photo_path(@channel, @photo_album, "1")}
+                    %a.btn.btn-warning.modal-prev.pull-left.edit-photo{:href => edit_admin_channel_photo_album_photo_path(@channel, @photo_album, "1")}
                       %i.icon-edit.icon-white
                       Edit
-                    %a.btn.btn-danger.modal-prev.pull-left{:href => admin_channel_photo_album_photo_path(@channel, @photo_album, "1"), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
+                    %a.btn.btn-danger.modal-prev.pull-left.delete-photo{:href => admin_channel_photo_album_photo_path(@channel, @photo_album, "1"), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
                       %i.icon-trash.icon-white
                       Delete
                       
@@ -54,3 +54,12 @@
 %script{:src => "http://blueimp.github.com/Bootstrap-Image-Gallery/js/bootstrap-image-gallery.min.js"}
 
 - javascript 'admin/plugins/altimarc.gallery'
+:javascript
+  $('#modal-gallery').on('display', function () {
+      var modalData = $(this).data('modal');
+      link = modalData.$links[modalData.options.index]
+      link_id = $(link).attr("id").split('-')
+      photo_url = "/admin/channels/" + link_id[1] + "/photo_albums/" + link_id[2] + "/photos/" + link_id[3];
+      $('.edit-photo').attr("href", photo_url + "/edit");
+      $('.delete-photo').attr("href", photo_url);
+  });
