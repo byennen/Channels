@@ -2,7 +2,7 @@
     $(function () {
         // Initialize the jQuery File Upload widget:
         $('#fileupload').fileupload();
-        //
+
         // Load existing files:
         $.getJSON($('#fileupload').prop('action'), function (files) {
           var fu = $('#fileupload').data('fileupload'),
@@ -16,6 +16,11 @@
           template.addClass('in');
           $('#loading').remove();
         });
+
+		// page reload
+		$('#fileupload').bind('fileuploadstop', function (e, data) {
+			window.location.reload();
+		});
 
     });
 </script>
