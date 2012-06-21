@@ -16,7 +16,7 @@ class Admin::PostsController < Admin::ApplicationController
   end
 
   def create
-    if @post.contents.save
+    if @post.save
       flash[:notice] = "post was successfully created."
     end
     respond_with @post, :location => admin_channel_posts_url

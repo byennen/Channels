@@ -1,13 +1,20 @@
+- event_style = ['Event', 'Giving'].include?(@post.feature) ? '' : 'display: none;'
+- giving_style = @post.feature == 'Giving' ? '' : 'display: none;'
 = simple_form_for [:admin, @channel, @post], :html => {:multipart => true, :class => 'form-horizontal'} do |f|
   .form-inputs
+    = f.input :feature, :collection => @post.available_features
     = f.input :title, :input_html => {:class => "input-xlarge"}
     = f.input :description, :input_html => {:class => "input-xlarge", :cols => 900, :rows => 20}
-    .event
-      = f.input :start_date
-      = f.input :end_date
+    = f.input :photo_id, :collection => @channel.photos
+    = f.input :video_id, :collection => @channel.videos
+    - event_style = ['Event', 'Giving'].include?(@post.feature) ? '' : 'display: none;'
+    .event{style: event_style}
+      = f.input :date
+      = f.input :start_time, :as => :time
+      = f.input :end_time, :as => :time
       = f.input :link
-    .giving
-      = f.input :logo
+    .giving{style: giving_style}
+      = f.input :logo, :as => :file
     
     = f.input :publish_date
     
