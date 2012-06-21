@@ -12,6 +12,7 @@ class Admin::VideosController < Admin::ApplicationController
 
   def create
     @video.attributes = params[:video]
+    @video.title = params[:video][:video].original_filename
     if @video.save
       respond_to do |format|
         format.html {  
