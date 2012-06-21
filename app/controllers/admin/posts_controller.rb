@@ -12,7 +12,7 @@ class Admin::PostsController < Admin::ApplicationController
   end
 
   def new
-    @post = post.contents.new
+    @post = @channel.posts.new
   end
 
   def create
