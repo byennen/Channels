@@ -23,7 +23,7 @@ class Admin::PostsController < Admin::ApplicationController
   end
 
   def update
-    if @post.contents.update_attributes(params[:post])
+    if @post.update_attributes(params[:post])
       flash[:notice] = "post was successfully updated."
     end
     respond_with @post, :location => admin_channel_posts_url
