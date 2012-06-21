@@ -1,1 +1,11 @@
-= render 'form'
+= simple_form_for [:admin, @channel, @photo], :html => {:multipart => true, :class => 'form-horizontal'} do |f|
+  = f.input :title, :input_html => {:class => "input-xlarge"}
+  = f.input :image, :as => :file, :label => "Image"
+  = image_tag @photo.image.thumb('100x100#').url if @photo.image
+  = f.input :description, :input_html => {:class => "input-xlarge"}
+  = f.input :active
+  = f.input :paid
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    or
+    = link_to 'Go Back', url_for(:back), :class => 'btn'

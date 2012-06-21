@@ -8,10 +8,6 @@ class Admin::PhotosController < Admin::ApplicationController
   def index
   end
 
-  def new
-    @photo = Photo.new
-  end
-
   def edit
   end
 

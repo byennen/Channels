@@ -7,8 +7,6 @@ class Admin::PhotoAlbumsController < Admin::ApplicationController
     
   def index; end
   
-  def show; end
-  
   def new
     @photo_album = PhotoAlbum.new
   end
