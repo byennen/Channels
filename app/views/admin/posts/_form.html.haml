@@ -1,12 +1,14 @@
+- news_style = @post.feature.blank? ? 'display:none;' : ''
 - event_style = ['Event', 'Giving'].include?(@post.feature) ? '' : 'display: none;'
 - giving_style = @post.feature == 'Giving' ? '' : 'display: none;'
 = simple_form_for [:admin, @channel, @post], :html => {:multipart => true, :class => 'form-horizontal'} do |f|
   .form-inputs
     = f.input :feature, :collection => @post.available_features
-    = f.input :title, :input_html => {:class => "input-xlarge"}
-    = f.input :description, :input_html => {:class => "input-xlarge", :cols => 900, :rows => 20}
-    = f.input :photo_id, :collection => @channel.photos
-    = f.input :video_id, :collection => @channel.videos
+    .news{style: news_style}
+      = f.input :title, :input_html => {:class => "input-xlarge"}
+      = f.input :description, :input_html => {:class => "input-xlarge", :cols => 900, :rows => 20}
+      = f.input :photo_id, :collection => @channel.photos
+      = f.input :video_id, :collection => @channel.videos
     - event_style = ['Event', 'Giving'].include?(@post.feature) ? '' : 'display: none;'
     .event{style: event_style}
       = f.input :date
@@ -15,8 +17,8 @@
       = f.input :link
     .giving{style: giving_style}
       = f.input :logo, :as => :file
-    
-    = f.input :publish_date
+    .publish_date{style: news_style}
+      = f.input :publish_date
     
   .form-actions
     = f.button :submit, :class => 'btn-primary'

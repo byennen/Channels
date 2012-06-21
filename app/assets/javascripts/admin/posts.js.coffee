@@ -1,9 +1,13 @@
 jQuery ->
   $('#post_feature').change (event) ->
-    $('.event').hide();
-    $('.giving').hide();
+    $('.news').hide()
+    $('.publish_date').hide()
+    $('.event').hide()
+    $('.giving').hide()
     $feature = $(this).val()
-    console.log("Feature is " + $feature)
+    if $feature != ""
+      $('.news').show();
+      $('.publish_date').show();
     if $feature == 'Event'
       $('.event').show();
     else if $feature == 'Giving'
