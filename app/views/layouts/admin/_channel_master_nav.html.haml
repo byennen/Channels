@@ -1,29 +1,55 @@
-%a.brand{:href => admin_channel_path(current_user.channel_id) } Altimarc Admin
-.nav-collapse
-  %ul.nav
-    %li= link_to "Albums", admin_channel_albums_path(@channel)
+#side_nav.span2.sidebar-nav.side_nav
+  %span#logo.logo  
+  %ul.clearfix
+    %li
+      %a.round_top{:href => admin_root_url(:subdomain => "www")}
+        = image_tag('admin/icons/grey/Laptop.png')
+        %span Dashboard
+    / %li
+    /   / change link for posts
+    /   %a{:href => admin_channel_posts_url(@channel, subdomain: "www")}
+    /     = image_tag('admin/icons/grey/create_write.png')
+    /     Posts
+    / %li
+    /   %a{:href => admin_channel_albums_url(@channel, subdomain: "www")}
+    /     = image_tag('admin/icons/grey/Radio.png')
+    /     Music
+    / %li
+    /   %a{:href => admin_channel_videos_url(@channel, subdomain: "www")}
+    /     = image_tag('admin/icons/grey/film_camera.png')
+    /     Videos
+    / %li
+    /   %a{:href => admin_channel_photo_albums_url(@channel, subdomain: "www")}
+    /     = image_tag('admin/icons/grey/Camera.png')
+    /     Photos
 
-    %li= link_to "Videos", admin_channel_videos_path(@channel)
-
-    %li= link_to "Photos",  admin_channel_photos_path(@channel)
-
-    - if @channel.feature.vault == true
-      %li= link_to "Vault",  "#"
-
-    - if @channel.feature.news == true
-      %li= link_to "News",  "#"
-
-    - if @channel.feature.events == true
-      %li= link_to "Events",  "#"
-
-    - if @channel.feature.giving == true
-      %li= link_to "Giving",  "#"
-
-    %li= link_to "Help", admin_channel_help_path
-
-  %p.navbar-text.pull-right
-    Logged in as
-    = link_to current_user.email, edit_user_registration_path
-    = link_to('Logout', logout_url(subdomain: "www"), :method=>'delete')
+/ %a.brand{:href => admin_channel_path(current_user.channel_id) } Altimarc Admin
+/ .nav-collapse
+/   
+/   %ul.nav
+/     %li= link_to "Albums", admin_channel_albums_path(@channel)
+/ 
+/     %li= link_to "Videos", admin_channel_videos_path(@channel)
+/ 
+/     %li= link_to "Photos",  admin_channel_photos_path(@channel)
+/ 
+/     - if @channel.feature.vault == true
+/       %li= link_to "Vault",  "#"
+/ 
+/     - if @channel.feature.news == true
+/       %li= link_to "News",  "#"
+/ 
+/     - if @channel.feature.events == true
+/       %li= link_to "Events",  "#"
+/ 
+/     - if @channel.feature.giving == true
+/       %li= link_to "Giving",  "#"
+/ 
+/     %li= link_to "Help", admin_channel_help_path
+/ 
+/   %p.navbar-text.pull-right
+/     Logged in as
+/     = link_to current_user.email, edit_user_registration_path
+/     = link_to('Logout', logout_url(subdomain: "www"), :method=>'delete')
 
 

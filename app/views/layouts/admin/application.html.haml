@@ -16,7 +16,7 @@
 
     .container-fluid
       .row-fluid
-        = render 'layouts/admin/side_nav'
+        = render "layouts/admin/#{current_user.role}_nav"
         #main_container.span10
           = render 'layouts/admin/shortcuts'
           = render 'layouts/admin/breadcrumb'
