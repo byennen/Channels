@@ -29,7 +29,8 @@ class Post < ActiveRecord::Base
   
     def photo_or_video_present
       return true unless self.photo_id.nil? && self.video_id.nil?
-      self.errors[:base] << "Must pick a video or photo"
+      self.errors[:photo_id] << "Must pick a video or photo"
+      self.errors[:video_id] << "Must pick a video or photo"
       return false
     end
 
