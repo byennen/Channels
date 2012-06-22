@@ -5,5 +5,7 @@ class PhotoAlbum < ActiveRecord::Base
   
   attr_accessible :title, :body
   
+  image_accessor :image
+  
   
 end

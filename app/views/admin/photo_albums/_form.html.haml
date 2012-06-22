@@ -1,5 +1,7 @@
 = simple_form_for [:admin, @channel, @photo_album], :html => {:multipart => true, :class => 'form-horizontal'} do |f|
   = f.input :title, :input_html => {:class => "input-xlarge"}
+  = f.input :image, :as => :file, :label => "Image"
+  = image_tag @album.image.thumb('100x100#').url if @photo_album.image  
   = f.input :description, :input_html => {:class => "input-xlarge"}
   -# = f.input :active
   .form-actions
