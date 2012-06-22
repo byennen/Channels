@@ -1,15 +1,15 @@
 / stats
 - javascript 'admin/plugins/excanvas.min', 'admin/plugins/altimarc.charts', 'admin/plugins/jquery.dataTables'
 
-= render 'visitor_stats'
+= render 'admin/dashboard/visitor_stats'
 
 .row-fluid
-  = render 'monthly_stats'
-  = render 'member_updates'
-  = render 'member_comments'
+  = render 'admin/dashboard/monthly_stats'
+  = render 'admin/dashboard/member_updates'
+  = render 'admin/dashboard/member_comments'
 .row-fluid
-  = render 'facebook_stats'
-  = render 'twitter_stats'
+  = render 'admin/dashboard/facebook_stats'
+  = render 'admin/dashboard/twitter_stats'
   
 :javascript
   $('#datatable').dataTable( {
