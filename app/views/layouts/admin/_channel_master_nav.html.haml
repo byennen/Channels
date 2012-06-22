@@ -5,23 +5,23 @@
       %a.round_top{:href => admin_root_url(:subdomain => "www")}
         = image_tag('admin/icons/grey/Laptop.png')
         %span Dashboard
-    / %li
-    /   / change link for posts
-    /   %a{:href => admin_channel_posts_url(@channel, subdomain: "www")}
-    /     = image_tag('admin/icons/grey/create_write.png')
-    /     Posts
-    / %li
-    /   %a{:href => admin_channel_albums_url(@channel, subdomain: "www")}
-    /     = image_tag('admin/icons/grey/Radio.png')
-    /     Music
-    / %li
-    /   %a{:href => admin_channel_videos_url(@channel, subdomain: "www")}
-    /     = image_tag('admin/icons/grey/film_camera.png')
-    /     Videos
-    / %li
-    /   %a{:href => admin_channel_photo_albums_url(@channel, subdomain: "www")}
-    /     = image_tag('admin/icons/grey/Camera.png')
-    /     Photos
+    %li
+      / change link for posts
+      %a{:href => admin_channel_posts_url(@channel, subdomain: "www")}
+        = image_tag('admin/icons/grey/create_write.png')
+        Posts
+    %li
+      %a{:href => admin_channel_albums_url(@channel, subdomain: "www")}
+        = image_tag('admin/icons/grey/Radio.png')
+        Music
+    %li
+      %a{:href => admin_channel_videos_url(@channel, subdomain: "www")}
+        = image_tag('admin/icons/grey/film_camera.png')
+        Videos
+    %li
+      %a{:href => admin_channel_photo_albums_url(@channel, subdomain: "www")}
+        = image_tag('admin/icons/grey/Camera.png')
+        Photos
 
 / %a.brand{:href => admin_channel_path(current_user.channel_id) } Altimarc Admin
 / .nav-collapse
