@@ -8,9 +8,10 @@
       = image_tag('admin/icons/grey/speech_bubbles.png', :alt => "Comments")
       Comments
       %span.label.label-warning 9
-    %a.btn.btn-shortcut{:href => new_admin_channel_url(:subdomain => "www")}
-      = image_tag('admin/icons/grey/Graph.png', :alt => "Graph")
-      New Channel
+    - if current_user.admin?
+      %a.btn.btn-shortcut{:href => new_admin_channel_url(:subdomain => "www")}
+        = image_tag('admin/icons/grey/Television.png', :alt => "Graph")
+        Channel
       
     / %a.stat-column{:href => "#"}
     /   %span.number 452
