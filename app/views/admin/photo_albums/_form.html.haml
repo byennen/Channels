@@ -1,6 +1,6 @@
 = simple_form_for [:admin, @channel, @photo_album], :html => {:multipart => true, :class => 'form-horizontal'} do |f|
   = f.input :title, :input_html => {:class => "input-xlarge"}
-  = f.input :body, :input_html => {:class => "input-xlarge"}
+  = f.input :description, :input_html => {:class => "input-xlarge"}
   -# = f.input :active
   .form-actions
     = f.button :submit, :class => 'btn-primary'
