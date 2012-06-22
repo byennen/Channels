@@ -13,7 +13,7 @@ class Admin::PhotosController < Admin::ApplicationController
 
   def create
     @photo = Photo.new(params[:photo].merge(:photo_album => @photo_album))
-    @photo.title = params[:photo].original_filename
+    @photo.title = params[:photo][:image].original_filename
     if @photo.save
       respond_to do |format|
         format.html {  
@@ -39,6 +39,6 @@ class Admin::PhotosController < Admin::ApplicationController
 
   def destroy
     @photo.destroy
-    redirect_to admin_channel_photos_url
+    redirect_to admin_channel_photo_album_photos_url(@channel, @photo_album)
   end
 end
