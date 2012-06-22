@@ -10,6 +10,7 @@ class Post < ActiveRecord::Base
                   :photo_id
                     
   validates :title, :description, :feature, presence: true
+  validate :photo_or_video_present
   
   image_accessor :logo
   
@@ -23,5 +24,13 @@ class Post < ActiveRecord::Base
     features << "Vault" if channel.feature.vault?
     return features
   end
+  
+  private
+  
+    def photo_or_video_present
+      return true unless self.photo_id.nil? && self.video_id.nil?
+      self.errors[:base] << "Must pick a video or photo"
+      return false
+    end
 
 end
