@@ -20,6 +20,7 @@ class Post < ActiveRecord::Base
     features << "Event" if channel.feature.events?
     features << "Giving" if channel.feature.giving?
     features << "Life" if channel.id == 1
+    return features
   end
 
 end
