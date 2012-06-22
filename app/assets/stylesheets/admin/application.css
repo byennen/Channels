@@ -4,5 +4,7 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
  *= require_tree .
- *= require plugins/jquery.fileupload-ui.css
+ *= require admin/plugins/jquery.fileupload-ui
+ *= require admin/plugins/custom-theme/jquery-ui-1.8.16.custom
+ *= require admin/plugins/custom-theme/jquery.ui.1.8.16.ie
 */
