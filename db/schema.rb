@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621204138) do
+ActiveRecord::Schema.define(:version => 20120622183506) do
 
   create_table "ads", :force => true do |t|
     t.integer  "channel_id"
@@ -99,9 +99,10 @@ ActiveRecord::Schema.define(:version => 20120621204138) do
   create_table "photo_albums", :force => true do |t|
     t.integer  "channel_id"
     t.string   "title"
-    t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "image_uid"
   end
 
   create_table "photos", :force => true do |t|
@@ -140,9 +141,9 @@ ActiveRecord::Schema.define(:version => 20120621204138) do
     t.datetime "updated_at",     :null => false
     t.boolean  "active"
     t.integer  "album_id"
-    t.integer  "price_in_cents"
     t.string   "preview"
     t.string   "song"
+    t.integer  "price_in_cents"
   end
 
   create_table "uploads", :force => true do |t|
