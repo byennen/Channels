@@ -19,6 +19,6 @@
               %ul
                 - @photo_albums.each do |photo_album|
                   %li
-                    = link_to image_tag('admin/gallery/flowers/adfish_rose_thumb.jpg'), admin_channel_photo_album_photos_path(@channel, photo_album)
+                    = link_to image_tag(photo_album.image.thumb('100x100#').url), admin_channel_photo_album_photos_path(@channel, photo_album)
                     %br
                     %span= photo_album.title
