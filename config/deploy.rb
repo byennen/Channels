@@ -33,3 +33,5 @@ end
 
 after "deploy:update_code", "customs:config"
 after "deploy", "deploy:cleanup"
+        require './config/boot'
+        require 'airbrake/capistrano'

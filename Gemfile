@@ -50,6 +50,7 @@ end
 
 group :production, :staging do
   gem 'pg'
+  gem "airbrake"
 end
 
 
