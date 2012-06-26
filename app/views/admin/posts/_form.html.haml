@@ -11,24 +11,22 @@
       = f.input :video_id, :collection => @channel.videos
     - event_style = ['Event', 'Giving'].include?(@post.feature) ? '' : 'display: none;'
     .event{style: event_style}
-      
-      / Lance working
-      / .control-group
-      /   %label.control-label{:for => "date01"} Date input
-      /   .controls
-      /     %input#date01.input-xlarge.datepicker_on{:type => "text"}
-      /       %p.help-block Click to enter date.
-            
-      = f.input :date
+      = f.input :date, :as => :string, :input_html => { :class => 'datepicker_on' } 
       = f.input :start_time, :as => :time
       = f.input :end_time, :as => :time
       = f.input :link
     .giving{style: giving_style}
       = f.input :logo, :as => :file
     .publish_date{style: news_style}
-      = f.input :publish_date
+      = f.input :publish_date, :as => :string, :input_html => { :class => 'datepicker_on' } 
     
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     or
     = link_to 'Go Back', url_for(:back), :class => 'btn'
+    
+:javascript
+  $(document).ready(function(){
+  	// Jquery UI Datepicker
+  	$(".datepicker_on").datepicker();	
+  });

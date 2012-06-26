@@ -19,6 +19,9 @@ gem 'money', :git => 'https://github.com/collectiveidea/money.git'
 # deploy
 gem 'capistrano'
 
+#exception notifier
+gem "airbrake" 
+
 #uploads
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.11'
@@ -50,7 +53,6 @@ end
 
 group :production, :staging do
   gem 'pg'
-  gem "airbrake"
 end
 
 
