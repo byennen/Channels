@@ -1,9 +1,0 @@
-= simple_form_for [:admin, @channel, @vault], :html => {:multipart => true, :class => 'form-horizontal'} do |f|
-  .form-inputs
-    = f.input :title, :input_html => {:class => "input-xlarge"}
-    = f.input :description, :input_html => {:class => "input-xlarge"}
-
-  .form-actions
-    = f.button :submit, :class => 'btn-primary'
-    or
-    = link_to 'Go Back', url_for(:back), :class => 'btn'
