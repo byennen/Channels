@@ -1,31 +1,32 @@
-.row
-  .span12
-    %ul.breadcrumb.entry-title
-      %li.active Most Played Music
-    #most_played_music.carousel.slide
-      / Carousel items
-      .carousel-inner
-        .active.item
-          %ul.thumbnails
-            - (1..4).each do |i|
-              %li.span3
-                .thumbnail
-                  %img{:alt => "", :src => "http://placehold.it/260x180"}
-                    .caption
-                      %h5 Track Name
-                      %p Artist
+- if @songs.present?
+  .row
+    .span12
+      %ul.breadcrumb.entry-title
+        %li.active Most Played Music
+      #most_played_music.carousel.slide
+        / Carousel items
+        .carousel-inner
+          .active.item
+            %ul.thumbnails
+              - (1..4).each do |i|
+                %li.span3
+                  .thumbnail
+                    %img{:alt => "", :src => "http://placehold.it/260x180"}
+                      .caption
+                        %h5 Track Name
+                        %p Artist
           
 
-        .item
-          %ul.thumbnails
-            - (1..4).each do |i|
-              %li.span3
-                .thumbnail
-                  %img{:alt => "", :src => "http://placehold.it/260x180"}
-                    .caption
-                      %h5 Track Name
-                      %p Artist          
+          .item
+            %ul.thumbnails
+              - (1..4).each do |i|
+                %li.span3
+                  .thumbnail
+                    %img{:alt => "", :src => "http://placehold.it/260x180"}
+                      .caption
+                        %h5 Track Name
+                        %p Artist          
 
-      / Carousel nav
-      %a.carousel-control.left{"data-slide" => "prev", :href => "#most_played_music"} ‹
-      %a.carousel-control.right{"data-slide" => "next", :href => "#most_played_music"} ›
+        / Carousel nav
+        %a.carousel-control.left{"data-slide" => "prev", :href => "#most_played_music"} ‹
+        %a.carousel-control.right{"data-slide" => "next", :href => "#most_played_music"} ›

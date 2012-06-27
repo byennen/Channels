@@ -42,29 +42,6 @@ ActiveRecord::Schema.define(:version => 20120622183506) do
     t.string   "background_color"
   end
 
-  create_table "contents", :force => true do |t|
-    t.datetime "date"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.string   "title"
-    t.text     "description"
-    t.string   "logo_uid"
-    t.string   "link"
-    t.string   "location"
-    t.integer  "contentable_id"
-    t.string   "contentable_type"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
-  add_index "contents", ["contentable_id", "contentable_type"], :name => "index_contents_on_contentable_id_and_contentable_type"
-
-  create_table "events", :force => true do |t|
-    t.integer  "channel_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "features", :force => true do |t|
     t.integer  "channel_id"
     t.boolean  "audio"
@@ -82,18 +59,6 @@ ActiveRecord::Schema.define(:version => 20120622183506) do
     t.boolean  "cma",        :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-  end
-
-  create_table "gives", :force => true do |t|
-    t.integer  "channel_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "lives", :force => true do |t|
-    t.integer  "channel_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "photo_albums", :force => true do |t|
@@ -186,12 +151,6 @@ ActiveRecord::Schema.define(:version => 20120622183506) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "vaults", :force => true do |t|
-    t.integer  "channel_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "videos", :force => true do |t|
     t.integer  "channel_id"
