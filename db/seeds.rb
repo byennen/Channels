@@ -45,45 +45,13 @@ puts ""
 # video.uploads.create(:file_name => "movie.mov")
 # puts ""
 
-puts "***CREATING VAULT***"
-vault = Vault.create(:channel => channel)
-puts ""
-
-puts "***CREATING VAULT CONTENTS***"
-vault.contents.create(:title => "movie.mov")
-puts ""
-
-puts "***CREATING EVENTS**"
-event = Event.create(:channel => channel)
-puts ""
-
-puts "***CREATING EVENT CONTENTS***"
-event.contents.create(:title => "movie.mov")
-puts ""
-
-puts "***CREATING POST***"
-post = Post.create(:channel => channel)
-puts ""
-
-puts "***CREATING POST CONTENTS***"
-post.contents.create(:title => "movie.mov")
-puts ""
-
-puts "***CREATING LIFE***"
-life = Life.create(:channel => channel)
-puts ""
-
-puts "***CREATING LIFE CONTENTS***"
-life.contents.create(:title => "movie.mov")
-puts ""
-
-puts "***CREATING GIVE***"
-give = Give.create(:channel => channel)
-puts ""
-
-puts "***CREATING GIVE CONTENTS***"
-give.contents.create(:title => "movie.mov")
-puts ""
+# puts "***CREATING POST***"
+# post = Post.create(:channel => channel)
+# puts ""
+# 
+# puts "***CREATING POST CONTENTS***"
+# post.contents.create(:title => "movie.mov")
+# puts ""
 
 puts "***ADDING INTRO***"
 #Song.create(:title => "Welcome to Altimarc", :filename => "song.mp3", :active => true, :intro => true)
