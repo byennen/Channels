@@ -5,28 +5,17 @@
     #latest_videos.carousel.slide
       / Carousel items
       .carousel-inner
-        .active.item
-          %ul.thumbnails
-            - (1..4).each do |i|
-              %li.span3
-                .thumbnail
-                  %img{:alt => "", :src => "http://placehold.it/260x180"}
+        - @videos.each_slice(4) do |array|
+          .item
+            %ul.thumbnails
+              - array.each do |video|
+                %li.span3
+                  .thumbnail
+                    = image_tag(video.image.thumb('260x180#').url)
                     .caption
-                      %h5 Video title
-                      %p Description truncated after so many characters. Probably 80 characters, but whatever you think looks best. Thanks.
+                      %h5= video.title
+                      %p= video.description.truncate(125)
                       %p
-                        = link_with_icon("Watch", "#", "icon-film icon-white", "btn btn-info pjax")
-
-        .item
-          %ul.thumbnails
-            - (1..4).each do |i|
-              %li.span3
-                .thumbnail
-                  %img{:alt => "", :src => "http://placehold.it/260x180"}
-                    .caption
-                      %h5 Video title
-                      %p Description truncated after so many characters. Probably 80 characters, but whatever you think looks best. Thanks.
-                      %p                      
                         = link_with_icon("Watch", "#", "icon-film icon-white", "btn btn-info pjax")
 
       / Carousel nav

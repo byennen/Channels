@@ -6,30 +6,18 @@
       #latest_music.carousel.slide
         / Carousel items
         .carousel-inner
-          .active.item
-            %ul.thumbnails
-              - @songs.each do |song|
-                %li.span3
-                  .thumbnail
-                    %img{:alt => "", :src => "http://placehold.it/260x180"}
+          - @songs.each_slice(4) do |array|
+            .item
+              %ul.thumbnails
+                - array.each do |song|
+                  %li.span3
+                    .thumbnail
+                      = image_tag(song.album.image.thumb('280x160#').url)
                       .caption
-                        %h5 Track Name
-                        %p Artist
+                        %h5= song.title
+                        %p= song.album.channel.name
                         %p
                           = link_with_icon("Play", song_url(song.id), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
-
-
-          .item
-            %ul.thumbnails
-              - (1..4).each do |i|
-                %li.span3
-                  .thumbnail
-                    %img{:alt => "", :src => "http://placehold.it/260x180"}
-                      .caption
-                        %h5 Track Name
-                        %p Artist
-                        %p
-                          = link_with_icon("Play", "#", "icon-play icon-white", "btn btn-info", {:class => "play", :id => "play-2", "data-song" => "2"})
 
         / Carousel nav
         %a.carousel-control.left{"data-slide" => "prev", :href => "#latest_music"} ‹
