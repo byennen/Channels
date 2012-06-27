@@ -1,0 +1,16 @@
+- javascript 'frontend/plugins/html5video'
+
+#video{:style => 'background: #0c0c0c; margin: 20px;'}
+  %video#player_a.projekktor{:controls => "", :height => "385", :poster => "/assets/intro.png", :title => "this is Projekktor", :width => "640", :style => "margin: 0 auto;"}
+    %source{:src => "/assets/intro.ogv", :type => "video/ogg"}
+    %source{:src => "/assets/intro.mp4", :type => "video/mp4"}
+    %source{:src => "/assets/intro.webm", :type => "video/mp4"}
+
+/ = @video.title
+/ = @video.description
+
+
+:javascript
+  $(document).ready(function() {
+      projekktor('#player_a');
+  });
