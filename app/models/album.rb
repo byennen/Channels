@@ -4,4 +4,5 @@ class Album < ActiveRecord::Base
 
   attr_accessible :id, :channel_id, :title, :description, :image, :channel, :active, :price
   image_accessor :image
+
 end

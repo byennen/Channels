@@ -7,14 +7,16 @@
       .carousel-inner
         .active.item
           %ul.thumbnails
-            - (1..4).each do |i|
+            - @songs.each do |song|
               %li.span3
                 .thumbnail
                   %img{:alt => "", :src => "http://placehold.it/260x180"}
                     .caption
                       %h5 Track Name
                       %p Artist
-          
+                      %p
+                        = link_with_icon("Play", song_url(song.id), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
+
 
         .item
           %ul.thumbnails
@@ -24,7 +26,9 @@
                   %img{:alt => "", :src => "http://placehold.it/260x180"}
                     .caption
                       %h5 Track Name
-                      %p Artist          
+                      %p Artist
+                      %p
+                        = link_with_icon("Play", "#", "icon-play icon-white", "btn btn-info", {:class => "play", :id => "play-2", "data-song" => "2"})
 
       / Carousel nav
       %a.carousel-control.left{"data-slide" => "prev", :href => "#latest_music"} ‹

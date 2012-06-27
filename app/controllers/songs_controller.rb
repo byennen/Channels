@@ -6,6 +6,10 @@ class SongsController < ApplicationController
   end
 
   def show
+    @song = Song.find(params[:id], :include => {:album => :channel})
+    if @song.present?
+      render :json => @song, :include => {:album => {:include => :channel }}
+    end
   end
 
   def next_song

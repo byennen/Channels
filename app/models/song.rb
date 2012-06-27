@@ -1,6 +1,6 @@
 class Song < ActiveRecord::Base
   include Rails.application.routes.url_helpers
-  
+
   belongs_to :album
   has_many :uploads, as: :uploadable
 
@@ -9,13 +9,16 @@ class Song < ActiveRecord::Base
   [:preview, :song].each do |t|
     mount_uploader t, SongUploader
   end
-  
+
   before_create :set_price
-  
+
   money :price
-  
+
   scope :available, where(:active => true)
   scope :intro, where(:intro => true)
+
+  scope :published, where('active IS NOT NULL AND active = 1')
+  scope :recent, published.order(:created_at).limit(8)
 
   def self.next_song
     Song.available.find(:first, :order => "rand()")
@@ -33,7 +36,7 @@ class Song < ActiveRecord::Base
       return "/assets/#{filename}"
     end
   end
-  
+
   #one convenient method to pass jq_upload the necessary information
   def to_jq_upload
     s = read_attribute(:song)
@@ -43,15 +46,28 @@ class Song < ActiveRecord::Base
       "size" => song.size,
       "url" => song.url,
       "delete_url" => admin_channel_album_song_path(album.channel.id, album.id, id),
-      "delete_type" => "DELETE" 
+      "delete_type" => "DELETE"
     }
   end
-  
+
+  def as_json(options={})
+    logger.debug("Album is #{album.inspect}")
+    logger.debug("channel is #{album.channel.inspect}")
+    {
+     url: song.url,
+     preview_url: preview.url,
+     title: title,
+     album_title: album.title,
+     album_image: album.image.thumb('70x70').url,
+     artist_name: album.channel.name
+     }
+  end
+
   protected
-  
+
     def set_price
       self.price = 1.00
     end
-  
+
 
 end

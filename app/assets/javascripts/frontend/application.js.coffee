@@ -9,14 +9,14 @@
 
 
 $(document).on "ready pjax:success", ->
-  
+
   #enable pjax
   $('.content a').pjax('[data-pjax-container]')
   $('.pjax').pjax('[data-pjax-container]')
 
   #hide music player - (we need to show the player on the homepage if some plays a song, so this code doesn't really work... the channel might be 0)
+  window.player = new Player(el: "#player .container")
   if window.channel_id > 0
-    window.player = new Player(el: "#player .container")
     $("header").css('height', '82px')
   else
     $("#player").hide()
@@ -29,8 +29,9 @@ $(document).on "ready pjax:success", ->
     $('#first_time_vistor').modal('show')
     $.cookie "altimarc-first-time-visitor", "cookie_value", { expires: 365, useLocalStorage: false, domain: domain }
 
-
-
+  $('.play').click ->
+    window.player.playSong($(this).attr("href"))
+    return false
 
 # debugging
 $(document).on "pjax:success", ->
