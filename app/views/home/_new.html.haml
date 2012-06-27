@@ -8,15 +8,15 @@
       .carousel-inner
         .active.item
           %ul.thumbnails
-            - (1..4).each do |i|
+            - @posts.each do |post|
               %li.span3
                 .thumbnail
-                  %img{:alt => "", :src => "http://placehold.it/260x180"}
-                    .caption
-                      %h5 Thumbnail label
-                      %p Description truncated after so many characters. Probably 80 characters, but whatever you think looks best. Thanks.
-                      %p
-                        = link_with_icon("More", "#", "icon-circle-arrow-right icon-white", "btn btn-info pjax")
+                  = image_tag(post.image.thumb('260x180').url)
+                  .caption
+                    %h5= post.title
+                    %p= post.description.truncate(125)
+                    %p
+                      = link_with_icon("More", "#", "icon-circle-arrow-right icon-white", "btn btn-info pjax")
 
         .item
           %ul.thumbnails

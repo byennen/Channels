@@ -14,6 +14,9 @@ class Post < ActiveRecord::Base
   
   image_accessor :logo
   
+  scope :published, lambda { where('publish_date IS NOT NULL AND publish_date <= ?', Time.zone.now) }
+  scope :recent, published.order(:created_at).limit(8)
+  
     
   def available_features
     features = []
@@ -23,6 +26,15 @@ class Post < ActiveRecord::Base
     features << "Life" if channel.id == 1
     features << "Vault" if channel.feature.vault?
     return features
+  end
+  
+  def image
+    unless photo_id.blank?
+      logger.debug("photo present")
+      photo.image
+    else
+      video.image
+    end
   end
   
   private

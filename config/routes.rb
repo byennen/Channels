@@ -20,7 +20,7 @@ Channels::Application.routes.draw do
   match "/create_cma(/:id)" => "giveaways#create_cm:wa"
 
   post "zencoder-callback" => "zencoder_callback#create", :as => "zencoder_callback"
-  
+
   #channels
   resources :giveaways, :only => [:index]
   resources :videos, :only => [:show, :index]
@@ -34,11 +34,11 @@ Channels::Application.routes.draw do
   # Ads
   get "/ads/next" => "ads#next"
 
-  resources :songs, :only => [:index] do
+  resources :songs, :only => [:index, :show] do
     get :next_song, :on => :collection
     get :intro, :on => :collection
   end
-  
+
   #users
   devise_for :users #, :controllers => {:registrations => 'registrations', :sessions => 'sessions'}
   devise_scope :user do
@@ -47,7 +47,7 @@ Channels::Application.routes.draw do
     get '/logout' => 'sessions#destroy'
     get '/join' => 'registrations#new'
   end
-  
+
   #match '/media/*dragonfly', :to => Dragonfly[:images]
 
   #admin
@@ -59,7 +59,7 @@ Channels::Application.routes.draw do
     resources :posts, :only => :index
     resources :users
     #match "channels/:channel_id/albums/:album_id/songs/create_song_upload" => "songs#create_song_upload", :via => [:post], :as => 'create_song_upload'
-    
+
     #admin/channels
     resources :channels do
       resources :features, :only => :edit
@@ -75,7 +75,7 @@ Channels::Application.routes.draw do
     match "/pages/channels-help" => "pages#channel_help", :as => "channel_help"
     root :to => "dashboard#index"
   end
-  
+
 
   root :to => "channels#show", constraints: lambda {|r| (r.subdomain.present? && r.subdomain != 'www') || !r.host.in?(%w(altimarc.com channels.dev localhost www.channels.dev altimarc-staging.com www.altimarc-staging.com))}
   root :to => "home#index"

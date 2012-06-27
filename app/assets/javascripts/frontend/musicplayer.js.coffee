@@ -71,7 +71,7 @@ class Player
       player.status = true
     )
 
-  playPrevious: ->
+  playprevious: ->
     echo "What am I supposed to play now?"
 
   play: ->
@@ -83,5 +83,25 @@ class Player
       $("#jplayer").jPlayer("pause")
       $("#controls a#player_play").addClass("paused").removeClass("playing")
       @status = true
+
+  updateInfo: (name, title, image) ->
+    $(".artist").html(name)
+    $(".trackName").html(title)
+    $("#cover-art a img").attr("src", image)
+
+  playSong: (url) ->
+    $("#player").show()
+    r = $.getJSON(url, (data) ->
+      $('#jplayer').jPlayer("setMedia", {
+        mp3: data["url"]
+      }).jPlayer("play")
+      player.setClass("Welcome", ".title")
+      player.setClass("", ".album")
+      @status = true
+      @intro = false
+      $("#controls a#player_play").addClass("paused").removeClass("playing")
+      player.updateInfo(data["artist_name"], data["title"], data["album_image"])
+    )
+
 
 window.Player = Player

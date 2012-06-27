@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def index
-    # @songs = Songs.all
+    @posts = Post.recent
+    @songs = Song.recent
+    @videos = Video.recent
   end
 end

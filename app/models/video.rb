@@ -9,6 +9,9 @@ class Video < ActiveRecord::Base
   mount_uploader :video, VideoUploader
   mount_uploader :preview, VideoUploader
   
+  scope :published, where('active IS NOT NULL AND active = 1')
+  scope :recent, published.order(:created_at).limit(8)
+  
   #one convenient method to pass jq_upload the necessary information
   def to_jq_upload
     {
