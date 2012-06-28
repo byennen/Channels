@@ -6,28 +6,17 @@
     #whats_new.carousel.slide
       / Carousel items
       .carousel-inner
-        .active.item
-          %ul.thumbnails
-            - @posts.each do |post|
-              %li.span3
-                .thumbnail
-                  = image_tag(post.image.thumb('260x180').url)
-                  .caption
-                    %h5= post.title
-                    %p= post.description.truncate(125)
-                    %p
-                      = link_with_icon("More", "#", "icon-circle-arrow-right icon-white", "btn btn-info pjax")
-
-        .item
-          %ul.thumbnails
-            - (1..4).each do |i|
-              %li.span3
-                .thumbnail
-                  %img{:alt => "", :src => "http://placehold.it/260x180"}
+        - @posts.each_slice(4) do |array|
+          .active.item
+            %ul.thumbnails
+              - array.each do |post|
+                %li.span3
+                  .thumbnail
+                    = image_tag(post.image.thumb('260x180').url)
                     .caption
-                      %h5 Thumbnail label
-                      %p Description truncated after so many characters. Probably 80 characters, but whatever you think looks best. Thanks.
-                      %p                      
+                      %h5= post.title
+                      %p= post.description.truncate(125)
+                      %p
                         = link_with_icon("More", "#", "icon-circle-arrow-right icon-white", "btn btn-info pjax")
 
       / Carousel nav
