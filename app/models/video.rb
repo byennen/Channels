@@ -1,6 +1,10 @@
 class Video < ActiveRecord::Base
 
-  VIDEO_EXTENSIONS = ['mp4', 'ogg', 'webm']
+  VIDEO_EXTENSIONS = [
+    {:ext => "mp4", :type => "video/mp4"},
+    {:ext => "ogg", :type => "video/ogg"},
+    {:ext => "webm", :type => "video/webm"}
+  ]
 
   include Rails.application.routes.url_helpers
 
@@ -23,10 +27,11 @@ class Video < ActiveRecord::Base
     sources = []
     file_extension = filename.split('.').last
     VIDEO_EXTENSIONS.each do |ext|
-      sources << video.url.gsub(file_extension, ext)
+      sources << {:src => video.url.gsub(file_extension, ext[:ext]), :type => ext[:type] }
     end
     sources
   end
+  
   #one convenient method to pass jq_upload the necessary information
   def to_jq_upload
     {
