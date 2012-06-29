@@ -1,15 +1,54 @@
 - javascript 'frontend/plugins/html5video'
 
+
+///////// I need to get file format from this models/video.rb
+/ def sources
+/   sources = []
+/   file_extension = filename.split('.').last
+/   VIDEO_EXTENSIONS.each do |ext|
+/     sources << video.url.gsub(file_extension, ext)
+/   end
+/   sources
+/ end
+
+///////// The output should look like this
+/ '0': {src:'https://altimarc-dev.s3.amazonaws.com/video/video/2/Day_I_Die_PROMO_HERO_h264.mp4', type:"video/mp4"} 
+/ '1': {src:'https://altimarc-dev.s3.amazonaws.com/video/video/2/Day_I_Die_PROMO_HERO_h264.ogg', type:"video/mp4"} 
+/ '2': {src:'https://altimarc-dev.s3.amazonaws.com/video/video/2/Day_I_Die_PROMO_HERO_h264.webm', type:"video/mp4"}
+
+//////// I need to get this loop into the javascript. I thought to put it into a hash?
+- @video.sources.each_with_index do |source, index|
+  '#{index}': {src:'#{source}', type:"video/mp4"}
+  %br
+
+
 #video{:style => 'background: #0c0c0c;'}
-  %video#player_a.projekktor{:controls => "", :height => "385", :poster => "/assets/intro.png", :title => "this is Projekktor", :width => "640", :style => "margin: 0 auto;"}
-    - @video.sources.each do |source|
-      %source{:src => source}
-
-/ = @video.title
-/ = @video.description
-
-
+  #player_a.projekktor
+  
 :javascript
   $(document).ready(function() {
-      projekktor('#player_a');
+    var player = projekktor('.projekktor', {
+    	width: 640,
+    	height: 433,
+    	poster: "#{@video.image.url}",
+    	controls: true,
+    	playlist: [
+        {
+          0: {src:'http://www.projekktor.com/content/demos/slideshow/html5-Logo.jpg', type:"image/jpeg"},
+          config:{
+            duration: 5
+        }
+        },
+        {
+          ////// I need to output the hash here
+          0: {src:'/assets/intro.mp4', type:"video/mp4"}
+        },
+        {
+          0: {src:'http://www.projekktor.com/content/demos/slideshow/image1.png', type:"image/png"},
+          config:{
+            duration: 5
+        }
+        }
+    	]
+    });
   });
