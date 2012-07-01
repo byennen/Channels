@@ -22,3 +22,7 @@
                     = link_to image_tag(photo_album.image.thumb('100x100#').url), admin_channel_photo_album_photos_path(@channel, photo_album)
                     %br
                     %span= photo_album.title
+                    %br
+                    %a.btn.btn-danger{:href => admin_channel_photo_album_path(@channel, photo_album), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
+                      %i.icon-trash.icon-white
+                      Delete

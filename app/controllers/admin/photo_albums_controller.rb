@@ -23,6 +23,9 @@ class Admin::PhotoAlbumsController < Admin::ApplicationController
   
   def update; end
   
-  def destroy; end
+  def destroy
+    @photo_album.destroy
+    redirect_to admin_channel_photo_albums_url
+  end
   
 end
