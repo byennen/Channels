@@ -1,63 +1,18 @@
-.box
-  .inside
-    %h2 Videos
-    %p Edit Videos here.
-    %p= link_to "Videos",  admin_channel_videos_path(@channel), :class => "btn"
+/ stats
+- javascript 'admin/plugins/excanvas.min', 'admin/plugins/altimarc.charts', 'admin/plugins/jquery.dataTables'
 
-.box
-  .inside
-    %h2 Photos
-    %p Edit Photos here.
-    %p= link_to "Photos",  admin_channel_photo_albums_path(@channel), :class => "btn"
+= render 'admin/dashboard/visitor_stats'
 
-- if @channel.feature.audio == true
-  .box
-    .inside
-      %h2 Albums
-      %p Edit Albums here.
-      %p= link_to "Albums",  admin_channel_albums_path(@channel), :class => "btn"
-
-- if @channel.feature.news == true
-  .box
-    .inside
-      %h2 News
-      %p Edit News here.
-      %p= link_to "News",  admin_channel_posts_path(@channel), :class => "btn"
-
-- if @channel.feature.events == true
-  .box
-    .inside
-      %h2 Event
-      %p Edit Events here.
-      %p= link_to "Events",  admin_channel_events_path(@channel), :class => "btn"
-      
-- if @channel.feature.vault == true
-  .box
-    .inside
-      %h2 Vault
-      %p Edit Vault here.
-      %p= link_to "Vault", admin_channel_vaults_path(@channel), :class => "btn"
-
-- if @channel.feature.giving == true
-  .box
-    .inside
-      %h2 Giving
-      %p Edit Giving here.
-      %p= link_to "Giving",  admin_channel_gives_path(@channel), :class => "btn"
-      
-/ - if @channel.feature.living == true
-.box
-  .inside
-    %h2 Living
-    %p Edit Living here.
-    %p= link_to "Living",  admin_channel_lifes_path(@channel), :class => "btn"
-
-.box
-  .inside
-    %h2 Help
-    %p FAQ's and more here.
-    %p= link_to "Help",  admin_channel_help_path, :class => "btn"
-
-
-
-
+.row-fluid
+  = render 'admin/dashboard/monthly_stats'
+  = render 'admin/dashboard/member_updates'
+  = render 'admin/dashboard/member_comments'
+.row-fluid
+  = render 'admin/dashboard/facebook_stats'
+  = render 'admin/dashboard/twitter_stats'
+  
+:javascript
+  $('#datatable').dataTable( {
+    "bJQueryUI": true,
+    "sPaginationType": "full_numbers"
+  });
