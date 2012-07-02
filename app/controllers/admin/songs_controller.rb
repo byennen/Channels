@@ -1,7 +1,9 @@
 class Admin::SongsController < Admin::ApplicationController
   load_and_authorize_resource :channel
   load_and_authorize_resource :album
+  # this is breaking channel masters song uploads
   load_and_authorize_resource :song, :through => :album
+  
 
   respond_to :html, :json
 
