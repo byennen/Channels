@@ -16,7 +16,7 @@ class Video < ActiveRecord::Base
   mount_uploader :video, VideoUploader
   mount_uploader :preview, VideoUploader
 
-  scope :published, where('active IS NOT NULL AND active = 1')
+  scope :published, where('active IS NOT NULL AND active = true')
   scope :recent, published.order(:created_at).limit(8)
 
   def filename
