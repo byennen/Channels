@@ -16,6 +16,7 @@
                 = f.input :image, :as => :file, :label => "Image"
                 = image_tag @video.image.thumb('100x100#').url if @video.image
                 = f.input :active, :as => :boolean
+                = f.input :paid, :as => :boolean
               .form-actions
                 = f.button :submit, :class => 'btn-primary'
                 or
