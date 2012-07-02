@@ -3,7 +3,9 @@
 #video{:style => 'background: #OOO; padding: 10px 0px;'}
   #player{:style => 'margin: 0 auto;width: 896px;height: 504px;'}
     .projekktor
-  
+
+%br
+
 :javascript
   $(document).ready(function() {
     var player = projekktor('.projekktor', {
@@ -16,16 +18,16 @@
           0: {src:'http://www.projekktor.com/content/demos/slideshow/html5-Logo.jpg', type:"image/jpeg"},
           config:{
             duration: 5
-        }
+          }
         },
         {
-          0: {src:'/assets/intro.mp4', type:"video/mp4"}
+          #{raw video_playlist(@video.sources)}
         },
         {
           0: {src:'http://www.projekktor.com/content/demos/slideshow/image1.png', type:"image/png"},
           config:{
             duration: 5
-        }
+          }
         }
     	]
     });
