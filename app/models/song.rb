@@ -17,7 +17,7 @@ class Song < ActiveRecord::Base
   scope :available, where(:active => true)
   scope :intro, where(:intro => true)
 
-  scope :published, where('active IS NOT NULL AND active = 1')
+  scope :published, where('active IS NOT NULL AND active = true')
   scope :recent, published.order(:created_at).limit(8)
 
   def self.next_song
