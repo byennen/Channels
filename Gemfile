@@ -14,13 +14,14 @@ gem 'newrelic_rpm'
 gem 'thin'
 gem 'simple_form'
 gem 'stripe'
-gem 'money', :git => 'https://github.com/collectiveidea/money.git'  
+gem 'money', :git => 'https://github.com/collectiveidea/money.git'
+gem 'pg'
 
 # deploy
 gem 'capistrano'
 
 #exception notifier
-gem "airbrake" 
+gem "airbrake"
 
 #uploads
 gem 'rack-cache', :require => 'rack/cache'
@@ -47,13 +48,5 @@ group :assets do
 end
 
 group :development do
-  gem 'mysql'
   gem 'pry-rails'
 end
-
-group :production, :staging do
-  gem 'pg'
-end
-
-
-
