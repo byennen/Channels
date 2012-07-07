@@ -1,6 +1,6 @@
 after :users do
-  background_dir = Rails.root.join('creatives', 'channels', 'background')
-  banner_dir = Rails.root.join('creatives', 'channels', 'banner')
+  background_dir = Rails.root.join('db', 'seeds', 'assets', 'images', 'channels', 'background')
+  banner_dir = Rails.root.join('db', 'seeds', 'assets', 'images', 'channels', 'banner')
 
   puts "***CREATING CHANNELS***"
   Channel.create(:id => "1", :name => "Randy Owen", :subdomain => "randyowen", :banner_image => File.new(File.join(banner_dir, 'randy-owen.jpg')), :description => "The legendary Randy Owen of Alabama takes you behind the scenes both in concert and in real life. Concerts, backstage access, custom games and trips money can't buy. Plus, some up close and personal access to Randy, his family and his down home Ft Payne, Alabama life. All this plus scheduled live performances!")
