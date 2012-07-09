@@ -21,7 +21,7 @@ module Channels
     config.generators do |g|
       g.view_specs false
       g.helper_specs false
-      
+
     end
 
     # Settings in config/environments/* take precedence over those specified here.
@@ -68,8 +68,9 @@ module Channels
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.paths << Rails.root.join("music", "video")
-    
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
   end
 end

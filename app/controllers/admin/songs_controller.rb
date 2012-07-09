@@ -13,7 +13,9 @@ class Admin::SongsController < Admin::ApplicationController
   def edit; end
 
   def create
+    @song = @album.songs.new
     @song.attributes = params[:song]
+    logger.debug("params song song is #{params[:song]}")
     @song.title = params[:song][:song].original_filename
     if @song.save
       Resque.enqueue(WaveformGenerator, @song.id)

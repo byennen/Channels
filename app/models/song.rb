@@ -56,13 +56,13 @@ class Song < ActiveRecord::Base
   def fog_connection
     connection = Fog::Storage.new({
       :provider                 => 'AWS',
-      :aws_secret_access_key    => 'agrWtJ6lqz3HcREHwcPkxm+jhRgahCwt7UMBUfG2',
-      :aws_access_key_id        => 'AKIAIPHZNJZ5QBOUOTHA'
+      :aws_secret_access_key    => APP_CONFIG["aws_secret_access_key"],
+      :aws_access_key_id        => APP_CONFIG["aws_access_key"]
     })
   end
 
   def s3_directory
-    fog_connection.directories.get('altimarc-dev')
+    fog_connection.directories.get(APP_CONFIG["aws_bucket"])
   end
 
   def create_temp_file
@@ -77,7 +77,7 @@ class Song < ActiveRecord::Base
   end
 
   def waveform_url
-    "http://s3.amazonaws.com/altimarc-dev/#{s3_path}/waveform.png"
+    "http://s3.amazonaws.com/#{APP_CONFIG["aws_bucket"]}/#{s3_path}/waveform.png"
   end
 
   def convert_to_wave

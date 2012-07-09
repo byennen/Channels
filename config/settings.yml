@@ -1,0 +1,19 @@
+development:
+  aws_access_key: 'AKIAIPHZNJZ5QBOUOTHA'
+  aws_secret_access_key: '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'
+  aws_bucket: 'altimarc-dev'
+
+test:
+  aws_access_key:
+  aws_secret_access_key:
+  aws_bucket:
+
+staging:
+  aws_access_key:
+  aws_secret_access_key:
+  aws_bucket:
+
+production:
+  aws_access_key:
+  aws_secret_access_key:
+  aws_bucket:
