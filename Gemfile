@@ -24,6 +24,9 @@ gem 'capistrano'
 #exception notifier
 gem 'airbrake'
 
+# Redis
+gem 'resque'
+
 #uploads
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.11'
@@ -31,6 +34,8 @@ gem 'fog'
 gem 'aws-s3', :require => 'aws/s3'
 gem 'carrierwave'
 gem 'zencoder'
+gem 'waveform'
+gem 'chunky_png'
 
 group :test do
   gem 'rspec-rails', '>= 2.8.1'
