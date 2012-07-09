@@ -2,13 +2,12 @@ class Admin::SongsController < Admin::ApplicationController
   load_and_authorize_resource :channel
   load_and_authorize_resource :album
   # this is breaking channel masters song uploads
-  load_and_authorize_resource :song, :through => :album, :new => :index
+  load_and_authorize_resource :song, :through => :album, :new => [:index, :create]
 
   respond_to :html, :json
 
   def index
     @songs = @album.songs
-    logger.debug("Songs are #{@songs.inspect}")
   end
 
   def edit; end
@@ -17,6 +16,7 @@ class Admin::SongsController < Admin::ApplicationController
     @song.attributes = params[:song]
     @song.title = params[:song][:song].original_filename
     if @song.save
+      Resque.enqueue(WaveformGenerator, @song.id)
       respond_to do |format|
         format.html {
           render :json => [@song.to_jq_upload].to_json,
