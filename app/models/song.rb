@@ -24,6 +24,10 @@ class Song < ActiveRecord::Base
     Song.available.find(:first, :order => "rand()")
   end
 
+  def filename
+    read_attribute :song
+  end
+
   def get_url
     if self.uploads.first.present?
       filename = self.uploads.first.file_name
@@ -35,6 +39,72 @@ class Song < ActiveRecord::Base
     else
       return "/assets/#{filename}"
     end
+  end
+
+  def waveform_temp_file
+    Rails.root.join('tmp', filename)
+  end
+
+  def waveform_wav_file
+    Rails.root.join('tmp', "#{filename}.wav")
+  end
+
+  def waveform_image
+    Rails.root.join('tmp', "waveform_#{id}.png")
+  end
+
+  def fog_connection
+    connection = Fog::Storage.new({
+      :provider                 => 'AWS',
+      :aws_secret_access_key    => APP_CONFIG["aws_secret_access_key"],
+      :aws_access_key_id        => APP_CONFIG["aws_access_key"]
+    })
+  end
+
+  def s3_directory
+    fog_connection.directories.get(APP_CONFIG["aws_bucket"])
+  end
+
+  def create_temp_file
+    local_file = File.open(waveform_temp_file, "wb")
+    s3_file = "#{s3_path}/#{filename}"
+    file = s3_directory.files.get(s3_file)
+    local_file.write(file.body)
+  end
+
+  def s3_path
+    "song/song/#{id}"
+  end
+
+  def waveform_url
+    "http://s3.amazonaws.com/#{APP_CONFIG["aws_bucket"]}/#{s3_path}/waveform.png"
+  end
+
+  def convert_to_wave
+    command = %Q{/usr/local/bin/ffmpeg -y -i "#{waveform_temp_file}" -f wav "#{waveform_wav_file}" > /dev/null 2>&1}
+    system command
+  end
+
+  def copy_waveform_to_s3
+    file = s3_directory.files.create(
+             body:   File.open(waveform_image),
+             key:    "#{s3_path}/waveform.png",
+             public: true
+    )
+  end
+
+  def clean_waveform_files
+    FileUtils.rm(waveform_temp_file waveform_image waveform_wav_file)
+    FileUtils.rm(waveform_image)
+    FileUtils.rm(waveform_wav_file)
+  end
+
+  def generate_waveform
+    create_temp_file
+    convert_to_wave
+    Waveform.new(waveform_wav_file).generate(waveform_image)
+    copy_waveform_to_s3
+    clean_waveform_files
   end
 
   #one convenient method to pass jq_upload the necessary information

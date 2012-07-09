@@ -16,14 +16,15 @@
                 %th
             %tbody
               - @songs.each do |song|
-                %tr
-                  %td= song.title
-                  %td= song.price
-                  %td= song.active
-                  %td
-                    %a.btn{:href => edit_admin_channel_album_song_path(@channel, @album, song)}
-                      %i.icon-pencil
-                      Edit
-                    %a.btn.btn-danger{:href => admin_channel_album_song_path(@channel, @album, song), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
-                      %i.icon-trash.icon-white
-                      Destroy
+                - unless song.new_record?
+                  %tr
+                    %td= song.title
+                    %td= song.price
+                    %td= song.active
+                    %td
+                      %a.btn{:href => edit_admin_channel_album_song_path(@channel.id, @album.id, song.id)}
+                        %i.icon-pencil
+                        Edit
+                      %a.btn.btn-danger{:href => admin_channel_album_song_path(@channel.id, @album.id, song.id), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
+                        %i.icon-trash.icon-white
+                        Destroy

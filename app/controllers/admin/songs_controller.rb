@@ -2,30 +2,34 @@ class Admin::SongsController < Admin::ApplicationController
   load_and_authorize_resource :channel
   load_and_authorize_resource :album
   # this is breaking channel masters song uploads
-  load_and_authorize_resource :song, :through => :album
-  
+  load_and_authorize_resource :song, :through => :album, :new => [:index, :create]
 
   respond_to :html, :json
 
-  def index; end
+  def index
+    @songs = @album.songs
+  end
 
   def edit; end
 
   def create
+    @song = @album.songs.new
     @song.attributes = params[:song]
+    logger.debug("params song song is #{params[:song]}")
     @song.title = params[:song][:song].original_filename
     if @song.save
+      Resque.enqueue(WaveformGenerator, @song.id)
       respond_to do |format|
-        format.html {  
-          render :json => [@song.to_jq_upload].to_json, 
+        format.html {
+          render :json => [@song.to_jq_upload].to_json,
           :content_type => 'text/html',
           :layout => false
         }
-        format.json {  
-          render :json => [@song.to_jq_upload].to_json			
+        format.json {
+          render :json => [@song.to_jq_upload].to_json
         }
       end
-    else 
+    else
       render :json => [{:error => "custom_failure"}], :status => 304
     end
   end
@@ -43,4 +47,3 @@ class Admin::SongsController < Admin::ApplicationController
   end
 
 end
-  
