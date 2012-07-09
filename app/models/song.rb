@@ -94,7 +94,7 @@ class Song < ActiveRecord::Base
   end
 
   def clean_waveform_files
-    FileUtils.rm(waveform_temp_file waveform_image waveform_wav_file)
+    FileUtils.rm(waveform_temp_file)
     FileUtils.rm(waveform_image)
     FileUtils.rm(waveform_wav_file)
   end
