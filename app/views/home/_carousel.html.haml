@@ -2,35 +2,46 @@
   .span12
     #slidedeck_frame.skin-slidedeck
       %dl.slidedeck{:style => "height: 380px"}
-        %dt Join Altimarc
-        %dd
-          .row
-            .span4.pull-left.wrap-image
-              %img{:alt => "", :src => ""}
-            .span6.pull-right.wrap-intro
-              %h1 Join Altimarc
-              %p
-                Your membership will allow you to debut exclusive, never before seen concert footage, exclusive world premiere music documentaries, scheduled live concerts, music downloads...
-              %p
-                %a.btn.btn-success.btn-large{:href => "#"} Join Now »
+        - if user_signed_in?
+          %dt Thanks for Choosing Altimarc
+          %dd
+            .row
+              .span4.pull-left.wrap-image
+                %img{:alt => "", :src => ""}
+              .span6.pull-right.wrap-intro
+                %h1 Thanks for Choosing Altimarc
+
+        - else
+          %dt Join Altimarc
+          %dd
+            .row
+              .span4.pull-left.wrap-image
+                %img{:alt => "", :src => ""}
+              .span6.pull-right.wrap-intro
+                %h1 Join Altimarc
+                %p
+                  Your membership will allow you to debut exclusive, never before seen concert footage, exclusive world premiere music documentaries, scheduled live concerts, music downloads...
+                %p
+                  %a.btn.btn-success.btn-large{:href => join_url} Join Now »
+
         %dt Randy Owen
         %dd
           .row
             .span4.pull-left.wrap-image
               .overlay
               = image_tag('banners/randy-owen.jpg')
-              %img{:alt => "", :src => ""}
-            .span6.pull-right.wrap-intro
+            .span6.pull-right.wrap-intro.white-opacity
               %h1 Randy Owen
               %p The legendary Randy Owen of Alabama takes you behind the scenes both in concert and in real life.
               %p
-                %a.btn.btn-inverse.btn-large.pull-right{:href => "#"} Randy Owen Channel »
+                %a.btn.btn-inverse.btn-large.pull-right{:href => root_url(:subdomain => "randyowen")} Randy Owen Channel »
         %dt Brushy Mountain
         %dd
           .row
             .span4.pull-left.wrap-image
-              %img{:alt => "", :src => ""}
-            .span6.pull-right.wrap-intro
+              .overlay
+              = image_tag('banners/mark-collie.jpg')
+            .span6.pull-right.wrap-intro.white-opacity
               %h1 Brushy Mountain
               %p After 113 years, the state of Tennessee closed Brushy Mountain State Penitentiary in June of 2009. But not before country music icon Mark Collie took a two year journey inside the walls of this legendary place. 
               %p
@@ -39,8 +50,9 @@
         %dd
           .row
             .span4.pull-left.wrap-image
-              %img{:alt => "", :src => ""}
-            .span6.pull-right.wrap-intro
+              .overlay
+              = image_tag('banners/sam-phillips.jpg')
+            .span6.pull-right.wrap-intro.white-color
               %h1 Sam Phillips
               %p Rock-N-Roll Swag, behind the scenes footage, live performances and exclusive interviews revealing untold stories on the history of Rock-N-Roll and it's continuing influence on modern music.
               %p
