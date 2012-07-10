@@ -35,7 +35,7 @@ class Admin::PhotosController < Admin::ApplicationController
     if @photo.update_attributes(params[:photo])
       flash[:notice] = 'Photo was successfully updated.'
     end
-    respond_with @photo, :location => admin_channel_photos_url
+    respond_with @photo, :location => admin_channel_photo_album_photos_url(@channel, @photo_album)
   end
 
   def destroy
