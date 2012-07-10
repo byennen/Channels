@@ -1,11 +1,12 @@
 class Admin::PhotosController < Admin::ApplicationController
   load_and_authorize_resource :channel
   load_and_authorize_resource :photo_album
-  load_and_authorize_resource :photo, :through => :photo_album
+  load_and_authorize_resource :photo, :through => :photo_album, :new => :index
 
   respond_to :html, :json
 
   def index
+    @photos = @photo_album.photos
   end
 
   def edit
@@ -16,16 +17,16 @@ class Admin::PhotosController < Admin::ApplicationController
     @photo.title = params[:photo][:image].original_filename
     if @photo.save
       respond_to do |format|
-        format.html {  
-          render :json => [@photo.to_jq_upload].to_json, 
+        format.html {
+          render :json => [@photo.to_jq_upload].to_json,
           :content_type => 'text/html',
           :layout => false
         }
-        format.json {  
-          render :json => [@photo.to_jq_upload].to_json			
+        format.json {
+          render :json => [@photo.to_jq_upload].to_json
         }
       end
-    else 
+    else
       render :json => [{:error => "custom_failure"}], :status => 304
     end
   end
