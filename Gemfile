@@ -20,6 +20,7 @@ gem 'seedbank'
 
 # deploy
 gem 'capistrano'
+gem 'capistrano-resque'
 
 #exception notifier
 gem 'airbrake'
