@@ -36,14 +36,11 @@ $(document).on "ready pjax:success", ->
   $('.show_musicplayer').click ->
     $(this).addClass("hide_musicplayer")
     $(this).removeClass("show_musicplayer") 
-    $("header").animate({height: '+82px'}, 1000)
-    $("#player").show()
+    $(".navbar").animate({height: '155px'})
 
   $('.hide_musicplayer').click ->
     $(this).addClass("show_musicplayer")
-    $("#player").fadeOut()
-    $("header").animate({height: '-82px'}, 1000)
-
+    $(".navbar").animate({height: '5px'})
 
 
   #$(".show_musicplayer").Toggle (->

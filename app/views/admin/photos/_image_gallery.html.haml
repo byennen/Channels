@@ -44,7 +44,7 @@
                     %a.btn.btn-warning.modal-prev.pull-left.edit-photo{:href => edit_admin_channel_photo_album_photo_path(@channel, @photo_album, "1")}
                       %i.icon-edit.icon-white
                       Edit
-                    %a.btn.btn-danger.modal-prev.pull-left.delete-photo{:href => admin_channel_photo_album_photo_path(@channel, @photo_album, "1"), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
+                    %a.btn.btn-danger.modal-prev.pull-left.delete-photo{:href => "javascript:;", :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
                       %i.icon-trash.icon-white
                       Delete
                       
