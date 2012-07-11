@@ -1,20 +1,21 @@
 .container
   .row
     #player
-      .span6
-        #cover-art
-          = link_to image_tag("http://geo-media.beatport.com/items/imageCatalog/4000000/900000/20000/5000/400/10/4925417.jpg"), "#link-to-album", :title => "title here"
-        #track-meta-data
-          = link_to "Track name here", "#link-to-album", :title => "title here", :class => "trackName"
-          = link_to "Artist name here", "#link-to-artist", :title => "artist name here", :class => "artist"
-        #controls
-          %a#player_previous
-            %span
-          %a#player_play
-            %span
-          %a#player_next
-            %span
-      #jplayer.jp-player
-    / .span6
-    /   #ads.pull-right
-    /     ads here
+      #inside_player
+        .span6
+          #cover-art
+            = link_to image_tag("http://geo-media.beatport.com/items/imageCatalog/4000000/900000/20000/5000/400/10/4925417.jpg"), "#link-to-album", :title => "title here"
+          #track-meta-data
+            = link_to "Track name here", "#link-to-album", :title => "title here", :class => "trackName"
+            = link_to "Artist name here", "#link-to-artist", :title => "artist name here", :class => "artist"
+          #controls
+            %a#player_previous
+              %span
+            %a#player_play
+              %span
+            %a#player_next
+              %span
+        #jplayer.jp-player
+      / .span6
+      /   #ads.pull-right
+      /     ads here
