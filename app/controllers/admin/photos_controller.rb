@@ -1,7 +1,7 @@
 class Admin::PhotosController < Admin::ApplicationController
   load_and_authorize_resource :channel
   load_and_authorize_resource :photo_album
-  load_and_authorize_resource :photo, :through => :photo_album #, :new => :index
+  load_and_authorize_resource :photo, :through => :photo_album, :except => :create
 
   respond_to :html, :json
 
@@ -13,7 +13,8 @@ class Admin::PhotosController < Admin::ApplicationController
   end
 
   def create
-    @photo = Photo.new(params[:photo].merge(:photo_album => @photo_album))
+    @photo = @photo_album.photos.new
+    @photo.attributes = params[:photo]
     @photo.title = params[:photo][:image].original_filename
     if @photo.save
       respond_to do |format|
