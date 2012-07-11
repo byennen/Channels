@@ -49,10 +49,11 @@ class Video < ActiveRecord::Base
 
     def image_present_for_active
       if self.active == true
-        self.errors[:active] = "Image must be present before making active"
-        return false if self.image.nil?
-      else
-        return true
+        if self.image.nil?
+          self.errors[:active] = "Image must be present before making active"
+          return false if self.image.nil?
+        end
       end
+      return true
     end
 end
