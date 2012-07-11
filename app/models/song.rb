@@ -142,17 +142,17 @@ class Song < ActiveRecord::Base
     end
 
     def ensure_preview_and_album_image
-      logger.debug("preview is #{preview}")
-      logger.debug("album image is #{album.image}")
-      if album.image.nil? && self.preview.nil?
-        self.errors[:active] = "Album must have an image and preview must be present"
-        return false
-      elsif self.album.image.nil?
-        self.errors[:active] = "Album image must be present"
-        return false
-      elsif self.preview.nil?
-        self.errors[:active] = "Preview must be present"
-        return false
+      if self.active == true
+        if album.image.nil? && self.preview.nil?
+          self.errors[:active] = "Album must have an image and preview must be present"
+          return false
+        elsif self.album.image.nil?
+          self.errors[:active] = "Album image must be present"
+          return false
+        elsif self.preview.nil?
+          self.errors[:active] = "Preview must be present"
+          return false
+        end
       end
       return true
     end
