@@ -9,18 +9,11 @@
         = link_to "Altimarc", root_url(subdomain: "www"), :class => "brand pjax"
         .nav-collapse
           %ul#ldd_menu.ldd_menu
-            %li
-              %span
-                = link_to "Channels", channels_url(subdomain: "www"), :class => "pjax"
-            %li
-              %span
-                = link_to "Music", music_url(subdomain: "www"), :class => "pjax"
-            %li
-              %span
-                = link_to "Videos", videos_url(subdomain: "www"), :class => "pjax"
-            %li
-              %span
-                = link_to "Giveaways", giveaways_url(subdomain: "www"), :class => "pjax"
+            = nav_link("Channels", channels_url)
+            = nav_link("Music", music_url)
+            = nav_link("Videos", videos_url)
+            = nav_link("Giveaways", giveaways_url)
+            -#Todo: Lance - Clean up this link to a different helper
             - if user_signed_in?
               %li
                 %span
@@ -41,5 +34,5 @@
               %li
                 = link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", "pjax")
           - else
-            = link_with_icon("Login or Register", join_url(subdomain: "www"), "icon-user", "btn pjax")
+            = link_with_icon("Login or Register", join_url(subdomain: "www"), "icon-user", "btn btn-primary pjax")
             

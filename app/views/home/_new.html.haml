@@ -7,7 +7,7 @@
       / Carousel items
       .carousel-inner
         - @posts.each_slice(4) do |array|
-          .active.item
+          .item
             %ul.thumbnails
               - array.each do |post|
                 %li.span3

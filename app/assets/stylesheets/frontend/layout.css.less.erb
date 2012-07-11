@@ -4,9 +4,6 @@ body {
   margin-top: 50px;
 	font-size: 14px;
 	min-height: 100%;
-  .background-wrapper {
-    height: 100% !important;
-  }
 }
 
 div.content div.container{
@@ -14,7 +11,7 @@ div.content div.container{
   padding: 20px;
   clear: both;
   min-height: 100%;
-  height: auto !important;
+  height: auto !important;
   height: 100%;
   margin: 0 auto 150px;
 }
@@ -23,13 +20,13 @@ div.content div.container{
   height: 150px;
 }
 
-.ppbackground-wrapper {
+.background-wrapper {
   background: url(<%= asset_data_uri 'bg.png' %>) repeat-x #eee;
   clear: both;
 }
 
 .navbar {
-  background: url(<%= asset_data_uri 'layout/header-bg.png' %>) repeat-x;
+  background: #dbdada;
   .brand {
     background: url(<%= asset_data_uri 'layout/logo.png' %>) no-repeat scroll 0px 0px transparent;
     color: transparent;
@@ -53,21 +50,6 @@ header {
     top: -78px;
     width: 100%;
     z-index: 9999;
-  }
-  div.navbar div.navbar-inner div.container{
-  	background: #343434;
-  	padding:0px 20px 0px 20px;
-  	clear: both;
-  }
-  ul.ldd_menu li a{
-  	color: #fff;	
-  }
-  ul.ldd_menu li span a{
-  	text-transform: uppercase;
-  }
-  ul.ldd_menu li span a:hover,
-  ul.ldd_menu li span a:active {
-  	color: #D13E49;
   }
 }
 
@@ -217,6 +199,7 @@ div#footer {
   background: none repeat scroll 0 0 #dbdada;
   padding: 50px 20px;
   color: #575555;
+  margin-top: -150px;
   ul {
     margin: 5px 0 0 0;
     list-style:none;

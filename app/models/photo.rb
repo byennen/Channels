@@ -3,9 +3,7 @@ class Photo < ActiveRecord::Base
   
   belongs_to :photo_album
 
-  attr_accessible :id, :photo_album, :title, :description, :paid, :active, 
-                  :image, :channel
-                  
+  attr_accessible :id, :photo_album, :title, :description, :paid, :active, :image, :channel_id
   image_accessor :image
   
   #one convenient method to pass jq_upload the necessary information

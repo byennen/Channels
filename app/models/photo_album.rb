@@ -3,7 +3,7 @@ class PhotoAlbum < ActiveRecord::Base
   belongs_to :channel
   has_many :photos
   
-  attr_accessible :title, :description, :image
+  attr_accessible :title, :description, :image, :channel
   
   image_accessor :image
   
