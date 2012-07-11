@@ -30,7 +30,7 @@
       %script
         window.channel_id = 0
         window.channel_subdomain = ""
-  %body{"data-pjax-container" => ""}
+  %body
     - if params[:controller] == "registrations"
       = render 'layouts/frontend/registration_layout'
     - elsif params[:controller] == "sessions"
