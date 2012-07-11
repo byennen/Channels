@@ -33,6 +33,24 @@ $(document).on "ready pjax:success", ->
     window.player.playSong($(this).attr("href"))
     return false
 
+  $('.show_musicplayer').click ->
+    $(this).addClass("hide_musicplayer")
+    $(this).removeClass("show_musicplayer") 
+    $("header").animate({height: '+82px'}, 1000)
+    $("#player").show()
+
+  $('.hide_musicplayer').click ->
+    $(this).addClass("show_musicplayer")
+    $("#player").fadeOut()
+    $("header").animate({height: '-82px'}, 1000)
+
+
+
+  #$(".show_musicplayer").Toggle (->
+    #$("header").css height: "20px"
+  #), ->
+    #$("header").css height: "82px"
+
 # debugging
 $(document).on "pjax:success", ->
   console.log "pjax!"
