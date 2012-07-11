@@ -14,10 +14,15 @@
                     = image_tag(video.image.thumb('260x180#').url)
                     .caption
                       %h5= video.title
-                      %p= video.description.truncate(125)
+                      %p.description= video.description.truncate(125)
                       %p
                         = link_with_icon("Watch", video_url(video.id), "icon-film icon-white", "btn btn-info pjax")
 
       / Carousel nav
       %a.carousel-control.left{"data-slide" => "prev", :href => "#latest_videos"} ‹
       %a.carousel-control.right{"data-slide" => "next", :href => "#latest_videos"} ›
+
+:css
+  .carousel-inner .item .caption .description {
+    height: 100px;
+  }
