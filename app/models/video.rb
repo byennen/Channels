@@ -13,6 +13,8 @@ class Video < ActiveRecord::Base
   attr_accessible :id, :channel_id, :title, :description, :image, :paid, :active, :channel, :video, :preview
   image_accessor :image
 
+  validate :image_present_for_active
+
   mount_uploader :video, VideoUploader
   mount_uploader :preview, VideoUploader
 
@@ -31,7 +33,7 @@ class Video < ActiveRecord::Base
     end
     sources
   end
-  
+
   #one convenient method to pass jq_upload the necessary information
   def to_jq_upload
     {
@@ -43,4 +45,14 @@ class Video < ActiveRecord::Base
     }
   end
 
+  private
+
+    def image_present_for_active
+      if self.active == true
+        self.errors[:active] = "Image must be present before making active"
+        return false if self.image.nil?
+      else
+        return true
+      end
+    end
 end
