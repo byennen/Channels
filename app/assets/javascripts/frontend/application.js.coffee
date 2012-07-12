@@ -15,11 +15,14 @@ $(document).on "ready pjax:success", ->
   $('.pjax').pjax('[data-pjax-container]')
 
   #hide music player - (we need to show the player on the homepage if some plays a song, so this code doesn't really work... the channel might be 0)
-  #window.player = new Player(el: "#player .container")
+  window.player = new Player(el: "#player .container")
   #if window.channel_id > 0
-    #$("header").css('height', '82px')
+    #$(".navbar").animate({height: '5px'})
+    #$("body").animate({'margin-top': '50px'})
   #else
-    #$("#player").hide()
+    #$("#player").animate({height: '93px'})
+    #$("body").animate({'margin-top': '142px'})
+
 
   #first time visitors should see a modal window to guide them to connecting with facebook
   domain = window.location.hostname.replace /([a-zA-Z0-9]+.)/, ""
