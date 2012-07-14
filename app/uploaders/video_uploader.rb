@@ -34,7 +34,7 @@ class VideoUploader < CarrierWave::Uploader::Base
                                                           {:base_url => "s3://#{fog_directory}/#{store_dir}",
                                                            :filename => "#{file_prefix}.ogg",
                                                            :label => "ogg",
-                                                           :notifications => [zencoder_callback_url(:protocol => 'http', :host => host, :user => "admin@altimarc.com', :password => 'please')],
+                                                           :notifications => [zencoder_callback_url(:protocol => 'http', :host => host, :user => 'admin@altimarc.com', :password => 'please')],
                                                            :quality => 3,
                                                            :format => "ogg",
                                                            :public => true},
