@@ -20,9 +20,7 @@ class Player
         @status = event.jPlayer.status.paused
     })
     el = $("#player")
-    el.find("#controls a#player_play").click(@play)
-    el.find("#controls a#player_next").click(@playNext)
-    el.find("#controls a#player_previous").click(@playPrevious)
+    el.find("#cover-art").click(@play)
 
   playEnded: (event) ->
     echo "I stopped playing"
@@ -31,6 +29,8 @@ class Player
 
   playing: ->
     console.log("playing...")
+    $("#player").animate({height: '93px'})
+    $("body").animate({'margin-top': '142px'})
 
   setClass: (name, className)->
     el = $("#player").find(className)
@@ -48,28 +48,28 @@ class Player
         player.intro = false
       )
 
-  playNext: =>
-    @setNext()
-    setTimeout('$("#jplayer").jPlayer("play")', 500)
+  #playNext: =>
+    #@setNext()
+    #setTimeout('$("#jplayer").jPlayer("play")', 500)
 
-  setNext: =>
-    @playCount++
-    echo @playCount
-    if channel_id > 0
-      url = "/channels/next_song.json"
-    else
-      url = "/songs/next_song.json"
-    if @playCount > 3
-      url = "/ads/next.json"
-      @playCount = 0
-    r = $.getJSON(url, (data)->
-      $('#jplayer').jPlayer("setMedia", {
-        mp3: data["filename"]
-      })
-      player.setClass(data["title"], ".trackName")
-      player.setClass(data["album"], ".artist")
-      player.status = true
-    )
+  #setNext: =>
+    #@playCount++
+    #echo @playCount
+    #if channel_id > 0
+      #url = "/channels/next_song.json"
+    #else
+      #url = "/songs/next_song.json"
+    #if @playCount > 3
+      #url = "/ads/next.json"
+      #@playCount = 0
+    #r = $.getJSON(url, (data)->
+      #$('#jplayer').jPlayer("setMedia", {
+        #mp3: data["filename"]
+      #})
+      #player.setClass(data["title"], ".trackName")
+      #player.setClass(data["album"], ".artist")
+      #player.status = true
+    #)
 
   playprevious: ->
     echo "What am I supposed to play now?"
@@ -77,11 +77,11 @@ class Player
   play: ->
     if @status
       $("#jplayer").jPlayer("play")
-      $("#controls a#player_play").addClass("playing").removeClass("paused")
+      $("#cover-art").addClass("playing").removeClass("paused")
       @status = false
     else
       $("#jplayer").jPlayer("pause")
-      $("#controls a#player_play").addClass("paused").removeClass("playing")
+      $("#cover-art").addClass("paused").removeClass("playing")
       @status = true
 
   updateInfo: (name, title, image) ->
@@ -90,7 +90,6 @@ class Player
     $("#cover-art a img").attr("src", image)
 
   playSong: (url) ->
-    $("#player").show()
     r = $.getJSON(url, (data) ->
       $('#jplayer').jPlayer("setMedia", {
         mp3: data["url"]
@@ -99,9 +98,8 @@ class Player
       player.setClass("", ".album")
       @status = true
       @intro = false
-      $("#controls a#player_play").addClass("paused").removeClass("playing")
+      $("#cover-art").addClass("paused").removeClass("playing")
       player.updateInfo(data["artist_name"], data["title"], data["album_image"])
     )
-
 
 window.Player = Player

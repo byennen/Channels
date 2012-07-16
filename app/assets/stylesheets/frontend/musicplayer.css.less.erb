@@ -1,42 +1,9 @@
 #player {
-  border-right: 1px dotted #3A3A3A;
-  margin: 0 0 0 -30px;
   height: 0px;
   overflow: hidden;
   #inside_player {
     margin: 10px 0;
     overflow: hidden;
-  }
-  #controls {
-    position: relative;
-    height: 50px;
-    width: 75px;
-    float: left;
-    a#player_play span {
-      background: url(<%= asset_data_uri 'musicplayer/play.png' %>) no-repeat transparent;
-      height: 44px;
-      width: 30px;
-      color: transparent;
-      text-decoration: 0 none;
-      position: absolute;
-      left: 25px;
-    }
-    a#player_previous span {
-      background: url(<%= asset_data_uri 'musicplayer/previous.png' %>) no-repeat transparent;
-      height: 44px;
-      width: 30px;
-      color: transparent;
-      position: absolute;
-      left: 0px;
-    }
-    a#player_next span {
-      background: url(<%= asset_data_uri 'musicplayer/next.png' %>) no-repeat transparent;
-      height: 44px;
-      width: 30px;
-      color: transparent;
-      position: absolute;
-      left: 50px;
-    }
   }
   #cover-art {
     float: left;
@@ -52,21 +19,16 @@
     letter-spacing: 0.03em;
     margin-right: 5px;
     white-space: nowrap;
-    float: left;
-    .trackName {
-      font-size: 11px;
-      line-height: 1em;
-      text-transform: uppercase;
-      display: block;
-      clear: both;
-      margin-top: 6px;
+    ul {
+      li {
+        display: inline;
+        font-size: 11px;
+        text-transform: uppercase;
+      }
     }
-    .artist {
-      font-size: 11px;
-      line-height: 1em;
-      display: block;
-      clear: both;
-      margin-top: 4px;
+    a {
+      color: #575555;
+      font-weight: bold;
     }
   }
 }
