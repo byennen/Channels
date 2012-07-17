@@ -3,7 +3,11 @@ Channels::Application.routes.draw do
   #static pages
   match "about" => "pages#about"
   match "jobs" => "pages#jobs"
+  match "our_team" => "pages#our_team", :as => "our_team"
   match "press" => "pages#press"
+  match "faq" => "pages#faq"
+  match "customer-support" => "pages#customer_support", :as => "customer_support"
+  match "safe-harbor" => "pages#safe_harbor", :as => "safe_harbor"
   match "altimarc-for-your-business" => "pages#altimarc_for_your_business", :as => "altimarc_for_your_business"
   match "privacy" => "pages#privacy", :as => "privacy"
   match "refund" => "pages#refund", :as => "refund"

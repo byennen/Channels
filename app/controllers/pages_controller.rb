@@ -8,7 +8,19 @@ class PagesController < ApplicationController
   def jobs
   end
 
+  def our_team
+  end
+
   def press
+  end
+
+  def faq
+  end
+
+  def customer_support
+  end
+
+  def safe_harbor
   end
 
   def privacy

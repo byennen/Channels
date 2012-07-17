@@ -1,10 +1,17 @@
 .row
   .span12
-    %ul.breadcrumb.entry-title
-      %li.active Press
+    %h1.heading Press
 .row
-  .span12
+  .span2
+    = image_tag('laura-rieder-logo.jpg', :style => 'padding: 0 0 0 20px;')    
+  .span10{:style => 'padding: 0 0 200px;'}
     %p
-      All press and media inquires , please contact LR Marketing/Public Relations, Seattle, WA  USA
+      %strong All press and media inquires
+    Please Contact:
+    %p
+      LR Marketing/Public Relations
+    %p
+      Seattle, WA  USA
     %p
       = mail_to "laura@laurarieder.com"
+
