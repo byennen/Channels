@@ -2,6 +2,7 @@ Channels::Application.routes.draw do
   #subdomains - Keep at top
   #static pages
   match "/about" => "pages#about"
+  match "altimarc-for-your-business" => "pages#altimarc_for_your_business", :as => "altimarc_for_your_business"
   match "/privacy" => "pages#privacy", :as => "privacy"
   match "/refund" => "pages#refund", :as => "refund"
   match "/terms" => "pages#terms", :as => "terms"

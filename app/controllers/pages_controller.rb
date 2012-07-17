@@ -2,6 +2,9 @@ class PagesController < ApplicationController
   def about
   end
 
+  def altimarc_for_your_business
+  end
+
   def privacy
   end
 
