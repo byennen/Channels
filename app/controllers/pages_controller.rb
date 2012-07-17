@@ -5,6 +5,12 @@ class PagesController < ApplicationController
   def altimarc_for_your_business
   end
 
+  def jobs
+  end
+
+  def press
+  end
+
   def privacy
   end
 

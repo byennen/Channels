@@ -1,19 +1,21 @@
 Channels::Application.routes.draw do
   #subdomains - Keep at top
   #static pages
-  match "/about" => "pages#about"
+  match "about" => "pages#about"
+  match "jobs" => "pages#jobs"
+  match "press" => "pages#press"
   match "altimarc-for-your-business" => "pages#altimarc_for_your_business", :as => "altimarc_for_your_business"
-  match "/privacy" => "pages#privacy", :as => "privacy"
-  match "/refund" => "pages#refund", :as => "refund"
-  match "/terms" => "pages#terms", :as => "terms"
-  match "/copyrights" => "pages#copyrights", :as => "copyrights"
-  match "/randy-owen-altimarc-coming-soon-video" => "pages#randy_owen_coming_soon_video", :as => "randy_owen_video"
+  match "privacy" => "pages#privacy", :as => "privacy"
+  match "refund" => "pages#refund", :as => "refund"
+  match "terms" => "pages#terms", :as => "terms"
+  match "copyrights" => "pages#copyrights", :as => "copyrights"
+  match "randy-owen-altimarc-coming-soon-video" => "pages#randy_owen_coming_soon_video", :as => "randy_owen_video"
 
   #giveaways
-  match "/giveaways/kentucky-derby-with-randy-owen" => "giveaways#derby", :as => "derby"
-  match "/kentucky-derby-with-randy-owen" => redirect("/giveaways/kentucky-derby-with-randy-owen")
-  match "/giveaways/cma-fanfest" => "giveaways#cma", :as => "cma"
-  match "/cma-fanfest-with-randy-owen" => redirect("/giveaways/cma-fanfest")
+  match "giveaways/kentucky-derby-with-randy-owen" => "giveaways#derby", :as => "derby"
+  match "kentucky-derby-with-randy-owen" => redirect("/giveaways/kentucky-derby-with-randy-owen")
+  match "giveaways/cma-fanfest" => "giveaways#cma", :as => "cma"
+  match "cma-fanfest-with-randy-owen" => redirect("/giveaways/cma-fanfest")
   match "giveaways/thank-you" => "giveaways#thankyou", :as => "thankyou"
 
   #giveaways email
