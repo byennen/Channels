@@ -28,6 +28,9 @@ gem 'airbrake'
 # Redis
 gem 'resque'
 
+#New Relic
+gem 'newrelic_rpm'
+
 #uploads
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.11'
