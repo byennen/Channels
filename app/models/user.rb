@@ -32,6 +32,23 @@ class User < ActiveRecord::Base
   before_validation :make_paid_member!, :if => :stripe_card_token
   after_validation :process_payment, :if => :paid_member?
 
+  #facebook login
+  def self.from_omniauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.first_name = auth.info.first_name
+      user.last_name = auth.info.last_name
+      user.email = auth.info.email
+      #TODO - user should be asked make a password
+      user.password = 'please'
+      user.role = 'connected'
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.save!
+    end
+  end
+
   private
 
   def process_payment

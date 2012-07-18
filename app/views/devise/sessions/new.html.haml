@@ -2,6 +2,8 @@
 
 .inside
   %h2 Sign in
+  = link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in"
+
   = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
     %fieldset
       .clearfix

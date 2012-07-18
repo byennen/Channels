@@ -1,5 +1,4 @@
 Channels::Application.routes.draw do
-  #subdomains - Keep at top
   #static pages
   match "about" => "pages#about"
   match "jobs" => "pages#jobs"
@@ -26,6 +25,7 @@ Channels::Application.routes.draw do
   match "/create_derby(/:id)" => "giveaways#create_derby"
   match "/create_cma(/:id)" => "giveaways#create_cm:wa"
 
+  #zencoder
   post "zencoder-callback" => "zencoder_callback#create", :as => "zencoder_callback"
 
   #channels
@@ -53,9 +53,12 @@ Channels::Application.routes.draw do
     delete '/logout' => 'sessions#destroy'
     get '/logout' => 'sessions#destroy'
     get '/join' => 'registrations#new'
-  end
+    #match 'logout', to: 'sessions#destroy', as: 'logout'
 
-  #match '/media/*dragonfly', :to => Dragonfly[:images]
+    #facebook
+    match 'auth/:provider/callback', to: 'sessions#create'
+    match 'auth/failure', to: redirect('/')
+  end
 
   #admin
   namespace :admin do

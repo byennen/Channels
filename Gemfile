@@ -6,30 +6,26 @@ gem 'pg'
 
 gem 'jquery-rails'
 gem 'haml', '>= 3.1.4'
-gem 'devise', '2.0.4'
-gem 'cancan'
 gem 'rack-pjax'
 gem 'mail'
 gem 'twitter-bootstrap-rails'
-gem 'newrelic_rpm'
 gem 'thin'
 gem 'simple_form'
 gem 'stripe'
 gem 'money', :git => 'https://github.com/collectiveidea/money.git'
 gem 'seedbank'
 
-# deploy
+#login
+gem 'devise', '2.0.4'
+gem 'cancan'
+gem 'omniauth-facebook'
+
+#deploy
 gem 'capistrano'
 gem 'capistrano-resque'
 
-#exception notifier
-gem 'airbrake'
-
-# Redis
+#redis
 gem 'resque'
-
-#New Relic
-gem 'newrelic_rpm'
 
 #uploads
 gem 'rack-cache', :require => 'rack/cache'
@@ -40,6 +36,11 @@ gem 'carrierwave'
 gem 'zencoder'
 gem 'waveform'
 gem 'chunky_png'
+
+#data-nerds
+gem 'airbrake'
+gem 'newrelic_rpm'
+
 
 group :test do
   gem 'rspec-rails', '>= 2.8.1'
