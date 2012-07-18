@@ -24,11 +24,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  
+
   def host_base
     request.host.match(/(.*)\.\w{3}$/)[1]
   end
-  
+
   def load_channel
     channel_key = request.subdomain.present? ? request.subdomain : host_base
     @channel = Channel.find_by_subdomain!(channel_key)
@@ -39,6 +39,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
+    #Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"#
     redirect_to root_url, :alert => exception.message
   end
 

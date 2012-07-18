@@ -27,21 +27,21 @@ class VideoUploader < CarrierWave::Uploader::Base
                                               :output => [{:base_url => "s3://#{fog_directory}/#{store_dir}",
                                                            :filename => "#{file_prefix}.mp4",
                                                            :label => "mp4",
-                                                           :notifications => [zencoder_callback_url(:protocol => 'http', :host => host)],
+                                                           :notifications => [notification_url],
                                                            :quality => 3,
                                                            :format => "mp4",
                                                            :public => true},
                                                           {:base_url => "s3://#{fog_directory}/#{store_dir}",
                                                            :filename => "#{file_prefix}.ogg",
                                                            :label => "ogg",
-                                                           :notifications => [zencoder_callback_url(:protocol => 'http', :host => host)],
+                                                           :notifications => [notification_url],
                                                            :quality => 3,
                                                            :format => "ogg",
                                                            :public => true},
                                                           {:base_url => "s3://#{fog_directory}/#{store_dir}",
                                                            :filename => "#{file_prefix}.webm",
                                                            :label => "webm",
-                                                           :notifications => [zencoder_callback_url(:protocol => 'http', :host => host)],
+                                                           :notifications => [notification_url],
                                                            :quality => 3,
                                                            :format => "webm",
                                                            :public => true}]
@@ -55,5 +55,9 @@ class VideoUploader < CarrierWave::Uploader::Base
         @model.save(:validate => false)
       end
     end
+  end
+
+  def notification_url
+    Rails.env.development? ? "http://zencoderfetcher/" : zencoder_callback_url(:protocol => 'http', :host => host, :user => 'admin@altimarc.com', :password => 'please')
   end
 end

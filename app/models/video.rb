@@ -34,6 +34,10 @@ class Video < ActiveRecord::Base
     sources
   end
 
+  def processed!
+    update_attribute(:processed, true)
+  end
+
   #one convenient method to pass jq_upload the necessary information
   def to_jq_upload
     {
