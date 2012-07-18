@@ -32,6 +32,6 @@
               %li
                 = link_with_icon("Edit account", edit_user_registration_url(subdomain: "www"), "icon-pencil", "pjax")
               %li
-                = link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", "pjax")
+                = link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", "pjax", :id => "logout")
           - else
-            = link_with_icon("Login or Register", join_url(subdomain: "www"), "icon-user", "btn btn-primary pjax")
+            = link_with_icon("Login or Register", login_url(subdomain: "www"), "icon-user", "btn btn-primary pjax")
