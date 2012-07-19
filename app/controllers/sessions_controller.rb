@@ -1,4 +1,5 @@
 class SessionsController < Devise::SessionsController
+  layout 'frontend/sessions'
   def create
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
@@ -9,4 +10,5 @@ class SessionsController < Devise::SessionsController
     #session[:user_id] = nil
     #redirect_to root_url
   #end
+  #
 end

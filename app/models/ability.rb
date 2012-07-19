@@ -15,6 +15,8 @@ class Ability
       can :manage, Album, :channel => {:id => user.channel_id}
       can :manage, Song,  :album    => {:channel_id => user.channel_id}
       can :manage, Post, :channel  => {:id => user.channel_id}
+    elsif user.connected?
+      #@current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
   end
 end
