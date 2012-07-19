@@ -4,4 +4,15 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+
+  def create_password
+    current_user.attributes = params[:user]
+    if current_user.save
+      current_user.update_attribute(:new_fb_user, false)
+      redirect_to root_url
+    else
+      render '/sessions/new'
+    end
+  end
+
 end
