@@ -53,6 +53,7 @@ Channels::Application.routes.draw do
     delete '/logout' => 'sessions#destroy'
     get '/logout' => 'sessions#destroy'
     get '/join' => 'registrations#new'
+    post '/create_password' => 'sessions#create', :as => 'create_password'
     #match 'logout', to: 'sessions#destroy', as: 'logout'
 
     #facebook
