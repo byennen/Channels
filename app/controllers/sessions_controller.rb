@@ -10,9 +10,13 @@ class SessionsController < Devise::SessionsController
     render :action => :new
   end
 
-  def password
-    render :text => "This is where the new password page is"
+  def create_password
+    current_user.attributes = params[:user]
+    if current_user.save
+      redirect_to root_url
+    end
   end
+
   #def destroy
     #session[:user_id] = nil
     #redirect_to root_url

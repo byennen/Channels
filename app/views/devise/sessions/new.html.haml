@@ -24,7 +24,7 @@
     = render :partial => "devise/shared/links"
   - else
     %h2 Create Password
-    = form_for(current_user, :url => create_password_path(current_user)) do |f|
+    = form_for(current_user, :url => create_password_path) do |f|
       %fieldset
         .clearfix
           = f.label :password
