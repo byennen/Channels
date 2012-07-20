@@ -6,7 +6,7 @@ class VideosController < ApplicationController
 
   def index
     @channels = Channel.all
-    @videos = Video.all
+    @videos = Video.published
   end
 
   def show
