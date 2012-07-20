@@ -48,12 +48,12 @@ Channels::Application.routes.draw do
 
   #users
   devise_for :users #, :controllers => {:registrations => 'registrations', :sessions => 'sessions'}
+  put '/create_password' => 'users#create_password', :as => 'create_password'
   devise_scope :user do
     get "/login" => "sessions#new"
     delete '/logout' => 'sessions#destroy'
     get '/logout' => 'sessions#destroy'
     get '/join' => 'registrations#new'
-    post '/create_password' => 'sessions#create', :as => 'create_password'
     #match 'logout', to: 'sessions#destroy', as: 'logout'
 
     #facebook
