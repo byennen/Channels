@@ -38,8 +38,13 @@
     font-weight: bold;
   }
   #other_links p {
-    margin: 0px;
+    margin: 20px 0 0;
   }
+  #here_before {
+    margin: 160px auto 0; 
+    float: none;
+  }
+
   .overlay {
     background: rgba(255, 255, 255, .3); 
     padding: 6px; 
@@ -66,13 +71,13 @@
           .row
             .span#other_links
               %p
-                = link_to "Sign up with email", "#"
+                = link_to "Sign up with email", "#", :id => "with_email_link"
               %p
                 Been here before?
-                = link_to "Sign In", "#"
+                = link_to "Sign In", "#", :id => "here_before_link"
 
   .row
-    .span6#signup_box
+    .span6#here_before
       .overlay
         .overlay-inside
           .row
