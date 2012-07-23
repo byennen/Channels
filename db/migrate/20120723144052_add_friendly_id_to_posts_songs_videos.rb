@@ -8,9 +8,9 @@ class AddFriendlyIdToPostsSongsVideos < ActiveRecord::Migration
     add_index :songs, :slug
     add_index :videos, :slug
 
-    Post.all.each { |post| post.save! }
-    Song.all.each { |song| song.save! }
-    Video.all.each { |video| video.save! }
+    #Post.all.each { |post| post.save! }
+    #Song.all.each { |song| song.save! }
+    #Video.all.each { |video| video.save! }
 
   end
 end
