@@ -13,6 +13,11 @@
   #signup_box img.logo {
     padding: 30px 0 5px 28px;
   }
+  #signup_box #facebook {
+    float: none;
+    margin: 0 auto 8px;
+    width: 201px;
+  }
   #signup_box .btn-facebook {
     background: #455C8C url('assets/fb-icon.png') no-repeat 2px 4px;
     text-shadow: 1px 1px 1px #304371;
@@ -20,11 +25,20 @@
     width: 193px;
     color: white;
     font-weight: bold;
-    margin: 30px 0px 8px 130px;
     font-size: 14px;
     padding: 10px 10px 10px 40px;
     -moz-border-radius: 3px; 
     border-radius: 3px;
+  }
+  #other_links {
+    margin: 0 auto;
+    float: none;
+  }
+  #other_links a {
+    font-weight: bold;
+  }
+  #other_links p {
+    margin: 0px;
   }
   .overlay {
     background: rgba(255, 255, 255, .3); 
@@ -46,8 +60,18 @@
         .overlay-inside
           = image_tag('logo-login.png', :class => 'logo')
           %p Entertainment and once in a life time opportunities!
-          = link_to "Sign in with Facebook", "/auth/facebook", id: "login", :class => 'btn-facebook'
-          .span4
+          .row
+            .span#facebook
+              = link_to "Sign in with Facebook", "/auth/facebook", id: "login", :class => 'btn-facebook'
+          .row
+            .span#other_links
+              %p
+                = link_to "Sign up with email", "#"
+              %p
+                Been here before?
+                = link_to "Sign In", "#"
+        .row
+          .span
             = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
               %fieldset
                 .clearfix
@@ -64,7 +88,7 @@
                   = f.check_box :remember_me
                   = f.label :remember_me
               %div= f.submit "Sign in"
-            = render :partial => "devise/shared/links"
+            -#= render :partial => "devise/shared/links"
 -#- else
   -#%h2 Create Password
   -#= form_for(current_user, :url => create_password_path(current_user)) do |f|
@@ -113,4 +137,4 @@
     %div= f.submit "Create Password"
 
 :javascript
-  $.backstretch("assets/test.jpg");
+  $.backstretch("assets/randy-owen-login.jpg");
