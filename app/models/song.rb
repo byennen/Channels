@@ -6,13 +6,13 @@ class Song < ActiveRecord::Base
 
   attr_accessible :id, :album_id, :title, :price, :active, :album, :song, :preview
 
-  [:preview, :song].each do |t|
-    mount_uploader t, SongUploader
-  end
-
   before_create :set_price
 
   validate :ensure_preview_and_album_image
+
+  [:preview, :song].each do |t|
+    mount_uploader t, SongUploader
+  end
 
   money :price
 
@@ -21,6 +21,9 @@ class Song < ActiveRecord::Base
 
   scope :published, where('active IS NOT NULL AND active = true')
   scope :recent, published.order(:created_at).limit(8)
+
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :history]
 
   def self.next_song
     Song.available.find(:first, :order => "rand()")

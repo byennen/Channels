@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120719222040) do
+ActiveRecord::Schema.define(:version => 20120723161225) do
 
   create_table "ads", :force => true do |t|
     t.integer  "channel_id"
@@ -29,7 +29,10 @@ ActiveRecord::Schema.define(:version => 20120719222040) do
     t.boolean  "active"
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
+    t.string   "slug"
   end
+
+  add_index "albums", ["slug"], :name => "index_albums_on_slug"
 
   create_table "channels", :force => true do |t|
     t.string   "name"
@@ -41,6 +44,9 @@ ActiveRecord::Schema.define(:version => 20120719222040) do
     t.string   "banner_image_uid"
     t.string   "background_color"
     t.string   "google_analytics_key"
+    t.string   "facebook_page"
+    t.string   "twitter_id"
+    t.string   "google_plus_page"
   end
 
   create_table "features", :force => true do |t|
@@ -53,6 +59,17 @@ ActiveRecord::Schema.define(:version => 20120719222040) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "friendly_id_slugs", :force => true do |t|
+    t.string   "slug",                         :null => false
+    t.integer  "sluggable_id",                 :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], :name => "index_friendly_id_slugs_on_slug_and_sluggable_type", :unique => true
+  add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "giveaways", :force => true do |t|
     t.string   "email"
@@ -69,7 +86,10 @@ ActiveRecord::Schema.define(:version => 20120719222040) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "image_uid"
+    t.string   "slug"
   end
+
+  add_index "photo_albums", ["slug"], :name => "index_photo_albums_on_slug"
 
   create_table "photos", :force => true do |t|
     t.integer  "channel_id"
@@ -99,7 +119,10 @@ ActiveRecord::Schema.define(:version => 20120719222040) do
     t.datetime "end_time"
     t.integer  "photo_id"
     t.integer  "video_id"
+    t.string   "slug"
   end
+
+  add_index "posts", ["slug"], :name => "index_posts_on_slug"
 
   create_table "songs", :force => true do |t|
     t.string   "title"
@@ -110,7 +133,10 @@ ActiveRecord::Schema.define(:version => 20120719222040) do
     t.integer  "price_in_cents"
     t.string   "preview"
     t.string   "song"
+    t.string   "slug"
   end
+
+  add_index "songs", ["slug"], :name => "index_songs_on_slug"
 
   create_table "uploads", :force => true do |t|
     t.string   "file_name"
@@ -171,6 +197,9 @@ ActiveRecord::Schema.define(:version => 20120719222040) do
     t.string   "preview"
     t.string   "zencoder_output_id"
     t.boolean  "processed"
+    t.string   "slug"
   end
+
+  add_index "videos", ["slug"], :name => "index_videos_on_slug"
 
 end

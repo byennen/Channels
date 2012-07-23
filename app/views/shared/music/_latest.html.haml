@@ -17,7 +17,7 @@
                       %h5= song.title
                       %p= song.album.channel.name
                       %p
-                        = link_with_icon("Play", song_url(song.id), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
+                        = link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
 
       / Carousel nav
       %a.carousel-control.left{"data-slide" => "prev", :href => "#latest_music"} ‹

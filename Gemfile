@@ -27,6 +27,9 @@ gem 'capistrano-resque'
 #redis
 gem 'resque'
 
+# slug
+gem 'friendly_id'
+
 #uploads
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.11'
