@@ -21,6 +21,9 @@ class Video < ActiveRecord::Base
   scope :published, where('active IS NOT NULL AND active = true')
   scope :recent, published.order(:created_at).limit(8)
 
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :history]
+
   def filename
     read_attribute :video
   end

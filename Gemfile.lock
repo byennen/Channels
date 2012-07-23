@@ -119,6 +119,7 @@ GEM
       nokogiri (~> 1.5.0)
       ruby-hmac
     formatador (0.2.3)
+    friendly_id (4.0.7)
     gherkin (2.11.0)
       json (>= 1.4.6)
     haml (3.1.6)
@@ -320,6 +321,7 @@ DEPENDENCIES
   dragonfly (~> 0.9.11)
   factory_girl_rails (~> 3.0)
   fog
+  friendly_id
   haml (>= 3.1.4)
   jquery-rails
   launchy (>= 2.0.5)
