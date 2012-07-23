@@ -5,7 +5,7 @@
     = render 'shared/nav'
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
   .content
-    .container
+    .container{"data-pjax-container" => ""}
       .test
         = yield
 

@@ -26,11 +26,11 @@
     - if params[:controller] == "registrations"
       = render 'layouts/frontend/registration_layout'
     - elsif params[:controller] == "sessions"
-      .container
+      .container{"data-pjax-container" => ""}
         = yield
-    -elsif params[:controller] == "channels" && params[:action] == "show"
+    - elsif params[:controller] == "channels" && params[:action] == "show"
       = render 'layouts/frontend/channels_show_layout'
-    -else
+    - else
       = render 'layouts/frontend/layout'
 
 
