@@ -70,56 +70,29 @@
               %p
                 Been here before?
                 = link_to "Sign In", "#"
-        .row
-          .span
-            = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-              %fieldset
-                .clearfix
-                  = f.label :email
-                  .input
-                    = f.email_field :email
-              %fieldset
-                .clearfix
-                  = f.label :password
-                  .input
-                    = f.password_field :password
-              - if devise_mapping.rememberable?
-                .clearfix
-                  = f.check_box :remember_me
-                  = f.label :remember_me
-              %div= f.submit "Sign in"
-            -#= render :partial => "devise/shared/links"
--#- else
-  -#%h2 Create Password
-  -#= form_for(current_user, :url => create_password_path(current_user)) do |f|
-    -#%fieldset
-      -#.clearfix
-        -#= f.label :password
-        -#.input
-          -#= f.password_field :password
-    -#%fieldset
-      -#.clearfix
-        -#= f.label :password_confirmation
-        -#.input
-          -#= f.password_field :password_confirmation
-    -#%div= f.submit "Create Password"
-    -#= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-      -#%fieldset
-        -#.clearfix
-          -#= f.label :email
-          -#.input
-            -#= f.email_field :email
-      -#%fieldset
-        -#.clearfix
-          -#= f.label :password
-          -#.input
-            -#= f.password_field :password
-      -#- if devise_mapping.rememberable?
-        -#.clearfix
-          -#= f.check_box :remember_me
-          -#= f.label :remember_me
-      -#%div= f.submit "Sign in"
-    -#= render :partial => "devise/shared/links"
+
+  .row
+    .span6#signup_box
+      .overlay
+        .overlay-inside
+          .row
+            .span
+              = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+                %fieldset
+                  .clearfix
+                    = f.label :email
+                    .input
+                      = f.email_field :email
+                %fieldset
+                  .clearfix
+                    = f.label :password
+                    .input
+                      = f.password_field :password
+                - if devise_mapping.rememberable?
+                  .clearfix
+                    = f.check_box :remember_me
+                    = f.label :remember_me
+                %div= f.submit "Sign in"
 
 - else
   %h2 Create Password
