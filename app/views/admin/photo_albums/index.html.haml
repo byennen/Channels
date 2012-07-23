@@ -23,6 +23,9 @@
                     %br
                     %span= photo_album.title
                     %br
+                    %a.btn.btn-warning{:href => edit_admin_channel_photo_album_path(@channel.id, photo_album.id)}
+                      %i.icon-edit.icon-white
+                      Edit
                     %a.btn.btn-danger{:href => admin_channel_photo_album_path(@channel, photo_album), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
                       %i.icon-trash.icon-white
                       Delete

@@ -131,7 +131,8 @@ class Song < ActiveRecord::Base
      title: title,
      album_title: album.title,
      album_image: album.image.thumb('70x70').url,
-     artist_name: album.channel.name
+     artist_name: album.channel.name,
+     waveform:    waveform_url
      }
   end
 

@@ -84,10 +84,11 @@ class Player
       $("#cover-art").addClass("paused").removeClass("playing")
       @status = true
 
-  updateInfo: (name, title, image) ->
-    $(".artist").html(name)
-    $(".trackName").html(title)
-    $("#cover-art a img").attr("src", image)
+  updateInfo: (data) ->
+    $(".artist").html(data['artist_name'])
+    $(".trackName").html(data['title'])
+    $("#cover-art a img").attr("src", data['album_image'])
+    $("#waveform img").attr("src", data["waveform"])
 
   playSong: (url) ->
     r = $.getJSON(url, (data) ->
@@ -99,7 +100,7 @@ class Player
       @status = true
       @intro = false
       $("#cover-art").addClass("paused").removeClass("playing")
-      player.updateInfo(data["artist_name"], data["title"], data["album_image"])
+      player.updateInfo(data)
     )
 
 window.Player = Player
