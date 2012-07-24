@@ -94,7 +94,7 @@
           .row
             .span#other_links
               %p
-                = link_to "Sign up with email", signup_url, :id => "with_email_link"
+                = link_to "Sign up with email", signup_url, :id => "with_email_link", :class => "pjax"
               %p
                 Been here before?
                 = link_to "Sign In", "#", :id => "here_before_link"
@@ -117,9 +117,9 @@
           .row
             .span#other_links
               %p
-                = link_to "Forgot your password?", new_user_password_url
+                = link_to "Forgot your password?", new_user_password_url, :class => "pjax"
               %p
-                = link_to "Sign up with email", signup_url, :id => "with_email_link"
+                = link_to "Sign up with email", signup_url, :id => "with_email_link", :class => "pjax"
               %p
                 = link_to "Sign In with Facebook", "#", :id => "with_facebook_link"
 
