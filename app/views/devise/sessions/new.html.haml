@@ -44,7 +44,11 @@
     margin: 160px auto 0; 
     float: none;
   }
-
+  #facebook_photos {
+    margin: 10px auto 0; 
+    float: none;
+    padding-left: 20px;
+  }
   .overlay {
     background: rgba(255, 255, 255, .3); 
     padding: 6px; 
@@ -75,6 +79,9 @@
               %p
                 Been here before?
                 = link_to "Sign In", "#", :id => "here_before_link"
+  .row
+    .span6#facebook_photos
+      .fb-facepile{"data-href" => "http://facebook.com/altimarc", "data-max-rows" => "1", "data-width" => "448", "data-colorscheme" => "dark"}
 
   .row
     .span6#here_before
