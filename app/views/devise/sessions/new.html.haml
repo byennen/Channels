@@ -44,6 +44,12 @@
     margin: 160px auto 0; 
     float: none;
   }
+  #here_before #form {
+    margin: 0 auto;
+    float: none;
+    width: 318px;
+    padding-left: 20px;
+  }
   #facebook_photos {
     margin: 10px auto 0; 
     float: none;
@@ -68,6 +74,10 @@
     $("#here_before_link").click(function() {
       $("#signup_box").hide();
       $("#here_before").fadeIn();
+    });
+    $("#with_facebook_link").click(function() {
+      $("#here_before").hide();
+      $("#signup_box").fadeIn();
     });
   });
   
@@ -95,23 +105,24 @@
           = image_tag('logo-login.png', :class => 'logo')
           %p Entertainment and once in a life time opportunities!
           .row
-            .span
-              = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-                %fieldset
-                  .clearfix
-                    = f.label :email
-                    .input
-                      = f.email_field :email
-                %fieldset
-                  .clearfix
-                    = f.label :password
-                    .input
-                      = f.password_field :password
+            .span#form
+              = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'well'}) do |f|
+                = f.email_field :email, :placeholder => "Email", :class => "input-xlarge focused", :id => "focusedInput"
+                = f.password_field :password, :placeholder => "Password", :class => "input-xlarge"
                 - if devise_mapping.rememberable?
-                  .clearfix
+                  %label.checkbox
+                    Remember me
                     = f.check_box :remember_me
-                    = f.label :remember_me
-                %div= f.submit "Sign in"
+                = f.button "Sign In", :class => 'btn btn-primary'
+          .row
+            .span#other_links
+              %p
+                = link_to "Forgot your password?", new_user_password_url
+              %p
+                = link_to "Sign up with email", "#", :id => "with_email_link"
+              %p
+                = link_to "Sign In with Facebook", "#", :id => "with_facebook_link"
+
 
   .row
     .span6#facebook_photos
