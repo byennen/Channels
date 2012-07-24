@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120723161225) do
+ActiveRecord::Schema.define(:version => 20120724210651) do
 
   create_table "ads", :force => true do |t|
     t.integer  "channel_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20120723161225) do
     t.string   "facebook_page"
     t.string   "twitter_id"
     t.string   "google_plus_page"
+    t.boolean  "active"
   end
 
   create_table "features", :force => true do |t|
@@ -183,6 +184,16 @@ ActiveRecord::Schema.define(:version => 20120723161225) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "video_encodings", :force => true do |t|
+    t.integer  "video_id"
+    t.string   "type"
+    t.string   "text"
+    t.string   "filename"
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "videos", :force => true do |t|
     t.integer  "channel_id"
