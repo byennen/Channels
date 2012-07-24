@@ -94,7 +94,7 @@
           .row
             .span#other_links
               %p
-                = link_to "Sign up with email", "#", :id => "with_email_link"
+                = link_to "Sign up with email", signup_url, :id => "with_email_link"
               %p
                 Been here before?
                 = link_to "Sign In", "#", :id => "here_before_link"
@@ -119,7 +119,7 @@
               %p
                 = link_to "Forgot your password?", new_user_password_url
               %p
-                = link_to "Sign up with email", "#", :id => "with_email_link"
+                = link_to "Sign up with email", signup_url, :id => "with_email_link"
               %p
                 = link_to "Sign In with Facebook", "#", :id => "with_facebook_link"
 
@@ -142,6 +142,3 @@
         .input
           = f.password_field :password_confirmation
     %div= f.submit "Create Password"
-
-:javascript
-  $.backstretch("assets/randy-owen-login.jpg");

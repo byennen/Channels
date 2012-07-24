@@ -23,16 +23,22 @@
     %link{:href => "ico/apple-touch-icon-72-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "72x72"}
     %link{:href => "ico/apple-touch-icon-57-precomposed.png", :rel => "apple-touch-icon-precomposed"}
   %body
-    - if params[:controller] == "registrations"
-      = render 'layouts/frontend/registration_layout'
-    - elsif params[:controller] == "sessions"
-      = render 'layouts/frontend/facebook'
+    - if params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations"
       .container{"data-pjax-container" => ""}
         = yield
-    - elsif params[:controller] == "channels" && params[:action] == "show"
-      = render 'layouts/frontend/channels_show_layout'
+      :javascript
+        $.backstretch("../../../../assets/randy-owen-login.jpg");
     - else
-      = render 'layouts/frontend/layout'
+      .navbar.navbar-fixed-top
+        = render 'shared/musicplayer'
+        #ribbon
+        = render 'shared/nav'
+      .background-wrapper{"data-pjax-container" => ""}
+        .content
+          .container
+            .test
+              = yield
 
+        = render 'layouts/frontend/first_time_visitor'
 
-
+        = render 'layouts/frontend/footer'
