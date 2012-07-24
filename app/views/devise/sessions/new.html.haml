@@ -5,12 +5,12 @@
     margin: 160px auto 0; 
     float: none;
   }
-  #signup_box p {
+  #signup_box p, #here_before p {
     text-align: center;
     color: #575B61;
     margin-bottom: 40px;
   }
-  #signup_box img.logo {
+  #signup_box img.logo, #here_before img.logo {
     padding: 30px 0 5px 28px;
   }
   #signup_box #facebook {
@@ -62,6 +62,15 @@
     padding-bottom: 50px;    
   }
 
+:javascript
+  $(document).on("ready pjax:success", function() {
+    $("#here_before").hide();
+    $("#here_before_link").click(function() {
+      $("#signup_box").hide();
+      $("#here_before").fadeIn();
+    });
+  });
+  
 - if params[:action] == 'new'
   .row
     .span6#signup_box
@@ -80,13 +89,11 @@
                 Been here before?
                 = link_to "Sign In", "#", :id => "here_before_link"
   .row
-    .span6#facebook_photos
-      .fb-facepile{"data-href" => "http://facebook.com/altimarc", "data-max-rows" => "1", "data-width" => "448", "data-colorscheme" => "dark"}
-
-  .row
     .span6#here_before
       .overlay
         .overlay-inside
+          = image_tag('logo-login.png', :class => 'logo')
+          %p Entertainment and once in a life time opportunities!
           .row
             .span
               = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
@@ -105,6 +112,10 @@
                     = f.check_box :remember_me
                     = f.label :remember_me
                 %div= f.submit "Sign in"
+
+  .row
+    .span6#facebook_photos
+      .fb-facepile{"data-href" => "http://facebook.com/altimarc", "data-max-rows" => "1", "data-width" => "448", "data-colorscheme" => "dark"}
 
 - else
   %h2 Create Password
