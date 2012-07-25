@@ -3,9 +3,10 @@
 
 = render 'home/carousel'
 = render 'home/quote'
-= render 'home/new'
-= render 'shared/music/latest'
-= render 'shared/videos/latest'
+- if @active_channels > 1
+  = render 'home/new'
+  = render 'shared/music/latest'
+  = render 'shared/videos/latest'
 
 :javascript
   $(function(){

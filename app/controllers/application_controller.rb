@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   layout 'layouts/frontend/application'
   protect_from_forgery
-  before_filter :load_channels
+  before_filter :load_channels, :active_channels
 
   #password for staging
   if (ENV["RAILS_ENV"] == "staging")
@@ -36,6 +36,11 @@ class ApplicationController < ActionController::Base
 
   def load_channels
     @channels = Channel.order('name ASC')
+  end
+
+  def active_channels
+    @active_channels_array = @channels.collect{|x| x.active{|y| y != true}}
+    @active_channels = @active_channels_array.count(true)
   end
 
   rescue_from CanCan::AccessDenied do |exception|
