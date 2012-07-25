@@ -11,7 +11,7 @@ class Channel < ActiveRecord::Base
   scope :available, where(:active => true)
   scope :intro, where(:intro => true)
 
-  attr_accessible :id, :name, :subdomain, :description, :background_image, :banner_image, :background_color, :feature_attributes
+  attr_accessible :id, :name, :subdomain, :description, :background_image, :banner_image, :background_color, :feature_attributes, :google_analytics_key, :facebook_page, :twitter_id, :google_plus_page, :active
   accepts_nested_attributes_for :feature
 
   image_accessor :background_image
