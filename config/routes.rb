@@ -88,6 +88,6 @@ Channels::Application.routes.draw do
   end
 
 
-  root :to => "channels#show", constraints: lambda {|r| (r.subdomain.present? && r.subdomain != 'www') || !r.host.in?(%w(altimarc.com channels.dev localhost www.channels.dev altimarc-staging.com www.altimarc-staging.com))}
+  root :to => "channels#show", constraints: lambda {|r| (r.subdomain.present? && r.subdomain != 'www') || !r.host.in?(%w(altimarc.com channels.dev localhost www.channels.dev altimarc-staging.com www.altimarc-staging.com www.altimarc.com altimarc.com))}
   root :to => "home#index"
 end
