@@ -43,7 +43,7 @@ gem 'chunky_png'
 #data-nerds
 gem 'airbrake'
 gem 'newrelic_rpm'
-
+gem 'rack-mini-profiler'
 
 group :test do
   gem 'rspec-rails', '>= 2.8.1'
