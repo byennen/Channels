@@ -33,7 +33,7 @@
   .span8
     %h1= @channel.name
     %p{:style => "padding: 20px 0px;"}= @channel.description
-    
+
     .tabbable
       / Only required for left/right tabs
       %ul.nav.nav-tabs
@@ -46,79 +46,26 @@
       .tab-content
         #tab1.tab-pane.active
           %ul
-            %li Sed ut perspiciatis unde omnis iste natus
-            %li Sed ut perspiciatis unde omnis iste natus
-            %li Sed ut perspiciatis unde omnis iste natus
-            %li Sed ut perspiciatis unde omnis iste natus
-            %li Sed ut perspiciatis unde omnis iste natus
-            %li Sed ut perspiciatis unde omnis iste natus
+            - @songs.each do |song|
+              %li= song.title
+
         #tab2.tab-pane
-          %p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+          %ul
+            - @videos.each do |video|
+              %li= video.title
+
         #tab3.tab-pane{:style => "text-align:center"}
           .row
             .span12
               %ul.thumbnails
-                / %li.span3
-                /   .thumbnail
-                /     %img{:alt => "", :src => "demo_images/dslr1.jpg"}/
-                / %li.span3
-                /   .thumbnail
-                /     %img{:alt => "", :src => "demo_images/dslr2.jpg"}/
-                / %li.span3
-                /   .thumbnail
-                /     %img{:alt => "", :src => "demo_images/dslr3.jpg"}/
-                / %li.span3
-                /   .thumbnail
-                /     %img{:alt => "", :src => "demo_images/dslr1.jpg"}/
-    
+                - @photos.each do |photo|
+                  %li.span3
+                    .thumbnail
+                      = image_tag(photo.image.thumb('280x160#').url)
+
   .span4
     .rightsidebar
       .row
         .span4
-          %h3 Recently Posts
-      .row.items
-        .span1
-          .thumbnail
-            %img{:alt => "", :src => "http://placehold.it/160x160"}
-        .span3
-          %h4 Lorem ipsum dolor sit amet
-          %p Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-      .row.items
-        .span1
-          .thumbnail
-            %img{:alt => "", :src => "http://placehold.it/160x160"}
-        .span3
-          %h4 Lorem ipsum dolor sit amet
-          %p Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-      .row.items.last
-        .span1
-          .thumbnail
-            %img{:alt => "", :src => "http://placehold.it/160x160"}
-        .span3
-          %h4 Lorem ipsum dolor sit amet
-          %p Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-
-      .row
-        .span4
-          %h3 Recently Posts
-      .row.items
-        .span1
-          .thumbnail
-            %img{:alt => "", :src => "http://placehold.it/160x160"}
-        .span3
-          %h4 Lorem ipsum dolor sit amet
-          %p Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-      .row.items
-        .span1
-          .thumbnail
-            %img{:alt => "", :src => "http://placehold.it/160x160"}
-        .span3
-          %h4 Lorem ipsum dolor sit amet
-          %p Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-      .row.items.last
-        .span1
-          .thumbnail
-            %img{:alt => "", :src => "http://placehold.it/160x160"}
-        .span3
-          %h4 Lorem ipsum dolor sit amet
-          %p Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+          %h3 Recent Posts
+      = render :partial => 'post', :collection => @posts

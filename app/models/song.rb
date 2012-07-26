@@ -16,10 +16,10 @@ class Song < ActiveRecord::Base
 
   money :price
 
-  scope :available, where(:active => true)
+  scope :available, where('songs.active = true')
   scope :intro, where(:intro => true)
 
-  scope :published, where('active IS NOT NULL AND active = true')
+  scope :published, where('songs.active IS NOT NULL AND songs.active = true')
   scope :recent, published.order(:created_at).limit(8)
 
   extend FriendlyId
