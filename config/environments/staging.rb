@@ -61,7 +61,17 @@ Channels::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.action_mailer.default_url_options = { :host => 'yourhost.com' }
+  ActionMailer::Base.smtp_settings = {
+    :user_name => "altimarc",
+    :password => "altimarc2012",
+    :domain => "altimarc.com",
+    :address => "smtp.sendgrid.net",
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+
+  config.action_mailer.default_url_options = { :host => 'altimarc-staging.com' }
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
@@ -74,4 +84,3 @@ Channels::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
-
