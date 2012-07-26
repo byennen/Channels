@@ -34,34 +34,31 @@
     %h1= @channel.name
     %p{:style => "padding: 20px 0px;"}= @channel.description
 
-    .tabbable
-      / Only required for left/right tabs
-      %ul.nav.nav-tabs
-        %li.active
-          %a{"data-toggle" => "tab", :href => "#tab1"} Musics
+    %h2 Videos
+    %ul
+      - @videos.each do |video|
         %li
-          %a{"data-toggle" => "tab", :href => "#tab2"} Videos
+          .thumbnail
+            = image_tag(video.image.thumb('260x180#').url)
+            .caption
+              %h5= video.title
+              %p.description= video.description.truncate(125)
+              %p
+                = link_with_icon("Watch", video_url(video), "icon-film icon-white", "btn btn-info pjax")
+    %h3 Songs
+    %ul
+      - @songs.each do |song|
         %li
-          %a{"data-toggle" => "tab", :href => "#tab3"} Photos
-      .tab-content
-        #tab1.tab-pane.active
-          %ul
-            - @songs.each do |song|
-              %li= song.title
+          = link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
+          = song.title
 
-        #tab2.tab-pane
-          %ul
-            - @videos.each do |video|
-              %li= video.title
+    %h4 Photos
+    %ul.thumbnails
+      - @photos.each do |photo|
+        %li.span3
+          .thumbnail
+            = image_tag(photo.image.thumb('280x160#').url)
 
-        #tab3.tab-pane{:style => "text-align:center"}
-          .row
-            .span12
-              %ul.thumbnails
-                - @photos.each do |photo|
-                  %li.span3
-                    .thumbnail
-                      = image_tag(photo.image.thumb('280x160#').url)
 
   .span4
     .rightsidebar
