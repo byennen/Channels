@@ -27,8 +27,8 @@ after :users, :channels, :albums do
              )
 
   Song.create(:album => album, :title => "Got A Feelin' For Ya", :active => true, :price => "1.00", 
-              :song => File.new(File.join(full_song_dir, "05 Got A Feelin' For Ya.mp3")), 
-              :preview => File.new(File.join(preview_song_dir, "05 Got A Feelin' For Ya.mp3"))
+              :song => File.new(File.join(full_song_dir, "05 Got A Feelin For Ya.mp3")), 
+              :preview => File.new(File.join(preview_song_dir, "05 Got A Feelin For Ya.mp3"))
              )
 
   Song.create(:album => album, :title => "On The Day I Die", :active => true, :price => "1.00", 

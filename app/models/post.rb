@@ -33,7 +33,6 @@ class Post < ActiveRecord::Base
 
   def image
     unless photo_id.blank?
-      logger.debug("photo present")
       photo.image
     else
       video.image
