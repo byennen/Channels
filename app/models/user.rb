@@ -60,6 +60,11 @@ class User < ActiveRecord::Base
     nil # or consider a custom null object
   end
 
+  def self.share_listen(user_id, song_url)
+    user = User.find(user_id)
+    user.facebook.put_connections("me", "altimarc-dev:listen", song: song_url)
+  end
+
   private
 
   def process_payment
