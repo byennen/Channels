@@ -65,4 +65,5 @@ end
 
 group :development do
   gem 'pry-rails'
+  gem 'localtunnel'
 end
