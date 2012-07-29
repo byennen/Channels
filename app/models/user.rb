@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
 
   def self.share_listen(user_id, song_url)
     user = User.find(user_id)
-    user.facebook.put_connections("me", "altimarc-dev:listen", song: song_url)
+    user.facebook.put_connections("me", "#{APP_CONFIG['fb_namespace']}:listen", song: song_url)
   end
 
   private

@@ -2,19 +2,21 @@ development:
   aws_access_key: 'AKIAIPHZNJZ5QBOUOTHA'
   aws_secret_access_key: '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'
   aws_bucket: 'altimarc-dev'
+  fb_namespace: 'altimarc-dev'
 test:
   aws_access_key: 'AKIAIPHZNJZ5QBOUOTHA'
   aws_secret_access_key: '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'
   aws_bucket: 'altimarc-test'
-
+  fb_namespace: 'altimarc-test'
 
 staging:
   aws_access_key: 'AKIAIPHZNJZ5QBOUOTHA'
   aws_secret_access_key: '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'
   aws_bucket: 'altimarc-staging'
-
+  fb_namespace: 'altimarc-staging'
 
 production:
   aws_access_key:
   aws_secret_access_key:
   aws_bucket:
+  fb_namespace: 'altimarc'
