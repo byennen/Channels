@@ -20,6 +20,9 @@ gem 'devise', '2.0.4'
 gem 'cancan'
 gem 'omniauth-facebook'
 
+# social
+gem 'koala'
+
 #deploy
 gem 'capistrano'
 gem 'capistrano-resque'
