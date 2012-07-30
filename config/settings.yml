@@ -16,7 +16,8 @@ staging:
   aws_secret_access_key: 'agrWtJ6lqz3HcREHwcPkxm+jhRgahCwt7UMBUfG2'
   aws_bucket: 'altimarc-staging'
   fb_namespace: 'altimarc-staging'
-
+  facebook_app_id: '450706074949513'
+  facebook_app_secret: '0a1d3f38d0dfb395712f00406e741fa9'
 production:
   aws_access_key:
   aws_secret_access_key:
