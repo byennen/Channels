@@ -126,9 +126,8 @@ class Song < ActiveRecord::Base
   end
 
   def as_json(options={})
-    logger.debug("Album is #{album.inspect}")
-    logger.debug("channel is #{album.channel.inspect}")
     {
+     id: id,
      url: song.url,
      preview_url: preview.url,
      title: title,

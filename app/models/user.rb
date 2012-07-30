@@ -52,6 +52,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def facebook?
+    oauth_token? && oauth_expires_at > Time.now
+  end
+
   def facebook
     @facebook ||= Koala::Facebook::API.new(oauth_token)
     block_given? ? yield(@facebook) : @facebook

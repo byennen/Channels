@@ -101,6 +101,10 @@ class Player
       @intro = false
       $("#cover-art").addClass("paused").removeClass("playing")
       player.updateInfo(data)
+      $.post("/songs/" + data["id"] + "/played", (data) ->
+        played = data
+      )
     )
+
 
 window.Player = Player
