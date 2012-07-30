@@ -1,6 +1,5 @@
 - title @channel.name
 
-
 .row
   .span12
     %ul.breadcrumb.entry-title
@@ -46,11 +45,19 @@
               %p
                 = link_with_icon("Watch", video_url(video), "icon-film icon-white", "btn btn-info pjax")
     %h3 Songs
-    %ul
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Play
+          %th Title
+          %th Album
+          %th
+      %tbody
       - @songs.each do |song|
-        %li
-          = link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
-          = song.title
+        %tr
+          %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})  
+          %td.center= song.title
+          %td.center=# Channel.albums.title
 
     %h4 Photos
     %ul.thumbnails
