@@ -7,7 +7,8 @@ class MemberWorker
   end
 
   def self.share_listen(options={})
-    User.share_listen(options[:user_id], options[:song_url])
+    Rails.logger.debug("optoins are #{options}")
+    User.share_listen(options["user_id"], options["song_url"])
   end
 
   def send_welcome(options={})

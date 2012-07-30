@@ -1,0 +1,6 @@
+- content_for :open_graph do
+  %meta{:property => "og:title", :content => @song.title}
+  %meta{:property => "og:image", :content => "http://3g8r.localtunnel.com#{@song.album.image.thumb('70x70').url}"}
+  %meta{:property => "og:url", :content => song_url(@song)}
+  %meta{:property => "og:type", :content => "#{APP_CONFIG['fb_namespace']}:song"}
+  %meta{:property => "music:musician", :content => @song.album.channel.name }
