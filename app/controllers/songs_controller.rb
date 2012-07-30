@@ -8,7 +8,10 @@ class SongsController < ApplicationController
   def show
     @song = Song.find(params[:id], :include => {:album => :channel})
     if @song.present?
-      render :json => @song, :include => {:album => {:include => :channel }}
+      respond_to do |format|
+        format.html {}
+        format.json { render :json => @song }
+      end
     end
   end
 
@@ -23,4 +26,15 @@ class SongsController < ApplicationController
   def intro
     render :json => Song.intro_song()
   end
+
+  def played
+    @song = Song.find(params[:id])
+    if current_user.facebook?
+      Resque.enqueue(MemberWorker, :share_listen, {:user_id  => current_user.id,
+                       :song_url => "http://3g8r.localtunnel.com" + song_path(@song)})
+
+    end
+    render :text => ""
+  end
+
 end

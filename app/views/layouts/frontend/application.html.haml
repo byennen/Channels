@@ -8,6 +8,8 @@
     %meta{:content => "#{@keywords}", :name => "keywords"}
     %meta{:content => "ALTIMARC, LLC", :name => "author"}
     %meta{:content => "index,follow", :name => "robots"}
+    %meta{:property => "fb:app_id", :content => APP_CONFIG['facebook_app_id']}
+    = yield :open_graph
     = csrf_meta_tags
     %link{:href => "https://fonts.googleapis.com/css?family=Rationale", :rel => "stylesheet", :type => "text/css"}
     = javascript_include_tag "frontend/application"

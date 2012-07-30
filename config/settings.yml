@@ -2,7 +2,9 @@ development:
   aws_access_key: 'AKIAIPHZNJZ5QBOUOTHA'
   aws_secret_access_key: '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'
   aws_bucket: 'altimarc-dev'
-  fb_namespace: 'altimarc-dev'
+  fb_namespace: 'altimarc-jim'
+  facebook_app_id: '504791812879737'
+  facebook_app_secret: 'fa2ddc1e47d2c1198679d8ffc61d04db'
 test:
   aws_access_key: 'AKIAIPHZNJZ5QBOUOTHA'
   aws_secret_access_key: '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'
