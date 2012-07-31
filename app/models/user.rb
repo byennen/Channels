@@ -71,6 +71,12 @@ class User < ActiveRecord::Base
     user.facebook.put_connections("me", "#{APP_CONFIG['fb_namespace']}:listen", song: song_url)
   end
 
+  def self.share_view(user_id, video_url)
+    logger.debug("Video URL is #{video_url}")
+    user = User.find(user_id)
+    user.facebook.put_connections("me", "video.watches", video: video_url)
+  end
+
   private
 
   def process_payment

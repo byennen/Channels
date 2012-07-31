@@ -11,5 +11,8 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
+    if current_user && current_user.facebook?
+      Resque.enqueue(MemberWorker, :share_view, {"user_id" => current_user.id, "video_url" => "http://46qa.localtunnel.com" + video_path(@video)})
+    end
   end
 end

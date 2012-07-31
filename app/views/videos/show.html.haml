@@ -1,3 +1,11 @@
+- content_for :open_graph do
+  %meta{property: "og:title", content: @video.title}
+  %meta{property: "og:type", content: "video.other"}
+  %meta{property: "og:url",  content: video_url(@video)}
+  %meta{property: "og:image",content: "http://46qa.localtunnel.com/#{@video.image.url}"}
+  %meta{property: "og:site_name", content: "Altimarc"}
+  %meta{property: "og:description", content: @video.description}
+
 - javascript 'frontend/plugins/html5video'
 
 #video{:style => 'background: #OOO; padding: 10px 0px;'}

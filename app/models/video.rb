@@ -19,7 +19,7 @@ class Video < ActiveRecord::Base
   mount_uploader :preview, VideoUploader
 
   scope :published, where('active IS NOT NULL AND active = true')
-  scope :recent, published.order(:created_at).limit(8)
+  scope :recent, published.order('created_at DESC').limit(8)
 
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]

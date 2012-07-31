@@ -11,6 +11,11 @@ class MemberWorker
     User.share_listen(options["user_id"], options["song_url"])
   end
 
+  def self.share_view(options={})
+    Rails.logger.debug("optiosn are #{options}")
+    User.share_view(options["user_id"], options["video_url"])
+  end
+
   def send_welcome(options={})
   end
 
