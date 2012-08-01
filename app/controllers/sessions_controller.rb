@@ -2,11 +2,8 @@ class SessionsController < Devise::SessionsController
 
   def create
     user = User.from_omniauth(env["omniauth.auth"])
-    logger.debug("Logging in user")
     sign_in(User, user)
     session[:user_id] = user.id
-    logger.debug("redirecting to sigin")
-    #redirect_to new_session_url
     if user.new_fb_user?
       render :action => :new
     else
