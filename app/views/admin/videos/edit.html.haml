@@ -1,3 +1,8 @@
+:javascript
+  $(document).ready(function(){
+  	// Jquery UI Datepicker
+  	$(".datepicker_on").datepicker();	
+  });
 .row-fluid
   .span12
     .box.grad_colour_dark_blue
@@ -15,7 +20,7 @@
                 = f.input :description, :input_html => {:class => "input-xlarge", :rows => 5, :cols => 300, :style => "width: 400px;"}
                 = f.input :image, :as => :file, :label => "Image"
                 = image_tag @video.image.thumb('100x100#').url if @video.image
-                = f.input :active, :as => :boolean
+                = f.input :publish_on, :as => :string, :input_html => { :class => 'datepicker_on' } 
                 = f.input :paid, :as => :boolean
               .form-actions
                 = f.button :submit, :class => 'btn-primary'
