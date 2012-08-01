@@ -64,17 +64,9 @@ class User < ActiveRecord::Base
     nil # or consider a custom null object
   end
 
-  def self.share_listen(user_id, song_url)
-    logger.debug("user is #{user_id}")
-    logger.debug("song url is #{song_url}")
-    user = User.find(user_id)
-    user.facebook.put_connections("me", "#{APP_CONFIG['fb_namespace']}:listen", song: song_url)
-  end
-
-  def self.share_view(user_id, video_url)
-    logger.debug("Video URL is #{video_url}")
-    user = User.find(user_id)
-    user.facebook.put_connections("me", "video.watches", video: video_url)
+  def put_fb_connection(user_id, method, options={})
+     user = User.find(user_id)
+     user.facebook.put_connections("me", method, options)
   end
 
   private
