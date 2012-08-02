@@ -55,9 +55,7 @@ class Video < ActiveRecord::Base
   private
     
     def image_present_for_publish
-      logger.debug("video publish on is #{publish_on}")
       if !publish_on.blank? && image.nil?
-        logger.debug("add errors")
         errors.add(:publish_on, "Image must be present before publishing")
       end
     end
