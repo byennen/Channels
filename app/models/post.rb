@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   belongs_to :photo
   belongs_to :video
 
-  attr_accessible :channel, :feature, :title, :description, :publish_date,
+  attr_accessible :channel, :feature, :title, :description, :publish_on,
                   :date, :start_time, :end_time, :link, :logo, :video_id,
                   :photo_id
 
