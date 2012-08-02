@@ -1,5 +1,4 @@
 module VideosHelper
-
   def video_playlist(sources)
     s = []
     sources.each_with_index do |source, index|

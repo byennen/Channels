@@ -10,17 +10,21 @@ body {
   overflow: hidden;
 }
 
-.sessions .background-wrapper, .registrations .background-wrapper, .passwords .background-wrapper {
+.sessions .background-wrapper, 
+.registrations .background-wrapper, 
+.passwords .background-wrapper {
   background: none;
+}
+
+.sessions div.content div.container, 
+.registrations div.content div.container, 
+.passwords div.content div.container {
+  background: none !important;
 }
 
 .channels .background-wrapper {
   background: black;
   background-image: none;
-}
-
-.container {
-  width: 980px;
 }
 
 div.content div.container{
@@ -263,4 +267,8 @@ div#footer {
 
 #first_time_vistor {
   display: none;
+}
+
+img.intro-photo {
+  margin-bottom: 40px;
 }

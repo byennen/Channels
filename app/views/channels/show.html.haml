@@ -5,28 +5,47 @@
     %ul.breadcrumb.entry-title
       %li.active= @channel.name
 
-.row
-  .span12
-    #gallery
-      = image_tag @channel.banner_image.url if @channel.banner_image_uid
-      / = image_tag @channel.banner_image.url if @channel.banner_image_uid
-      / %img{:src => "assets/demo_images/3.jpg"}/
-    /   %img{:src => "demo_images/4.jpg"}/
-    /   %img{:src => "demo_images/5.jpg"}/
-    /   %img{:src => "demo_images/6.jpg"}/
-    / #thumbs
-    /   %img{:src => "demo_images/11.jpg"}/
-    /   %img{:src => "demo_images/22.jpg"}/
-    /   %img{:src => "demo_images/33.jpg"}/
-    /   %img{:src => "demo_images/44.jpg"}/
-    /   %img{:src => "demo_images/55.jpg"}/
-    /   %img{:src => "demo_images/66.jpg"}/
-    / %a#next{:href => "javascript:;;"}
-.row
-  .span12
-    .page-header
-      %h1
-    %p
+- content_for :open_graph do
+  %meta{property: "og:title", content: @video.title}
+  %meta{property: "og:type", content: "video.other"}
+  %meta{property: "og:url",  content: video_url(@video)}
+  %meta{property: "og:image",content: "http://46qa.localtunnel.com/#{@video.image.url}"}
+  %meta{property: "og:site_name", content: "Altimarc"}
+  %meta{property: "og:description", content: @video.description}
+
+- javascript 'frontend/plugins/html5video'
+
+#video{:style => 'background: #OOO; padding: 10px 0px;'}
+  #player{:style => 'margin: 0 auto;width: 896px;height: 504px;'}
+    .projekktor
+
+%br
+
+:javascript
+  $(document).ready(function() {
+    var player = projekktor('.projekktor', {
+    	width: 896,
+    	height: 504,
+    	poster: "#{@video.image.url}",
+    	controls: true,
+    	playlist: [
+        {
+          0: {src:'http://www.projekktor.com/content/demos/slideshow/html5-Logo.jpg', type:"image/jpeg"},
+          config:{
+            duration: 5
+          }
+        },
+        {
+        },
+        {
+          0: {src:'http://www.projekktor.com/content/demos/slideshow/image1.png', type:"image/png"},
+          config:{
+            duration: 5
+          }
+        }
+    	]
+    });
+  });
 
 .row
   .span8

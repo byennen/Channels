@@ -9,6 +9,7 @@ class ChannelsController < ApplicationController
     @songs = @channel.songs.recent
     @videos = @channel.videos.recent
     @photos = @channel.photos.recent
+    @video = Video.first
   end
 
   def next_song
