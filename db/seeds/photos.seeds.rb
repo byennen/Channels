@@ -1,6 +1,6 @@
 after :users, :channels, :photo_albums do
-  channel = Channel.find_by_subdomain('markcollie')
-  album = PhotoAlbum.find_by_title('Brushy Mountain')
+  channel = Channel.find_by_subdomain('aliveatbrushy')
+  album = PhotoAlbum.find_by_title('Alive At Brusy Mountain')
 
   album_dir = Rails.root.join('db', 'seeds', 'assets', 'images', 'photos', 'brushy_mountain')
 

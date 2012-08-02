@@ -9,12 +9,31 @@
   .span12
     %ul.thumbnails
       - @channels.each do |channel|
-        %li.span4
-          .thumbnail
-            = link_to image_tag(channel.banner_image.thumb('301x170#').url), root_url(subdomain: channel.subdomain), class: 'pjax' if channel.banner_image
-            .caption
-              %h5= channel.name
-              %p= truncate(channel.description, :length => 80, :omission =>  "...")
+        - if channel.active?
+          %li.span4
+            .thumbnail
+              = link_to image_tag(channel.banner_image.thumb('301x170#').url), root_url(subdomain: channel.subdomain), class: 'pjax' if channel.banner_image
+              .caption
+                %h5= channel.name
+                %p= truncate(channel.description, :length => 80, :omission =>  "...")
+
+.row
+  .span12
+    %ul.breadcrumb.entry-title
+      %li.active Coming Soon
+
+.row
+  .span12
+    %ul.thumbnails
+      - @channels.each do |channel|
+        - unless channel.active?
+          %li.span4
+            .thumbnail
+              = link_to image_tag(channel.banner_image.thumb('301x170#').url), "#Coming-Soon!" if channel.banner_image
+              .caption
+                %h5= channel.name
+                %p= truncate(channel.description, :length => 80, :omission =>  "...")
+
 
 .row
   .span12

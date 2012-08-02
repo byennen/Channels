@@ -1,5 +1,5 @@
 after :users, :channels do
-  channel = Channel.find_by_subdomain('markcollie')
+  channel = Channel.find_by_subdomain('aliveatbrushy')
 
   video_img = Rails.root.join('db', 'seeds', 'assets', 'videos', 'brushy_mountain', 'mark-collie.png')
   

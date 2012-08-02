@@ -11,9 +11,12 @@
           %ul#ldd_menu.ldd_menu
             - if @active_channels > 1
               = nav_link("Channels", channels_url)
+              = nav_link("Giveaways", giveaways_url)              
               = nav_link("Music", music_url)
               = nav_link("Videos", videos_url)
-            = nav_link("Giveaways", giveaways_url)
+            - else
+              = nav_link("Channels", channels_url)              
+              = nav_link("Giveaways", giveaways_url)
             -#Todo: Lance - Clean up this link to a different helper
             - if user_signed_in?
               %li

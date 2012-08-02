@@ -1,5 +1,5 @@
 after :users, :channels, :albums do
-  album = Album.find_by_title('Brushy Mountain')
+  album = Album.find_by_title('Alive At Brusy Mountain')
 
   full_song_dir = Rails.root.join('db', 'seeds', 'assets', 'albums', 'brushy_mountain', 'full')
   preview_song_dir = Rails.root.join('db', 'seeds', 'assets', 'albums', 'brushy_mountain', 'preview')
@@ -78,3 +78,4 @@ after :users, :channels, :albums do
 
   puts ""
 end
+
