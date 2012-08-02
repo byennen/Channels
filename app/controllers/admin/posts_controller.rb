@@ -23,10 +23,14 @@ class Admin::PostsController < Admin::ApplicationController
   end
 
   def update
-    if @post.update_attributes(params[:post])
+    @post.attributes = params[:post]
+    @post.publish_on = DateTime.strptime(params[:post][:publish_on], '%m/%d/%Y').to_time
+    if @post.save
       flash[:notice] = "post was successfully updated."
+      respond_with @post, :location => admin_channel_posts_url      
+    else 
+      render :action => 'edit'
     end
-    respond_with @post, :location => admin_channel_posts_url
   end
 
   def destroy
