@@ -29,9 +29,9 @@ class SongsController < ApplicationController
 
   def played
     @song = Song.find(params[:id])
-    if current_user.facebook?
+    if current_user && current_user.facebook?
       Resque.enqueue(MemberWorker, :share_listen, {:user_id  => current_user.id,
-                       :song_url => "http://46qa.localtunnel.com" + song_path(@song)})
+                       :song_url => song_url(@song)})
 
     end
     render :text => ""

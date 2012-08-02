@@ -10,10 +10,10 @@ class Video < ActiveRecord::Base
 
   belongs_to :channel
 
-  attr_accessible :id, :channel_id, :title, :description, :image, :paid, :active, :channel, :video, :preview
+  attr_accessible :id, :channel_id, :title, :description, :image, :paid, :publish_on, :channel, :video, :preview
   image_accessor :image
 
-  validate :image_present_for_active
+  validate :image_present_for_publish
 
   mount_uploader :video, VideoUploader
   mount_uploader :preview, VideoUploader
@@ -27,7 +27,7 @@ class Video < ActiveRecord::Base
   def filename
     read_attribute :video
   end
-
+  
   def sources
     sources = []
     file_extension = filename.split('.').last
@@ -53,14 +53,10 @@ class Video < ActiveRecord::Base
   end
 
   private
-
-    def image_present_for_active
-      if self.active == true
-        if self.image.nil?
-          self.errors[:active] = "Image must be present before making active"
-          return false if self.image.nil?
-        end
+    
+    def image_present_for_publish
+      if !publish_on.blank? && image.nil?
+        errors.add(:publish_on, "Image must be present before publishing")
       end
-      return true
     end
 end

@@ -30,10 +30,15 @@ class Admin::VideosController < Admin::ApplicationController
   end
 
   def update
-    if @video.update_attributes(params[:video])
+    @video.attributes = params[:video]
+    @video.publish_on = DateTime.strptime(params[:video][:publish_on], '%m/%d/%Y').to_time
+    if @video.save
+      logger.debug("videl valid is #{@video.valid?}")
       flash[:notice] = "Video was successfully updated."
+      respond_with @video, :location => admin_channel_videos_url      
+    else
+      render :action => "edit"
     end
-    respond_with @video, :location => admin_channel_videos_url
   end
 
   def destroy

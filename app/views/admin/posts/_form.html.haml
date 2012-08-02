@@ -18,7 +18,7 @@
     .giving{style: giving_style}
       = f.input :logo, :as => :file
     .publish_date{style: news_style}
-      = f.input :publish_date, :as => :string, :input_html => { :class => 'datepicker_on' } 
+      = f.input :publish_on, :as => :string, :input_html => { :class => 'datepicker_on', :value => f.object.publish_on.strftime('%m/%d/%Y') } 
     
   .form-actions
     = f.button :submit, :class => 'btn-primary'

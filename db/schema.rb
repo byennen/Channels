@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120724210651) do
+ActiveRecord::Schema.define(:version => 20120801204659) do
 
   create_table "ads", :force => true do |t|
     t.integer  "channel_id"
@@ -106,11 +106,11 @@ ActiveRecord::Schema.define(:version => 20120724210651) do
 
   create_table "posts", :force => true do |t|
     t.integer  "channel_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "title"
     t.text     "description"
-    t.date     "publish_date"
+    t.date     "publish_on"
     t.string   "feature"
     t.string   "link"
     t.string   "location"
@@ -191,7 +191,6 @@ ActiveRecord::Schema.define(:version => 20120724210651) do
     t.text     "description"
     t.string   "image_uid"
     t.boolean  "paid"
-    t.boolean  "active"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "video"
@@ -199,6 +198,7 @@ ActiveRecord::Schema.define(:version => 20120724210651) do
     t.string   "zencoder_output_id"
     t.boolean  "processed"
     t.string   "slug"
+    t.datetime "publish_on"
   end
 
   add_index "videos", ["slug"], :name => "index_videos_on_slug"
