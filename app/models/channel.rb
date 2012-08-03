@@ -7,6 +7,8 @@ class Channel < ActiveRecord::Base
   has_many :photos, :through => :photo_albums
   has_many :videos
   has_many :posts
+  
+  has_many :facebook_pages
 
   scope :available, where(:active => true)
   scope :intro, where(:intro => true)
