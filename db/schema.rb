@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120801204659) do
+ActiveRecord::Schema.define(:version => 20120802193409) do
 
   create_table "ads", :force => true do |t|
     t.integer  "channel_id"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(:version => 20120801204659) do
     t.string   "twitter_id"
     t.string   "google_plus_page"
     t.boolean  "active"
+  end
+
+  create_table "facebook_pages", :force => true do |t|
+    t.integer  "channel_id"
+    t.string   "page_id"
+    t.string   "name"
+    t.string   "access_token"
+    t.string   "category"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "features", :force => true do |t|

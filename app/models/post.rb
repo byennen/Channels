@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
 
   image_accessor :logo
 
-  scope :published, lambda { where('publish_date IS NOT NULL AND publish_date <= ?', Time.zone.now) }
+  scope :published, lambda { where('publish_on IS NOT NULL AND publish_on <= ?', Time.zone.now) }
   scope :recent, published.order(:created_at).limit(8)
 
   extend FriendlyId

@@ -67,4 +67,9 @@ group :development do
   gem 'pry-rails'
   gem 'localtunnel'
   gem 'guard'
+  gem 'guard-bundler'
+  gem 'guard-rails'
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
+  gem 'guard-livereload'
 end
