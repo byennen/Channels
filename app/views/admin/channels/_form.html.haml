@@ -1,6 +1,7 @@
 = simple_form_for [:admin, @channel], :html => {:multipart => true, :class => 'form-horizontal'} do |f|
   = f.input :name, :input_html => {:class => "input-xlarge"}
   = f.input :subdomain, :input_html => {:class => "input-xlarge" }
+  = f.input :domain, :input_html => {:class => "input-xlarge" }
   = f.input :description, :input_html => {:class => "input-xlarge"}
   = f.input :google_analytics_key, :input_html => {:class => "input-xlarge"}
   = f.input :facebook_page, :input_html => {:class => "input-xlarge"}

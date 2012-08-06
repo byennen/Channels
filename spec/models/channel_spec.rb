@@ -1,6 +1,24 @@
 require 'spec_helper'
 
 describe Channel do
+  
+  describe 'domain lookup' do
+    
+    context 'with domain' do
+      let!(:channel) { FactoryGirl.create(:channel, :domain => 'aliveatbrushy.com') }
+      it { Channel.find_by_domain_or_subdomain('aliveatbrushy.com', []).should == @channel }
+    end
+    
+    context 'with subdomain' do 
+      let!(:channel) { FactoryGirl.create(:channel) }
+      it { Channel.find_by_domain_or_subdomain('altimarc-test.com', ['test']).should == @channel }
+    end
+    
+    context 'with invalid subdomain' do
+      
+    
+  end
+
   it "returns next song to play in channel" do
     album = create(:album, :title => "my album")
     another_album = create(:album, :title => "my another album")

@@ -5,12 +5,13 @@ development:
   fb_namespace: 'altimarc-jim'
   facebook_app_id: '504791812879737'
   facebook_app_secret: 'fa2ddc1e47d2c1198679d8ffc61d04db'
+  domain: 'channels.dev'
 test:
   aws_access_key: 'AKIAIPHZNJZ5QBOUOTHA'
   aws_secret_access_key: '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'
   aws_bucket: 'altimarc-test'
   fb_namespace: 'altimarc-test'
-
+  domain: 'altimar-test.com'
 staging:
   aws_access_key: 'AKIAIPHZNJZ5QBOUOTHA'
   aws_secret_access_key: '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'
@@ -18,6 +19,7 @@ staging:
   fb_namespace: 'altimarc-staging'
   facebook_app_id: '450706074949513'
   facebook_app_secret: '0a1d3f38d0dfb395712f00406e741fa9'
+  hostname: 'www.altimarc-staging.com'
 production:
   aws_access_key: 'AKIAIPHZNJZ5QBOUOTHA'
   aws_secret_access_key: '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'
@@ -25,3 +27,4 @@ production:
   fb_namespace: 'altimarc'
   facebook_app_id: '505364239479743'
   facebook_app_secret: 'bc9c68643b4b467c083f706b1e7959cd'
+  hostname: 'wwww.altimarc.com'
