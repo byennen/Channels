@@ -3,7 +3,7 @@ require 'stripe'
 class User < ActiveRecord::Base
   STRIPE_PLAN_ID = 'paid_member'
 
-  ROLES = %w[admin channel_master paid_member]
+  ROLES = %w[admin channel_master paid_member unpaid_member]
   ROLES.each do |the_role|
     define_method("#{the_role}?") do
       self.role == the_role
@@ -24,12 +24,13 @@ class User < ActiveRecord::Base
 
   attr_accessor :stripe_card_token
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me, :role, :channel_id, :stripe_card_token, :coupon
+  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, 
+                               :remember_me, :role, :channel_id, :stripe_card_token, :coupon
 
   validates :role, :presence => true
   validates :channel, :presence => true, :if => :channel_master?
 
-  before_validation :make_paid_member!, :if => :stripe_card_token
+  before_validation :add_member_role
   after_validation :process_payment, :if => :paid_member?
 
   #facebook login
@@ -79,4 +80,13 @@ class User < ActiveRecord::Base
     errors.add :base, "There was a problem with your credit card."
     false
   end
+  
+  def add_member_role
+    if stripe_card_token
+      self.role = 'paid_member'
+    else
+      self.role = 'unpaid_member'
+    end
+  end
+  
 end
