@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   layout 'layouts/frontend/application'
   protect_from_forgery
   before_filter :load_channels, :active_channels
+  
+  helper_method :current_channel
 
   #password for staging
   if (ENV["RAILS_ENV"] == "staging")
@@ -9,6 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    logger.debug("stored_location is #{stored_location_for(resource)}")
     stored_location_for(resource) ||
       if resource.is_a?(User)
         if resource.admin?
@@ -25,15 +28,14 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def host_base
-    request.host.match(/(.*)\.\w{3}$/)[1]
-  end
-
   def load_channel
-    channel_key = request.subdomain.present? ? request.subdomain : host_base
-    @channel = Channel.find_by_subdomain!(channel_key)
+    @channel = Channel.find_by_domain_or_subdomain(request.domain, request.subdomains)
   end
 
+  def current_channel
+    @channel
+  end
+  
   def load_channels
     @channels = Channel.order('name ASC')
   end

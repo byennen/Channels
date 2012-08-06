@@ -90,7 +90,11 @@
           %p Entertainment and once in a life time opportunities!
           .row
             .span#facebook
-              = link_to "Sign in with Facebook", "/auth/facebook", id: "login", :class => 'btn-facebook'
+              - if params[:state]
+                = link_to "Sign in with Facebook", "/auth/facebook?state=#{params[:state]}", id: "login", :class => 'btn-facebook'
+              - else
+                = link_to "Sign in with Facebook", "/auth/facebook", id: "login", :class => 'btn-facebook'
+              
           .row
             .span#other_links
               %p

@@ -14,7 +14,8 @@ class MemberWorker
     User.put_fb_connection(options["user_id"], "video.watches", {video: options["video_url"]})
   end
 
-  def send_welcome(options={})
+  def self.send_welcome(options={})
+    MemberMailer.welcome(options["user_id"]).deliver
   end
 
 end

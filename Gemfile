@@ -14,6 +14,7 @@ gem 'simple_form'
 gem 'stripe'
 gem 'money', :git => 'https://github.com/collectiveidea/money.git'
 gem 'seedbank'
+gem 'uuid'
 
 #login
 gem 'devise', '2.0.4'

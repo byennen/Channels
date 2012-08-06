@@ -2,12 +2,17 @@ class SessionsController < Devise::SessionsController
 
   def create
     user = User.from_omniauth(env["omniauth.auth"])
+    logger.debug("session is #{session.inspect}")
     sign_in(User, user)
     session[:user_id] = user.id
     if user.new_fb_user?
       render :action => :new
     else
-      redirect_to root_url
+      if channel = Channel.find_by_uuid(params[:state])
+        redirect_to "http://#{channel.subdomain}.#{APP_CONFIG['domain']}"
+      else
+        redirect_to root_url
+      end
     end
   end
 
