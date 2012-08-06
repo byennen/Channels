@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     if current_user.save
       sign_in(current_user, :bypass => true)
       current_user.update_attribute(:new_fb_user, false)
+      Resque.enqueue(MemberWorker, :send_welcome, {"user_id" => current_user.id})
       redirect_to root_url
     else
       render '/sessions/new'
