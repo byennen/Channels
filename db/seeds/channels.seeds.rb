@@ -17,6 +17,7 @@ after :users do
   Channel.create(
     :name => "Alive At Brushy", :subdomain => "aliveatbrushy", :background_color => "000000",
     :banner_image => File.new(File.join(banner_dir, 'mark-collie.jpg')), :background_image => File.new(File.join(background_dir, 'mark-collie.png')),
+    :twitter_id => "aliveatbrushy", :facebook_page => "aliveatbrushy", 
     :description => "After 113 years, the state of Tennessee closed Brushy Mountain State Penitentiary in June of 2009.  
     But not before country music icon Mark Collie took a two year journey inside the walls of this legendary place.  
     While there, he learned the stories and spoke to most of the population housed there.  What emerged was music that many liken to the late Johnny Cash.  

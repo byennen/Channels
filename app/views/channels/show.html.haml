@@ -40,6 +40,8 @@
 
       .row
         .span8
+          %h3 Posts
+          = render :partial => 'post', :collection => @posts
           %h3 Songs
           %table.table.table-striped
             %thead
@@ -62,17 +64,17 @@
                 .thumbnail
                   = image_tag(photo.image.thumb('280x160#').url)
 
-          %h5= @channel.name
-          %p{:style => "padding: 20px 0px;"}= @channel.description
 
 
 
         .span4
           .rightsidebar
-            .row
-              .span4
-                %h3 Recent Posts
-            = render :partial => 'post', :collection => @posts
+            %h1= @channel.name
+            %ul
+              %li= link_to "Twitter", "http://twitter.com/#{@channel.twitter_id}"
+              %li= link_to "Facebook", "http://facebook.com/#{@channel.facebook_page}"
+            %p{:style => "padding: 20px 0px;"}= @channel.description
+
 
 -#.row
   -#.span12
