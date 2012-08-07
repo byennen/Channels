@@ -81,7 +81,7 @@
     });
   });
   
-- if params[:action] == 'new'
+- if params[:action] == 'new' || !current_user
   .row
     .span6#signup_box
       .overlay
