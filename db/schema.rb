@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120807180146) do
+ActiveRecord::Schema.define(:version => 20120807212250) do
 
   create_table "ads", :force => true do |t|
     t.integer  "channel_id"
@@ -211,7 +211,7 @@ ActiveRecord::Schema.define(:version => 20120807180146) do
     t.boolean  "processed"
     t.string   "slug"
     t.datetime "publish_on"
-    t.integer  "order"
+    t.integer  "position"
   end
 
   add_index "videos", ["slug"], :name => "index_videos_on_slug"
