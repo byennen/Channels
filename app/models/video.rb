@@ -24,7 +24,7 @@ class Video < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
 
-  acts_as_list :scope => :channel_id
+  acts_as_list :scope => :channel 
   
   def filename
     read_attribute :video
