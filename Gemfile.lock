@@ -34,6 +34,7 @@ GEM
     activesupport (3.2.5)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    acts_as_list (0.1.7)
     addressable (2.2.8)
     airbrake (3.1.1)
       activesupport
@@ -349,6 +350,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_list
   airbrake
   aws-s3
   cancan
