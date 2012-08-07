@@ -46,40 +46,28 @@
           %table.table.table-striped
             %thead
               %tr
-                %th Play
-                %th Title
-                %th Album
                 %th
+                %th Title
             %tbody
             - @songs.each do |song|
               %tr
                 %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})  
                 %td.center= song.title
-                %td.center=# Channel.albums.title
-
-          %h4 Photos
-          %ul.thumbnails
-            - @photos.each do |photo|
-              %li.span3
-                .thumbnail
-                  = image_tag(photo.image.thumb('280x160#').url)
-
-
-
 
         .span4
           .rightsidebar
             %h1= @channel.name
             %ul
-              %li= link_to "Twitter", "http://twitter.com/#{@channel.twitter_id}"
-              %li= link_to "Facebook", "http://facebook.com/#{@channel.facebook_page}"
-            %p{:style => "padding: 20px 0px;"}= @channel.description
+              %li= link_to "Twitter", "http://twitter.com/#{@channel.twitter_id}", :target => "_blank"
+              %li= link_to "Facebook", "http://facebook.com/#{@channel.facebook_page}", :target => "_blank"
+              %li= link_to "Google Plus", "https://plus.google.com/u/0/#{@channel.google_plus_page}", :target => "_blank"
+              %p{:style => "padding: 20px 0px;"}= @channel.description
+            %ul.thumbnails
+              - @photos.each do |photo|
+                %li.span3
+                  .thumbnail
+                    = image_tag(photo.image.thumb('280x160#').url)
 
-
--#.row
-  -#.span12
-    -#%ul.breadcrumb.entry-title
-      -#%li.active= @channel.name
 
 
 - javascript 'frontend/plugins/html5video'
