@@ -8,10 +8,12 @@
   %meta{property: "og:site_name", content: "Altimarc"}
   %meta{property: "og:description", content: @video.description}
 
-.videoplayer{:style => "background: url(../../../../assets/html5video/watch-area-bg.png) repeat-x;height: 500px;padding: 20px 0;"}
+.videoplayer{:style => "background: url(../../../../assets/html5video/watch-area-bg.png) repeat-x;height: 600px;padding: 20px 0;"}
   #video
   #player{:style => 'margin: 0 auto;width: 896px;height: 504px;'}
     .projekktor
+  #video_info.container
+    %p{:style => "color:white;"}= @video.title
 
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
   .content
@@ -56,8 +58,7 @@
 
         .span4
           .rightsidebar
-            .span
-              %h1= @channel.name
+            %h1= @channel.name
             .span
               %ul#social_media_links
                 %li
@@ -70,14 +71,20 @@
 
             .span
               %p{:style => "padding: 20px 0px;"}= @channel.description
-            .span
-              %ul.thumbnails
-                - @photos.each do |photo|
-                  %li.span3
-                    .thumbnail
-                      = image_tag(photo.image.thumb('280x160#').url)
+            %ul.thumbnails
+              - @photos.each do |photo|
+                %li.span3
+                  .thumbnail
+                    = image_tag(photo.image.thumb('280x160#').url)
 
 :css
+  .rightsidebar h1 {
+    text-align: center;
+  }
+  .rightsidebar .thumbnails {
+    margin: 0 auto;
+    text-align: center;
+  }
   #social_media_links li {
     display: inline;
   }
