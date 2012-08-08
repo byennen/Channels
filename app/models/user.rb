@@ -30,27 +30,36 @@ class User < ActiveRecord::Base
   validates :role, :presence => true
   validates :channel, :presence => true, :if => :channel_master?
 
-  before_validation :add_member_role
+  before_validation :add_member_role, :on => :create
   after_validation :process_payment, :if => :paid_member?
 
   #facebook login
   def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
-      if user.new_record?
-        user.provider = auth.provider
-        user.uid = auth.uid
-        user.first_name = auth.info.first_name
-        user.last_name = auth.info.last_name
-        user.email = auth.info.email
-        #TODO - user should be asked make a password
-        user.password = 'please'
-        user.role = 'connected'
-        user.new_fb_user = true
-      end
+    if user = find_by_email(auth.info.email)
+      user.provider = auth.provider
+      user.uid = auth.uid
       user.oauth_token = auth.credentials.token
-      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-      user.save!
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)      
+    else
+      where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+        logger.debug("user is a new record is #{true}")
+        if user.new_record?
+          user.provider = auth.provider
+          user.uid = auth.uid
+          user.first_name = auth.info.first_name
+          user.last_name = auth.info.last_name
+          user.email = auth.info.email
+          #TODO - user should be asked make a password
+          user.password = 'please'
+          user.role = 'connected'
+          user.new_fb_user = true
+          user.oauth_token = auth.credentials.token
+          user.oauth_expires_at = Time.at(auth.credentials.expires_at)          
+        end
+      end
     end
+    user.save!
+    return user
   end
 
   def facebook?
@@ -82,7 +91,7 @@ class User < ActiveRecord::Base
   end
   
   def add_member_role
-    if stripe_card_token
+    if stripe_card_token 
       self.role = 'paid_member'
     else
       self.role = 'unpaid_member'
