@@ -40,26 +40,25 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)      
+      user.save!
+      return user
     else
       where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
-        logger.debug("user is a new record is #{true}")
-        if user.new_record?
-          user.provider = auth.provider
-          user.uid = auth.uid
-          user.first_name = auth.info.first_name
-          user.last_name = auth.info.last_name
-          user.email = auth.info.email
-          #TODO - user should be asked make a password
-          user.password = 'please'
-          user.role = 'connected'
-          user.new_fb_user = true
-          user.oauth_token = auth.credentials.token
-          user.oauth_expires_at = Time.at(auth.credentials.expires_at)          
-        end
+        user.provider = auth.provider
+        user.uid = auth.uid
+        user.first_name = auth.info.first_name
+        user.last_name = auth.info.last_name
+        user.email = auth.info.email
+        #TODO - user should be asked make a password
+        user.password = 'please'
+        user.role = 'connected'
+        user.new_fb_user = true
+        user.oauth_token = auth.credentials.token
+        user.oauth_expires_at = Time.at(auth.credentials.expires_at)   
+        user.save!  
+        return user     
       end
     end
-    user.save!
-    return user
   end
 
   def facebook?
