@@ -91,10 +91,12 @@ class User < ActiveRecord::Base
   end
   
   def add_member_role
-    if stripe_card_token 
-      self.role = 'paid_member'
-    else
-      self.role = 'unpaid_member'
+    if self.role.blank?
+      if stripe_card_token 
+        self.role = 'paid_member'
+      else
+        self.role = 'unpaid_member'
+      end
     end
   end
   
