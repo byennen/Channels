@@ -31,7 +31,9 @@ class Admin::VideosController < Admin::ApplicationController
 
   def update
     @video.attributes = params[:video]
-    @video.publish_on = DateTime.strptime(params[:video][:publish_on], '%m/%d/%Y').to_time
+    unless params[:video][:publish_on].blank?
+      @video.publish_on = DateTime.strptime(params[:video][:publish_on], '%m/%d/%Y').to_time
+    end 
     if @video.save
       logger.debug("videl valid is #{@video.valid?}")
       flash[:notice] = "Video was successfully updated."
