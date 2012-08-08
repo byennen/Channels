@@ -1,0 +1,4 @@
+%h2= @post.title
+.date= @post.publish_on.strftime('%m/%d/%Y')
+.post
+  = @post.description

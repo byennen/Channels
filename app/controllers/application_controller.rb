@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   layout 'layouts/frontend/application'
   protect_from_forgery
   before_filter :load_channels, :active_channels
+  before_filter :load_channel
   
   helper_method :current_channel
 
