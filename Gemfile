@@ -5,7 +5,7 @@ gem 'rails', '3.2.5'
 gem 'pg'
 
 gem 'jquery-rails'
-gem 'haml', '>= 3.1.4'
+gem 'haml', '>= 3.1.6'
 gem 'rack-pjax'
 gem 'mail'
 gem 'twitter-bootstrap-rails'
@@ -60,7 +60,7 @@ group :test do
 end
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2'
+  gem 'sass-rails',   '~> 3.2.5'
   gem 'coffee-rails', '~> 3.2'
   gem 'uglifier', '>= 1.0'
 end
