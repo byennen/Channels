@@ -74,4 +74,5 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'guard-livereload'
+  gem 'checker'
 end

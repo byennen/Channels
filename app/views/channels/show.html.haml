@@ -62,11 +62,13 @@
               %li= link_to "Facebook", "http://facebook.com/#{@channel.facebook_page}", :target => "_blank"
               %li= link_to "Google Plus", "https://plus.google.com/u/0/#{@channel.google_plus_page}", :target => "_blank"
               %p{:style => "padding: 20px 0px;"}= @channel.description
-            %ul.thumbnails
-              - @photos.each do |photo|
-                %li.span3
-                  .thumbnail
-                    = image_tag(photo.image.thumb('280x160#').url)
+            .row
+              .span
+                %ul.thumbnails
+                  - @photos.each do |photo|
+                    %li.span3
+                      .thumbnail
+                        = image_tag(photo.image.thumb('280x160#').url)
 
 
 
