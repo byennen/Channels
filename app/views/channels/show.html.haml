@@ -56,24 +56,32 @@
 
         .span4
           .rightsidebar
-            %h1= @channel.name
-            %ul
-              %li= link_to "Twitter", "http://twitter.com/#{@channel.twitter_id}", :target => "_blank"
-              %li= link_to "Facebook", "http://facebook.com/#{@channel.facebook_page}", :target => "_blank"
-              %li= link_to "Google Plus", "https://plus.google.com/u/0/#{@channel.google_plus_page}", :target => "_blank"
+            .span
+              %h1= @channel.name
+            .span
+              %ul
+                %li
+                  %a.twitter-follow-button{"data-show-count" => "false", "data-show-screen-name" => "false", :href => "https://twitter.com/#{@channel.twitter_id}", :target => "_blank"} Follow
+                %li
+                  .fb-like{"data-font" => "arial", "data-href" => "http://facebook.com/#{@channel.facebook_page}", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "50"}
+
+                %li
+                  .g-plusone{"data-href" => "https://plus.google.com/109799687634302877687", "data-size" => "medium"}
+
+            .span
               %p{:style => "padding: 20px 0px;"}= @channel.description
-            .row
-              .span
-                %ul.thumbnails
-                  - @photos.each do |photo|
-                    %li.span3
-                      .thumbnail
-                        = image_tag(photo.image.thumb('280x160#').url)
+            .span
+              %ul.thumbnails
+                - @photos.each do |photo|
+                  %li.span3
+                    .thumbnail
+                      = image_tag(photo.image.thumb('280x160#').url)
 
 
 
 - javascript 'frontend/plugins/html5video'
 
+-#video
 :javascript
   $(document).ready(function() {
     var player = projekktor('.projekktor', {
@@ -100,4 +108,10 @@
     });
   });
 
+-#twitter
+:javascript
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+-#google plus
+%script{:src => "https://apis.google.com/js/plusone.js", :type => "text/javascript"}
 
