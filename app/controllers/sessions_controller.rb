@@ -2,7 +2,6 @@ class SessionsController < Devise::SessionsController
 
   def create
     user = User.from_omniauth(env["omniauth.auth"])
-    logger.debug("session is #{session.inspect}")
     sign_in(User, user)
     session[:user_id] = user.id
     if user.new_fb_user?
