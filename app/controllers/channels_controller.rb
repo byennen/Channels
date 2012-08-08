@@ -2,6 +2,9 @@ class ChannelsController < ApplicationController
   before_filter :load_channel, :only => [:show, :next_song]
 
   def index
+    if current_user && current_user.facebook?
+      Resque.enqueue(MemberWorker, :share_view, {"user_id" => current_user.id, "video_url" => video_url(@video)})
+    end
   end
 
   def show
