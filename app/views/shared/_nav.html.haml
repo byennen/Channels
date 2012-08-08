@@ -18,10 +18,10 @@
               = nav_link("Channels", channels_url)              
               = nav_link("Giveaways", giveaways_url)
             -#Todo: Lance - Clean up this link to a different helper
-            - if user_signed_in?
-              %li
-                %span
-                  = link_with_icon("Invite", giveaways_url(subdomain: "www"), "icon-plus icon-white", "btn btn-warning pjax")
+            -#- if user_signed_in?
+              -#%li
+                -#%span
+                  -#= link_with_icon("Invite", giveaways_url(subdomain: "www"), "icon-plus icon-white", "btn btn-warning pjax")
 
         / /.nav-collapse
       .span4.pull-right
