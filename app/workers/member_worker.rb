@@ -15,7 +15,7 @@ class MemberWorker
   end
 
   def self.share_read(options={})
-    User.put_fb_connection(options["user_id"], "news.read", {article: options["article_url"]})
+    User.put_fb_connection(options["user_id"], "news.reads", {article: options["article_url"]})
   end
   
   def self.send_welcome(options={})

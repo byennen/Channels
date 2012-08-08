@@ -22,7 +22,7 @@ set :rails_env, :staging
 ssh_options[:forward_agent] = true
 
 # resque workers
-set :workers, { "waveform_queue" => 1 }
+set :workers, { "waveform_queue" => 1, "critical" => 1 }
 
 # automatically called after a deploy
 deploy.task :restart, :roles => :app do

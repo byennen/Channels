@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
     nil # or consider a custom null object
   end
 
-  def put_fb_connection(user_id, method, options={})
+  def self.put_fb_connection(user_id, method, options={})
      user = User.find(user_id)
      user.facebook.put_connections("me", method, options)
   end
