@@ -8,6 +8,8 @@ class Admin::VideosController < Admin::ApplicationController
   end
 
   def edit
+    @teaser = @video.teaser.present? ? @video.teaser : @video.build_teaser
+    @performance = @video.performance.nil? ? Performance.new : @video.performance
   end
 
   def create

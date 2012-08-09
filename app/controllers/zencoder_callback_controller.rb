@@ -13,4 +13,10 @@ class ZencoderCallbackController < ApplicationController
     render :nothing => true
   end
 
+  def teaser
+  end
+  
+  def performance
+  end
+  
 end

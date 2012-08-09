@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120807212250) do
+ActiveRecord::Schema.define(:version => 20120809171226) do
 
   create_table "ads", :force => true do |t|
     t.integer  "channel_id"
@@ -92,6 +92,15 @@ ActiveRecord::Schema.define(:version => 20120807212250) do
     t.datetime "updated_at",                    :null => false
   end
 
+  create_table "performances", :force => true do |t|
+    t.integer  "video_id"
+    t.string   "video"
+    t.string   "zencoder_output_id"
+    t.boolean  "processed"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
   create_table "photo_albums", :force => true do |t|
     t.integer  "channel_id"
     t.string   "title"
@@ -150,6 +159,15 @@ ActiveRecord::Schema.define(:version => 20120807212250) do
   end
 
   add_index "songs", ["slug"], :name => "index_songs_on_slug"
+
+  create_table "teasers", :force => true do |t|
+    t.integer  "video_id"
+    t.string   "video"
+    t.string   "zencoder_output_id"
+    t.boolean  "processed"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "uploads", :force => true do |t|
     t.string   "file_name"

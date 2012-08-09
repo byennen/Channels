@@ -58,6 +58,13 @@ class VideoUploader < CarrierWave::Uploader::Base
   end
 
   def notification_url
-    Rails.env.development? ? "http://zencoderfetcher/" : zencoder_callback_url(:protocol => 'http', :host => host, :user => 'admin@altimarc.com', :password => 'please')
+    case model.class.to_s
+    when "Video"
+      Rails.env.development? ? "http://zencoderfetcher/" : zencoder_callback_url(:protocol => 'http', :host => host, :user => 'admin@altimarc.com', :password => 'please')
+    when "Teaser"
+      Rails.env.development? ? "http://zencoderfetcher/" : teaser_zencoder_callback_url(:protocol => 'http', :host => host, :user => 'admin@altimarc.com', :password => 'please')      
+    when "Peformance"
+      Rails.env.development? ? "http://zencoderfetcher/" : performance_zencoder_callback_url(:protocol => 'http', :host => host, :user => 'admin@altimarc.com', :password => 'please')
+    end
   end
 end

@@ -9,12 +9,20 @@ class Video < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
   belongs_to :channel
+  
+  has_one :teaser
+  has_one :performance
 
-  attr_accessible :id, :channel_id, :title, :description, :image, :paid, :publish_on, :channel, :video, :preview
+  attr_accessible :id, :channel_id, :title, :description, :image, :paid, 
+                  :publish_on, :channel, :video, :preview, :teaser_attributes,
+                  :performance_attributes
+                  
   image_accessor :image
 
   validate :image_present_for_publish
 
+  accepts_nested_attributes_for :teaser, :performance
+  
   mount_uploader :video, VideoUploader
   mount_uploader :preview, VideoUploader
 
