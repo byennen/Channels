@@ -31,31 +31,32 @@
       #ribbon
       - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations"
         = render 'shared/nav'
-    - if params[:controller] == "channels" && params[:action] == "show"
-      = yield
-    - else
-      .background-wrapper
-        .content
-          .container{"data-pjax-container" => ""}
-            - if params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations"
-              = render 'layouts/frontend/facebook'
-              = yield
-              :javascript
-                $.backstretch("../../../../assets/mark-collie-login.jpg");
-            - else
-              .row
-                .span12
-                  = yield
+    .data{"data-pjax-container" => ""}
+      - if params[:controller] == "channels" && params[:action] == "show"
+        = yield
+      - else
+        .background-wrapper
+          .content
+            .container
+              - if params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations"
+                = render 'layouts/frontend/facebook'
+                = yield
+                :javascript
+                  $.backstretch("../../../../assets/mark-collie-login.jpg");
+              - else
+                .row
+                  .span12
+                    = yield
 
-    - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations"
-      = render 'layouts/frontend/first_time_visitor'
-      = render 'layouts/frontend/footer'
+      - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations"
+        = render 'layouts/frontend/first_time_visitor'
+        = render 'layouts/frontend/footer'
 
-    :javascript
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=505364239479743";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
+      :javascript
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=505364239479743";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
