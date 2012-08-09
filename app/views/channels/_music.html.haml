@@ -1,0 +1,9 @@
+%table.table.table-striped
+  %thead
+  %tbody
+  - @songs.each do |song|
+    %tr
+      -#%td= image_tag(song.album.image.thumb('50x50#').url
+      %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})  
+      %td.center= song.title
+

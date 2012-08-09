@@ -5,7 +5,7 @@ class ChannelsController < ApplicationController
   end
 
   def show
-    @posts = @channel.posts.recent
+    @posts = @channel.posts.recent(:limit => 4)
     @songs = @channel.songs.all
     @videos = @channel.videos.recent
     @photos = @channel.photos.recent

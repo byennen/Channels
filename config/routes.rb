@@ -35,6 +35,10 @@ Channels::Application.routes.draw do
   match "/music" => "music#index", :as => "music"
   resources :photos, :only => [:show, :index]
 
+  resources :channels do
+    resources :posts, :only => [:index, :show]
+  end
+
   resources :channels, :only => [:show, :index] do
     get :next_song, :on => :collection
   end

@@ -1,0 +1,6 @@
+%ul.thumbnails
+  - @photos.each do |photo|
+    %li.span3
+      .thumbnail
+        = image_tag(photo.image.thumb('280x160#').url)
+

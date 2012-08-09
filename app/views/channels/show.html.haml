@@ -8,83 +8,95 @@
   %meta{property: "og:site_name", content: "Altimarc"}
   %meta{property: "og:description", content: @video.description}
 
-.videoplayer{:style => "background: url(../../../../assets/html5video/watch-area-bg.png) repeat-x;height: 600px;padding: 20px 0;"}
+.videoplayer{:style => "background: url(../../../../assets/html5video/watch-area-bg.png) repeat-x;padding: 20px 0;"}
   #video
   #player{:style => 'margin: 0 auto;width: 896px;height: 504px;'}
     .projekktor
   #video_info.container
     %h2{:style => "color:white;"}= @channel.name + ' - ' + @video.title
+    %ul#video_social_sharing
+      %li= link_to "Facebook", "#"
+      %li= link_to "Tweet", "#"
+      -#TODO: Add share by email function 
+      -#%li= link_to "Share", "#"
+      %li= link_to "Details", "#", :id => "details_link"
+    #details
+      .row
+        .span
+          %p= @video.description
 
 
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
   .content
     .container{"data-pjax-container" => ""}
-      %h3 Episodes 
-
-      #latest_videos.carousel.slide
-        / Carousel items
-        .carousel-inner
-          - @videos.each_slice(4) do |array|
-            .item
-              %ul.thumbnails
-                - array.each do |video|
-                  %li.span3
-                    .thumbnail
-                      = image_tag(video.image.thumb('260x180#').url)
-                      .caption
-                        %h5= video.title
-                        %p.description= video.description.truncate(125)
-                        %p
-                          = link_with_icon("Watch", video_url(video), "icon-film icon-white", "btn btn-info pjax")
-
-        / Carousel nav
-        %a.carousel-control.left{"data-slide" => "prev", :href => "#latest_videos"} ‹
-        %a.carousel-control.right{"data-slide" => "next", :href => "#latest_videos"} ›
+      %h3 Episodes
+      = render 'channels/videos'
 
       .row
-        .span8
-          %h3 Posts
-          = render :partial => 'post', :collection => @posts
-          %h3 Songs
-          %table.table.table-striped
-            %thead
-              %tr
-                %th
-                %th Title
-            %tbody
-            - @songs.each do |song|
-              %tr
-                %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})  
-                %td.center= song.title
+        #posts.span8
+          .tabbable
+            / Only required for left/right tabs
+            %ul.nav.nav-tabs
+              %li.active
+                %a{"data-toggle" => "tab", :href => "#tab1"} Latest
+              %li
+                %a{"data-toggle" => "tab", :href => "#tab2"} Music
+              %li
+                %a{"data-toggle" => "tab", :href => "#tab3"} Photos
+
+          .tab-content
+            #tab1.tab-pane.active
+              = render :partial => 'post', :collection => @posts
+              .row
+                = link_to "Read More >>", channel_posts_url(@channel), :class => "read-more pull-right"
+            #tab2.tab-pane
+              = render 'channels/music'
+            #tab3.tab-pane{:style => "text-align:center"}
+              = render 'channels/photos'
 
         .span4
           .rightsidebar
             %h1= @channel.name
             .span
-              %ul#social_media_links
-                %li
-                  %a.twitter-follow-button{"data-show-count" => "false", "data-show-screen-name" => "false", :href => "https://twitter.com/#{@channel.twitter_id}", :target => "_blank"} Follow
-                %li
-                  .fb-like{"data-font" => "arial", "data-href" => "http://facebook.com/#{@channel.facebook_page}", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "50"}
-
-                %li
-                  .g-plusone{"data-href" => "https://plus.google.com/109799687634302877687", "data-size" => "medium"}
-
+            = render 'channels/social_media'
             .span
               %p{:style => "padding: 20px 0px;"}= @channel.description
-            %ul.thumbnails
-              - @photos.each do |photo|
-                %li.span3
-                  .thumbnail
-                    = image_tag(photo.image.thumb('280x160#').url)
 
 :css
+  #video_info #details {
+    color: white;
+    padding: 20px 0;
+  }
+  #posts .items {
+    padding-bottom: 20px;
+  }
+  #video_info h2 {
+    padding: 20px 0 0;
+  }
+  .read-more {
+    margin-bottom: 40px;
+  }
   .rightsidebar h1 {
     text-align: center;
+    padding: 0 0 20px;
   }
   .rightsidebar .thumbnails {
     margin: 0 auto;
     text-align: center;
+  }
+  ul#video_social_sharing {
+    margin: 0;
+    padding: 10px 0 0;
+  }
+  ul#video_social_sharing li {
+    display: inline;
+  }
+  ul#video_social_sharing a {
+    color: white;
+    padding-right: 20px;
+  }
+  ul#video_social_sharing a:hover {
+    color: red;
   }
   #social_media_links li {
     display: inline;
@@ -98,6 +110,11 @@
 -#video
 :javascript
   $(document).ready(function() {
+    $('#details').hide();
+    $('#details_link').click(function () {
+      $('#details').toggle();
+    });
+
     var player = projekktor('.projekktor', {
     	width: 896,
     	height: 504,

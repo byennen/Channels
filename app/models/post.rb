@@ -16,7 +16,7 @@ class Post < ActiveRecord::Base
 
   scope :published, lambda { where('publish_on IS NOT NULL AND publish_on <= ?', Time.zone.now) }
   scope :by_publish_on, order(:publish_on)
-  scope :recent, published.by_publish_on.limit(8)
+  scope :recent, published.by_publish_on.limit(4)
 
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
