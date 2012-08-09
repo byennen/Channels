@@ -15,6 +15,7 @@
   #video_info.container
     %h2{:style => "color:white;"}= @channel.name + ' - ' + @video.title
 
+
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
   .content
     .container{"data-pjax-container" => ""}

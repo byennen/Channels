@@ -6,10 +6,10 @@ class ChannelsController < ApplicationController
 
   def show
     @posts = @channel.posts.recent
-    @songs = @channel.songs.recent
+    @songs = @channel.songs.all
     @videos = @channel.videos.recent
     @photos = @channel.photos.recent
-    @video = Video.first
+    @video = @channel.videos.last
   end
 
   def next_song
