@@ -29,7 +29,9 @@
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
   .content
     .container
-      %h3 Episodes
+      %h3 
+        Recent Episodes
+        = link_to "(See all)", channel_videos_url(@channel)
       = render 'channels/videos'
 
       .row

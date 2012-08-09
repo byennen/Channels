@@ -30,13 +30,13 @@ Channels::Application.routes.draw do
 
   #channels
   resources :giveaways, :only => [:index]
-  resources :videos, :only => [:show, :index]
   resources :posts, :only => [:index, :show]
   match "/music" => "music#index", :as => "music"
   resources :photos, :only => [:show, :index]
 
   resources :channels do
     resources :posts, :only => [:index, :show]
+    resources :videos, :only => [:index, :show]
   end
 
   resources :channels, :only => [:show, :index] do

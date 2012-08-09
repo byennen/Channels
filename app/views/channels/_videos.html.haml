@@ -1,19 +1,14 @@
-#latest_videos.carousel.slide
+#recent_videos.carousel.slide
   / Carousel items
   .carousel-inner
-    - @videos.each_slice(4) do |array|
-      .item
-        %ul.thumbnails
-          - array.each do |video|
-            %li.span3
-              .thumbnail
-                = image_tag(video.image.thumb('260x180#').url)
-                .caption
-                  %h5= video.title.truncate(30)
-                  %p.description= video.description.truncate(125)
-                  %p
-                    = link_with_icon("Watch", video_url(video), "icon-film icon-white", "btn btn-info pjax")
-
-  / Carousel nav
-  %a.carousel-control.left{"data-slide" => "prev", :href => "#latest_videos"} ‹
-  %a.carousel-control.right{"data-slide" => "next", :href => "#latest_videos"} ›
+    .item
+      %ul.thumbnails
+        - @videos.each do |video|
+          %li.span3
+            .thumbnail
+              = image_tag(video.image.thumb('260x180#').url)
+              .caption
+                %h5= video.title.truncate(30)
+                %p.description= video.description.truncate(125)
+                %p
+                  = link_with_icon("Watch", channel_video_url(@channel, video), "icon-film icon-white", "btn btn-info pjax")
