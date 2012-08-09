@@ -12,5 +12,6 @@ class VideosController < ApplicationController
     if current_user && current_user.facebook?
       Resque.enqueue(MemberWorker, :share_view, {"user_id" => current_user.id, "video_url" => video_url(@video)})
     end
+    @videos = Video.published
   end
 end

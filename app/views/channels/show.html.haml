@@ -8,12 +8,12 @@
   %meta{property: "og:site_name", content: "Altimarc"}
   %meta{property: "og:description", content: @video.description}
 
-.videoplayer{:style => "background: url(../../../../assets/html5video/watch-area-bg.png) repeat-x;padding: 20px 0;"}
+.videoplayer
   #video
-  #player{:style => 'margin: 0 auto;width: 896px;height: 504px;'}
+  #player
     .projekktor
   #video_info.container
-    %h2{:style => "color:white;"}= @channel.name + ' - ' + @video.title
+    %h2= @channel.name + ' - ' + @video.title
     %ul#video_social_sharing
       %li= link_to "Facebook", "#"
       %li= link_to "Tweet", "#"
@@ -28,7 +28,7 @@
 
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
   .content
-    .container{"data-pjax-container" => ""}
+    .container
       %h3 Episodes
       = render 'channels/videos'
 
@@ -59,51 +59,8 @@
             %h1= @channel.name
             .span
             = render 'channels/social_media'
-            .span
-              %p{:style => "padding: 20px 0px;"}= @channel.description
-
-:css
-  #video_info #details {
-    color: white;
-    padding: 20px 0;
-  }
-  #posts .items {
-    padding-bottom: 20px;
-  }
-  #video_info h2 {
-    padding: 20px 0 0;
-  }
-  .read-more {
-    margin-bottom: 40px;
-  }
-  .rightsidebar h1 {
-    text-align: center;
-    padding: 0 0 20px;
-  }
-  .rightsidebar .thumbnails {
-    margin: 0 auto;
-    text-align: center;
-  }
-  ul#video_social_sharing {
-    margin: 0;
-    padding: 10px 0 0;
-  }
-  ul#video_social_sharing li {
-    display: inline;
-  }
-  ul#video_social_sharing a {
-    color: white;
-    padding-right: 20px;
-  }
-  ul#video_social_sharing a:hover {
-    color: red;
-  }
-  #social_media_links li {
-    display: inline;
-  }
-  #social_media_links .twitter-follow-button {
-    padding: 3px 0 0;
-  }
+            #description.span
+              %p= @channel.description
 
 - javascript 'frontend/plugins/html5video'
 

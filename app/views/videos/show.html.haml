@@ -1,3 +1,5 @@
+- title @channel.name + " - " + @video.title
+
 - content_for :open_graph do
   %meta{property: "og:title", content: @video.title}
   %meta{property: "og:type", content: "video.other"}
@@ -6,16 +8,52 @@
   %meta{property: "og:site_name", content: "Altimarc"}
   %meta{property: "og:description", content: @video.description}
 
-- javascript 'frontend/plugins/html5video'
-
-#video{:style => 'background: #OOO; padding: 10px 0px;'}
-  #player{:style => 'margin: 0 auto;width: 896px;height: 504px;'}
+.videoplayer
+  #video
+  #player
     .projekktor
+  #video_info.container
+    %h2= @channel.name + ' - ' + @video.title
+    %ul#video_social_sharing
+      %li= link_to "Facebook", "#"
+      %li= link_to "Tweet", "#"
+      -#TODO: Add share by email function 
+      -#%li= link_to "Share", "#"
+      %li= link_to "Details", "#", :id => "details_link"
+    #details
+      .row
+        .span
+          %p= @video.description
 
-%br
+.background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
+  .content
+    .container
+      %h3 All Episodes
+      #latest_videos.carousel.slide
+        / Carousel items
+        .carousel-inner
+          .item
+            %ul.thumbnails
+              - @videos.each do |video|
+                %li.span3
+                  .thumbnail
+                    = image_tag(video.image.thumb('260x180#').url)
+                    .caption
+                      %h5= video.title.truncate(30)
+                      %p.description= video.description.truncate(125)
+                      %p
+                        = link_with_icon("Watch", video_url(video), "icon-film icon-white", "btn btn-info pjax")
+
+- javascript 'frontend/plugins/html5video'
 
 :javascript
   $(document).ready(function() {
+
+    $('#details').hide();
+    $('#details_link').click(function () {
+      $('#details').toggle();
+    });
+
     var player = projekktor('.projekktor', {
     	width: 896,
     	height: 504,
