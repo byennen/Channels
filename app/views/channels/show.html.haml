@@ -13,12 +13,12 @@
   #player{:style => 'margin: 0 auto;width: 896px;height: 504px;'}
     .projekktor
   #video_info.container
-    %p{:style => "color:white;"}= @video.title
+    %h2{:style => "color:white;"}= @channel.name + ' - ' + @video.title
 
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
   .content
     .container{"data-pjax-container" => ""}
-      %h2 Episodes 
+      %h3 Episodes 
 
       #latest_videos.carousel.slide
         / Carousel items

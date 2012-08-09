@@ -1,7 +1,7 @@
 .row.items
-  .span1
+  .span2
     .thumbnail
       = image_tag(post.image.thumb('160x160#').url)
-  .span3
+  .span6
     %h4= post.title
     %p= post.description.truncate(150)
