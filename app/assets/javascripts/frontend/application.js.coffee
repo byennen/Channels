@@ -31,10 +31,6 @@ $(document).on "ready pjax:success", ->
   #if a movie has been played show payment form before playing anther movie
   $(".played_video").click ->
     $.cookie "free-video-played", "cookie_value", { expires: 365, useLocalStorage: false, domain: domain }
-    if $.cookie("free-video-played")
-      $('#payments').modal('show')
-    else
-      $('#payments').modal('hide')
 
   if $.cookie("free-video-played")
     $('#payments').modal('show')
