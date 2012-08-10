@@ -22,16 +22,18 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessor :stripe_card_token
+  attr_accessor :stripe_card_token, :plan
+  
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, 
-                               :remember_me, :role, :channel_id, :stripe_card_token, :coupon
+                               :remember_me, :role, :channel_id, :stripe_card_token, 
+                               :coupon, :plan
 
   validates :role, :presence => true
   validates :channel, :presence => true, :if => :channel_master?
 
   before_validation :add_member_role, :on => :create
-  after_validation :process_payment, :if => :paid_member?
+  after_validation :process_payment, :if => :stripe_card_token
 
   #facebook login
   def self.from_omniauth(auth)
@@ -81,7 +83,7 @@ class User < ActiveRecord::Base
   private
 
   def process_payment
-    customer = Stripe::Customer.create(:email => email, :plan => STRIPE_PLAN_ID, :card => stripe_card_token)
+    customer = Stripe::Customer.create(:email => email, :plan => plan.downcase, :card => stripe_card_token)
     self.stripe_customer_token = customer.id
   rescue Stripe::InvalidRequestError => e
     logger.error "Stripe error while creating customer: #{e.message}"

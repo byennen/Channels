@@ -5,6 +5,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def subscribe
+    
+    current_user.attributes = params[:user]
+    if current_user.save
+      respond_to do |format|
+        format.json { render :json => current_user }
+      end
+    end
+  end
+  
   def create_password
     current_user.attributes = params[:user]
     if current_user.save

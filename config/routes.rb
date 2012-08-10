@@ -60,6 +60,8 @@ Channels::Application.routes.draw do
   #users
   devise_for :users #, :controllers => {:registrations => 'registrations', :sessions => 'sessions'}
   put '/create_password' => 'users#create_password', :as => 'create_password'
+  put '/subscribe' => "users#subscribe", :as => "subscribe_user"
+  
   devise_scope :user do
     get "/login" => "sessions#new"
     delete '/logout' => 'sessions#destroy'
