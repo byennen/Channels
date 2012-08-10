@@ -4,5 +4,9 @@ class Teaser < ActiveRecord::Base
   belongs_to :video
   
   mount_uploader :video, VideoUploader
-  
+
+  def processed!
+    update_attribute(:processed, true)
+  end
+    
 end
