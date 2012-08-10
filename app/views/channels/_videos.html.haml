@@ -11,4 +11,4 @@
                 %h5= video.title.truncate(30)
                 %p.description= video.description.truncate(125)
                 %p
-                  = link_with_icon("Watch", channel_video_url(@channel, video), "icon-film icon-white", "btn btn-info pjax")
+                  = link_with_icon("Watch", channel_video_url(@channel, video), "icon-film icon-white", "btn btn-info pjax played_video")
