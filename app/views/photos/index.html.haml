@@ -1,8 +1,38 @@
-= render "shared/channel_menu"
+- title @channel.name
 
-.span12
-  %h1 Photos:
-  - @photos.each do |photo|
-    %ul
-      - if album.image_uid
-        %li= link_to image_tag(photo.image.thumb('50x50#').url), "#"
+- content_for :open_graph do
+  -#%meta{property: "og:title", content: @video.title}
+  -#%meta{property: "og:type", content: "video.other"}
+  -#%meta{property: "og:url",  content: channel_video_url(@channel, @video)}
+  -#%meta{property: "og:image",content: "http://46qa.localtunnel.com/#{@video.image.url}"}
+  -#%meta{property: "og:site_name", content: "Altimarc"}
+  -#%meta{property: "og:description", content: @video.description}
+
+.background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
+  .content
+    .container
+      %h1 Photo Album Name
+      %p
+        %button#start-slideshow.ui-button-success.btn.btn-large.btn-success{"data-selector" => "#gallery a[rel=gallery]", "data-slideshow" => "5000", "data-target" => "#modal-gallery"} Start Slideshow
+        %button#toggle-fullscreen.ui-button-primary.btn.btn-large.btn-primary{"data-toggle" => "button"} Toggle Fullscreen
+      #gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
+        %ul.thumbnails
+        - @photos.each do |photo|
+          %li.span3
+            .thumbnail
+              = link_to image_tag(photo.image.thumb('260x160#').url), photo.image.url, :rel => "gallery", :title => photo.title if photo.image_uid
+
+/ modal-gallery is the modal dialog used for the image gallery
+#modal-gallery.modal.modal-gallery.hide.fade
+  .modal-header
+    %a.close{"data-dismiss" => "modal"} ×
+    %h3.modal-title
+  .modal-body
+    .modal-image
+
+/ Image Gallery
+%script{:src => "http://blueimp.github.com/cdn/js/bootstrap.min.js"}
+%script{:src => "http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"}
+%script{:src => "http://blueimp.github.com/Bootstrap-Image-Gallery/js/bootstrap-image-gallery.min.js"}
+
+- javascript 'admin/plugins/altimarc.gallery'

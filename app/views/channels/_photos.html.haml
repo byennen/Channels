@@ -1,6 +1,6 @@
 %ul.thumbnails
-  - @photos.each do |photo|
+  - @photo_albums.each do |album|
     %li.span3
       .thumbnail
-        = image_tag(photo.image.thumb('280x160#').url)
+        = link_to image_tag(album.image.thumb('280x160#').url), channel_photo_album_photos_url(@channel, album)
 

@@ -8,7 +8,7 @@ class ChannelsController < ApplicationController
     @posts = @channel.posts.recent(:limit => 4)
     @songs = @channel.songs.all
     @videos = @channel.videos.recent
-    @photos = @channel.photos.recent
+    @photo_albums = @channel.photo_albums.all
     @video = @channel.videos.last
   end
 
