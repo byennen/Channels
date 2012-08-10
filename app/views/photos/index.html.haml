@@ -16,19 +16,21 @@
         %button#start-slideshow.ui-button-success.btn.btn-large.btn-success{"data-selector" => "#gallery a[rel=gallery]", "data-slideshow" => "5000", "data-target" => "#modal-gallery"} Start Slideshow
         %button#toggle-fullscreen.ui-button-primary.btn.btn-large.btn-primary{"data-toggle" => "button"} Toggle Fullscreen
       #gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
-        %ul.thumbnails
-        - @photos.each do |photo|
-          %li.span3
-            .thumbnail
-              = link_to image_tag(photo.image.thumb('260x160#').url), photo.image.url, :rel => "gallery", :title => photo.title if photo.image_uid
+        .row
+          .span
+            %ul.thumbnails
+            - @photos.each do |photo|
+              %li.span3
+                .thumbnail
+                  = link_to image_tag(photo.image.thumb('260x160#').url), photo.image.url, :rel => "gallery", :title => photo.title if photo.image_uid
 
-/ modal-gallery is the modal dialog used for the image gallery
-#modal-gallery.modal.modal-gallery.hide.fade
-  .modal-header
-    %a.close{"data-dismiss" => "modal"} ×
-    %h3.modal-title
-  .modal-body
-    .modal-image
+          / modal-gallery is the modal dialog used for the image gallery
+          #modal-gallery.modal.modal-gallery.hide.fade
+            .modal-header
+              %a.close{"data-dismiss" => "modal"} ×
+              %h3.modal-title
+            .modal-body
+              .modal-image
 
 / Image Gallery
 %script{:src => "http://blueimp.github.com/cdn/js/bootstrap.min.js"}
