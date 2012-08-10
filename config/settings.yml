@@ -6,12 +6,16 @@ development:
   facebook_app_id: '504791812879737'
   facebook_app_secret: 'fa2ddc1e47d2c1198679d8ffc61d04db'
   domain: 'channels.dev'
+  stripe_public_key: 'pk_RP3bFbsOCxaJXBaNeVlN9badskKOW'
+  strip_api_key: 'g8JtdkufTNXPZ983tPQErM2NoicYUyp4'
 test:
   aws_access_key: 'AKIAIPHZNJZ5QBOUOTHA'
   aws_secret_access_key: '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'
   aws_bucket: 'altimarc-test'
   fb_namespace: 'altimarc-test'
   domain: 'altimar-test.com'
+  stripe_public_key: 'pk_RP3bFbsOCxaJXBaNeVlN9badskKOW'
+  strip_api_key: 'g8JtdkufTNXPZ983tPQErM2NoicYUyp4'  
 staging:
   aws_access_key: 'AKIAIPHZNJZ5QBOUOTHA'
   aws_secret_access_key: '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'
@@ -20,6 +24,8 @@ staging:
   facebook_app_id: '450706074949513'
   facebook_app_secret: '0a1d3f38d0dfb395712f00406e741fa9'
   domain: 'altimarc-staging.com'
+  stripe_public_key: 'pk_RP3bFbsOCxaJXBaNeVlN9badskKOW'
+  strip_api_key: 'g8JtdkufTNXPZ983tPQErM2NoicYUyp4'  
 production:
   aws_access_key: 'AKIAIPHZNJZ5QBOUOTHA'
   aws_secret_access_key: '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'
