@@ -26,6 +26,10 @@ $(document).on "ready pjax:success", ->
     window.player.playSong($(this).attr("href"))
     return false
 
+  #payments
+  
+  $('#payments').modal('show')
+
   #first time visitors should see a modal window to guide them to connecting with facebook
   domain = window.location.hostname.replace /([a-zA-Z0-9]+.)/, ""
   if $.cookie("altimarc-first-time-visitor")
