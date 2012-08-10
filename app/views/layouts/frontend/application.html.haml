@@ -29,7 +29,7 @@
     .navbar.navbar-fixed-top
       = render 'shared/musicplayer'
       #ribbon
-      - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations"
+      - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" && params[:actions] == "new"
         = render 'shared/nav'
     .data{"data-pjax-container" => ""}
       - if params[:controller] == "channels" && params[:action] == "show" || params[:controller] == "videos" || params[:controller] == "photos"
@@ -38,7 +38,7 @@
         .background-wrapper
           .content
             .container
-              - if params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations"
+              - if params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" && params[:actions] == "new"
                 = render 'layouts/frontend/facebook'
                 = yield
                 :javascript
@@ -48,7 +48,7 @@
                   .span12
                     = yield
 
-      - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations"
+      - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" && params[:actions] == "new"
         = render 'layouts/frontend/first_time_visitor'
         = render 'layouts/frontend/footer'
 
