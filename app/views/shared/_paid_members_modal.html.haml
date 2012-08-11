@@ -1,13 +1,13 @@
 - javascript "https://js.stripe.com/v1/"
 - content_for :head do
-  %meta{:name => "stripe-key", :content => APP_CONFIG['stripe_public_key']}
+  %meta{:name => "stripe-key", :content => "#{APP_CONFIG['stripe_public_key']}"}
   
 #payments.modal.hide.fade.in
   .modal-header
     %a.close{"data-dismiss" => "modal"} ×
     %h3 Become a Paid Member!
   .modal-body
-    .thank_you{style: "display: none;"}
+    .thank_you{:style => "display: none;"}
       %h3 Thanks for paying. Your hard earned money goes towards making Altimarc an even better product.
     .payment_form
       %h4 Paid Members gets access to everything.
