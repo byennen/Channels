@@ -4,8 +4,12 @@
 #= require frontend/plugins/circle.player.js
 #= require twitter/bootstrap
 #= require jquery.pjax
-#= require_tree .
-
+#= require frontend/plugins/jquery.cookie
+#= require frontend/plugins/jquery.backstretch
+#= require frontend/plugins/jquery.jplayer.min
+#= require frontend/facebook
+#= require frontend/home
+#= require frontend/musicplayer
 
 
 $(document).on "ready pjax:success", ->

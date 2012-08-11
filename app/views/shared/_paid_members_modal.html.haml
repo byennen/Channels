@@ -1,7 +1,8 @@
-- javascript "https://js.stripe.com/v1/"
+- javascript "https://js.stripe.com/v1/", "frontend/registrations"
+
 - content_for :head do
   %meta{:name => "stripe-key", :content => "#{APP_CONFIG['stripe_public_key']}"}
-  
+
 #payments.modal.hide.fade.in
   .modal-header
     %a.close{"data-dismiss" => "modal"} ×

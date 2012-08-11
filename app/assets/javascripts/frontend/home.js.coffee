@@ -1,7 +1,7 @@
-$(document).on "ready pjax:success", ->
-  $("#whats_new .carousel-inner .item").first().addClass "active"
-  $("#latest_music .carousel-inner .item").first().addClass "active"
-  $("#latest_videos .carousel-inner .item").first().addClass "active"
+#$(document).on "ready pjax:success", ->
+  #$("#whats_new .carousel-inner .item").first().addClass "active"
+  #$("#latest_music .carousel-inner .item").first().addClass "active"
+  #$("#latest_videos .carousel-inner .item").first().addClass "active"
   
   # $(".slidedeck").slidedeck
   #   autoPlay: false
