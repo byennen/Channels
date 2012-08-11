@@ -1,6 +1,8 @@
 class PhotosController < ApplicationController
   def index
-    @photos = Photo.all
+    logger.debug("params")
+    @photo_album = current_channel.photo_albums.find(params[:photo_album_id])
+    @photos = @photo_album.photos
   end
   
   def show
