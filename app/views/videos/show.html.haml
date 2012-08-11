@@ -9,9 +9,10 @@
   %meta{property: "og:description", content: @video.description}
 
 .videoplayer
-  #video
-  #player
-    .projekktor
+  .projekktor_background
+    #video
+    #player
+      .projekktor
   #video_info.container
     %h2= @channel.name + ' - ' + @video.title
     %ul#video_social_sharing
