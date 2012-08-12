@@ -1,12 +1,14 @@
 #= require jquery
 #= require jquery_ujs
+#= require twitter/bootstrap
 #= require frontend/plugins/jquery.jplayer.min.js
 #= require frontend/plugins/circle.player.js
-#= require twitter/bootstrap
 #= require jquery.pjax
 #= require frontend/plugins/jquery.cookie
 #= require frontend/plugins/jquery.backstretch
 #= require frontend/plugins/jquery.jplayer.min
+#= require frontend/plugins/bootstrap
+
 #= require frontend/facebook
 #= require frontend/home
 #= require frontend/musicplayer
