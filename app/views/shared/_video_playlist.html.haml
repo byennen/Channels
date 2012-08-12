@@ -1,0 +1,58 @@
+- if Rails.env.production? || Rails.env.staging?
+  :javascript
+    $(document).ready(function() {
+
+      var player = projekktor('.projekktor', {
+        poster: "#{@video.image.url}",
+        controls: true,
+        plugin_display: {
+          logoImage:"../../../../assets/html5video/logo.png"
+         },
+        playlist: [
+          {
+            0: {src:'../../../../assets/html5video/ad-placeholder.png', type:"image/jpeg"},
+            config:{
+              duration: 5
+            }
+          },
+          {
+            #{raw video_playlist(@video.sources)}
+          },
+          {
+            0: {src:'../../../../assets/html5video/ad-placeholder.png', type:"image/png"},
+            config:{
+              duration: 5
+            }
+          }
+        ]
+      });
+    });
+- else
+  :javascript
+    $(document).ready(function() {
+
+      var player = projekktor('.projekktor', {
+        poster: "#{@video.image.url}",
+        controls: true,
+        plugin_display: {
+          logoImage:"../../../../assets/html5video/logo.png"
+         },
+        playlist: [
+          {
+            0: {src:'../../../../assets/html5video/ad-placeholder.png', type:"image/jpeg"},
+            config:{
+              duration: 5
+            }
+          },
+          {
+          },
+          {
+            0: {src:'../../../../assets/html5video/ad-placeholder.png', type:"image/png"},
+            config:{
+              duration: 5
+            }
+          }
+        ]
+      });
+    });
+

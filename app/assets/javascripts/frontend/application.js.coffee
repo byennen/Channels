@@ -12,6 +12,7 @@
 #= require frontend/facebook
 #= require frontend/home
 #= require frontend/musicplayer
+#= require frontend/channels
 
 
 $(document).on "ready pjax:success", ->
