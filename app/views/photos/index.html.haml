@@ -11,19 +11,12 @@
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
   .content
     .container
-      %h1 Photo Album Name
-      %p
-        %button#start-slideshow.ui-button-success.btn.btn-large.btn-success{"data-selector" => "#gallery a[rel=gallery]", "data-slideshow" => "5000", "data-target" => "#modal-gallery"} Start Slideshow
-        %button#toggle-fullscreen.ui-button-primary.btn.btn-large.btn-primary{"data-toggle" => "button"} Toggle Fullscreen
       #gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
-        .row
-          .span
-            %ul.thumbnails
-            - @photos.each do |photo|
-              %li.span3
-                .thumbnail
-                  = link_to image_tag(photo.image.thumb('260x160#').url), photo.image.url, :rel => "gallery", :title => photo.title if photo.image_uid
-
+        / put images here
+        - @photos.each do |photo|
+          = link_to image_tag(photo.image.thumb('260x160#').url), photo.image.url, :rel => "gallery", :title => photo.title if photo.image_uid
+      %hr
+        %br
           / modal-gallery is the modal dialog used for the image gallery
           #modal-gallery.modal.modal-gallery.hide.fade
             .modal-header
@@ -31,10 +24,57 @@
               %h3.modal-title
             .modal-body
               .modal-image
+            .modal-footer
+              %a.btn.btn-primary.modal-next
+                Next
+                %i.icon-arrow-right.icon-white
+              %a.btn.btn-info.modal-prev
+                %i.icon-arrow-left.icon-white
+                Previous
+              %a.btn.btn-success.modal-play.modal-slideshow{"data-slideshow" => "5000"}
+                %i.icon-play.icon-white
+                Slideshow
+
+
+      -#%h1 Photo Album Name
+      -#%p
+        -#%button#start-slideshow.ui-button-success.btn.btn-large.btn-success{"data-selector" => "#gallery a[rel=gallery]", "data-slideshow" => "5000", "data-target" => "#modal-gallery"} Start Slideshow
+        -#%button#toggle-fullscreen.ui-button-primary.btn.btn-large.btn-primary{"data-toggle" => "button"} Toggle Fullscreen
+      -##gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
+        -#.row
+          -#.span
+            -#%ul.thumbnails
+            -#- @photos.each do |photo|
+              -#%li.span3
+                -#.thumbnail
+                  -#= link_to image_tag(photo.image.thumb('260x160#').url), photo.image.url, :rel => "gallery", :title => photo.title if photo.image_uid
+
+          -#/ modal-gallery is the modal dialog used for the image gallery
+          -##modal-gallery.modal.modal-gallery.hide.fade
+            -#.modal-header
+              -#%a.close{"data-dismiss" => "modal"} ×
+              -#%h3.modal-title
+            -#.modal-body
+              -#.modal-image
+            -#.modal-footer
+              -#%a.btn.btn-primary.modal-next
+                -#Next
+                -#%i.icon-arrow-right.icon-white
+              -#%a.btn.btn-info.modal-prev
+                -#%i.icon-arrow-left.icon-white
+                -#Previous
+              -#%a.btn.btn-success.modal-play.modal-slideshow{"data-slideshow" => "5000"}
+                -#%i.icon-play.icon-white
+                -#Slideshow
+              -#%a.btn.modal-download{:target => "_blank"}
+                -#%i.icon-download
+                Download
+
 
 / Image Gallery
-%script{:src => "http://blueimp.github.com/cdn/js/bootstrap.min.js"}
-%script{:src => "http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"}
-%script{:src => "http://blueimp.github.com/Bootstrap-Image-Gallery/js/bootstrap-image-gallery.min.js"}
+
+= javascript_include_tag 'admin/plugins/load-image.min'
+= javascript_include_tag 'admin/plugins/bootstrap-image-gallery.min'
+= javascript_include_tag "admin/plugins/altimarc"
 
 - javascript 'admin/plugins/altimarc.gallery'
