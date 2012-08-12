@@ -29,7 +29,7 @@
           - if user_signed_in?
             %a.btn.btn-primary{"data-toggle" => "dropdown", :href => "#"}
               %i.icon-user.icon-white
-              Me
+              = current_user.first_name
             %a.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               %span.caret
             %ul.dropdown-menu
