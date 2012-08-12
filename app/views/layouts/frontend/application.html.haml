@@ -47,7 +47,8 @@
                     = yield
 
       - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" && params[:actions] == "new"
-        = render 'layouts/frontend/first_time_visitor'
+        = render 'shared/first_time_visitor'
+        = render 'shared/no_facebook_signup'
         = render 'layouts/frontend/footer'
 
       :javascript
