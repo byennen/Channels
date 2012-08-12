@@ -53,7 +53,8 @@
                     = yield
 
       - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" && params[:actions] == "new"
-        = render 'shared/first_time_visitor'
+        - if params[:controller] == "home" || params[:controller] == "videos" || params[:controller] == "channels" || params[:controller] == "photos"
+          = render 'shared/first_time_visitor'
         = render 'shared/no_facebook_signup'
         - if params[:controller] == "channels" || params[:controller] == "video"
           - if user_signed_in? && current_user.unpaid_member?
