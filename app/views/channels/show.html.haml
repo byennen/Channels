@@ -50,7 +50,11 @@
           .tab-content
             #tab1.tab-pane.active
               = render :partial => 'post', :collection => @posts
-              .row
+              %ul.pager
+                %li.previous
+                  %a{:href => "#"} ← Older
+                %li.next
+                  %a{:href => "#"} Newer →
                 = link_to "Read More >>", channel_posts_url(@channel), :class => "read-more pull-right"
             #tab2.tab-pane
               = render 'channels/music'
