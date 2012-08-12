@@ -9,6 +9,12 @@
     %meta{:content => "ALTIMARC, LLC", :name => "author"}
     %meta{:content => "index,follow", :name => "robots"}
     %meta{:property => "fb:app_id", :content => APP_CONFIG['facebook_app_id']}
+    - if user_signed_in?
+      %meta{:content => "user connected", :name => "user_connected"}
+      - if current_user.paid_member?
+        %meta{:content => "paid member", :name => "paid_member"}
+      - if current_user.admin?
+        %meta{:content => "admin", :name => "admin"}
     = yield :open_graph
     = csrf_meta_tags
     %link{:href => "https://fonts.googleapis.com/css?family=Rationale", :rel => "stylesheet", :type => "text/css"}
@@ -49,6 +55,9 @@
       - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" && params[:actions] == "new"
         = render 'shared/first_time_visitor'
         = render 'shared/no_facebook_signup'
+        - if params[:controller] == "channels" || params[:controller] == "video"
+          - if user_signed_in? && current_user.unpaid_member?
+            = render 'shared/paid_members_modal'
         = render 'layouts/frontend/footer'
 
       :javascript

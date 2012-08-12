@@ -3,7 +3,7 @@
 - content_for :head do
   %meta{:name => "stripe-key", :content => "#{APP_CONFIG['stripe_public_key']}"}
 
-#payments.modal.hide.fade.in
+#payments.modal.hide{:style => "display: none;"}
   .modal-header
     %a.close{"data-dismiss" => "modal"} ×
     %h3 Become a Paid Member!

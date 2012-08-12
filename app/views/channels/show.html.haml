@@ -66,10 +66,6 @@
             #description.span
               %p= @channel.description
 
-- if current_user
-  = render 'shared/paid_members_modal'
-
-
 - javascript 'frontend/plugins/html5video'
 
 = render 'shared/video_playlist'
