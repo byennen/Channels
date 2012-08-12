@@ -31,7 +31,8 @@
     .container
       %h3 
         Recent Episodes
-        = link_to "(See all)", channel_videos_url(@channel)
+        -# TODO: add see all button and style see all page
+        -#= link_to "(See all)", channel_videos_url(@channel)
       = render 'channels/videos'
 
       .row
