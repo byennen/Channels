@@ -1,5 +1,5 @@
 class MemberMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "no-reply@altimarc.com"
 
   def welcome(user_id)
     @user = User.find(user_id)
