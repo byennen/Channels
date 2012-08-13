@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :load_channel
   
   helper_method :current_channel
-
+  
   #password for staging
   if (ENV["RAILS_ENV"] == "staging")
    before_filter :verifies_staging_user

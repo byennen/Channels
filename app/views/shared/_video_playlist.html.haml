@@ -1,36 +1,18 @@
 - if Rails.env.production? || Rails.env.staging?
-  :javascript
-    $(document).ready(function() {
-
-      var player = projekktor('.projekktor', {
-        poster: "#{@video.image.url}",
-        controls: true,
-        plugin_display: {
-          logoImage:"../../../../assets/html5video/logo.png"
-         },
-        playlist: [
-          {
-            0: {src:'../../../../assets/html5video/ad-placeholder.png', type:"image/jpeg"},
-            config:{
-              duration: 5
-            }
-          },
-          {
-            #{raw video_playlist(@video.sources)}
-          },
-          {
-            0: {src:'../../../../assets/html5video/ad-placeholder.png', type:"image/png"},
-            config:{
-              duration: 5
-            }
-          }
-        ]
-      });
-    });
 - else
   :javascript
     $(document).ready(function() {
-      
+      function set_ads() {
+        $('#small_ad').show();
+        $('#small_ad').click(function() {
+            window.open('http://aliveatbrushy.altimarc-staging.com/altimarc-for-your-business', '_blank');
+        })
+      }
+
+      function unset_ads() {
+        $('#small_ad').hide();
+      }
+
       function unpaid_members() {
         $('#unpaid_members_videos_modal').modal('show');
       }
@@ -39,32 +21,52 @@
         poster: "#{@video.image.url}",
         controls: true,
         plugin_display: {
-          logoImage:"../../../../assets/html5video/logo.png"
-        },
-        config: {
-          disallowSkip: true
+          logoImage:"../../../../assets/html5video/logo.png",
+          logoPosition:"tr"
         },
         playlist: [
           {
             0: {src:'../../../../assets/html5video/ad-placeholder.png', type:"image/jpeg"},
             config:{
               duration: 5,
+              title: 'advertisement',
+              lassName: 'ad',
+              controls: false,
+              disallowSkip: true,
+              plugin_controlbar: {
+                showOnStart: true,
+                disableFade: true
+            },
+            plugin_display: {
+              staticControls: false,
+                displayPlayingClick: function() {
+                  window.open('http://aliveatbrushy.altimarc-staging.com/altimarc-for-your-business', '_blank');
+                }
+              }
             }
           },
           {
-            0: {src: 'https://altimarc-staging.s3.amazonaws.com/video/video/20/Brushy_Folsom_Episode_with_Hanger.mp4', type: 'video/mp4'},
-            1: {src: 'https://altimarc-staging.s3.amazonaws.com/video/video/20/Brushy_Folsom_Episode_with_Hanger.ogg', type: 'video/ogg'},
-            2: {src: 'https://altimarc-staging.s3.amazonaws.com/video/video/20/Brushy_Folsom_Episode_with_Hanger.webm', type: 'video/webm'}
+            #{raw video_playlist(@video.sources) if Rails.env.production? || Rails.env.staging?}
+            #{@video_playlist if Rails.env.development?}
+            ,
+            config: {
+              title: "#{@video.title}",
+              className: 'postad',
+              disallowSkip: true
+            }
           },
           {
             0: {src:'../../../../assets/html5video/ad-placeholder.png', type:"image/png"},
             config:{
-              duration: 5
+              duration: 5,
+              disallowSkip: true,
             }
           }
         ]
       }, function(player) {
         player.addListener('done', unpaid_members)
+        player.addListener('done', unset_ads)
+        player.addListener('start', set_ads)
       });
     });
 

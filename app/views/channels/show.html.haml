@@ -8,26 +8,7 @@
   %meta{property: "og:site_name", content: "Altimarc"}
   %meta{property: "og:description", content: @video.description}
 
-.videoplayer
-  .projekktor_background
-    #video
-    #player
-      .projekktor
-  #video_info.container
-    %h2
-      = link_to @channel.name, channel_url(@channel)
-      %span - 
-      = @video.title
-    %ul#video_social_sharing
-      %li= link_to "Facebook", "#"
-      %li= link_to "Tweet", "#"
-      -#TODO: Add share by email function 
-      -#%li= link_to "Share", "#"
-      %li= link_to "Details", "#", :id => "details_link"
-    #details
-      .row
-        .span
-          %p= @video.description
+= render 'shared/videoplayer'
 
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
   .content
