@@ -94,9 +94,9 @@ class Player
     status = $('meta[name="user_connected"]').attr('content')
     r = $.getJSON(url, (data) ->
       if status == "paid member"
-        @url = data["url"]
+        url = data["url"]
       else
-        @url = data["preview_url"]
+        url = data["preview_url"]
       $('#jplayer').jPlayer("setMedia", {
         mp3: url
       }).jPlayer("play")
