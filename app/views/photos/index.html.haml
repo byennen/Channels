@@ -8,6 +8,11 @@
   -#%meta{property: "og:site_name", content: "Altimarc"}
   -#%meta{property: "og:description", content: @video.description}
 
+:css
+  .thumbnail {
+    margin-bottom: 20px;
+  }
+
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
   .content
     .container
@@ -16,7 +21,7 @@
         .row
           - @photos.each do |photo|
             .span.thumbnail
-              = link_to image_tag(photo.image.thumb('280x180#').url), photo.image.url, :rel => "gallery", :title => photo.title if photo.image_uid
+              = link_to image_tag(photo.image.thumb('280x180#').url), photo.image.url, :rel => "gallery", :title => photo.title, 'data-content' => photo.description if photo.image_uid
               .caption
                 %h5= photo.title
 
@@ -39,42 +44,6 @@
               %a.btn.btn-success.modal-play.modal-slideshow{"data-slideshow" => "5000"}
                 %i.icon-play.icon-white
                 Slideshow
-
-
-      -#%h1 Photo Album Name
-      -#%p
-        -#%button#start-slideshow.ui-button-success.btn.btn-large.btn-success{"data-selector" => "#gallery a[rel=gallery]", "data-slideshow" => "5000", "data-target" => "#modal-gallery"} Start Slideshow
-        -#%button#toggle-fullscreen.ui-button-primary.btn.btn-large.btn-primary{"data-toggle" => "button"} Toggle Fullscreen
-      -##gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
-        -#.row
-          -#.span
-            -#%ul.thumbnails
-            -#- @photos.each do |photo|
-              -#%li.span3
-                -#.thumbnail
-                  -#= link_to image_tag(photo.image.thumb('260x160#').url), photo.image.url, :rel => "gallery", :title => photo.title if photo.image_uid
-
-          -#/ modal-gallery is the modal dialog used for the image gallery
-          -##modal-gallery.modal.modal-gallery.hide.fade
-            -#.modal-header
-              -#%a.close{"data-dismiss" => "modal"} ×
-              -#%h3.modal-title
-            -#.modal-body
-              -#.modal-image
-            -#.modal-footer
-              -#%a.btn.btn-primary.modal-next
-                -#Next
-                -#%i.icon-arrow-right.icon-white
-              -#%a.btn.btn-info.modal-prev
-                -#%i.icon-arrow-left.icon-white
-                -#Previous
-              -#%a.btn.btn-success.modal-play.modal-slideshow{"data-slideshow" => "5000"}
-                -#%i.icon-play.icon-white
-                -#Slideshow
-              -#%a.btn.modal-download{:target => "_blank"}
-                -#%i.icon-download
-                Download
-
 
 / Image Gallery
 

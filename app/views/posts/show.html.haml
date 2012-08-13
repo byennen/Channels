@@ -8,14 +8,24 @@
   %meta{property: "og:title", content: @post.title }
   %meta{property: "og:published_time", content: @post.publish_on }
 
+:css
+  #posts .thumbnail {
+    width: 930px;
+    height: 552px;
+    margin: 0 0 20px;
+  }
+  #posts .date {
+    margin: 0 0 20px;
+  }
+
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
   .content
     .container
       = render 'shared/breadcrumb'
-      .row
+      #posts.row
         .span
-          .thumbnail{:style => "width:930px;"}
-            = image_tag(@post.image.url)
+          .thumbnail
+            = image_tag(@post.image.thumb('930x552#c').url)
         .span
           %h1= @post.title
           .date= @post.publish_on.strftime('%m/%d/%Y')
