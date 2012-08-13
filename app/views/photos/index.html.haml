@@ -1,4 +1,6 @@
-- title @channel.name
+- title @photo_album.title
+
+- stylesheet 'plugins/bootstrap-image-gallery'
 
 - content_for :open_graph do
   -#%meta{property: "og:title", content: @video.title}
@@ -8,47 +10,40 @@
   -#%meta{property: "og:site_name", content: "Altimarc"}
   -#%meta{property: "og:description", content: @video.description}
 
-:css
-  .thumbnail {
-    margin-bottom: 20px;
-  }
-
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
   .content
     .container
       = render 'shared/breadcrumb'
+      %p
+        %button#start-slideshow.btn.btn-large.btn-success{"data-selector" => "#gallery a[rel=gallery]", "data-slideshow" => "5000", "data-target" => "#modal-gallery"} Start Slideshow
+        %button#toggle-fullscreen.btn.btn-large.btn-primary{"data-toggle" => "button"} Toggle Fullscreen
+      %hr
       #gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
         .row
           - @photos.each do |photo|
             .span.thumbnail
-              = link_to image_tag(photo.image.thumb('280x180#').url), photo.image.url, :rel => "gallery", :title => photo.title, 'data-content' => photo.description if photo.image_uid
+              = link_to image_tag(photo.image.thumb('280x180#').url), photo.image.url, :rel => 'gallery', :title => photo.title, 'data-content' => photo.description
               .caption
                 %h5= photo.title
 
-      %hr
-        %br
-          / modal-gallery is the modal dialog used for the image gallery
-          #modal-gallery.modal.modal-gallery.hide.fade
-            .modal-header
-              %a.close{"data-dismiss" => "modal"} ×
-              %h3.modal-title
-            .modal-body
-              .modal-image
-            .modal-footer
-              %a.btn.btn-primary.modal-next
-                Next
-                %i.icon-arrow-right.icon-white
-              %a.btn.btn-info.modal-prev
-                %i.icon-arrow-left.icon-white
-                Previous
-              %a.btn.btn-success.modal-play.modal-slideshow{"data-slideshow" => "5000"}
-                %i.icon-play.icon-white
-                Slideshow
+#modal-gallery.modal.modal-gallery.hide.fade
+  .modal-header
+    %a.close{"data-dismiss" => "modal"} ×
+    %h3.modal-title
+  .modal-body
+    .modal-image
+  .modal-footer
+    %a.btn.btn-success.modal-play.modal-slideshow{"data-slideshow" => "5000"}
+      %i.icon-play.icon-white
+      %span Slideshow
+    %a.btn.btn-info.modal-prev
+      %i.icon-arrow-left.icon-white
+      %span Previous
+    %a.btn.btn-primary.modal-next
+      %span Next
+      %i.icon-arrow-right.icon-white
 
 / Image Gallery
-
-= javascript_include_tag 'admin/plugins/load-image.min'
-= javascript_include_tag 'admin/plugins/bootstrap-image-gallery.min'
-= javascript_include_tag "admin/plugins/altimarc"
-
-- javascript 'admin/plugins/altimarc.gallery'
+= javascript_include_tag 'plugins/load-image'
+= javascript_include_tag 'plugins/bootstrap-image-gallery'
+= javascript_include_tag 'frontend/plugins/altimarc.gallery'

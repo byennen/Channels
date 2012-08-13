@@ -9,7 +9,6 @@
 #= require frontend/plugins/jquery.jplayer.min
 #= require frontend/plugins/bootstrap
 #= require frontend/plugins/html5video
-
 #= require frontend/facebook
 #= require frontend/home
 #= require frontend/musicplayer
