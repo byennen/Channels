@@ -13,16 +13,17 @@
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
   .content
     .container
-      - if user_signed_in? && current_user.paid_member?
-        %h3 Recent Episodes
-      - else
-        %h3 Recent Episodes
-        %p
-          %span{:style => 'color:red;'}
-            (PREVIEWS ONLY)
-          = ' - '
-          = link_to 'become a member', 'javascript:;', :class => 'become_a_member'
-          for full episodes
+      %h3 Recent Episodes
+      -#- if user_signed_in? && current_user.paid_member?
+        -#%h3 Recent Episodes
+      -#- else
+        -#%h3 Recent Episodes
+        -#%p
+          -#%span{:style => 'color:red;'}
+            -#(PREVIEWS ONLY)
+          -#= ' - '
+          -#= link_to 'become a member', 'javascript:;', :class => 'become_a_member'
+          -#for full episodes
       -# TODO: add see all button and style see all page
       -#= link_to "(See all)", channel_videos_url(@channel)
 

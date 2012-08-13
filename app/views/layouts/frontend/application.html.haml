@@ -28,13 +28,13 @@
     %link{:href => "ico/apple-touch-icon-72-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "72x72"}
     %link{:href => "ico/apple-touch-icon-57-precomposed.png", :rel => "apple-touch-icon-precomposed"}
   %body{:class => controller.controller_name}
+    = render :partial => "shared/flash_messages", :locals => {:flash => flash}
     .navbar.navbar-fixed-top
       = render 'shared/musicplayer'
       #ribbon
       - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" && params[:actions] == "new"
         = render 'shared/nav'
     .data{"data-pjax-container" => ""}
-      = render :partial => "shared/flash_messages", :locals => {:flash => flash}
       - if params[:controller] == "channels" && params[:action] == "show" || params[:controller] == "videos" || params[:controller] == "photos" || params[:controller] == "posts"
         = yield
       - elsif params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" && params[:actions] == "new"

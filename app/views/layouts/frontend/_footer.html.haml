@@ -28,7 +28,7 @@
         %strong Sign up for our Giveaways
         %p and receive exclusive offers
         = simple_form_for @giveaway, :url => enter_giveaway_path, :html => {:class => 'wellclear form-inline'} do |f|
-          = f.input :email, :input_html => {:class => "input-xlarge"}
+          = f.input :email, :input_html => {:class => "input-xlarge", :placeholder => "Email"}, :label => false
           %button.btn.btn-danger{:type => "submit"} Sign up
         %ul.footer
           %li
