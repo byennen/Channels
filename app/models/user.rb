@@ -84,6 +84,14 @@ class User < ActiveRecord::Base
      user.facebook.put_connections("me", method, options)
   end
 
+  def cancel_membership
+    if paid_member?
+      customer = Stripe::Customer.retrieve(stripe_customer_token)
+      customer.delete
+      update_attribute(:stripe_customer_token, nil)
+    end
+  end
+  
   private
 
   def process_payment

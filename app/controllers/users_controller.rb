@@ -26,5 +26,11 @@ class UsersController < ApplicationController
       render '/sessions/new'
     end
   end
+  
+  def cancel
+    if current_user.cancel_membership
+      redirect_to edit_user_registration_url(subdomain: "www")
+    end
+  end
 
 end
