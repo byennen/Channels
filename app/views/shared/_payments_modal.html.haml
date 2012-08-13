@@ -1,7 +1,4 @@
-- javascript "https://js.stripe.com/v1/", "frontend/registrations"
-
-- content_for :head do
-  %meta{:name => "stripe-key", :content => "#{APP_CONFIG['stripe_public_key']}"}
+= javascript_include_tag "https://js.stripe.com/v1/", "frontend/registrations"
 
 #payments.modal.hide{:style => "display: none;"}
   .modal-header

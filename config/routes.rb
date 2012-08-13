@@ -14,7 +14,7 @@ Channels::Application.routes.draw do
   match "copyrights" => "pages#copyrights", :as => "copyrights"
   match "randy-owen-altimarc-coming-soon-video" => "pages#randy_owen_coming_soon_video", :as => "randy_owen_video"
 
-  #giveaways
+  #old giveaways
   match "giveaways/kentucky-derby-with-randy-owen" => "giveaways#derby", :as => "derby"
   match "kentucky-derby-with-randy-owen" => redirect("/giveaways/kentucky-derby-with-randy-owen")
   match "giveaways/cma-fanfest" => "giveaways#cma", :as => "cma"
@@ -22,8 +22,7 @@ Channels::Application.routes.draw do
   match "giveaways/thank-you" => "giveaways#thankyou", :as => "thankyou"
 
   #giveaways email
-  match "/create_derby(/:id)" => "giveaways#create_derby"
-  match "/create_cma(/:id)" => "giveaways#create_cm:wa"
+  match "/giveaways(/:id)" => "giveaways#enter_giveaway"
 
   #zencoder
   post "zencoder-callback" => "zencoder_callback#create", :as => "zencoder_callback"

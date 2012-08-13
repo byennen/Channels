@@ -9,6 +9,7 @@
     %meta{:content => "ALTIMARC, LLC", :name => "author"}
     %meta{:content => "index,follow", :name => "robots"}
     %meta{:property => "fb:app_id", :content => APP_CONFIG['facebook_app_id']}
+    %meta{:name => "stripe-key", :content => "#{APP_CONFIG['stripe_public_key']}"}
     = render 'layouts/frontend/meta'
     = yield :open_graph
     = csrf_meta_tags
@@ -32,6 +33,7 @@
       - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" && params[:actions] == "new"
         = render 'shared/nav'
     .data{"data-pjax-container" => ""}
+      = render :partial => "shared/flash_messages", :locals => {:flash => flash}
       - if params[:controller] == "channels" && params[:action] == "show" || params[:controller] == "videos" || params[:controller] == "photos" || params[:controller] == "posts"
         = yield
       - elsif params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" && params[:actions] == "new"

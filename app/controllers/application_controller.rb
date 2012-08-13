@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
   layout 'layouts/frontend/application'
   protect_from_forgery
   before_filter :load_channels, :active_channels
-  before_filter :load_channel
-  
+  before_filter :load_channel, :giveaway
+
   helper_method :current_channel
   
   #password for staging
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
         super
       end
   end
-
+  
   private
 
   def load_channel
@@ -35,6 +35,10 @@ class ApplicationController < ActionController::Base
 
   def current_channel
     @channel
+  end
+
+  def giveaway
+    @giveaway = Giveaway.new
   end
   
   def load_channels
