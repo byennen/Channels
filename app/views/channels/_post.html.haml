@@ -3,6 +3,6 @@
     .thumbnail
       = link_to image_tag(post.image.thumb('130x120#').url), channel_post_url(@channel, post)
   .span6
-    %h4= link_to post.title, channel_post_url(@channel, post)
+    %h4= link_to post.title, post_url(post)
     %p= post.publish_on.strftime('%m/%d/%Y')
     %p= post.description.truncate(280)

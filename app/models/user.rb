@@ -66,6 +66,10 @@ class User < ActiveRecord::Base
   def facebook?
     oauth_token? && oauth_expires_at > Time.now
   end
+  
+  def paid_member?
+    !stripe_customer_token.nil?
+  end
 
   def facebook
     @facebook ||= Koala::Facebook::API.new(oauth_token)
