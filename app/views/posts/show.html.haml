@@ -14,8 +14,8 @@
       = render 'shared/breadcrumb'
       .row
         .span
-          .thumbnail{:style => "width:930px; height:562px;"}
-            = image_tag(@post.image.thumb('930x562#').url)
+          .thumbnail{:style => "width:930px;"}
+            = image_tag(@post.image.url)
         .span
           %h1= @post.title
           .date= @post.publish_on.strftime('%m/%d/%Y')
