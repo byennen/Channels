@@ -1,14 +1,6 @@
-:css
-  .alerts {
-    position: absolute;
-    top: 40;
-    z-index: 10000;
-    width: 890px;
-  }
 .container
   - flash.each do |type, message|
     %div.alert.fade.in{ "data-alert" => "alert", :class => "alert-#{twitterized_type(type)}" }
       %a.close{"data-dismiss" => "alert"} ×
       %p
         = message
-

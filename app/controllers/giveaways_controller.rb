@@ -15,9 +15,9 @@ class GiveawaysController < ApplicationController
     @giveaway = Giveaway.new(params[:giveaway])
     if @giveaway.save
       GiveawayMailer.registration_confirmation(@giveaway).deliver
-      flash[:notice] = "event was successfully created."
+      flash[:success] = "You're registered!"
     else
-      flash[:error] = "didnt work"
+      flash[:error] = "Please check your email or confirm that you haven't entered already."
     end
     redirect_to root_url
   end

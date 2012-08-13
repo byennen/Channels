@@ -22,7 +22,7 @@ Channels::Application.routes.draw do
   match "giveaways/thank-you" => "giveaways#thankyou", :as => "thankyou"
 
   #giveaways email
-  match "/giveaways(/:id)" => "giveaways#enter_giveaway"
+  match "enter-giveaways(/:id)" => "giveaways#enter_giveaway", :as => 'enter_giveaway'
 
   #zencoder
   post "zencoder-callback" => "zencoder_callback#create", :as => "zencoder_callback"

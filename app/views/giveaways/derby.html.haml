@@ -6,15 +6,7 @@
   
   %p FRIDAY, MAY 4TH THROUGH SUNDAY, MAY 6TH (3 DAYS AND 2 NIGHTS)
 
-  = form_for(@giveaway, :url => "create_derby", :html => {:class => "well form-inline"}) do |f|
-    - if @giveaway.errors.any?
-      - @giveaway.errors.messages.each do |message|
-        .message= message.last.last.html_safe
-    .field
-      %strong Register here:
-      = f.text_field :email, :placeholder => "Email"
-      %input#giveaway_derby{:name => "giveaway[derby]", :type => "hidden", :value => "1"}
-      %button{ :class => "btn btn-success", :type => "submit" } Sign Up To Win!
+  %h2{:style => "color:red; padding: 20px 0;"} Congratulations to Markcus, from Las Vegas, Nevada!!<br/> Thank y'all for signing up!!
 
   %div{ :style => "text-align: center;" }
     %h2
