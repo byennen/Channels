@@ -30,21 +30,31 @@
 - else
   :javascript
     $(document).ready(function() {
+      
+      function unpaid_members() {
+        $('#unpaid_members_videos_modal').modal('show');
+      }
 
       var player = projekktor('.projekktor', {
         poster: "#{@video.image.url}",
         controls: true,
         plugin_display: {
           logoImage:"../../../../assets/html5video/logo.png"
-         },
+        },
+        config: {
+          disallowSkip: true
+        },
         playlist: [
           {
             0: {src:'../../../../assets/html5video/ad-placeholder.png', type:"image/jpeg"},
             config:{
-              duration: 5
+              duration: 5,
             }
           },
           {
+            0: {src: 'https://altimarc-staging.s3.amazonaws.com/video/video/20/Brushy_Folsom_Episode_with_Hanger.mp4', type: 'video/mp4'},
+            1: {src: 'https://altimarc-staging.s3.amazonaws.com/video/video/20/Brushy_Folsom_Episode_with_Hanger.ogg', type: 'video/ogg'},
+            2: {src: 'https://altimarc-staging.s3.amazonaws.com/video/video/20/Brushy_Folsom_Episode_with_Hanger.webm', type: 'video/webm'}
           },
           {
             0: {src:'../../../../assets/html5video/ad-placeholder.png', type:"image/png"},
@@ -53,6 +63,8 @@
             }
           }
         ]
+      }, function(player) {
+        player.addListener('done', unpaid_members)
       });
     });
 

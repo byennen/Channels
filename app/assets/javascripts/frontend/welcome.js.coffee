@@ -3,24 +3,18 @@ $(document).on "ready pjax:success", ->
   #set domain for cookies
   domain = window.location.hostname.replace /([a-zA-Z0-9]+.)/, ""
 
+  #check for admin
   if admin = $("meta[name=\"admin\"]").attr("content")
     console.log admin
-    $('#first_time_vistor').modal('hide')
-    $('#no_facebook_signup').modal('hide')
-    $('#payments').modal('hide')
 
   #check for unpaid members
   if user_connected = $("meta[name=\"user_connected\"]").attr("content")
     console.log user_connected
     $('#payments').modal('show')
-    $('#first_time_vistor').modal('hide')
-    $('#no_facebook_signup').modal('hide')
   else
     #welcome first time visitors
     $('#first_time_vistor').modal('show')
-    #confirm user sign up isnt showing
-    $('#no_facebook_signup').modal('hide')
-    #save cookie if a user doesnt have facebook
+    #save a cookie if they dont have facebook
     $("#no_facebook_btn").click ->
       $('#first_time_vistor').modal('hide')
       $.cookie "altimarc-vistor-no-facebook", "cookie_value", { expires: 365, useLocalStorage: false, domain: domain }
@@ -28,3 +22,25 @@ $(document).on "ready pjax:success", ->
   #check for paid member
   if paid_member = $("meta[name=\"paid_member\"]").attr("content")
     console.log paid_member
+
+  #unpaid member - photos warnings
+  $('.unpaid_member_photos').click ->
+    $('#unpaid_members_photos_modal').modal('show')
+
+  #unpaid member - music warnings
+  $('.unpaid_members_music').click ->
+    $('#unpaid_members_music_modal').modal('show')
+
+  #unpaid member - video warning
+  $('.unpaid_members_videos').click ->
+    $('#unpaid_members_videos_modal').modal('show')
+
+
+  #unpaid member -> wants to join
+  $(".become_a_member").click ->
+    console.log "Become a member!"
+    $('#unpaid_members_music_modal').modal('hide')
+    $('#unpaid_members_photos_modal').modal('hide')
+    $('#unpaid_members_videos_modal').modal('hide')
+    $('#payments').modal('show')
+

@@ -1,0 +1,52 @@
+:css
+  #first_time_vistor h2 {
+    text-align: center;
+  }
+  #first_time_vistor .modal-body {
+    text-align: center;
+  }
+  #first_time_vistor .modal-body img.get-started-social {
+    padding-bottom: 20px;
+    margin: 5px 0 0;
+  }
+  #first_time_vistor .modal-body p {
+    color: #474747;
+  }
+  #first_time_vistor .modal-footer a#no_facebook_btn {
+    color: #b8b8b8;
+    padding-right: 10px;
+  }
+  #first_time_vistor .modal-footer a#no_facebook_btn:hover {
+    color: #474747;
+  }
+  #first_time_vistor .modal-footer span {
+    padding-right: 10px;
+    color: #b8b8b8;
+  }
+
+#first_time_vistor.modal.hide{:style => "width: 670px; margin: -250px 0 0 -330px; display: none;"}
+  .modal-header
+    %a.close{"data-dismiss" => "modal"} ×
+    %h2 Welcome to the new Altimarc! Here's how it works...
+  .modal-body
+    .span4
+      = image_tag('get-started-artist.png')
+      %h4 Entertainment. Elevated.
+      %p Connect and experience custom video, prizes and unique fan experiences.
+
+    .span4
+      = image_tag('get-started-social.png', :class => 'get-started-social')
+      %h4 Follow, Share, Discover
+      %p Friends will love what you're watching, hearing and winning!
+        
+  .modal-footer
+    %a#no_facebook_btn{"data-toggle" => "modal", :href => "#no_facebook_signup"} I don't have Facebook
+    %span or
+    - if params[:state]
+      %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook?state=#{params[:state]}"}
+        %i.icon-facebook
+        Sign in with Facebook
+    - else
+      %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook"}
+        %i.icon-facebook
+        Sign in with Facebook
