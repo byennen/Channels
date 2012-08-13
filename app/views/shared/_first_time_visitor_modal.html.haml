@@ -40,7 +40,7 @@
       %p Friends will love what you're watching, hearing and winning!
         
   .modal-footer
-    %a#no_facebook_btn{"data-toggle" => "modal", :href => "#no_facebook_signup"} I don't have Facebook
+    %a#no_facebook_btn{:href => "#"} I don't have Facebook
     %span or
     - if params[:state]
       %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook?state=#{params[:state]}"}

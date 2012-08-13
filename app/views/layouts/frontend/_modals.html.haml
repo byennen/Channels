@@ -1,5 +1,5 @@
-- unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" && params[:actions] == "new"
-  - if params[:controller] == "home" || params[:controller] == "videos" || params[:controller] == "channels" || params[:controller] == "photos"
+- unless ["registrations", "sessions", "devise/passwords", "devise/sessions", "devise/registrations"].include?(params[:controller]) && params[:actions] == "new"
+  - if %w(home videos channels photos).include?(params[:controller])
     = render 'shared/first_time_visitor_modal'
   - if params[:controller] == "channels" && params[:action] == "show" || params[:controller] == "video"
     - if user_signed_in? && current_user.unpaid_member?
