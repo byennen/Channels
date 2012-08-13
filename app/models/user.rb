@@ -68,7 +68,11 @@ class User < ActiveRecord::Base
   end
   
   def paid_member?
-    !stripe_customer_token.nil?
+    !stripe_customer_token.nil? && !stripe_plan.nil?
+  end
+  
+  def unpaid_member?
+    !paid_member?
   end
 
   def facebook
@@ -84,11 +88,20 @@ class User < ActiveRecord::Base
      user.facebook.put_connections("me", method, options)
   end
 
+  def cancel_membership
+    if paid_member?
+      customer = Stripe::Customer.retrieve(stripe_customer_token)
+      customer.cancel_subscription
+      update_attribute(:stripe_plan, nil)
+    end
+  end
+  
   private
 
   def process_payment
     customer = Stripe::Customer.create(:email => email, :plan => plan.downcase, :card => stripe_card_token)
     self.stripe_customer_token = customer.id
+    self.stripe_plan = plan.downcase
   rescue Stripe::InvalidRequestError => e
     logger.error "Stripe error while creating customer: #{e.message}"
     errors.add :base, "There was a problem with your credit card."

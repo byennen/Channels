@@ -31,3 +31,9 @@
         %i (we need your current password to confirm your changes)
     .actions
       = f.submit "Update", :class => 'btn primary'
+
+- if current_user.paid_member?
+  = form_for(resource, :as => resource_name, :url => cancel_membership_path, :html => {:method => :post}, :class => "form-stacked") do |f|
+    %fieldset
+      %legend Cancel Membership
+      = f.submit "Cancel My Membership", :class => 'btn btn-danger primary'
