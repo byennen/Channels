@@ -25,7 +25,7 @@
       #posts.row
         .span
           .thumbnail
-            = image_tag(@post.image.thumb('930x552#c').url)
+            = image_tag(@post.image.thumb('930x552#n').url)
         .span
           %h1= @post.title
           .date= @post.publish_on.strftime('%m/%d/%Y')
