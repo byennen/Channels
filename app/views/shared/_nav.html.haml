@@ -28,7 +28,10 @@
         .btn-group.pull-right
           - if user_signed_in?
             %a.btn.btn-primary{"data-toggle" => "dropdown", :href => "#"}
-              %i.icon-user.icon-white
+              - if current_user && current_user.facebook?
+                %i= image_tag('http://graph.facebook.com/#{current_user.uid}/picture?type=small')
+              - else
+                %i.icon-user.icon-white
               - if current_user.first_name.present?
                 = current_user.first_name
               - else

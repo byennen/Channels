@@ -33,6 +33,17 @@ $(document).on "ready pjax:success", ->
   $('.play').click ->
     window.player.playSong($(this).attr("href"))
     return false
+  
+  #facebook sdk
+  ((d, s, id) ->
+    js = undefined
+    fjs = d.getElementsByTagName(s)[0]
+    return  if d.getElementById(id)
+    js = d.createElement(s)
+    js.id = id
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=505364239479743"
+    fjs.parentNode.insertBefore js, fjs
+  ) document, "script", "facebook-jssdk"
 
 # debugging
 $(document).on "pjax:success", ->
