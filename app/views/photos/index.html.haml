@@ -11,10 +11,15 @@
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
   .content
     .container
+      = render 'shared/breadcrumb'
       #gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
-        / put images here
-        - @photos.each do |photo|
-          = link_to image_tag(photo.image.thumb('260x160#').url), photo.image.url, :rel => "gallery", :title => photo.title if photo.image_uid
+        .row
+          - @photos.each do |photo|
+            .span.thumbnail
+              = link_to image_tag(photo.image.thumb('280x180#').url), photo.image.url, :rel => "gallery", :title => photo.title if photo.image_uid
+              .caption
+                %h5= photo.title
+
       %hr
         %br
           / modal-gallery is the modal dialog used for the image gallery

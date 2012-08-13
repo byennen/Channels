@@ -14,7 +14,10 @@
     #player
       .projekktor
   #video_info.container
-    %h2= @channel.name + ' - ' + @video.title
+    %h2
+      = link_to @channel.name, channel_url(@channel)
+      %span - 
+      = @video.title
     %ul#video_social_sharing
       %li= link_to "Facebook", "#"
       %li= link_to "Tweet", "#"
@@ -50,11 +53,13 @@
           .tab-content
             #tab1.tab-pane.active
               = render :partial => 'post', :collection => @posts
-              %ul.pager
-                %li.previous
-                  %a{:href => "#"} ← Older
-                %li.next
-                  %a{:href => "#"} Newer →
+              -# TODO: add pagination for posts
+              -#- if @posts.count > 4
+                -#%ul.pager
+                  -#%li
+                    -#%a{:href => "#"} ← Older
+                  -#%li
+                    -#%a{:href => "#"} Newer →
             #tab2.tab-pane
               = render 'channels/music'
             #tab3.tab-pane{:style => "text-align:center"}
@@ -67,8 +72,6 @@
             = render 'channels/social_media'
             #description.span
               %p= @channel.description
-
-- javascript 'frontend/plugins/html5video'
 
 = render 'shared/video_playlist'
 

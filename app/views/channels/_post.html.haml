@@ -1,8 +1,8 @@
 .row.items
   .span2
     .thumbnail
-      = image_tag(post.image.thumb('160x120#').url)
+      = link_to image_tag(post.image.thumb('130x120#').url), channel_post_url(@channel, post)
   .span6
-    %h5= link_to post.title, channel_post_url(@channel, post)
-    %p= post.publish_on
-    %p= post.description.truncate(220)
+    %h4= link_to post.title, channel_post_url(@channel, post)
+    %p= post.publish_on.strftime('%m/%d/%Y')
+    %p= post.description.truncate(280)

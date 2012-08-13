@@ -37,8 +37,8 @@ Channels::Application.routes.draw do
   resources :photos, :only => [:show, :index]
 
   resources :channels do
-    resources :posts, :only => [:index, :show]
-    resources :videos, :only => [:index, :show]
+    resources :posts, :only => [:show]
+    resources :videos, :only => [:show]
     resources :photo_albums do
       resources :photos, :only => [:index]
     end

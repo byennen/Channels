@@ -1,3 +1,5 @@
+- title @post.title
+
 - content_for :open_graph do
   %meta{property: "og:type", content: "article"}
   %meta{property: "og:url", content: post_url(@post)}
@@ -6,7 +8,16 @@
   %meta{property: "og:title", content: @post.title }
   %meta{property: "og:published_time", content: @post.publish_on }
 
-%h2= @post.title
-.date= @post.publish_on.strftime('%m/%d/%Y')
-.post
-  = @post.description
+.background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
+  .content
+    .container
+      = render 'shared/breadcrumb'
+      .row
+        .span
+          .thumbnail{:style => "width:930px; height:562px;"}
+            = image_tag(@post.image.thumb('930x562#').url)
+        .span
+          %h1= @post.title
+          .date= @post.publish_on.strftime('%m/%d/%Y')
+          .post
+            = @post.description

@@ -1,0 +1,24 @@
+:css
+  .breadcrumb {
+    -#background: black;
+  }
+
+
+
+.row
+  .span12
+    %ul.breadcrumb
+      %li= link_to @channel.name, channel_url(@channel)
+      - if params[:controller] == "photos"
+        %span.divider /
+        %li Photo Albums
+        %span.divider /
+        %li= @photo_album.title
+      - if params[:controller] == "posts"
+        %span.divider /
+        %li= @post.feature
+        %span.divider /
+        %li= @post.title
+
+
+

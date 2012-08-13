@@ -14,7 +14,10 @@
     #player
       .projekktor
   #video_info.container
-    %h2= @channel.name + ' - ' + @video.title
+    %h2
+      = link_to @channel.name, channel_url(@channel)
+      %span - 
+      = @video.title
     %ul#video_social_sharing
       %li= link_to "Facebook", "#"
       %li= link_to "Tweet", "#"
@@ -44,7 +47,5 @@
                       %p.description= video.description.truncate(125)
                       %p
                         = link_with_icon("Watch", channel_video_url(@channel, video), "icon-film icon-white", "btn btn-info pjax")
-
-- javascript 'frontend/plugins/html5video'
 
 = render 'shared/video_playlist'

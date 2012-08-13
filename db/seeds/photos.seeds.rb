@@ -5,17 +5,13 @@ after :users, :channels, :photo_albums do
   album_dir = Rails.root.join('db', 'seeds', 'assets', 'images', 'photos', 'brushy_mountain')
 
   puts "***CREATING PHOTOS***"
-  
-  #File.join(album_dir + "*").each do |file| 
-    #file_name = File.basename(file)
-    #puts file_name
-  #end
-  #
 
-  Photo.create(
-    :channel_id => channel, :photo_album => album, :title => "Brushy Mountain", :description => "Demo", :active => true,
-    :image => File.new(File.join(album_dir, 'Tommy Burroughs, Mark Collie and Shawn Camp_web.jpg'))
-  )
+  (1..8).each do |i|
+    Photo.create(
+      :channel_id => channel, :photo_album => album, :title => "Brushy Mountain", :description => "Demo", :active => true,
+      :image => File.new(File.join(album_dir, 'Tommy Burroughs, Mark Collie and Shawn Camp_web.jpg'))
+    )
+  end
 
   puts ""
 end
