@@ -91,9 +91,14 @@ class Player
     $("#waveform img").attr("src", data["waveform"])
 
   playSong: (url) ->
+    status = $('meta[name="user_connected"]').attr('content')
     r = $.getJSON(url, (data) ->
+      if status == "paid member"
+        @url = data["url"]
+      else
+        @url = data["preview_url"]
       $('#jplayer').jPlayer("setMedia", {
-        mp3: data["url"]
+        mp3: url
       }).jPlayer("play")
       player.setClass("Welcome", ".title")
       player.setClass("", ".album")
