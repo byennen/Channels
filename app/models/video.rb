@@ -10,25 +10,24 @@ class Video < ActiveRecord::Base
 
   belongs_to :channel
   
-  has_one :teaser
-  has_one :performance
+  # has_one :teaser
+  # has_one :performance
   has_one :video_preview
   
   attr_accessible :id, :channel_id, :title, :description, :image, :paid, 
-                  :publish_on, :channel, :video, :preview, :teaser_attributes,
-                  :performance_attributes, :video_preview_attributes
+                  :publish_on, :channel, :video, :video_preview_attributes
                   
   image_accessor :image
 
   validate :image_present_for_publish
 
-  accepts_nested_attributes_for :teaser, :performance, :video_preview
+  accepts_nested_attributes_for :video_preview
   
   mount_uploader :video, VideoUploader
 
   scope :published, where('publish_on is not null and publish_on < ?', Time.zone.now)
-  scope :recent, published.order('created_at DESC').limit(4)
-
+  scope :recent, published.order('publish_on DESC').limit(4)
+  
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
 
@@ -36,6 +35,10 @@ class Video < ActiveRecord::Base
   
   def filename
     read_attribute :video
+  end
+  
+  def self.current_episode
+    published.recent.first
   end
   
   def sources

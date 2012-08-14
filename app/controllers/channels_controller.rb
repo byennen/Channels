@@ -12,7 +12,9 @@ class ChannelsController < ApplicationController
     @songs = @channel.songs.all
     @videos = @channel.videos.recent
     @photo_albums = @channel.photo_albums.all
-    @video = @channel.videos.last
+    @video = @channel.videos.current_episode
+    @next_video = Video.where("publish_on > ?", @video.publish_on).order('publish_on DESC').first
+    logger.debug("Next Video is #{@next_video.inspect}")
 
     #for testing in dev right now
     @video_playlist = "0: {src: 'https://altimarc-staging.s3.amazonaws.com/video/video/20/Brushy_Folsom_Episode_with_Hanger.mp4', type: 'video/mp4'},1: {src: 'https://altimarc-staging.s3.amazonaws.com/video/video/20/Brushy_Folsom_Episode_with_Hanger.ogg', type: 'video/ogg'},2: {src: 'https://altimarc-staging.s3.amazonaws.com/video/video/20/Brushy_Folsom_Episode_with_Hanger.webm', type: 'video/webm'}"
