@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
 
   before_validation :add_member_role, :on => :create
   after_validation :process_payment, :if => :stripe_card_token
+  after_create :send_welcome_email
 
   #facebook login
   def self.from_omniauth(auth)
@@ -115,6 +116,12 @@ class User < ActiveRecord::Base
       else
         self.role = 'unpaid_member'
       end
+    end
+  end
+  
+  def send_welcome_email
+    unless new_fb_user?
+      Resque.enqueue(MemberWorker, :send_welcome, {"user_id" => self.id})
     end
   end
   
