@@ -70,6 +70,15 @@
                 window.open('http://aliveatbrushy.altimarc-staging.com/altimarc-for-your-business', '_blank');
               }
             }
+          },
+          {
+            #{raw video_playlist(@video.teaser) }
+            ,
+            config: {
+              title: "#{@video.title}",
+              className: 'postad',
+              disallowSkip: true
+            }
           }
         }
       ]
