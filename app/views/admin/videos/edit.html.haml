@@ -22,14 +22,9 @@
                 = image_tag @video.image.thumb('100x100#').url if @video.image
                 = f.simple_fields_for :video_preview, @preview do |p|
                   = p.input :video, :as => :file, :label => "Preview"
-                = f.simple_fields_for :performance, @performance do |p|
-                  = p.input :video, :as => :file, :label => "Performance"
-                = f.simple_fields_for :teaser, @teaser do |t|
-                  = t.input :video, :as => :file, :label => "Teaser"
                 
                 - publish_date = f.object.publish_on.nil? ? nil : f.object.publish_on.strftime('%m/%d/%Y')                 
                 = f.input :publish_on, :as => :string, :input_html => { :class => 'datepicker_on', :value => publish_date } 
-                = f.input :paid, :as => :boolean
               .form-actions
                 = f.button :submit, :class => 'btn-primary'
                 or
