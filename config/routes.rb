@@ -28,6 +28,7 @@ Channels::Application.routes.draw do
   post "zencoder-callback" => "zencoder_callback#create", :as => "zencoder_callback"
   post "teaser-zencoder-callback" => "zencoder_callback#teaser", :as => "teaser_zencoder_callback"
   post "performance-zencoder-callback" => "zencoder_callback#performance", :as => "performance_zencoder_callback"
+  post "preview-zencoder-callback" => "zencoder_callback#preview", :as => "preview_zencoder_callback"
 
   #channels
   resources :giveaways, :only => [:index]

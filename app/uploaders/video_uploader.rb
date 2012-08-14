@@ -22,7 +22,6 @@ class VideoUploader < CarrierWave::Uploader::Base
   private
 
   def zencode(args)
-    Rails.logger.debug("fog directory is #{fog_directory}")
     zencoder_response = Zencoder::Job.create({:input => "s3://#{fog_directory}/#{store_dir}/#{original_filename}",
                                               :output => [{:base_url => "s3://#{fog_directory}/#{store_dir}",
                                                            :filename => "#{file_prefix}.mp4",
@@ -61,6 +60,8 @@ class VideoUploader < CarrierWave::Uploader::Base
     case model.class.to_s
     when "Video"
       Rails.env.development? ? "http://zencoderfetcher/" : zencoder_callback_url(:protocol => 'http', :host => host, :user => 'admin@altimarc.com', :password => 'please')
+    when "VideoPreview"
+      Rails.env.development? ? "http://zencoderfetcher/" : preview_zencoder_callback_url(:protocol => 'http', :host => host, :user => 'admin@altimarc.com', :password => 'please')      
     when "Teaser"
       Rails.env.development? ? "http://zencoderfetcher/" : teaser_zencoder_callback_url(:protocol => 'http', :host => host, :user => 'admin@altimarc.com', :password => 'please')      
     when "Peformance"

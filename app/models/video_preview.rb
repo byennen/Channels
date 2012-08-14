@@ -1,14 +1,11 @@
-class Teaser < ActiveRecord::Base
+class VideoPreview < ActiveRecord::Base
+
   attr_accessible :processed, :video_id, :video, :zencoder_output_id
   
   belongs_to :video
   
   mount_uploader :video, VideoUploader
 
-  def processed!
-    update_attribute(:processed, true)
-  end
-    
   def filename
     read_attribute :video
   end
@@ -21,5 +18,9 @@ class Teaser < ActiveRecord::Base
     end
     sources
   end
-
+  
+  def processed!
+    update_attribute(:processed, true)
+  end
+  
 end
