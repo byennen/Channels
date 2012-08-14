@@ -44,8 +44,7 @@
           }
         },
         {
-          #{raw video_playlist(@video.sources) if Rails.env.production? || Rails.env.staging?}
-          #{@video_playlist if Rails.env.development?}
+          #{raw video_playlist(@video) }
           ,
           config: {
             title: "#{@video.title}",
