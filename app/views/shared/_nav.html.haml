@@ -24,24 +24,25 @@
                   -#= link_with_icon("Invite", giveaways_url(subdomain: "www"), "icon-plus icon-white", "btn btn-warning pjax")
 
         / /.nav-collapse
-      .span4.pull-right
-        .btn-group.pull-right
-          - if user_signed_in?
-            %a.btn.btn-primary{"data-toggle" => "dropdown", :href => "#"}
-              %i.icon-user.icon-white
-              - if current_user.first_name.present?
-                = current_user.first_name
-              - else
-                Me
-            %a.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              %span.caret
-            %ul.dropdown-menu
-              %li
-                = link_with_icon("Edit account", edit_user_registration_url(subdomain: "www"), "icon-pencil", "pjax")
-              %li
-                = link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", "pjax", :id => "logout")
-          - else
-            - if current_channel
-              = link_with_icon("Login or Register", login_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid), "icon-user", "btn btn-primary pjax")
+      .span4
+        .pull-right
+          .btn-group
+            - if user_signed_in?
+              %a.btn.btn-primary{"data-toggle" => "dropdown", :href => "#"}
+                %i.icon-user.icon-white
+                - if current_user.first_name.present?
+                  = current_user.first_name
+                - else
+                  Me
+              %a.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  = link_with_icon("Edit account", edit_user_registration_url(subdomain: "www"), "icon-pencil", "pjax")
+                %li
+                  = link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", "pjax", :id => "logout")
             - else
-              = link_with_icon("Login or Register", login_url(subdomain: 'www', host: APP_CONFIG['domain']), "icon-user", "btn btn-primary pjax")
+              - if current_channel
+                = link_with_icon("Login or Register", login_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid), "icon-user", "btn btn-primary pjax")
+              - else
+                = link_with_icon("Login or Register", login_url(subdomain: 'www', host: APP_CONFIG['domain']), "icon-user", "btn btn-primary pjax")
