@@ -10,6 +10,7 @@ class Admin::VideosController < Admin::ApplicationController
   def edit
     @teaser = @video.teaser.present? ? @video.teaser : @video.build_teaser
     @performance = @video.performance.nil? ? Performance.new : @video.performance
+    @preview = @video.video_preview.nil? ? VideoPreview.new : @video.video_preview    
   end
 
   def create

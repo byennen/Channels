@@ -20,6 +20,8 @@
                 = f.input :description, :input_html => {:class => "input-xlarge", :rows => 5, :cols => 300, :style => "width: 400px;"}
                 = f.input :image, :as => :file, :label => "Image"
                 = image_tag @video.image.thumb('100x100#').url if @video.image
+                = f.simple_fields_for :video_preview, @preview do |p|
+                  = p.input :video, :as => :file, :label => "Preview"
                 = f.simple_fields_for :performance, @performance do |p|
                   = p.input :video, :as => :file, :label => "Performance"
                 = f.simple_fields_for :teaser, @teaser do |t|
