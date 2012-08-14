@@ -21,4 +21,5 @@ class Teaser < ActiveRecord::Base
     end
     sources
   end
+
 end
