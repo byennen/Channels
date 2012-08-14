@@ -92,24 +92,27 @@ class Player
 
   playSong: (url) ->
     status = $('meta[name="user_connected"]').attr('content')
-    r = $.getJSON(url, (data) ->
-      if status == "paid member"
-        url = data["url"]
-      else
-        url = data["preview_url"]
-      $('#jplayer').jPlayer("setMedia", {
-        mp3: url
-      }).jPlayer("play")
-      player.setClass("Welcome", ".title")
-      player.setClass("", ".album")
-      @status = true
-      @intro = false
-      $("#cover-art").addClass("paused").removeClass("playing")
-      player.updateInfo(data)
-      $.post("/songs/" + data["id"] + "/played", (data) ->
-        played = data
+    if typeof(status) == "undefined"
+      $('#first_time_vistor').modal('show')
+    else
+      r = $.getJSON(url, (data) ->
+        if status == "paid member"
+          url = data["url"]
+        else
+          url = data["preview_url"]
+        $('#jplayer').jPlayer("setMedia", {
+          mp3: url
+        }).jPlayer("play")
+        player.setClass("Welcome", ".title")
+        player.setClass("", ".album")
+        @status = true
+        @intro = false
+        $("#cover-art").addClass("paused").removeClass("playing")
+        player.updateInfo(data)
+        $.post("/songs/" + data["id"] + "/played", (data) ->
+          played = data
+        )
       )
-    )
 
 
 window.Player = Player
