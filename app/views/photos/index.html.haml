@@ -24,7 +24,7 @@
             .span.thumbnail
               = link_to image_tag(photo.image.thumb('280x180#').url), photo.image.url, :rel => 'gallery', :title => photo.title, 'data-content' => photo.description
               .caption
-                %h5= photo.title
+                %h5= photo.title.truncate(30)
 
 #modal-gallery.modal.modal-gallery.hide.fade
   .modal-header

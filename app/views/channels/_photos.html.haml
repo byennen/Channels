@@ -4,8 +4,8 @@
       - if user_signed_in? && current_user.unpaid_member?
         = link_to image_tag(album.image.thumb('280x180#').url), 'javascript:;', :title => album.title, :class => 'unpaid_member_photos'
         .caption
-          %h5= album.title
+          %h5= album.title.truncate(30)
       - else
         = link_to image_tag(album.image.thumb('280x180#').url), photo_album_photos_url(album), :title => album.title
         .caption
-          %h5= album.title
+          %h5= album.title.truncate(30)
