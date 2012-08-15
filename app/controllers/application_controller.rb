@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_channel
   
+  #delete after launch
+  before_filter :verifies_staging_user
+
   #password for staging
   if (ENV["RAILS_ENV"] == "staging")
    before_filter :verifies_staging_user
