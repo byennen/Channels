@@ -1,4 +1,4 @@
-.container
+.container#flash_message
   - flash.each do |type, message|
     %div.alert.fade.in{ "data-alert" => "alert", :class => "alert-#{twitterized_type(type)}" }
       %a.close{"data-dismiss" => "alert"} ×
