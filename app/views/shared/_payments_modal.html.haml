@@ -18,7 +18,10 @@
           %noscript JavaScript is not enabled and is required for this form. First enable it in your web browser settings.
           .payment.span
             .control-group.plans
-              = f.input :plan, :collection => ["Basic", "Plus", "Premium"]
+              = f.input :plan, :collection => [["$6.95 - no gifts", "695"],
+                                               ["$11.95 - cd, t-shirt, one month free", "1195"],
+                                               ["$19.95 - t-shirt vinyle, one month free", "1995"],
+                                               ["$24.95 - t-shirt, vinyl, cd, one month free", "2495"]]
           
             .control-group.credit_card
               %label.control-label{:for => "credit_card"} Credit Card

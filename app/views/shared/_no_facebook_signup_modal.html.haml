@@ -4,8 +4,7 @@
     %h2 Sign up
   .modal-body
     .row
-      .span#form
-        %p Sign up form info here...
+      .span7#form
         = simple_form_for(User.new, :as => "user", :url => registration_path("user"), :html => {:class => 'form-horizontal'}) do |f|
           = f.error_notification
 
@@ -15,7 +14,7 @@
           = f.input :password, :required => true
           = f.input :password_confirmation, :hint => '6 characters or longer.', :required => true
 
-          .modal-footer
+          .form-actions{:style => "background: none;"}
             %a.btn.btn-large{"data-dismiss" => "modal"} Cancel
             or
             = f.submit "Create my account", :class => 'btn btn-success btn-large', :id => 'create-my-account'
