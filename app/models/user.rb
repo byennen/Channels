@@ -100,9 +100,30 @@ class User < ActiveRecord::Base
   private
 
   def process_payment
-    customer = Stripe::Customer.create(:email => email, :plan => plan.downcase, :card => stripe_card_token)
+    p = plan == "695" ? "basic" : "plus"
+    logger.debug("p is #{p}")
+    customer = Stripe::Customer.create(:email => email, :plan => p, :card => stripe_card_token)
     self.stripe_customer_token = customer.id
-    self.stripe_plan = plan.downcase
+    self.stripe_plan = p
+    if plan != "695"
+      case plan
+      when "1195"
+        amount = 1195
+        description = "cd, t-shirt, one month free"
+      when "1995"
+        amount = 1995
+        description = "t-shirt vinyle, one free month"
+      when "2495"
+        amount = 2495
+        description = "t-shirt, vinyl, cd, one free month"
+      end
+      Stripe::Charge.create(
+          :amount => amount,
+          :currency => "usd",
+          :customer => customer.id,
+          :description => "Charge for #{email} - #{description}"
+      )
+    end
   rescue Stripe::InvalidRequestError => e
     logger.error "Stripe error while creating customer: #{e.message}"
     errors.add :base, "There was a problem with your credit card."
