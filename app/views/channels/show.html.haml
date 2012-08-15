@@ -1,14 +1,15 @@
 - title @channel.name
 
-- content_for :open_graph do
-  %meta{property: "og:title", content: @video.title}
-  %meta{property: "og:type", content: "video.other"}
-  %meta{property: "og:url",  content: video_url(@video)}
-  %meta{property: "og:image",content: "http://46qa.localtunnel.com/#{@video.image.url}"}
-  %meta{property: "og:site_name", content: "Altimarc"}
-  %meta{property: "og:description", content: @video.description}
+- if @video.present?
+  - content_for :open_graph do
+    %meta{property: "og:title", content: @video.title}
+    %meta{property: "og:type", content: "video.other"}
+    %meta{property: "og:url",  content: video_url(@video)}
+    %meta{property: "og:image",content: "http://46qa.localtunnel.com/#{@video.image.url}"}
+    %meta{property: "og:site_name", content: "Altimarc"}
+    %meta{property: "og:description", content: @video.description}
 
-= render 'shared/videoplayer'
+  = render 'shared/videoplayer'
 
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
   .content
@@ -64,7 +65,8 @@
             #description.span
               %p= @channel.description
 
-= render 'shared/video_playlist'
+- if @video.present?
+  = render 'shared/video_playlist'
 
 -#twitter
 :javascript
