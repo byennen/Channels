@@ -101,7 +101,6 @@ class User < ActiveRecord::Base
 
   def process_payment
     p = plan == "695" ? "basic" : "plus"
-    logger.debug("p is #{p}")
     customer = Stripe::Customer.create(:email => email, :plan => p, :card => stripe_card_token)
     self.stripe_customer_token = customer.id
     self.stripe_plan = p

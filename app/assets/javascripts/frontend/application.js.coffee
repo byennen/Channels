@@ -32,6 +32,7 @@ $(document).on "ready pjax:success", ->
 
   $('.play').click ->
     window.player.playSong($(this).attr("href"))
+    $("#player_control_image").addClass("playing").removeClass("paused")
     return false
   
   #facebook sdk
