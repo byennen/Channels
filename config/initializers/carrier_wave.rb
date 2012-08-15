@@ -6,4 +6,7 @@ CarrierWave.configure do |config|
      :aws_secret_access_key  => APP_CONFIG['aws_secret_access_key'],
    }
    config.fog_directory  = APP_CONFIG['aws_bucket']
+   if Rails.env.production?
+     config.fog_host = 'assets.altimarc.com'
+   end
 end
