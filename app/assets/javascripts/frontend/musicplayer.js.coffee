@@ -20,10 +20,11 @@ class Player
         @status = event.jPlayer.status.paused
     })
     el = $("#player")
-    el.find("#cover-art").click(@play)
+    el.find("#player_control_image").click(@play)
 
   playEnded: (event) ->
     echo "I stopped playing"
+    $("#player_control_image").removeClass("playing")
     @status = false
     @playNext()
 
@@ -77,11 +78,11 @@ class Player
   play: ->
     if @status
       $("#jplayer").jPlayer("play")
-      $("#cover-art").addClass("playing").removeClass("paused")
+      $("#player_control_image").addClass("playing").removeClass("paused")
       @status = false
     else
       $("#jplayer").jPlayer("pause")
-      $("#cover-art").addClass("paused").removeClass("playing")
+      $("#player_control_image").addClass("paused").removeClass("playing")
       @status = true
 
   updateInfo: (data) ->
