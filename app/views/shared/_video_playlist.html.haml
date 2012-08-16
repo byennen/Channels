@@ -63,15 +63,16 @@
             plugin_controlbar: {
               showOnStart: true,
               disableFade: true
-          },
-          plugin_display: {
-            staticControls: false,
-              displayPlayingClick: function() {
-                window.open('http://aliveatbrushy.altimarc-staging.com/altimarc-for-your-business', '_blank');
-              }
+            },
+            plugin_display: {
+              staticControls: false,
+                displayPlayingClick: function() {
+                  window.open('http://aliveatbrushy.altimarc-staging.com/altimarc-for-your-business', '_blank');
+                }
             }
-          }#{raw include_next_episode_preview(current_user, @next_video)}
+          }
         }
+        #{raw include_next_episode_preview(current_user, @next_video)}
       ]
     }, function(player) {
       player.addListener('start', set_ads)
