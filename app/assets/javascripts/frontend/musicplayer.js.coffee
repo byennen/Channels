@@ -1,5 +1,17 @@
 echo = console.log
 
+$(document).on "ready pjax:success", ->
+  $('#player_control_image').hide()
+
+  window.player = new Player(el: "#player .container")
+
+  $('.play').click ->
+    window.player.playSong($(this).attr("href"))
+    $('#player_control_image').show()
+    $("#player_control_image").addClass("playing").removeClass("paused")
+    return false
+
+
 class Player
 
   status: false
