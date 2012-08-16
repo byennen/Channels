@@ -22,9 +22,6 @@ $(document).on "ready pjax:success", ->
   $('.content a').pjax('[data-pjax-container]')
   $('.pjax').pjax('[data-pjax-container]')
 
-  #musicplayer
-  window.player = new Player(el: "#player .container")
-
   #disable pjax
   $(".disable-pjax").click ->
     return false
