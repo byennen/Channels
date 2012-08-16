@@ -34,6 +34,7 @@ class StripeHandler
              (data) ->
                console.log("success")
                $('.payment_form').hide()
+               $('.payment_header').hide()
                $('.thank_you').show()
       )
     else

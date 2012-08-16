@@ -7,11 +7,11 @@
   .modal-body{:style => 'overflow-x: hidden;'}
     .thank_you{:style => "display: none;"}
       %h3 Thanks for paying. Your hard earned money goes towards making Altimarc an even better product.
-    .row.payment_form
+    .row.payment_header
       .span
         %h4 Paid Members gets access to everything.
         %br
-    .row
+    .row.payment_form
       .span
         = simple_form_for(current_user, :url => subscribe_user_path, :html => {:class => 'form-horizontal', :id => 'subscribe_user'}) do |f|
           = f.error_notification
