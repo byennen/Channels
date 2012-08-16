@@ -7,6 +7,6 @@ CarrierWave.configure do |config|
    }
    config.fog_directory  = APP_CONFIG['aws_bucket']
    if Rails.env.production?
-     config.fog_host = 'assets.altimarc.com'
+     config.fog_host = 'http://assets.altimarc.com'
    end
 end
