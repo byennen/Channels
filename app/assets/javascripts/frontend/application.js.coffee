@@ -27,14 +27,6 @@ $(document).on "ready pjax:success", ->
     return false
     console.log "disable pjax"
 
-  #musicplayer
-  window.player = new Player(el: "#player .container")
-
-  $('.play').click ->
-    window.player.playSong($(this).attr("href"))
-    $("#player_control_image").addClass("playing").removeClass("paused")
-    return false
-  
   #facebook sdk
   ((d, s, id) ->
     js = undefined
