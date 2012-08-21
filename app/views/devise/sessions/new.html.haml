@@ -1,16 +1,16 @@
 - title "Login"
 
 :css
-  #signup_box {
+  #signup_box, #create_password {
     margin: 160px auto 0; 
     float: none;
   }
-  #signup_box p, #here_before p {
+  #signup_box p, #here_before p, #create_password p {
     text-align: center;
     color: #575B61;
     margin-bottom: 40px;
   }
-  #signup_box img.logo, #here_before img.logo {
+  #signup_box img.logo, #here_before img.logo, #create_password img.logo {
     padding: 30px 0 5px 28px;
   }
   #signup_box #facebook {
@@ -137,16 +137,22 @@
       .fb-facepile{"data-href" => "http://facebook.com/altimarc", "data-max-rows" => "1", "data-width" => "448", "data-colorscheme" => "dark"}
 
 - else
-  %h2 Create Password
-  = form_for(current_user, :url => create_password_path) do |f|
-    %fieldset
-      .clearfix
-        = f.label :password
-        .input
-          = f.password_field :password
-    %fieldset
-      .clearfix
-        = f.label :password_confirmation
-        .input
-          = f.password_field :password_confirmation
-    %div= f.submit "Create Password"
+  .row
+    .span6#create_password
+      .overlay
+        .overlay-inside
+          = image_tag('logo-login.png', :class => 'logo')
+          %p Entertainment and once in a life time opportunities!
+          %h2 Create Password
+          = form_for(current_user, :url => create_password_path) do |f|
+            %fieldset
+              .clearfix
+                = f.label :password
+                .input
+                  = f.password_field :password
+            %fieldset
+              .clearfix
+                = f.label :password_confirmation
+                .input
+                  = f.password_field :password_confirmation
+            %div= f.submit "Create Password"

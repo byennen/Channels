@@ -32,12 +32,12 @@
     .navbar.navbar-fixed-top
       = render 'shared/musicplayer'
       #ribbon
-      - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations"
+      - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" && params[:action] == "create" 
         = render 'shared/nav'
     .data{"data-pjax-container" => ""}
       - if params[:controller] == "channels" && params[:action] == "show" || params[:controller] == "videos" || params[:controller] == "photos" || params[:controller] == "posts"
         = yield
-      - elsif params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations"
+      - elsif params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" && params[:action] == "create" 
         = yield
         -# TODO: each channel will have a custom background
         :javascript
@@ -52,5 +52,5 @@
       -# modals need to be inside of the data class
       = render 'layouts/frontend/modals'
 
-    - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations"
+    - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" && params[:action] == "create" 
       = render 'layouts/frontend/footer'
