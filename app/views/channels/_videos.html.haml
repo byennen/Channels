@@ -1,14 +1,30 @@
-#recent_videos.carousel.slide
+#most_played_video.carousel.slide
   / Carousel items
   .carousel-inner
-    .item
+    .active.item
       %ul.thumbnails
-        - @videos.each do |video|
+        - (1..4).each do |i|
           %li.span3
             .thumbnail
-              = image_tag(video.image.thumb('260x180#').url)
-              .caption
-                %h5= video.title.truncate(30)
-                %p.description= video.description.truncate(125)
-                %p
-                  = link_with_icon("Watch", video_url(video), "icon-film icon-white", "btn btn-info")
+              %img{:alt => "", :src => "http://placehold.it/260x180"}
+                .caption
+                  %h5 Video title
+                  %p Description truncated after so many characters. Probably 80 characters, but whatever you think looks best. Thanks.
+                  %p
+                    = link_with_icon("Watch", "#", "icon-film icon-white", "btn btn-info pjax")
+
+    .item
+      %ul.thumbnails
+        - (1..4).each do |i|
+          %li.span3
+            .thumbnail
+              %img{:alt => "", :src => "http://placehold.it/260x180"}
+                .caption
+                  %h5 Video title
+                  %p Description truncated after so many characters. Probably 80 characters, but whatever you think looks best. Thanks.
+                  %p                      
+                    = link_with_icon("Watch", "#", "icon-film icon-white", "btn btn-info pjax")
+
+  / Carousel nav
+  %a.carousel-control.left{"data-slide" => "prev", :href => "#most_played_video"} ‹
+  %a.carousel-control.right{"data-slide" => "next", :href => "#most_played_video"} ›
