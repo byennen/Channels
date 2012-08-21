@@ -1,0 +1,9 @@
+$(document).on "ready pjax:success", ->
+  $("#here_before").hide()
+  $("#here_before_link").click ->
+    $("#signup_box").hide()
+    $("#here_before").fadeIn()
+
+  $("#with_facebook_link").click ->
+    $("#here_before").hide()
+    $("#signup_box").fadeIn()

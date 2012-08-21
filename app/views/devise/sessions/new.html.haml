@@ -1,90 +1,9 @@
 - title "Login"
 
-:css
-  #signup_box, #create_password {
-    margin: 160px auto 0; 
-    float: none;
-  }
-  #signup_box p, #here_before p, #create_password p {
-    text-align: center;
-    color: #575B61;
-    margin-bottom: 40px;
-  }
-  #signup_box img.logo, #here_before img.logo, #create_password img.logo {
-    padding: 30px 0 5px 28px;
-  }
-  #create_password h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  #signup_box #facebook {
-    float: none;
-    margin: 0 auto 8px;
-    width: 209px;
-  }
-  #signup_box .btn-facebook {
-    background: #455C8C url('../../../assets/fb-icon.png') no-repeat 2px 4px;
-    text-shadow: 1px 1px 1px #304371;
-    border: 1px solid #425681;
-    width: 193px;
-    color: white;
-    font-weight: bold;
-    font-size: 14px;
-    padding: 10px 10px 10px 40px;
-    -moz-border-radius: 3px; 
-    border-radius: 3px;
-  }
-  #other_links {
-    margin: 0 auto;
-    float: none;
-  }
-  #other_links a {
-    font-weight: bold;
-  }
-  #other_links p {
-    margin: 20px 0 0;
-  }
-  #here_before {
-    margin: 160px auto 0; 
-    float: none;
-  }
-  #here_before #form {
-    margin: 0 auto;
-    float: none;
-    width: 318px;
-    padding-left: 20px;
-  }
-  #facebook_photos {
-    margin: 10px auto 0; 
-    float: none;
-    padding-left: 20px;
-  }
-  .overlay {
-    background: rgba(255, 255, 255, .3); 
-    padding: 6px; 
-    -moz-border-radius: 5px; 
-    border-radius: 5px;
-  }
-  .overlay-inside {
-    background: white;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    padding-bottom: 50px;    
-  }
+- stylesheet 'frontend/sessions'
 
-:javascript
-  $(document).on("ready pjax:success", function() {
-    $("#here_before").hide();
-    $("#here_before_link").click(function() {
-      $("#signup_box").hide();
-      $("#here_before").fadeIn();
-    });
-    $("#with_facebook_link").click(function() {
-      $("#here_before").hide();
-      $("#signup_box").fadeIn();
-    });
-  });
-  
+- javascript 'frontend/sessions'
+
 - if params[:action] == 'new' || !current_user
   .row
     .span6#signup_box
@@ -118,14 +37,17 @@
           %p Entertainment and once in a life time opportunities!
           .row
             .span#form
-              = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'well'}) do |f|
+              = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'well'}) do |f|
                 = f.email_field :email, :placeholder => "Email", :class => "input-xlarge focused", :id => "focusedInput"
                 = f.password_field :password, :placeholder => "Password", :class => "input-xlarge"
-                - if devise_mapping.rememberable?
-                  %label.checkbox
-                    Remember me
-                    = f.check_box :remember_me
-                = f.button "Sign In", :class => 'btn btn-primary'
+                .control-group
+                  .controls
+                    - if devise_mapping.rememberable?
+                      %label.checkbox
+                        Remember me
+                        = f.check_box :remember_me
+                    = f.submit "Sign In", :class => 'btn btn-success'
+
           .row
             .span#other_links
               %p
