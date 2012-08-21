@@ -14,6 +14,7 @@
 #= require frontend/musicplayer
 #= require frontend/channels
 #= require frontend/welcome
+#= require frontend/sessions
 
 
 $(document).on "ready pjax:success", ->

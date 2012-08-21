@@ -1,49 +1,5 @@
 - title "Sign up with Email"
 
-:css
-  #facebook_photos {
-    margin: 10px auto 0; 
-    float: none;
-    padding-left: 20px;
-  }
-  #with_email {
-    margin: 0 auto 0; 
-    float: none;
-  }
-  #with_email p {
-    text-align: center;
-    color: #575B61;
-    margin-bottom: 40px;
-  }
-  #with_email img.logo {
-    padding: 30px 0 5px 28px;
-  }
-  #with_email #create-my-account {
-    margin-left: 135px;
-  }
-  #other_links {
-    margin: 0 auto;
-    float: none;
-  }
-  #other_links a {
-    font-weight: bold;
-  }
-  #other_links p {
-    margin: 20px 0 0;
-  }
-  .overlay {
-    background: rgba(255, 255, 255, .3); 
-    padding: 6px; 
-    -moz-border-radius: 5px; 
-    border-radius: 5px;
-  }
-  .overlay-inside {
-    background: white;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    padding-bottom: 50px;    
-  }
-
 .row
   .span6#with_email
     .overlay
@@ -52,16 +8,14 @@
         %p Entertainment and once in a life time opportunities!
         .row
           .span#form
-            = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-horizontal'}) do |f|
+            = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'well'}) do |f|
               = f.error_notification
-
-              = f.input :first_name, :class => "input-xlarge"
-              = f.input :last_name
-              = f.input :email, :required => true
-              = f.input :password, :required => true
-              = f.input :password_confirmation, :hint => '6 characters or longer.', :required => true
-
-              = f.submit "Create my account", :class => 'btn btn-success btn-large', :id => 'create-my-account'
+              = f.input :first_name, :class => "input-xlarge", :placeholder => "First Name", :label => false
+              = f.input :last_name, :placeholder => "Last Name", :label => false, :class => "input-xlarge"
+              = f.input :email, :required => true, :placeholder => "Email", :label => false, :class => "input-xlarge"
+              = f.input :password, :required => true, :placeholder => "Password", :label => false, :class => "input-xlarge"
+              = f.input :password_confirmation, :hint => '6 characters or longer.', :required => true, :placeholder => "Password Confirmation", :label => false, :class => "input-xlarge"
+              = f.submit "Create my account", :class => 'btn btn-success', :id => 'create-my-account'
 
         .row
           .span#other_links
@@ -69,7 +23,6 @@
               = link_to "Forgot your password?", new_user_password_url, :class => "pjax"
             %p
               = link_to "Sign In with Facebook", login_url, :id => "with_facebook_link"
-
 
 .row
   .span6#facebook_photos
