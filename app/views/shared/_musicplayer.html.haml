@@ -1,17 +1,15 @@
-#player
-  .container
-    #controls
-      %a#player_previous
-        %span
-      %a#player_play
-        %span
-      %a#player_next
-        %span
-    #cover-art
-      = link_to image_tag("http://geo-media.beatport.com/items/imageCatalog/4000000/900000/20000/5000/400/10/4925417.jpg"), "#link-to-album", :title => "title here"
-    #track-meta-data
-      = link_to "Track name here", "#link-to-album", :title => "title here", :class => "trackName"
-      = link_to "Artist name here", "#link-to-artist", :title => "artist name here", :class => "artist"
-    %audio#track{:autobuffer => "yes", :controls => "controls"}
-      %source{:src => "/assets/song.mp3", :type => "audio/mpeg"}
-      %embed{:src => "/assets/song.mp3"}
+.container
+  .row
+    #player
+      #player_control_image
+      #inside_player
+        #cover-art.span
+          = link_to image_tag("http://placehold.it/70x70"), "javascript:;", :title => "title here"
+        #track-meta-data
+          %ul
+            %li= link_to "Track name here", "#link-to-album", :title => "title here", :class => "trackName"
+            %li.divider /
+            %li= link_to "Artist name here", "#link-to-artist", :title => "artist name here", :class => "artist"
+        #waveform
+          -#= image_tag('waveform.png')
+        #jplayer.jp-player

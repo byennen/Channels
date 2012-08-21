@@ -1,0 +1,33 @@
+- title @post.title
+
+- content_for :open_graph do
+  %meta{property: "og:type", content: "article"}
+  %meta{property: "og:url", content: post_url(@post)}
+  %meta{property: "og:site_name", content: 'Altimarc' }
+  %meta{property: "og:image", content: @post.image.url(:host => "http://#{request.host}")  }
+  %meta{property: "og:title", content: @post.title }
+  %meta{property: "og:published_time", content: @post.publish_on }
+
+:css
+  #posts .thumbnail {
+    width: 930px;
+    height: 552px;
+    margin: 0 0 20px;
+  }
+  #posts .date {
+    margin: 0 0 20px;
+  }
+
+.background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
+  .content
+    .container
+      = render 'shared/breadcrumb'
+      #posts.row
+        .span
+          .thumbnail
+            = image_tag(@post.image.thumb('930x552#n').url)
+        .span
+          %h1= @post.title
+          .date= @post.publish_on.strftime('%m/%d/%Y')
+          .post
+            = @post.description

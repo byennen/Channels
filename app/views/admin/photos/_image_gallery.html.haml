@@ -1,0 +1,65 @@
+/ Content start
+.row-fluid
+  .span12
+    .box.grad_colour_dark_blue
+      %h2.box_head.round_top Image Gallery
+      %a.settings.box_button_3{:href => "#", :title => "config"}  
+      %a.toggle.box_button_2{:href => "#", :title => "toggle"}  
+      %a.destroy.box_button_1{:href => "#", :title => "close"}  
+      .toggle_container
+        .block.box_content.round_bottom.padding_20
+          %header
+            %h1 Image Gallery
+            %blockquote
+              %p It features mouse and keyboard navigation, transition effects, fullscreen mode and slideshow functionality.
+            %p
+              %button#start-slideshow.ui-button-success.btn.btn-large.btn-success{"data-selector" => "#gallery a[rel=gallery]", "data-slideshow" => "5000", "data-target" => "#modal-gallery"} Start Slideshow
+              %button#toggle-fullscreen.ui-button-primary.btn.btn-large.btn-primary{"data-toggle" => "button"} Toggle Fullscreen
+          %hr
+            #gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
+              - @photos.each do |photo|
+                = link_to image_tag(photo.image.thumb('100x100#').url), photo.image.url, :rel => "gallery", :id => "photo-#{@channel.id}-#{@photo_album.id}-#{photo.id}", :title => photo.title if photo.image_uid
+            %hr
+              %br
+                / modal-gallery is the modal dialog used for the image gallery
+                #modal-gallery.modal.modal-gallery.hide.fade
+                  .modal-header
+                    %a.close{"data-dismiss" => "modal"} ×
+                    %h3.modal-title
+                  .modal-body
+                    .modal-image
+                  .modal-footer
+                    %a.btn.btn-primary.modal-next
+                      Next
+                      %i.icon-arrow-right.icon-white
+                    %a.btn.btn-info.modal-prev
+                      %i.icon-arrow-left.icon-white
+                      Previous
+                    %a.btn.btn-success.modal-play.modal-slideshow{"data-slideshow" => "5000"}
+                      %i.icon-play.icon-white
+                      Slideshow
+                    %a.btn.modal-download{:target => "_blank"}
+                      %i.icon-download
+                      Download
+                    %a.btn.btn-warning.modal-prev.pull-left.edit-photo{:href => edit_admin_channel_photo_album_photo_path(@channel, @photo_album, "1")}
+                      %i.icon-edit.icon-white
+                      Edit
+                    %a.btn.btn-danger.modal-prev.pull-left.delete-photo{:href => "javascript:;", :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
+                      %i.icon-trash.icon-white
+                      Delete
+                      
+/ Image Gallery
+%script{:src => "http://blueimp.github.com/cdn/js/bootstrap.min.js"}
+%script{:src => "http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"}
+%script{:src => "http://blueimp.github.com/Bootstrap-Image-Gallery/js/bootstrap-image-gallery.min.js"}
+
+- javascript 'admin/plugins/altimarc.gallery'
+:javascript
+  $('#modal-gallery').on('display', function () {
+      var modalData = $(this).data('modal');
+      link = modalData.$links[modalData.options.index]
+      link_id = $(link).attr("id").split('-')
+      photo_url = "/admin/channels/" + link_id[1] + "/photo_albums/" + link_id[2] + "/photos/" + link_id[3];
+      $('.edit-photo').attr("href", photo_url + "/edit");
+      $('.delete-photo').attr("href", photo_url);
+  });

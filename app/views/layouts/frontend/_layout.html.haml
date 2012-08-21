@@ -1,0 +1,13 @@
+.navbar.navbar-fixed-top
+  = render 'shared/musicplayer'
+  #ribbon
+  = render 'shared/nav'
+.background-wrapper{"data-pjax-container" => ""}
+  .content
+    .container
+      .test
+        = yield
+
+  = render 'layouts/frontend/first_time_visitor'
+
+  = render 'layouts/frontend/footer'

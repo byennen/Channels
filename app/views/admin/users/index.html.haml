@@ -1,0 +1,27 @@
+.row-fluid
+  .span12
+    #box_3.box.grad_colour_dark_blue
+      %h2.box_head.round_top Users
+      %a.settings.box_button_3{:href => "#", :title => "config"}  
+      %a.toggle.box_button_2{:href => "#", :title => "toggle"}  
+      %a.destroy.box_button_1{:href => "#", :title => "close"}  
+      .toggle_container
+        .block.box_content.round_bottom.padding_20
+          %table{:class=>"table table-striped"}
+            %thead
+              %tr
+                %th= t("activerecord.attributes.admin_user.email", :default => t("activerecord.labels.email", :default => "Email"))
+                %th Last Sign in at
+                %th Sign in count
+                %th Role
+                %th
+            %tbody
+              - @users.each do |user|
+                = render user
+
+          .form-actions
+            %a.btn.btn-primary{:href => new_admin_user_path}
+              %i.icon-plus-sign.icon-white
+              New user
+            or
+            = link_to 'Go Back', url_for(:back), :class => 'btn'

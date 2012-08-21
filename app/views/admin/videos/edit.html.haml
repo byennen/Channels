@@ -1,0 +1,31 @@
+:javascript
+  $(document).ready(function(){
+  	// Jquery UI Datepicker
+  	$(".datepicker_on").datepicker();	
+  });
+.row-fluid
+  .span12
+    .box.grad_colour_dark_blue
+      %h2.box_head.round_top Edit Video
+      %a.settings.box_button_3{:href => "#", :title => "config"}  
+      %a.toggle.box_button_2{:href => "#", :title => "toggle"}  
+      %a.destroy.box_button_1{:href => "#", :title => "close"}  
+      .toggle_container
+        .block.box_content.round_bottom.padding_20
+          %header
+            %h1 Edit Video
+            = simple_form_for [:admin, @channel, @video], :html => {:multipart => true, :class => 'form-horizontal'} do |f|
+              .form-inputs
+                = f.input :title, :input_html => {:class => "input-xlarge"}
+                = f.input :description, :input_html => {:class => "input-xlarge", :rows => 5, :cols => 300, :style => "width: 400px;"}
+                = f.input :image, :as => :file, :label => "Image"
+                = image_tag @video.image.thumb('100x100#').url if @video.image
+                = f.simple_fields_for :video_preview, @preview do |p|
+                  = p.input :video, :as => :file, :label => "Preview"
+                
+                - publish_date = f.object.publish_on.nil? ? nil : f.object.publish_on.strftime('%m/%d/%Y')                 
+                = f.input :publish_on, :as => :string, :input_html => { :class => 'datepicker_on', :value => publish_date } 
+              .form-actions
+                = f.button :submit, :class => 'btn-primary'
+                or
+                = link_to 'Go Back', url_for(:back), :class => 'btn'

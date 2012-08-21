@@ -1,58 +1,78 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rake'
+gem 'rails', '3.2.5'
+gem 'pg'
 
 gem 'jquery-rails'
-gem 'haml', '>= 3.1.4'
-gem 'devise', '>= 2.0.0'
+gem 'haml', '>= 3.1.6'
 gem 'rack-pjax'
 gem 'mail'
 gem 'twitter-bootstrap-rails'
-gem 'spine-rails'
-gem 'newrelic_rpm'
 gem 'thin'
+gem 'simple_form'
+gem 'stripe'
+gem 'money', :git => 'https://github.com/collectiveidea/money.git'
+gem 'seedbank'
+gem 'uuid'
+gem 'acts_as_list'
+
+#login
+gem 'devise', '2.0.4'
+gem 'cancan'
+gem 'omniauth-facebook'
+
+# social
+gem 'koala'
+
+#deploy
+gem 'capistrano'
+gem 'capistrano-resque'
+
+#redis
+gem 'resque'
+
+# slug
+gem 'friendly_id'
 
 #uploads
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.11'
 gem 'fog'
+gem 'aws-s3', :require => 'aws/s3'
+gem 'carrierwave'
+gem 'zencoder'
+gem 'waveform'
+gem 'chunky_png'
 
-gem "haml", ">= 3.1.4"
-gem "devise", ">= 2.0.0"
-gem 'carrierwave', :git => "git://github.com/jnicklas/carrierwave.git", :branch => "master"
-gem 'aws-sdk'
-gem "rack-pjax"
-gem 'spine-rails'
-gem "mail"
-gem "twitter-bootstrap-rails"
+#data-nerds
+gem 'airbrake'
+gem 'newrelic_rpm'
+gem 'rack-mini-profiler'
+
+group :test do
+  gem 'rspec-rails', '>= 2.8.1'
+  gem 'cucumber-rails', '>= 1.2.1', :require => false
+  gem 'factory_girl_rails', '~> 3.0'
+  gem 'capybara', '>= 1.1.2'
+  gem 'database_cleaner', '>= 0.7.1'
+  gem 'launchy', '>= 2.0.5'
+end
 
 group :assets do
-  #TODO: remove sass -Lance
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails',   '~> 3.2.5'
+  gem 'coffee-rails', '~> 3.2'
+  gem 'uglifier', '>= 1.0'
 end
 
 group :development do
-  #TODO: switch to postgres in the future -Lance
-  gem 'mysql'
-  gem 'heroku'
-  gem "heroku"
   gem 'pry-rails'
+  gem 'localtunnel'
+  gem 'guard'
+  gem 'guard-bundler'
+  gem 'guard-rails'
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
+  gem 'guard-livereload'
+  gem 'checker'
 end
-
-group :test do
-  gem "rspec-rails", ">= 2.8.1"
-  gem "factory_girl_rails", ">= 1.6.0"
-  gem "cucumber-rails", ">= 1.2.1"
-  gem "capybara", ">= 1.1.2"
-  gem "database_cleaner", ">= 0.7.1"
-  gem "launchy", ">= 2.0.5"
-end
-
-group :production do
-  gem 'pg'
-end
-
-
-

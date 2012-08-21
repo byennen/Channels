@@ -1,59 +1,23 @@
 h1. Channels
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+# Getting Started:
 
-h2. More Information
+* Install gems
+  bundle install
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+* Migrate database
+  bundle exec rake db:migrate
 
-h2. Required Gems
+* rake db:reset or rake db:seed
 
-This application requires this gem:
+h2. S3 setup
+* Make sure the following development environment variables are set /config/initializers/s3.rb:
+  ENV['S3_UPLOADER_BUCKET']
+  ENV['S3_UPLOADER_ACCESS_KEY']
+  ENV['S3_UPLOADER_SECRET_ACCESS_KEY']
+    
+* Set your server host in vendor/assets/javascripts/s3_uploader/s3_uploader.js:
+  var host = 'http://yourdomain.com';
 
-* "rails":http://rubygems.org/gems/rails
-
-h2. Dependencies
-
-To use this application, you will need:
-
-* The Ruby language (version 1.8.7 or 1.9.2)
-* Rails (version 3.0.4 or newer)
-
-h2. Installing the Application
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. Getting Started
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. Documentation and Support
-
-This is the only documentation.
-
-h4. Issues
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. Similar Projects
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. Contributing
-
-If you make improvements to this application, please share with others.
-
-* Fork the project on GitHub.
-* Make your feature addition or bug fix.
-* Commit with Git.
-* Send the author a pull request.
-
-If you add functionality to this application, create an alternative implementation, or build an application that is similar, please contact me and I'll add a note to the README so that others can find your work.
-
-h2. Credits
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. License
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+* Deploy uploader javascript and form to s3:
+  rake uploader:deploy

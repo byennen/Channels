@@ -1,0 +1,18 @@
+/ Content start
+/ Visitors per day start
+.row-fluid
+  .span12
+    .box.grad_colour_dark_blue
+      %h2.box_head.round_top Visitor Statistics
+      %a.settings.box_button_3{:href => "#", :title => "config"}  
+      %a.toggle.box_button_2{:href => "#", :title => "toggle"}  
+      %a.destroy.box_button_1{:href => "#", :title => "close"}  
+      .toggle_container
+        .block.box_content.round_bottom.std_padding
+          .row-fluid
+            .span12.box_padding_20
+              %h3
+                Visitor Statistics
+                %small use the overview box below the graph to select the time period...
+              #visits_per_day_placeholder{:style => "width:95%;height:300px;margin-top:20px;"}
+              #visits_per_day_overview{:style => "margin-left:5%;margin-top:20px;width:85%;height:50px"}

@@ -1,0 +1,60 @@
+#carousel.row
+  .span12
+    #slidedeck_frame.skin-slidedeck
+      %dl.slidedeck{:style => "height: 380px"}
+        - if user_signed_in?
+          %dt Altimarc
+          %dd
+            .row
+              .span4.pull-left.wrap-image
+                %img{:alt => "", :src => ""}
+              .span6.pull-right.wrap-intro
+                %h1 Thanks for Choosing Altimarc
+
+        - else
+          %dt Join Altimarc
+          %dd
+            .row
+              .span4.pull-left.wrap-image
+                %img{:alt => "", :src => ""}
+              .span6.pull-right.wrap-intro
+                %h1 Join Altimarc
+                %p
+                  Your membership will allow you to debut exclusive, never before seen concert footage, exclusive world premiere music documentaries, scheduled live concerts, music downloads...
+                %p
+                  %a.btn.btn-success.btn-large{:href => signup_url} Join Now »
+        %dt Brushy Mountain
+        %dd
+          .row
+            .span4.pull-left.wrap-image
+              .overlay
+              = image_tag('banners/mark-collie.jpg')
+            .span6.pull-right.wrap-intro.white-opacity
+              %h1 Brushy Mountain
+              %p After 113 years, the state of Tennessee closed Brushy Mountain State Penitentiary in June of 2009. But not before country music icon Mark Collie took a two year journey inside the walls of this legendary place.
+              %p
+                %a.btn.btn-info.btn-large.pull-right{:href => root_url(:subdomain => "markcollie")} Watch Now »
+
+        %dt Randy Owen
+        %dd
+          .row
+            .span4.pull-left.wrap-image
+              .overlay
+              = image_tag('banners/randy-owen.jpg')
+            .span6.pull-right.wrap-intro.white-opacity
+              %h1 Randy Owen
+              %p Coming Soon.
+              -#%p
+                -#%a.btn.btn-info.btn-large.pull-right.pjax{:href => root_url(:subdomain => "randyowen")} Randy Owen Channel »
+
+        %dt Sam Phillips
+        %dd
+          .row
+            .span4.pull-left.wrap-image
+              .overlay
+              = image_tag('banners/sam-phillips.jpg')
+            .span6.pull-right.wrap-intro.white-color
+              %h1 Sam Phillips
+              %p Coming Soon.
+              -#%p
+                -#%a.btn.btn-info.btn-large.pull-right{:href => root_url(:subdomain => "samphillips")} Sam Phillips Channel »

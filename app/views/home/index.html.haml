@@ -1,26 +1,17 @@
 - @keywords = "music, music channels, music tv, watch live, live video production, stream music online, music broadcast, country music, music downloads, music videos, online music, games, free online games, free games, online games, video games, powerball, powerball numbers, powerball winning numbers"
 - @description = "Entertainment, Games, and once in a life time opportunities to meet celebrities. Join today!"
-- javascript "home"
 
-.div{ :style => "height: 300px;" }
-  = image_tag("altimarc-coming-soon.png")
-
-.social{:style => "margin: 20px 20px; width: 960; float: left; padding: 30px 0 20px;"}
-  .span4{:style => "margin-left: 0;"}
-    = link_to image_tag("replay-coming-soon-video.png"), randy_owen_video_url(:subdomain => "www")
-  .span4
-    = image_tag('twitter-icon.png')
-    .tweet
-    %div{:style => "margin-left: 60px;"}
-      %a.twitter-follow-button{"data-show-count" => "false", "data-size" => "large", :href => "https://twitter.com/altimarc"} Follow @altimarc
-  .span4
-    .fb-like-box{"data-header" => "false", "data-href" => "http://www.facebook.com/altimarc", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "292"}
-
-= javascript_include_tag "video_effect", "plugins/twitter"
-
-:javascript
-  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-
-  $(document).ready(function() {
-    $(".tweet").tweet({ count: 3, username: "altimarc" });
-  });
+- if @active_channels > 1
+  = render 'home/carousel'
+  = render 'home/quote'
+  = render 'home/new'
+  = render 'shared/music/latest'
+  = render 'shared/videos/latest'
+- else
+  = link_to image_tag('alive-at-brushy.jpg', :class => 'intro-photo'), root_url(:subdomain => "aliveatbrushy")
+  = render 'home/quote'
+  .row{:style => "padding: 40px 0 20px;"}
+    .span6
+      = image_tag('sam-coming-soon.png')
+    .span6
+      = image_tag('randy-coming-soon.png')

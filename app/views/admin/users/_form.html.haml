@@ -1,0 +1,17 @@
+= simple_form_for [:admin, user], :html => {:class => 'form-horizontal'} do |f|
+  .form-horizontal.roles
+    = f.label :role, :label => "Role"
+    .btn-group.controls{:'data-toggle' => 'buttons-radio'}
+      - User::ROLES.each do |role|
+        %button{:type => 'button', :value => role, :class => 'btn btn-info', :'data-toggle' => 'button'}
+          = role.humanize.titleize
+    = f.input :role, :as => :hidden
+    = f.association :channel, :class => 'channel-select'
+
+  = f.input :email, :input_html => {:class => "input-xlarge"}
+  = f.input :password, :input_html => {:class => "input-xlarge"}
+  = f.input :password_confirmation, :input_html => {:class => "input-xlarge"}
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    or
+    = link_to 'go back', url_for(:back), :class => 'btn'

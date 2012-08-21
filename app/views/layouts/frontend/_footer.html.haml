@@ -1,0 +1,46 @@
+#pusher
+#footer
+  .container
+    .row
+      .span4
+        %strong Company
+        %ul.footer
+          %li= link_to "Home", root_url, :class => 'pjax'
+          %li= link_to "About Altimarc", about_url, :class => 'pjax'
+          -#%li= link_to "Blog", "#", :class => 'pjax'
+          %li= link_to "Press", press_url, :class => 'pjax'
+          -#%li= link_to "Our Team", our_team_url, :class => 'pjax'
+          -#%li= link_to "Jobs", jobs_url, :class => 'pjax'
+          %li= link_to "Altimarc For Your Business", altimarc_for_your_business_url, :class => 'pjax'
+          
+      .span4
+        %strong Get Help
+        %ul.footer
+          -#%li= link_to "FAQ", faq_url, :class => 'pjax'
+          -#%li= link_to "Customer Support", customer_support_url, :class => 'pjax'
+          %li= link_to "Return Policy", refund_url, :class => 'pjax'
+          %li= link_to "Terms Of Service", terms_url, :class => 'pjax'
+          %li= link_to "Privacy Statement", privacy_url, :class => 'pjax'
+          %li= link_to "Safe Harbor", safe_harbor_url, :class => 'pjax'
+          -#%li= link_to "Contact Us", "#", :class => 'pjax'
+
+      .span4
+        %strong Sign up for our Giveaways
+        %p and receive exclusive offers
+        = simple_form_for @giveaway, :url => enter_giveaway_path, :html => {:class => 'wellclear form-inline'} do |f|
+          = f.input :email, :input_html => {:class => "input-xlarge", :placeholder => "Email"}, :label => false
+          .row
+            .span
+              %button.btn.btn-danger{:type => "submit"} Sign up
+            .span.pull-right.social
+              %ul.footer
+                %li
+                  = link_to image_tag('layout/icons/facebook.png', :width => "30"), "http://facebook.com/altimarc"
+                  = link_to image_tag('layout/icons/twitter.png', :width => "30"), "http://twitter.com/altimarc"
+                  = link_to image_tag('layout/icons/pinterest.png', :width => "30"), "http://pinterest.com/altimarc"
+                  = link_to image_tag('layout/icons/googleplus.png', :width => "30"), "http://gplus.to/altimarc"
+        %p.copyright
+          &copy;
+          = Time.now.year
+          = link_to 'ALTIMARC, LLC.', root_url, :class => 'pjax'
+          %span | All rights reserved.

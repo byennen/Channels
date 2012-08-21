@@ -1,0 +1,31 @@
+.row-fluid
+  .span12
+    .box.grad_colour_dark_blue
+      %h2.box_head.round_top Photo Gallery
+      %a.settings.box_button_3{:href => "#", :title => "config"}  
+      %a.toggle.box_button_2{:href => "#", :title => "toggle"}  
+      %a.destroy.box_button_1{:href => "#", :title => "close"}  
+      .toggle_container
+        .block.box_content.round_bottom.padding_20
+          %header
+            %h1 Photo Albums
+            %blockquote
+              %p It features photo drag and drop support for creating albums.
+            %p
+              %a.btn.btn-primary{:href => new_admin_channel_photo_album_path} New Album
+          %hr
+            #gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
+              / put images here
+              %ul
+                - @photo_albums.each do |photo_album|
+                  %li
+                    = link_to image_tag(photo_album.image.thumb('100x100#').url), admin_channel_photo_album_photos_path(@channel, photo_album)
+                    %br
+                    %span= photo_album.title
+                    %br
+                    %a.btn.btn-warning{:href => edit_admin_channel_photo_album_path(@channel.id, photo_album.id)}
+                      %i.icon-edit.icon-white
+                      Edit
+                    %a.btn.btn-danger{:href => admin_channel_photo_album_path(@channel, photo_album), :'data-method' => :delete, :'data-confirm' => t('web-app-theme.confirm', :default => 'Are you sure?')}
+                      %i.icon-trash.icon-white
+                      Delete

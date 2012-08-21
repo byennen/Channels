@@ -1,28 +1,33 @@
-= form_for([:admin, @channel], :html => {:multipart => true}) do |f|
-  .clearfix
-    = f.label :name, t("activerecord.attributes.channel.name", :default => "Name"), :class => :label
-    .input
-      = f.text_field :name, :class => 'text_field'
-  .clearfix
-    = f.label :subdomain, t("activerecord.attributes.channel.subdomain", :default => "Sub-Domain"), :class => :label
-    .input
-      = f.text_field :subdomain, :class => 'text_field'
-  .clearfix
-    = f.label :description, t("activerecord.attributes.channel.description", :default => "Description"), :class => :label
-    .input
-      = f.text_area :description, :class => 'text_field'
-  .clearfix
-    = f.label :background_image, t("activerecord.attributes.channel.background_image", :default => "Background Image"), :class => :label
-    .input
-      = f.file_field :background_image
-      = image_tag @channel.background_image.thumb('100x100#').url if @channel.background_image_uid
-  .clearfix
-    = f.label :background_image, t("activerecord.attributes.channel.banner_image", :default => "Banner Image"), :class => :label
-    .input
-      = f.file_field :banner_image
-      = image_tag @channel.banner_image.thumb('100x100#').url if @channel.banner_image_uid
+= simple_form_for [:admin, @channel], :html => {:multipart => true, :class => 'form-horizontal'} do |f|
+  = f.input :name, :input_html => {:class => "input-xlarge"}
+  = f.input :subdomain, :input_html => {:class => "input-xlarge" }
+  = f.input :domain, :input_html => {:class => "input-xlarge" }
+  = f.input :description, :input_html => {:class => "input-xlarge"}
+  = f.input :google_analytics_key, :input_html => {:class => "input-xlarge"}
+  = f.input :facebook_page, :input_html => {:class => "input-xlarge"}
+  = f.input :twitter_id, :input_html => {:class => "input-xlarge"}
+  = f.input :google_plus_page, :input_html => {:class => "input-xlarge"}
+  = f.input :active
+  .control-group
+    %label.control-label{:for => "prependedInput"} Background Color
+    .controls
+      .input-prepend
+        %span.add-on #
+        = f.text_field :background_color, :id => "prependedInput", :class => "span2"
+      %p.help-block #000000 Hex Color for the Web
+
+  = f.input :background_image, :as => :file
+  = image_tag @channel.background_image.thumb('100x100#').url if @channel.background_image_uid
+  = f.input :banner_image, :as => :file
+  = image_tag @channel.banner_image.thumb('100x100#').url if @channel.banner_image_uid
+  = f.simple_fields_for :feature_attributes, f.object.feature do |f|
+    - f.with_options :as => :boolean do |f|
+      = f.input :vault
+      = f.input :news
+      = f.input :events
+      = f.input :giving
 
   .form-actions
-    %button.btn.primary{:type => "submit"} Save
+    = f.button :submit, :class => 'btn-primary'
     or
-    = link_to "Cancel", admin_channels_path
+    = link_to 'Go Back', url_for(:back), :class => 'btn'

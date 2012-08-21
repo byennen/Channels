@@ -1,0 +1,8 @@
+#ribbon
+%header
+  .navbar.navbar-fixed-top
+    = render 'shared/musicplayer'
+    = render 'shared/nav'
+.background-wrapper
+  .container{"data-pjax-container" => ""}
+    = yield

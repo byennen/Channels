@@ -1,17 +1,77 @@
 - title @channel.name
 
-= image_tag @channel.banner_image.url if @channel.banner_image_uid
+- if @video.present?
+  - content_for :open_graph do
+    %meta{property: "og:title", content: @video.title}
+    %meta{property: "og:type", content: "video.other"}
+    %meta{property: "og:url",  content: video_url(@video)}
+    %meta{property: "og:image",content: "http://46qa.localtunnel.com/#{@video.image.url}"}
+    %meta{property: "og:site_name", content: "Altimarc"}
+    %meta{property: "og:description", content: @video.description}
 
-#channel{:style => "margin: 20px 0 0;"}
-  .span8
-    %p= @channel.description
-  .div{:style => "float: right;margin-left: 40px;width: 260px;"}
-    = link_to image_tag('icons/facebook-64x64.png'), "https://www.facebook.com/markcollieofficial", :style => "margin-left: 6px;", :target => "_blank"    
-    = link_to image_tag('icons/twitter-64x64.png'), "https://twitter.com/MarkCollie2", :style => "margin: 0 0 6px 6px; height: 64px; width: 64px;", :target => "_blank"
-    = link_to image_tag('icons/reverbnation-64x64.png'), "http://www.reverbnation.com/markcollieofficial", :style => "margin: 6px; height: 64px; width: 64px;", :target => "_blank"
-    .fb-like-box{"data-header" => "false", "data-href" => "https://www.facebook.com/markcollieofficial", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "292", :style => "display: none;"}
-  .span{:style => "margin: 30px 0 40px 50px;"}
-    = link_to image_tag("mark-collie-coming-soon-video.png"), mark_collie_video_url(:subdomain => "mark-collie")
-    = link_to image_tag("mark-collie-itunes.png"), "http://itunes.apple.com/us/album/alive-at-brushy-mountain-state/id520280941", :target => "_blank"
-    = link_to image_tag("mark-collie-amazon.png"), "http://www.amazon.com/Alive-Brushy-Mountain-State-Penitentiary/dp/B007VHOI8A", :target => "_blank"
-    
+  = render 'shared/videoplayer'
+
+.background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
+  .content
+    .container
+      %h3 Recent Episodes
+      -#- if user_signed_in? && current_user.paid_member?
+        -#%h3 Recent Episodes
+      -#- else
+        -#%h3 Recent Episodes
+        -#%p
+          -#%span{:style => 'color:red;'}
+            -#(PREVIEWS ONLY)
+          -#= ' - '
+          -#= link_to 'become a member', 'javascript:;', :class => 'become_a_member'
+          -#for full episodes
+      -# TODO: add see all button and style see all page
+      -#= link_to "(See all)", channel_videos_url(@channel)
+
+      = render 'channels/videos'
+
+      .row
+        #posts.span8
+          .tabbable
+            / Only required for left/right tabs
+            %ul.nav.nav-tabs
+              %li.active
+                %a{"data-toggle" => "tab", :href => "#tab1"} Latest
+              %li
+                %a{"data-toggle" => "tab", :href => "#tab2"} Music
+              %li
+                %a{"data-toggle" => "tab", :href => "#tab3"} Photos
+
+          .tab-content
+            #tab1.tab-pane.active
+              = render :partial => 'post', :collection => @posts
+              -# TODO: add pagination for posts
+              -#- if @posts.count > 4
+                -#%ul.pager
+                  -#%li
+                    -#%a{:href => "#"} ← Older
+                  -#%li
+                    -#%a{:href => "#"} Newer →
+            #tab2.tab-pane
+              = render 'channels/music'
+            #tab3.tab-pane{:style => "text-align:center"}
+              = render 'channels/photos'
+
+        .span4
+          .rightsidebar
+            %h1= @channel.name
+            .span
+            = render 'channels/social_media'
+            #description.span
+              %p= @channel.description
+
+- if @video.present?
+  = render 'shared/video_playlist'
+
+-#twitter
+:javascript
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+-#google plus
+%script{:src => "https://apis.google.com/js/plusone.js", :type => "text/javascript"}
+

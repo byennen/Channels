@@ -1,6 +1,8 @@
-class Admin::FeaturesController < ApplicationController
-  layout 'admin'
-  before_filter :authenticate_user!
+class Admin::FeaturesController < Admin::ApplicationController
+  load_and_authorize_resource :channel
+  # load_and_authorize_resource :feature, :through => :channel
+
+  respond_to :html
 
   def edit
     @feature = Feature.find(params[:id])
@@ -8,26 +10,10 @@ class Admin::FeaturesController < ApplicationController
 
   def update
     @feature = Feature.find(params[:id])
-
-    respond_to do |format|
-      if @feature.update_attributes(params[:feature])
-        format.html { redirect_to admin_channel_url, notice: 'Feature was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @feature.errors, status: :unprocessable_entity }
-      end
+    if @feature.update_attributes(params[:feature])
+      flash[:notice] = "Feature was successfully updated."
     end
-  end
-
-  def destroy
-    @feature = Feature.find(params[:id])
-    @feature.destroy
-
-    respond_to do |format|
-      format.html { redirect_to admin_channel_url }
-      format.json { head :no_content }
-    end
+    respond_with @feature, :location => admin_channel_path(@channel)
   end
 
 end

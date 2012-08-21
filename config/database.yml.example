@@ -1,0 +1,21 @@
+development:
+  encoding: utf8
+  adapter: mysql
+  host: 127.0.0.1
+  port: 3306
+  database: channels_development
+  username: root
+  password: d0nk3y
+
+test: &test
+  encoding: utf8
+  adapter: mysql
+  host: 127.0.0.1
+  port: 3306
+  database: channels_test
+  username: root
+  password: d0nk3y
+
+cucumber:
+  <<: *test
+

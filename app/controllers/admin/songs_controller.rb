@@ -1,76 +1,49 @@
-class Admin::SongsController < ApplicationController
-  layout 'admin'
-  before_filter :authenticate_user!
+class Admin::SongsController < Admin::ApplicationController
+  load_and_authorize_resource :channel
+  load_and_authorize_resource :album
+  # this is breaking channel masters song uploads
+  load_and_authorize_resource :song, :through => :album, :new => [:index, :create]
 
-  # GET /songs
-  # GET /songs.json
+  respond_to :html, :json
+
   def index
-    @songs = Song.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @songs }
-    end
+    @songs = @album.songs
   end
 
-  # GET /songs/new
-  # GET /songs/new.json
-  def new
-    @song = Song.new
-    #@channel = Channel.find(params[:id])
+  def edit; end
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @song }
-    end
-  end
-
-  # GET /songs/1/edit
-  def edit
-    @song = Song.find(params[:id])
-  end
-
-  # POST /songs
-  # POST /songs.json
   def create
-    @song = Song.new(params[:song][:channel_id])
-
-    respond_to do |format|
-      if @song.save
-        format.html { redirect_to admin_channel_songs_url, notice: 'Song was successfully created.' }
-        format.json { render json: admin_channel_songs_url, status: :created, location: @song }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @song.errors, status: :unprocessable_entity }
+    @song = @album.songs.new
+    @song.attributes = params[:song]
+    logger.debug("params song song is #{params[:song]}")
+    @song.title = params[:song][:song].original_filename
+    if @song.save
+      Resque.enqueue(WaveformGenerator, @song.id)
+      respond_to do |format|
+        format.html {
+          render :json => [@song.to_jq_upload].to_json,
+          :content_type => 'text/html',
+          :layout => false
+        }
+        format.json {
+          render :json => [@song.to_jq_upload].to_json
+        }
       end
+    else
+      render :json => [{:error => "custom_failure"}], :status => 304
     end
   end
 
-  # PUT /songs/1
-  # PUT /songs/1.json
   def update
-    @song = Song.find(params[:id])
-
-    respond_to do |format|
-      if @song.update_attributes(params[:song])
-        format.html { redirect_to admin_channel_songs_url, notice: 'Song was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @song.errors, status: :unprocessable_entity }
-      end
+    if @song.update_attributes(params[:song])
+      flash[:notice] = "Song was successfully updated."
     end
+    respond_with @song, :location => admin_channel_album_songs_url
   end
 
-  # DELETE /songs/1
-  # DELETE /songs/1.json
   def destroy
-    @song = Song.find(params[:id])
     @song.destroy
-
-    respond_to do |format|
-      format.html { redirect_to admin_channel_songs_url }
-      format.json { head :no_content }
-    end
+    redirect_to admin_channel_album_songs_url
   end
+
 end

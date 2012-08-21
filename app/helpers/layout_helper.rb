@@ -1,6 +1,6 @@
 module LayoutHelper
   def title(page_title, show_title = true)
-    content_for(:title) { page_title.to_s }
+    content_for(:title) {"Altimarc - Entertainment. Elevated. - " + page_title.to_s}
     @show_title = show_title
   end
 
@@ -14,5 +14,13 @@ module LayoutHelper
 
   def javascript(*args)
     content_for(:head) { javascript_include_tag(*args) }
+  end
+
+  #twitter bootstrap icon-button helper
+  #Example: = link_with_icon("Title", link_url(subdomain: "www"), "icon-trash icon-white", "btn btn-large btn-primary pjax")
+  def link_with_icon(title, link, icon, type, link_options={})
+    @icon = icon
+    @type = type
+    link_to(content_tag(:span, %{#{content_tag(:i, nil, :class => @icon)} #{title}}.html_safe, :class => @type), link, link_options)
   end
 end

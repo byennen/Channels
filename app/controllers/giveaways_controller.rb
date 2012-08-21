@@ -1,41 +1,25 @@
 class GiveawaysController < ApplicationController
-  before_filter :load_channels
+  def index
+  end
 
   def derby
-    @giveaway = Giveaway.new
   end
 
   def cma
-    @giveaway = Giveaway.new
   end
 
   def thankyou
   end
 
-  def create_cma
+  def enter_giveaway
     @giveaway = Giveaway.new(params[:giveaway])
-
-    respond_to do |format|
-      if @giveaway.save
-        GiveawayMailer.registration_confirmation(@giveaway).deliver
-        format.html { redirect_to thankyou_path, notice: "You're registration for CMA FanFest!." }
-      else
-        format.html { render action: "cma" }
-      end
+    if @giveaway.save
+      GiveawayMailer.registration_confirmation(@giveaway).deliver
+      flash[:success] = "You're registered!"
+    else
+      flash[:error] = "Please check your email or confirm that you haven't entered already."
     end
-  end
-
-  def create_derby
-    @giveaway = Giveaway.new(params[:giveaway])
-
-    respond_to do |format|
-      if @giveaway.save
-        GiveawayMailer.registration_confirmation(@giveaway).deliver
-        format.html { redirect_to thankyou_path, notice: "You're registration for the Kentucky Derby!" }
-      else
-        format.html { render action: "derby" }
-      end
-    end
+    redirect_to root_url
   end
 
 end

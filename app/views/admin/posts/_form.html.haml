@@ -1,0 +1,33 @@
+- news_style = @post.feature.blank? ? 'display:none;' : ''
+- event_style = ['Event', 'Giving'].include?(@post.feature) ? '' : 'display: none;'
+- giving_style = @post.feature == 'Giving' ? '' : 'display: none;'
+= simple_form_for [:admin, @channel, @post], :html => {:multipart => true, :class => 'form-horizontal'} do |f|
+  .form-inputs
+    = f.input :feature, :collection => @post.available_features
+    .news{style: news_style}
+      = f.input :title, :input_html => {:class => "input-xlarge"}
+      = f.input :description, :input_html => {:class => "input-xlarge", :cols => 900, :rows => 20}
+      = f.input :photo_id, :collection => @channel.photos
+      = f.input :video_id, :collection => @channel.videos
+    - event_style = ['Event', 'Giving'].include?(@post.feature) ? '' : 'display: none;'
+    .event{style: event_style}
+      = f.input :date, :as => :string, :input_html => { :class => 'datepicker_on' } 
+      = f.input :start_time, :as => :time
+      = f.input :end_time, :as => :time
+      = f.input :link
+    .giving{style: giving_style}
+      = f.input :logo, :as => :file
+    .publish_date{style: news_style}
+      - publish_date = f.object.publish_on.nil? ? nil : f.object.publish_on.strftime('%m/%d/%Y') 
+      = f.input :publish_on, :as => :string, :input_html => { :class => 'datepicker_on', :value => publish_date } 
+    
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    or
+    = link_to 'Go Back', url_for(:back), :class => 'btn'
+    
+:javascript
+  $(document).ready(function(){
+  	// Jquery UI Datepicker
+  	$(".datepicker_on").datepicker();	
+  });

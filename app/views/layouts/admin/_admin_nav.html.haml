@@ -1,0 +1,64 @@
+#side_nav.span2.sidebar-nav.side_nav
+  %span#logo.logo  
+  %ul.clearfix
+    %li
+      %a.round_top{:href => admin_root_url(:subdomain => "www")}
+        = image_tag('admin/icons/grey/Laptop.png')
+        %span Dashboard
+    %li
+      %a{:href => admin_channels_url(:subdomain => "www")}
+        = image_tag('admin/icons/grey/Television.png')
+        %span Channels
+        %span.icon
+      %ul
+        - if @channels.present?
+          - @channels.each do |channel|
+            %li
+              %a{:href => edit_admin_channel_url(channel, subdomain: "www")}
+                = image_tag('admin/icons/grey/Television.png')
+                = channel.name
+                %span.icon  
+              %ul
+                %li
+                  / change link for posts
+                  %a{:href => admin_channel_posts_url(channel, subdomain: "www")}
+                    = image_tag('admin/icons/grey/create_write.png')
+                    Posts
+                %li
+                  %a{:href => admin_channel_albums_url(channel, subdomain: "www")}
+                    = image_tag('admin/icons/grey/Radio.png')
+                    Music
+                %li
+                  %a{:href => admin_channel_videos_url(channel, subdomain: "www")}
+                    = image_tag('admin/icons/grey/film_camera.png')
+                    Videos
+                %li
+                  %a{:href => admin_channel_photo_albums_url(channel, subdomain: "www")}
+                    = image_tag('admin/icons/grey/Camera.png')
+                    Photos
+                %li
+                  %a{:href => edit_admin_channel_url(channel, subdomain: "www")}
+                    = image_tag('admin/icons/grey/Pencil.png')
+                    Edit Channel
+
+        - else
+          = link_to "NO CHANNELS", admin_root_url(subdomain: "www")
+    
+    %li
+      %a{:href => "#"}
+        = image_tag('admin/icons/grey/money_2.png')
+        %span Ads
+    %li
+      %a{:href => "#"}
+        = image_tag('admin/icons/grey/sleeveless_shirt.png')
+        %span Giveaways
+    %li
+      %a{:href => admin_users_url(subdomain: "www")}
+        = image_tag('admin/icons/grey/Users.png')
+        %span Users
+    %li
+      %a{:href => logout_url}
+        = image_tag('admin/icons/grey/Users.png')
+        %span Logout
+  %a.minimize.round_bottom{:href => "#"}
+    %span minimize

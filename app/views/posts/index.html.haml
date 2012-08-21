@@ -1,0 +1,6 @@
+- @posts.each do |post|
+  %h2
+    = link_to(post.title, post_url(post))
+  .date= post.publish_on.strftime('%m/%d/%Y')
+  .post
+    = post.description

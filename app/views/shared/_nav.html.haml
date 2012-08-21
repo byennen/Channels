@@ -1,0 +1,48 @@
+.navbar-inner
+  .container
+    .row
+      .span8
+        %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to "Altimarc", root_url(subdomain: "www"), :class => "brand pjax"
+        .nav-collapse
+          %ul#ldd_menu.ldd_menu
+            - if @active_channels > 1
+              = nav_link("Channels", channels_url)
+              = nav_link("Giveaways", giveaways_url)              
+              = nav_link("Music", music_url)
+              = nav_link("Videos", videos_url)
+            - else
+              = nav_link("Channels", channels_url)              
+              = nav_link("Giveaways", giveaways_url)
+            -#Todo: Lance - Clean up this link to a different helper
+            -#- if user_signed_in?
+              -#%li
+                -#%span
+                  -#= link_with_icon("Invite", giveaways_url(subdomain: "www"), "icon-plus icon-white", "btn btn-warning pjax")
+
+        / /.nav-collapse
+      .span4
+        .pull-right
+          .btn-group
+            - if user_signed_in?
+              %a.btn.btn-primary{"data-toggle" => "dropdown", :href => "#"}
+                %i.icon-user.icon-white
+                - if current_user.first_name.present?
+                  = current_user.first_name
+                - else
+                  Me
+              %a.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  = link_with_icon("Edit account", edit_user_registration_url(subdomain: "www"), "icon-pencil", "pjax")
+                %li
+                  = link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", "pjax", :id => "logout")
+            - else
+              - if current_channel
+                = link_with_icon("Login or Register", login_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid), "icon-user", "btn btn-primary pjax")
+              - else
+                = link_with_icon("Login or Register", login_url(subdomain: 'www', host: APP_CONFIG['domain']), "icon-user", "btn btn-primary pjax")

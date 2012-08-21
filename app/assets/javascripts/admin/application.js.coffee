@@ -1,9 +1,5 @@
 #= require jquery
 #= require jquery_ujs
+#= require jquery-ui
 #= require twitter/bootstrap
-#= require jquery.pjax
-#= require_tree .
-
-jQuery ->
-  $('a').pjax('[data-pjax-container]')
-
+#= require admin/plugins/jquery.cookie

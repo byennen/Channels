@@ -1,1 +1,20 @@
-= render "form"
+.row-fluid
+  .span12
+    .box.grad_colour_dark_blue
+      %h2.box_head.round_top Edit Song
+      %a.settings.box_button_3{:href => "#", :title => "config"}  
+      %a.toggle.box_button_2{:href => "#", :title => "toggle"}  
+      %a.destroy.box_button_1{:href => "#", :title => "close"}  
+      .toggle_container
+        .block.box_content.round_bottom.padding_20
+          %header
+            %h1 Edit Song
+            = simple_form_for [:admin, @channel, @album, @song], :html => { :multipart => true, :class => 'form-horizontal', :style => "clear:both;" } do |f|
+              = f.input :title, :input_html => {:class => "input-xlarge"}
+              = f.input :price, :input_html => {:class => "input-xlarge"}
+              = f.input :preview, as: :file  
+              = f.input :active, as: :boolean
+              .form-actions
+                = f.button :submit, :class => 'btn-primary'
+                or
+                = link_to 'Go Back', url_for(:back), :class => 'btn'

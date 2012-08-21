@@ -1,0 +1,11 @@
+- unless ["registrations", "sessions", "devise/passwords", "devise/sessions", "devise/registrations"].include?(params[:controller]) && params[:actions] == "new"
+  - if %w(home videos channels photos).include?(params[:controller])
+    = render 'shared/first_time_visitor_modal'
+  - if params[:controller] == "channels" && params[:action] == "show" || params[:controller] == "video"
+    - if user_signed_in? && current_user.unpaid_member?
+      = render 'shared/payments_modal'
+      = render 'shared/unpaid_members_videos_modal'
+      = render 'shared/unpaid_members_photos_modal'
+      = render 'shared/unpaid_members_music_modal'
+= render 'shared/no_facebook_signup_modal'
+

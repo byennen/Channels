@@ -1,0 +1,31 @@
+:css
+  #unpaid_members_videos_modal .modal-footer a#not_right_now_btn {
+    color: #b8b8b8;
+    padding-right: 10px;
+  }
+  #unpaid_members_videos_modal .modal-footer a#not_right_now_btn:hover {
+    color: #474747;
+  }
+  #unpaid_members_videos_modal .modal-footer span {
+    padding-right: 10px;
+    color: #b8b8b8;
+  }
+
+
+#unpaid_members_videos_modal.modal.hide
+  .modal-header
+    %a.close{"data-dismiss" => "modal"} ×
+    %h2 Thanks for watching! Did you like it?
+  .modal-body
+    .row
+      .span#form
+        %h3 We hope so! This was a preview... As a member you will have access to full video watching.
+        %em ***Also, these pop up messages will go away, and you will have access to full music listening, and full video watching.
+
+  .modal-footer
+    %a#not_right_now_btn{"data-dismiss" => "modal"} Not right now
+    %span or
+    %a.btn.btn-primary.btn-large.become_a_member
+      %i.icon-ok.icon-white
+      Become a member
+

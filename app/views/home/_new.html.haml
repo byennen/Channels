@@ -1,0 +1,24 @@
+/ Whats New
+.row
+  .span12
+    %ul.breadcrumb.entry-title
+      %li.active What's New
+    #whats_new.carousel.slide
+      / Carousel items
+      .carousel-inner
+        - @posts.each_slice(4) do |array|
+          .item
+            %ul.thumbnails
+              - array.each do |post|
+                %li.span3
+                  .thumbnail
+                    = image_tag(post.image.thumb('260x180').url)
+                    .caption
+                      %h5= post.title
+                      %p= post.description.truncate(125)
+                      %p
+                        = link_with_icon("More", "#", "icon-circle-arrow-right icon-white", "btn btn-info pjax")
+
+      / Carousel nav
+      %a.carousel-control.left{"data-slide" => "prev", :href => "#whats_new"} ‹
+      %a.carousel-control.right{"data-slide" => "next", :href => "#whats_new"} ›

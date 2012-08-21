@@ -3,7 +3,8 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require layout
- *= require bootstrap_and_overrides
  *= require_tree .
+ *= require admin/plugins/jquery.fileupload-ui
+ *= require admin/plugins/custom-theme/jquery-ui-1.8.16.custom
+ *= require admin/plugins/custom-theme/jquery.ui.1.8.16.ie
 */

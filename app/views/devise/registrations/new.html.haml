@@ -1,188 +1,76 @@
+- title "Sign up with Email"
+
 :css
-  .leftcolumn {
+  #facebook_photos {
+    margin: 10px auto 0; 
+    float: none;
+    padding-left: 20px;
+  }
+  #with_email {
+    margin: 0 auto 0; 
+    float: none;
+  }
+  #with_email p {
+    text-align: center;
+    color: #575B61;
+    margin-bottom: 40px;
+  }
+  #with_email img.logo {
+    padding: 30px 0 5px 28px;
+  }
+  #with_email #create-my-account {
+    margin-left: 135px;
+  }
+  #other_links {
+    margin: 0 auto;
+    float: none;
+  }
+  #other_links a {
+    font-weight: bold;
+  }
+  #other_links p {
+    margin: 20px 0 0;
+  }
+  .overlay {
+    background: rgba(255, 255, 255, .3); 
+    padding: 6px; 
+    -moz-border-radius: 5px; 
+    border-radius: 5px;
+  }
+  .overlay-inside {
     background: white;
-    -moz-box-shadow: 5px 8px 5px #888;
-    -webkit-box-shadow: 5px 8px 5px #888;
-    box-shadow: 5px 8px 5px #888;
-    margin: 0 0 20px;
-  }
-  h2 {
-    font-size: 16px;
-    line-height: 22px;
-    background: #3777D3;
-    color: white;
-    border-bottom: #d5d5d5 solid 1px;
-    padding: 10px 15px;
-  }
-  h3 {
-    margin: 0 0 20px 80px;
-  }
-  .basics h3 {
-    color: #376D00;
-    background: url(assets/payments/step-1.png) no-repeat;
-    padding-left: 35px;
-    font-size: 14px;
-  }
-  .payment h3 {
-    color: #376D00;
-    background: url(assets/payments/step-2.png) no-repeat;
-    padding-left: 35px;
-    font-size: 12px;
-    line-height: 1.3em;
-  }
-  .already_member {
-    margin: 15px 0 15px;
-    padding: 5px 15px;
-    background: #FFC;
-    line-height: 1.4em;
-    height: 45px;
-  }
-  .password {
-    border-bottom: 1px solid #ccc;
-    margin: 0 0 20px 20px;
-    padding: 0 0 5px;
-  }
-  .payment {
-    border-bottom: 1px solid #ccc;
-    margin: 10px 0 5px 20px;
-    padding: 0 0 20px;
-  }
-  .payment strong {
-    font-size: 11px;
-  }
-  .help-block {
-    color: #999;
-    font-size: 11px;
-  }
-  .credit_card {
-    width: 370px;
-    float: left;
-    clear: both;
-  }
-  .billing_zip {
-    width: 370px;
-    float: left;
-    clear: both;
-  }
-  .coupon {
-    margin: 15px 0px 15px 20px;
-  }
-  .coupon a {
-    font-size:12px;
-    color: #888;
-  }
-  .info {
-    background: #FFC;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-  }
-  .info p {
-    margin: 15px 20px;
-    line-height: 1.3em;
-  }
-  .policy {
-    margin: 10px 0 10px 20px;
-  }
-  .actions {
-    margin: 5px 0 30px 20px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding-bottom: 50px;    
   }
 
-.leftcolumn.span9
-  %h2 You're just 60 seconds away from your new Altimarc account.
-  .already_member.span6
-    %strong Already have a Altimarc account?
-    %br
-      %p
-        = link_to "Sign in here", login_url(subdomain: "www")
-        to skip this form and use the email you already have.
-  .form.span6
-    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-horizontal'}) do |f|
-      = devise_error_messages!
+.row
+  .span6#with_email
+    .overlay
+      .overlay-inside
+        = image_tag('logo-login.png', :class => 'logo')
+        %p Entertainment and once in a life time opportunities!
+        .row
+          .span#form
+            = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-horizontal'}) do |f|
+              = f.error_notification
 
-      .basics.span8
-        %h3 The basics
+              = f.input :first_name, :class => "input-xlarge"
+              = f.input :last_name
+              = f.input :email, :required => true
+              = f.input :password, :required => true
+              = f.input :password_confirmation, :hint => '6 characters or longer.', :required => true
 
-        //first name
-        .control-group
-          = f.label :first_name, :class => "control-label"
-          .controls
-            = f.text_field :first_name, :class => 'input-large'
-        
-        //last name
-        .control-group
-          = f.label :last_name, :class => "control-label"
-          .controls
-            = f.text_field :last_name, :class => 'input-large'
+              = f.submit "Create my account", :class => 'btn btn-success btn-large', :id => 'create-my-account'
 
-        //email
-        .control-group
-          = f.label :email, :class => "control-label"
-          .controls
-            = f.email_field :email, :class => 'input-large'
-
-      .password.span8
-        %h3 Now choose a password
-
-        //password
-        .control-group
-          = f.label :password, :class => "control-label"
-          .controls
-            = f.password_field :password, :class => 'input-large'
-            %p.help-block
-              6 characters or longer with at least one number is safest.
-
-        //confirm password
-        .control-group
-          = f.label :password_confirmation, :class => "control-label"
-          .controls
-            = f.password_field :password_confirmation, :class => 'input-large'
-
-      .payment.span8
-        %h3 Thanks for paying. Your hard earned money goes towards making Altimarc an even better product.
-
-        //credit card
-        .control-group.credit_card
-          %label.control-label{:for => "input01"} Credit Card
-          .controls
-            %input#input01.input-large{:type => "text"}
-        
-        //credit card icons
-        .span
-          = image_tag('payments/icon-lock.png')
-          %strong Secure
-          = image_tag('payments/img-creditcards.png')
-
-        //credit card billing zip
-        .control-group.billing_zip
-          %label.control-label{:for => "input01"} Billing ZIP
-          .controls
-            %input#input01.input-small{:type => "text"}
-              %p.help-block (or Postal Code if not in the USA)
+        .row
+          .span#other_links
+            %p
+              = link_to "Forgot your password?", new_user_password_url, :class => "pjax"
+            %p
+              = link_to "Sign In with Facebook", login_url, :id => "with_facebook_link"
 
 
-      //coupon
-      .coupon.span8
-        = link_to "Got a Coupon Code?", "#"
-
-      //info
-      .info.span8
-        %p
-          %strong Your 24-hour free trial lasts until
-          - trail_end_time = Time.now + 1.days
-          %strong= trail_end_time.strftime("%I:%M%p %m-%d-%y")
-          If you don't want to continue using Altimarc, just cancel before the trial ends and you won't be charged. Otherwise, you'll pay just $9.95/month for the service as long as your account is open. You can cancel any time.
-
-      //policy
-      .policy.span8
-        %p 
-          By clicking Create my account you agree to the
-          = link_to "Terms of Service,", "#"
-          = link_to "Privacy,", "#"
-          %span and
-          = link_to "Refund policies.", "#"
-
-      .actions.span8
-        = f.submit "Create my account", :class => 'btn-primary btn-success btn-large'
-.rightcolumn.span3
-  = image_tag('payments/thanks.png')
-
+.row
+  .span6#facebook_photos
+    .fb-facepile{"data-href" => "http://facebook.com/altimarc", "data-max-rows" => "1", "data-width" => "448", "data-colorscheme" => "dark"}

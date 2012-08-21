@@ -1,0 +1,24 @@
+.videoplayer
+  .projekktor_background
+    #video
+    #player
+      .projekktor
+  #video_info.container
+    .row#video_info_inside
+      .span8
+        %h2
+          = link_to @channel.name, channel_url(@channel)
+          %span - 
+          = @video.title
+        %ul#video_social_sharing
+          -#%li= link_to "Facebook", "#"
+          -#%li= link_to "Tweet", "#"
+          -#TODO: Add share by email function 
+          -#%li= link_to "Share", "#"
+          %li= link_to "Details", "#", :id => "details_link"
+      .span4.pull-right
+        #small_ad.pull-right
+          = image_tag('ads/sample-ad.png')
+    #details.row
+      .span
+        %p= @video.description

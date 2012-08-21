@@ -1,0 +1,14 @@
+#recent_videos.carousel.slide
+  / Carousel items
+  .carousel-inner
+    .item
+      %ul.thumbnails
+        - @videos.each do |video|
+          %li.span3
+            .thumbnail
+              = image_tag(video.image.thumb('260x180#').url)
+              .caption
+                %h5= video.title.truncate(30)
+                %p.description= video.description.truncate(125)
+                %p
+                  = link_with_icon("Watch", video_url(video), "icon-film icon-white", "btn btn-info")

@@ -1,0 +1,18 @@
+#col0.span4.column
+  #box_3.box.grad_colour_dark_blue
+    %h2.box_head.round_top Member Comments
+    %a.settings.box_button_3{:href => "#", :title => "config"}  
+    %a.toggle.box_button_2{:href => "#", :title => "toggle"}  
+    %a.destroy.box_button_1{:href => "#", :title => "close"}  
+    .toggle_container
+      .block.box_content.round_bottom.padding_10
+        %ul.members
+          - (1..3).each do |i|
+            %li
+              %a{:href => "#"}
+                %img.member_avatar{:src => "assets/admin/member_ph.png"}
+                %span.blue
+                  Comment by
+                  %strong Member
+                  on 21/02/2012
+              %p This is a comment message from a member in your channel about a post or video... etc.

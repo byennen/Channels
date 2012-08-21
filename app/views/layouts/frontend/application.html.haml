@@ -1,0 +1,56 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %title= content_for?(:title) ? yield(:title) : "Altimarc - Entertainment. Elevated. - Beta"
+    %meta{:content => "width=device-width", :name => "viewport"}
+    %meta{:content => "#{@description}", :name => "description"}
+    %meta{:content => "#{@keywords}", :name => "keywords"}
+    %meta{:content => "ALTIMARC, LLC", :name => "author"}
+    %meta{:content => "index,follow", :name => "robots"}
+    %meta{:property => "fb:app_id", :content => APP_CONFIG['facebook_app_id']}
+    - if current_user && current_user.unpaid_member?
+      %meta{:name => "stripe-key", :content => "#{APP_CONFIG['stripe_public_key']}"}    
+    = render 'layouts/frontend/meta'
+    = yield :open_graph
+    = csrf_meta_tags
+    %link{:href => "https://fonts.googleapis.com/css?family=Rationale", :rel => "stylesheet", :type => "text/css"}
+    = javascript_include_tag "frontend/application"
+    = yield :head
+    = stylesheet_link_tag "frontend/application", :media => "all"
+    = favicon_link_tag
+    / Le HTML5 shim, for IE6-8 support of HTML5 elements
+    /[if lt IE 9]
+      %script{:src => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
+    / Le fav and touch icons
+    %link{:href => "ico/apple-touch-icon-144-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "144x144"}
+    %link{:href => "ico/apple-touch-icon-114-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "114x114"}
+    %link{:href => "ico/apple-touch-icon-72-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "72x72"}
+    %link{:href => "ico/apple-touch-icon-57-precomposed.png", :rel => "apple-touch-icon-precomposed"}
+  %body{:class => controller.controller_name}
+    = render :partial => "shared/flash_messages", :locals => {:flash => flash}
+    .navbar.navbar-fixed-top
+      = render 'shared/musicplayer'
+      #ribbon
+      - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations"
+        = render 'shared/nav'
+    .data{"data-pjax-container" => ""}
+      - if params[:controller] == "channels" && params[:action] == "show" || params[:controller] == "videos" || params[:controller] == "photos" || params[:controller] == "posts"
+        = yield
+      - elsif params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations"
+        = yield
+        -# TODO: each channel will have a custom background
+        :javascript
+          $.backstretch("../../../../assets/mark-collie-login.jpg");
+      - else
+        .background-wrapper
+          .content
+            .container
+              .row
+                .span12
+                  = yield
+      -# modals need to be inside of the data class
+      = render 'layouts/frontend/modals'
+
+    - unless params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations"
+      = render 'layouts/frontend/footer'

@@ -1,0 +1,16 @@
+.row-fluid
+  .span12
+    .box.grad_colour_dark_blue
+      %h2.box_head.round_top Photo Gallery
+      %a.settings.box_button_3{:href => "#", :title => "config"}  
+      %a.toggle.box_button_2{:href => "#", :title => "toggle"}  
+      %a.destroy.box_button_1{:href => "#", :title => "close"}  
+      .toggle_container
+        .block.box_content.round_bottom.padding_20
+          %header
+            %h1= @photo_album.title
+            %p
+              %a.btn.btn-primary{:href => new_admin_channel_photo_album_photo_path(@channel.id, @photo_album.id)} Add Photos
+            - @photo_album.photos.each do |photo|
+              .photo
+                = link_to(image_tag(photo.image.thumb('200x200#').url), edit_admin_channel_photo_album_photo_path(@channel.id, @photo_album.id))

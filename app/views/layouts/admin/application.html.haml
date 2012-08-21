@@ -1,0 +1,36 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %title Altimarc Admin
+    / Le HTML5 shim, for IE6-8 support of HTML5 elements
+    /[if lt IE 9]
+      %script{:src => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
+    = stylesheet_link_tag "admin/application", :media => "all"
+    = javascript_include_tag "admin/application"
+    = yield :head  
+    = favicon_link_tag
+    = csrf_meta_tag
+  %body#dashboard
+    = render 'layouts/admin/nav'
+
+    .container-fluid
+      .row-fluid
+        = render "layouts/admin/#{current_user.role}_nav"
+        #main_container.span10
+          = render 'layouts/admin/shortcuts'
+          = render 'layouts/admin/breadcrumb'
+          = yield
+
+    = javascript_include_tag 'admin/plugins/jquery-file-upload/locale'
+    = javascript_include_tag 'admin/plugins/jquery-file-upload/vendor/jquery.ui.widget'
+    = javascript_include_tag 'admin/plugins/jquery-file-upload/jquery.fileupload'
+    = javascript_include_tag 'admin/plugins/jquery-file-upload/jquery.iframe-transport'
+    = javascript_include_tag 'admin/plugins/jquery-file-upload/jquery.fileupload-ui'
+    -#= javascript_include_tag "admin/plugins/jquery.hoverIntent.minified"
+    -#= javascript_include_tag "admin/plugins/jquery.flot.min"
+    -#= javascript_include_tag "admin/plugins/jquery.flot.resize"
+    -#= javascript_include_tag "admin/plugins/jquery.flot.selection"
+    = javascript_include_tag "admin/plugins/jquery.ui.totop"
+    = javascript_include_tag "admin/plugins/altimarc"
+    = javascript_include_tag "admin/plugins/altimarc.forms"

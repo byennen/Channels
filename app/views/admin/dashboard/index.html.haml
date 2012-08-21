@@ -1,39 +1,18 @@
-.row-fluid
-  .span4.box
-    .inside
-      %h2 Channels
-      %p Edit Channels here.
-      %p= link_to "Channels", admin_channels_path, :class => "btn"
+/ stats
+- javascript 'admin/plugins/excanvas.min', 'admin/plugins/altimarc.charts', 'admin/plugins/jquery.dataTables'
 
-  .span4.box
-    .inside
-      %h2 Giveaways
-      %p Edit Giveaways here.
-      %p= link_to "Giveaways", "#", :class => "btn"
-
-  .span4.box
-    .inside
-      %h2 Games
-      %p Edit Games here.
-      %p= link_to "Games", "#", :class => "btn"
+= render 'admin/dashboard/visitor_stats'
 
 .row-fluid
-  .span4.box
-    .inside
-      %h2 Ads
-      %p Edit Ads here.
-      %p= link_to "Ads", "#", :class => "btn"
-
-  .span4.box
-    .inside
-      %h2 Reporting
-      %p Get Reporting stats here.
-      %p= link_to "Reporting", "#", :class => "btn"
-
-
-  .span4.box
-    .inside
-      %h2 Users
-      %p Edit Users here.
-      %p= link_to "View details", admin_users_path, :class => "btn"
-
+  = render 'admin/dashboard/monthly_stats'
+  = render 'admin/dashboard/member_updates'
+  = render 'admin/dashboard/member_comments'
+.row-fluid
+  = render 'admin/dashboard/facebook_stats'
+  = render 'admin/dashboard/twitter_stats'
+  
+:javascript
+  $('#datatable').dataTable( {
+    "bJQueryUI": true,
+    "sPaginationType": "full_numbers"
+  });

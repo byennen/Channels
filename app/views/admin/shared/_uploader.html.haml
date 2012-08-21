@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}
+
+    %script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"}
+    %script{:src => "//ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/jquery-ui.min.js"}
+
+    / The Iframe Transport is required for browsers without support for XHR file uploads
+    %script{:src => "js/jquery.iframe-transport.js"}
+
+    / The basic File Upload plugin
+    %script{:src => "js/jquery.fileupload.js"}
+
+    %script{:src => "js/s3_uploader.js"}
+
+
+  %body
+
+    %form#file_upload(action="" method="post" enctype="multipart/form-data")
+      %input{:type => :hidden, :name => :key}
+      %input{:type => :hidden, :name => "AWSAccessKeyId"}
+      %input{:type => :hidden, :name => :acl, value: 'public-read'}
+      %input{:type => :hidden, :name => :success_action_status, :value => "201"}
+      %input{:type => :hidden, :name => :policy}
+      %input{:type => :hidden, :name => :signature}      
+
+      %input{:type => :file, :name => 'file'}
+
+

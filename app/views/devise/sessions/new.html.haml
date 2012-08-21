@@ -1,42 +1,152 @@
 - title "Login"
 
-.inside
-  %h2 Sign in
-  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    %fieldset
-      .clearfix
-        = f.label :email
-        .input
-          = f.email_field :email
+:css
+  #signup_box {
+    margin: 160px auto 0; 
+    float: none;
+  }
+  #signup_box p, #here_before p {
+    text-align: center;
+    color: #575B61;
+    margin-bottom: 40px;
+  }
+  #signup_box img.logo, #here_before img.logo {
+    padding: 30px 0 5px 28px;
+  }
+  #signup_box #facebook {
+    float: none;
+    margin: 0 auto 8px;
+    width: 209px;
+  }
+  #signup_box .btn-facebook {
+    background: #455C8C url('../../../assets/fb-icon.png') no-repeat 2px 4px;
+    text-shadow: 1px 1px 1px #304371;
+    border: 1px solid #425681;
+    width: 193px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px 10px 10px 40px;
+    -moz-border-radius: 3px; 
+    border-radius: 3px;
+  }
+  #other_links {
+    margin: 0 auto;
+    float: none;
+  }
+  #other_links a {
+    font-weight: bold;
+  }
+  #other_links p {
+    margin: 20px 0 0;
+  }
+  #here_before {
+    margin: 160px auto 0; 
+    float: none;
+  }
+  #here_before #form {
+    margin: 0 auto;
+    float: none;
+    width: 318px;
+    padding-left: 20px;
+  }
+  #facebook_photos {
+    margin: 10px auto 0; 
+    float: none;
+    padding-left: 20px;
+  }
+  .overlay {
+    background: rgba(255, 255, 255, .3); 
+    padding: 6px; 
+    -moz-border-radius: 5px; 
+    border-radius: 5px;
+  }
+  .overlay-inside {
+    background: white;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding-bottom: 50px;    
+  }
+
+:javascript
+  $(document).on("ready pjax:success", function() {
+    $("#here_before").hide();
+    $("#here_before_link").click(function() {
+      $("#signup_box").hide();
+      $("#here_before").fadeIn();
+    });
+    $("#with_facebook_link").click(function() {
+      $("#here_before").hide();
+      $("#signup_box").fadeIn();
+    });
+  });
+  
+- if params[:action] == 'new' || !current_user
+  .row
+    .span6#signup_box
+      .overlay
+        .overlay-inside
+          = image_tag('logo-login.png', :class => 'logo')
+          %p Entertainment and once in a life time opportunities!
+          .row
+            .span#facebook
+              - if params[:state]
+                %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook?state=#{params[:state]}"}
+                  %i.icon-facebook
+                  Sign in with Facebook
+              - else
+                %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook"}
+                  %i.icon-facebook
+                  Sign in with Facebook
+              
+          .row
+            .span#other_links
+              %p
+                = link_to "Sign up with email", signup_url, :id => "with_email_link", :class => "pjax"
+              %p
+                Been here before?
+                = link_to "Sign In", "#", :id => "here_before_link", :class => "disable-pjax"
+  .row
+    .span6#here_before
+      .overlay
+        .overlay-inside
+          = image_tag('logo-login.png', :class => 'logo')
+          %p Entertainment and once in a life time opportunities!
+          .row
+            .span#form
+              = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'well'}) do |f|
+                = f.email_field :email, :placeholder => "Email", :class => "input-xlarge focused", :id => "focusedInput"
+                = f.password_field :password, :placeholder => "Password", :class => "input-xlarge"
+                - if devise_mapping.rememberable?
+                  %label.checkbox
+                    Remember me
+                    = f.check_box :remember_me
+                = f.button "Sign In", :class => 'btn btn-primary'
+          .row
+            .span#other_links
+              %p
+                = link_to "Forgot your password?", new_user_password_url, :class => "pjax"
+              %p
+                = link_to "Sign up with email", signup_url, :id => "with_email_link", :class => "pjax"
+              %p
+                = link_to "Sign In with Facebook", "#", :id => "with_facebook_link"
+
+
+  .row
+    .span6#facebook_photos
+      .fb-facepile{"data-href" => "http://facebook.com/altimarc", "data-max-rows" => "1", "data-width" => "448", "data-colorscheme" => "dark"}
+
+- else
+  %h2 Create Password
+  = form_for(current_user, :url => create_password_path) do |f|
     %fieldset
       .clearfix
         = f.label :password
         .input
           = f.password_field :password
-    - if devise_mapping.rememberable?
+    %fieldset
       .clearfix
-        = f.check_box :remember_me
-        = f.label :remember_me
-    %div= f.submit "Sign in"
-  = render :partial => "devise/shared/links"
-
--# = form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => 'form-stacked') do |f|
--#   %fieldset
--#     %legend Sign In
--#     .clearfix
--#       = f.label 'Email'
--#       .input
--#         = f.email_field :email
--#     .clearfix
--#       = f.label :password
--#       .input
--#         = f.password_field :password
--#     .input
--#       %ul.inputs-list
--#         - if devise_mapping.rememberable?
--#           %label
--#             = f.check_box :remember_me
--#             %span= f.label :remember_me
--#     .actions
--#       = f.submit "Sign in", :class => 'btn primary'
--#       = link_to "Forgot your password?", new_password_path(resource_name), :class => 'btn'
+        = f.label :password_confirmation
+        .input
+          = f.password_field :password_confirmation
+    %div= f.submit "Create Password"

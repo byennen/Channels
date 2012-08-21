@@ -1,0 +1,6 @@
+- if user_signed_in?
+  %meta{:content => "user connected", :name => "user_connected"}
+  - if current_user.paid_member?
+    %meta{:content => "paid member", :name => "paid_member"}
+  - if current_user.admin?
+    %meta{:content => "admin", :name => "admin"}

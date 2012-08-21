@@ -1,0 +1,83 @@
+:javascript
+  $(document).ready(function() {
+    function set_ads() {
+      $('#small_ad').show();
+      $('#small_ad').click(function() {
+          window.open('http://aliveatbrushy.altimarc-staging.com/altimarc-for-your-business', '_blank');
+      })
+    }
+
+    function unset_ads() {
+      $('#small_ad').hide();
+    }
+
+    function unpaid_members() {
+      $('#unpaid_members_videos_modal').modal('show');
+    }
+
+    var player = projekktor('.projekktor', {
+      poster: "#{@video.image.url}",
+      controls: true,
+      plugin_display: {
+        logoImage:"../../../../assets/html5video/logo.png",
+        logoPosition:"tr"
+      },
+      playlist: [
+        {
+          0: {src:'../../../../assets/html5video/ad-placeholder.png', type:"image/jpeg"},
+          config:{
+            duration: 5,
+            title: 'advertisement',
+            lassName: 'ad',
+            controls: false,
+            disallowSkip: true,
+            plugin_controlbar: {
+              showOnStart: true,
+              disableFade: true
+          },
+          plugin_display: {
+            staticControls: false,
+              displayPlayingClick: function() {
+                window.open('http://aliveatbrushy.altimarc-staging.com/altimarc-for-your-business', '_blank');
+              }
+            }
+          }
+        },
+        {
+          #{raw video_playlist(@video) }
+          ,
+          config: {
+            title: "#{@video.title}",
+            className: 'postad',
+            disallowSkip: true
+          }
+        },
+        {
+          0: {src:'../../../../assets/html5video/ad-placeholder.png', type:"image/png"},
+          config:{
+            duration: 5,
+            title: 'advertisement',
+            lassName: 'ad',
+            controls: false,
+            disallowSkip: true,
+            plugin_controlbar: {
+              showOnStart: true,
+              disableFade: true
+            },
+            plugin_display: {
+              staticControls: false,
+                displayPlayingClick: function() {
+                  window.open('http://aliveatbrushy.altimarc-staging.com/altimarc-for-your-business', '_blank');
+                }
+            }
+          }
+        }
+        #{raw include_next_episode_preview(current_user, @next_video)}
+      ]
+    }, function(player) {
+      player.addListener('start', set_ads)
+      player.addListener('done', unpaid_members)
+      player.addListener('done', unset_ads)
+    });
+  });
+

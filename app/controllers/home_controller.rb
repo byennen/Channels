@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
-  before_filter :load_channels
-
   def index
-    @users = User.all
+    @posts = Post.recent
+    @songs = Song.recent
+    @videos = Video.recent
   end
 end

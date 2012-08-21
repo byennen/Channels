@@ -1,0 +1,75 @@
+- unless params[:controller] == "admin/dashboard"
+  #breadcrumb
+    %ul
+      - if params[:controller] == "admin/channels"
+        - if params[:action] == "show"
+          %li= link_to @channel.name, admin_channel_path(@channel)
+        - else
+          %li= link_to "Channels", admin_channels_path
+      - elsif params[:controller] == "admin/users"
+        %li= link_to "Users", admin_users_path
+        - if params[:action] == "new"
+          %li 
+            %span >>
+          %li Add new User
+        - elsif params[:action] == "edit"
+          %li 
+            %span >>
+          %li Edit User
+      - else
+        %li= link_to @channel.name, admin_channel_path(@channel)
+        - if params[:controller] == 'admin/albums'
+          %li
+            %span >>
+          %li= link_to "Albums", admin_channel_albums_path
+          - if params[:action] == "new"
+            %li 
+              %span >>
+            %li Add new Album
+          - elsif params[:action] == "edit"
+            %li 
+              %span >>
+            %li Edit Album
+
+        - if params[:controller] == "admin/songs"
+          %li
+            %span >>
+          %li= link_to "Albums", admin_channel_albums_path(@album)
+          %li
+            %span >>
+          %li= link_to "Songs", admin_channel_album_songs_path
+          - if params[:action] == "new"
+            %li
+              %span >>
+            %li Add new Song
+          - elsif params[:action] == "edit"
+            %li
+              %span >>
+            %li Edit Song
+
+        - if params[:controller] == "admin/photos"
+          %li
+            %span >>
+          %li= link_to "Photos", admin_channel_photo_albums_path
+          - if params[:action] == "new"
+            %li
+              %span >>
+            %li Add new Photo
+          - elsif params[:action] == "edit"
+            %li
+              %span >>
+            %li Edit Photo
+
+        - if params[:controller] == "admin/videos"
+          %li
+            %span >>
+          %li= link_to "Videos", admin_channel_videos_path
+          - if params[:action] == "new"
+            %li
+              %span >>
+            %li Add new Video
+          - elsif params[:action] == "edit"
+            %li
+              %span >>
+            %li Edit Video
+

@@ -1,0 +1,10 @@
+/ Breadcrumb
+.row-fluid
+  .span12
+    %ul.breadcrumb
+      - if params[:controller] == "admin/dashboard" && params[:action] == "index"
+        %li.active= link_to "Dashboard", admin_root_url(:subdomain => "www")
+      - else
+        %li.active= link_to "Dashboard", admin_root_url(:subdomain => "www")        
+        %li /
+        %li.active= link_to params[:controller].split('/').last.capitalize, :controller => params[:controller], :action => :index

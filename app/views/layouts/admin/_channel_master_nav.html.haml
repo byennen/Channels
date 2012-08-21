@@ -1,0 +1,30 @@
+#side_nav.span2.sidebar-nav.side_nav
+  %span#logo.logo  
+  %ul.clearfix
+    %li
+      %a.round_top{:href => admin_root_url(:subdomain => "www")}
+        = image_tag('admin/icons/grey/Laptop.png')
+        %span Dashboard
+    %li
+      / change link for posts
+      %a{:href => admin_channel_posts_url(@channel, subdomain: "www")}
+        = image_tag('admin/icons/grey/create_write.png')
+        %span Posts
+    %li
+      %a{:href => admin_channel_albums_url(@channel, subdomain: "www")}
+        = image_tag('admin/icons/grey/Radio.png')
+        %span Music
+    %li
+      %a{:href => admin_channel_videos_url(@channel, subdomain: "www")}
+        = image_tag('admin/icons/grey/film_camera.png')
+        %span Videos
+    %li
+      %a{:href => admin_channel_photo_albums_url(@channel, subdomain: "www")}
+        = image_tag('admin/icons/grey/Camera.png')
+        %span Photos
+    %li
+      %a{:href => logout_url}
+        = image_tag('admin/icons/grey/Users.png')
+        %span Logout
+  %a.minimize.round_bottom{:href => "#"}
+    %span minimize
