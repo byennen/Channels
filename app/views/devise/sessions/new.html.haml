@@ -13,6 +13,10 @@
   #signup_box img.logo, #here_before img.logo, #create_password img.logo {
     padding: 30px 0 5px 28px;
   }
+  #create_password h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
   #signup_box #facebook {
     float: none;
     margin: 0 auto 8px;
@@ -144,15 +148,11 @@
           = image_tag('logo-login.png', :class => 'logo')
           %p Entertainment and once in a life time opportunities!
           %h2 Create Password
-          = form_for(current_user, :url => create_password_path) do |f|
-            %fieldset
-              .clearfix
-                = f.label :password
-                .input
-                  = f.password_field :password
-            %fieldset
-              .clearfix
-                = f.label :password_confirmation
-                .input
-                  = f.password_field :password_confirmation
-            %div= f.submit "Create Password"
+          = simple_form_for(current_user, :url => create_password_path, :html => {:class => "form-horizontal"}) do |f|
+            = f.error_notification
+            = f.input :password, :required => true, :class => "input-xlarge"
+            = f.input :password_confirmation, :required => true, :class => "input-xlarge"
+            .control-group
+              .controls
+                = f.submit "Create Password", :class => 'btn btn-success btn-large'
+
