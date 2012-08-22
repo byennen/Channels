@@ -3,7 +3,7 @@
 - content_for :open_graph do
   %meta{property: "og:title", content: @video.title}
   %meta{property: "og:type", content: "video.other"}
-  %meta{property: "og:url",  content: channel_video_url(@channel, @video)}
+  %meta{property: "og:url",  content: video_url(@video)}
   %meta{property: "og:image",content: @video.image.url(:host => "http://#{request.host}")}
   %meta{property: "og:site_name", content: "Altimarc"}
   %meta{property: "og:description", content: @video.description}
@@ -27,6 +27,6 @@
                       %h5= video.title.truncate(30)
                       %p.description= video.description.truncate(125)
                       %p
-                        = link_with_icon("Watch", channel_video_url(@channel, video), "icon-film icon-white", "btn btn-info pjax")
+                        = link_with_icon("Watch", video_url(video), "icon-film icon-white", "btn btn-info pjax")
 
 = render 'shared/video_playlist'

@@ -13,5 +13,8 @@ class VideosController < ApplicationController
       #Resque.enqueue(MemberWorker, :share_view, {"user_id" => current_user.id, "video_url" => video_url(@video)})
     #end
     @videos = Video.published
+    if @video.present?
+      @next_video = Video.coming_soon(@video).first
+    end    
   end
 end
