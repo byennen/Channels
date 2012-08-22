@@ -27,16 +27,7 @@ class StripeHandler
     @clearErrors()
     if status == 200
       $('#user_stripe_card_token').val response.id
-      $form = $('#subscribe_user')
-
-      $.post($form.attr("action") 
-             $form.serialize()
-             (data) ->
-               console.log("success")
-               $('.payment_form').hide()
-               $('.payment_header').hide()
-               $('.thank_you').show()
-      )
+      $('form#subscribe_user')[0].submit()
     else
       @renderErrors(response.error)
       $('input[type=submit]').attr 'disabled', false
