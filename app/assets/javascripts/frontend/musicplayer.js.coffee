@@ -6,6 +6,7 @@ $(document).on "ready pjax:success", ->
   window.player = new Player(el: "#player .container")
 
   $('.play').click ->
+    console.log("PLay Clicked")
     window.player.playSong($(this).attr("href"))
     $('#player_control_image').show()
     $("#player_control_image").addClass("playing").removeClass("paused")

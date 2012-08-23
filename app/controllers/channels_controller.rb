@@ -8,6 +8,7 @@ class ChannelsController < ApplicationController
   end
 
   def show
+    @featured_album = current_channel.albums.first
     @posts = @channel.posts.recent(:limit => 4)
     @songs = @channel.songs.all
     @video = @channel.videos.current_episode    
