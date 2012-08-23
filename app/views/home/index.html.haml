@@ -9,5 +9,11 @@
   = render 'shared/videos/latest'
 - else
   .span
-    = link_to image_tag('alive-at-brushy.jpg', :class => 'intro-photo'), root_url(:subdomain => "aliveatbrushy")
+    #slider.nivoSlider
+      - @channels.each do |channel|
+        - if channel.active?
+          = link_to image_tag(channel.banner_image.thumb('1600x505#').url), root_url(subdomain: channel.subdomain) if channel.banner_image
+        - else
+          = link_to image_tag(channel.banner_image.thumb('1600x505#').url), "#coming-soon!" if channel.banner_image
+    -#= link_to image_tag('alive-at-brushy.jpg', :class => 'intro-photo'), root_url(:subdomain => "aliveatbrushy")
   = render 'home/quote'

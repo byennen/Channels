@@ -12,7 +12,7 @@
         - if channel.active?
           %li.span4
             .thumbnail
-              = link_to image_tag(channel.banner_image.thumb('301x170#').url), root_url(subdomain: channel.subdomain), class: 'pjax' if channel.banner_image
+              = link_to image_tag(channel.banner_image.thumb('507x265#').url), root_url(subdomain: channel.subdomain), class: 'pjax' if channel.banner_image
               .caption
                 %h5= channel.name
                 %p= truncate(channel.description, :length => 80, :omission =>  "...")
@@ -29,7 +29,7 @@
         - unless channel.active?
           %li.span4
             .thumbnail
-              = link_to image_tag(channel.banner_image.thumb('301x170#').url), "#Coming-Soon!" if channel.banner_image
+              = link_to image_tag(channel.banner_image.thumb('507x265#').url), "#Coming-Soon!" if channel.banner_image
               .caption
                 %h5= channel.name
                 %p= truncate(channel.description, :length => 80, :omission =>  "...")
