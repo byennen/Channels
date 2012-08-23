@@ -2,7 +2,7 @@
 #footer
   .container-fluid
     .row-fluid
-      .span4
+      .span3
         %strong Company
         %ul.footer
           %li= link_to "Home", root_url, :class => 'pjax'
@@ -13,7 +13,7 @@
           -#%li= link_to "Jobs", jobs_url, :class => 'pjax'
           %li= link_to "Altimarc For Your Business", altimarc_for_your_business_url, :class => 'pjax'
           
-      .span4
+      .span3
         %strong Get Help
         %ul.footer
           -#%li= link_to "FAQ", faq_url, :class => 'pjax'
@@ -24,7 +24,7 @@
           %li= link_to "Safe Harbor", safe_harbor_url, :class => 'pjax'
           -#%li= link_to "Contact Us", "#", :class => 'pjax'
 
-      .span4
+      .span6
         -#%strong Sign up for our Giveaways
         -#%p and receive exclusive offers
         -#= simple_form_for @giveaway, :url => enter_giveaway_path, :html => {:class => 'wellclear form-inline'} do |f|

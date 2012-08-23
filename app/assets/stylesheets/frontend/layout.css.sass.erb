@@ -8,9 +8,11 @@ body
   margin-top: 50px
   font-size: 14px
   min-height: 100%
+  background: #DBDADA
 
 .content
   background: white
+  padding-bottom: 50px
 
 .sessions .background-wrapper, .passwords .background-wrapper
   background: none
@@ -113,31 +115,33 @@ blockquote
     li
       font-family: Rationale,sans-serif
       font-size: 22px
-div
-  &.rightsidebar, &.leftsidebar
-    border-right: 1px solid #F0F0F0
-    margin-bottom: 20px
-  &.rightsidebar
-    border-right: 0px
-    border-left: 1px solid #F0F0F0
-    div.span4
-      width: 290px
-  &.leftsidebar div.span4
+
+.rightsidebar, .leftsidebar
+  border-right: 1px solid #F0F0F0
+  margin-bottom: 20px
+  height: 100%
+  overflow: hidden
+.rightsidebar
+  border-right: 0px
+  border-left: 1px solid #F0F0F0
+  padding-left: 30px
+  div.span4
     width: 290px
-  &.rightsidebar
-    div
-      &.span4, &.span1, &.span3
-        margin-left: 28px
-    h3
-      line-height: 36px
-  &.leftsidebar h3
+.leftsidebar div.span4
+  width: 290px
+.rightsidebar
+  &.span4, &.span1, &.span3
+    margin-left: 28px
+  h3
     line-height: 36px
-  &.rightsidebar div.items, &.leftsidebar div.items
-    margin-top: 20px
-  &.rightsidebar div.last, &.leftsidebar div.last
-    margin-bottom: 20px
-  &.rightsidebar div.span3, &.leftsidebar div.span3
-    margin: 0 5px
+.leftsidebar h3
+  line-height: 36px
+.rightsidebar div.items, .leftsidebar div.items
+  margin-top: 20px
+.rightsidebar div.last, .leftsidebar div.last
+  margin-bottom: 20px
+.rightsidebar div.span3, .leftsidebar div.span3
+  margin: 0 5px
 #about
   background: none repeat scroll 0 0 #484848
   padding: 20px
@@ -159,4 +163,6 @@ img.intro-photo
 
 #push
   height: 150px
-  
+
+abbr
+  color: red

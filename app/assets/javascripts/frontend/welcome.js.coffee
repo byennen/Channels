@@ -10,7 +10,7 @@ $(document).on "ready pjax:success", ->
   #check for unpaid members
   if user_connected = $("meta[name=\"user_connected\"]").attr("content")
     console.log user_connected
-    $('#payments').modal('show')
+    #$('#payments').modal('show')
   #save a cookie if they dont have facebook
   $("#no_facebook_btn").click ->
     $('#first_time_vistor').modal('hide')

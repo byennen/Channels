@@ -2,11 +2,7 @@
 
 .row-fluid
   .span12
-    %ul.breadcrumb.entry-title
-      %li.active= Channels
-
-.row-fluid
-  .span12
+    %h1.heading Channels
     %ul.thumbnails
       - @channels.each do |channel|
         - if channel.active?
@@ -19,11 +15,7 @@
 
 .row-fluid
   .span12
-    %ul.breadcrumb.entry-title
-      %li.active Coming Soon
-
-.row-fluid
-  .span12
+    %h2.heading Coming Soon
     %ul.thumbnails
       - @channels.each do |channel|
         - unless channel.active?
