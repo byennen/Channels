@@ -70,19 +70,19 @@ class Song < ActiveRecord::Base
     fog_connection.directories.get(APP_CONFIG["aws_bucket"])
   end
 
-  def create_temp_file
+  def create_temp_file(preview=false)
     local_file = File.open(waveform_temp_file, "wb")
     s3_file = "#{s3_path}/#{filename}"
     file = s3_directory.files.get(s3_file)
     local_file.write(file.body)
   end
 
-  def s3_path
-    "song/song/#{id}"
+  def s3_path(preview=false)
+    path = preview == false ? "song/song/#{id}" : "song/preview/#{id}"
   end
 
-  def waveform_url
-    "http://s3.amazonaws.com/#{APP_CONFIG["aws_bucket"]}/#{s3_path}/waveform.png"
+  def waveform_url(preview=false)
+    "http://s3.amazonaws.com/#{APP_CONFIG["aws_bucket"]}/#{s3_path(preview)}/waveform.png"
   end
 
   def convert_to_wave
@@ -90,10 +90,10 @@ class Song < ActiveRecord::Base
     system command
   end
 
-  def copy_waveform_to_s3
+  def copy_waveform_to_s3(preview=false)
     file = s3_directory.files.create(
              body:   File.open(waveform_image),
-             key:    "#{s3_path}/waveform.png",
+             key:    "#{s3_path(preview)}/waveform.png",
              public: true
     )
   end
@@ -104,11 +104,11 @@ class Song < ActiveRecord::Base
     FileUtils.rm(waveform_wav_file)
   end
 
-  def generate_waveform
-    create_temp_file
+  def generate_waveform(preview=false)
+    create_temp_file(preview)
     convert_to_wave
     Waveform.new(waveform_wav_file).generate(waveform_image)
-    copy_waveform_to_s3
+    copy_waveform_to_s3(preview)
     clean_waveform_files
   end
 
@@ -134,7 +134,8 @@ class Song < ActiveRecord::Base
      album_title: album.title,
      album_image: album.image.thumb('70x70').url,
      artist_name: album.channel.name,
-     waveform:    waveform_url
+     waveform:    waveform_url,
+     preview_waveform: waveform_url(true)
      }
   end
 
