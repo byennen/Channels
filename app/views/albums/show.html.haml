@@ -1,0 +1,19 @@
+.background-wrapper{ :style => "background: url('#{@album.image.url}' ) repeat-x ##{@channel.background_color};" }
+  .container-fluid.content
+    #banner
+      = image_tag current_channel.banner_image.thumb('1600x505#').url if @channel.banner_image_uid    
+    .row-fluid
+      .span8
+        %h2.heading= @album.title
+        %table.table.table-striped
+          %thead
+          %tbody
+          - @album.songs.each do |song|
+            %tr
+              -#%td= image_tag(song.album.image.thumb('50x50#').url
+              - if user_signed_in? && current_user.unpaid_member?
+                %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info unpaid_members_music",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
+              - else
+                %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
+              %td.center= song.title
+        
