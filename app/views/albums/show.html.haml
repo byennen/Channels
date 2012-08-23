@@ -1,19 +1,54 @@
-.background-wrapper{ :style => "background: url('#{@album.image.url}' ) repeat-x ##{@channel.background_color};" }
+.background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
   .container-fluid.content
-    #banner
-      = image_tag current_channel.banner_image.thumb('1600x505#').url if @channel.banner_image_uid    
     .row-fluid
-      .span8
-        %h2.heading= @album.title
-        %table.table.table-striped
-          %thead
-          %tbody
-          - @album.songs.each do |song|
-            %tr
-              -#%td= image_tag(song.album.image.thumb('50x50#').url
-              - if user_signed_in? && current_user.unpaid_member?
-                %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info unpaid_members_music",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
-              - else
-                %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
-              %td.center= song.title
-        
+      .span12{:style => 'margin-bottom: 40px;'}
+        .row-fluid
+          .span4
+            .thumbnail{:style => 'margin-top: 20px;'}
+              = image_tag @album.image.thumb('488x400#').url
+              -#= image_tag current_channel.banner_image.thumb('1600x505#').url if @channel.banner_image_uid
+              -#= image_tag('http://placehold.it/350x300')
+          .span8
+            %h1.heading.span= @album.title
+            %p= @channel.description
+            .row-fluid{:style => 'margin-top: 30px;'}
+              .span2
+                %a.twitter-follow-button{"data-show-count" => "false", "data-show-screen-name" => "false", :href => "https://twitter.com/#{@channel.twitter_id}", :target => "_blank"} Follow
+              .span2
+                .fb-like{"data-font" => "arial", "data-href" => "http://facebook.com/#{@channel.facebook_page}", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "50"}
+              .span2
+                .g-plusone{"data-href" => "https://plus.google.com/109799687634302877687", "data-size" => "medium"}
+    .row-fluid
+      .span12
+        .row-fluid
+          .span8{:style => 'margin-top: 23px;'}
+            %table.table.table-striped
+              %thead
+              %tbody
+              - @album.songs.each do |song|
+                %tr
+                  -#%td= image_tag(song.album.image.thumb('50x50#').url
+                  - if user_signed_in? && current_user.unpaid_member?
+                    %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info unpaid_members_music",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
+                  - else
+                    %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
+                  %td.center= song.title
+          .span4
+            .rightsidebar
+              .row-fluid
+                .span
+                  %h2.heading Featured Video
+
+              .row-fluid
+                .span
+                  %h2.heading Featured Sponsor
+                  .thumbnail
+                    %img{:alt => "", :src => "http://placehold.it/488x294"}
+
+
+-#twitter
+:javascript
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+-#google plus
+%script{:src => "https://apis.google.com/js/plusone.js", :type => "text/javascript"}
