@@ -1,11 +1,11 @@
 - title "Channels"
 
-.row
+.row-fluid
   .span12
     %ul.breadcrumb.entry-title
       %li.active= Channels
 
-.row
+.row-fluid
   .span12
     %ul.thumbnails
       - @channels.each do |channel|
@@ -17,12 +17,12 @@
                 %h5= channel.name
                 %p= truncate(channel.description, :length => 80, :omission =>  "...")
 
-.row
+.row-fluid
   .span12
     %ul.breadcrumb.entry-title
       %li.active Coming Soon
 
-.row
+.row-fluid
   .span12
     %ul.thumbnails
       - @channels.each do |channel|
@@ -35,6 +35,6 @@
                 %p= truncate(channel.description, :length => 80, :omission =>  "...")
 
 
-.row
+.row-fluid
   .span12
     .space_filler{:style => 'padding: 0 0 34%;'}

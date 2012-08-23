@@ -1,4 +1,4 @@
-.row
+.row-fluid
   - @photo_albums.each do |album|
     .span.thumbnail
       - if user_signed_in? && current_user.unpaid_member?
