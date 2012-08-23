@@ -42,7 +42,7 @@ class Video < ActiveRecord::Base
   end
   
   def self.coming_soon(current_video)
-    Video.where("publish_on > ?", current_video.publish_on).order('publish_on DESC').limit(4)
+    Video.where("publish_on > ?", current_video.publish_on).order('publish_on ASC').limit(4)
   end
   
   def sources
