@@ -73,11 +73,11 @@
               .span
                 %h2.heading Featured Album
                 .thumbnail
-                  %img{:alt => "", :src => "http://placehold.it/488x294"}
+                  %img{:alt => "", :src => @featured_album.image.thumb('488x294#').url}
                     .caption
-                      %h5 title
-                      %p description
-                      = link_with_icon("Listen Free Preview", "#", "icon-play icon-white", "btn btn-success btn-large")
+                      %h5= @featured_album.title
+                      %p= @featured_album.description
+                      = link_with_icon("Listen Free Preview", album_url(@featured_album), "icon-play icon-white", "btn btn-success btn-large")
             .row-fluid
               .span
                 %h2.heading Featured Sponsor
