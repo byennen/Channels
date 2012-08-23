@@ -8,10 +8,6 @@
   = render 'shared/music/latest'
   = render 'shared/videos/latest'
 - else
-  = link_to image_tag('alive-at-brushy.jpg', :class => 'intro-photo'), root_url(:subdomain => "aliveatbrushy")
+  .span
+    = link_to image_tag('alive-at-brushy.jpg', :class => 'intro-photo'), root_url(:subdomain => "aliveatbrushy")
   = render 'home/quote'
-  .row{:style => "padding: 40px 0 20px;"}
-    .span6
-      = image_tag('sam-coming-soon.png')
-    .span6
-      = image_tag('randy-coming-soon.png')
