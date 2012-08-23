@@ -15,7 +15,7 @@
 - if current_user.unpaid_member?
   %fieldset
     %legend Membership
-    = link_to "Become a Paid Member", "#", :class => 'btn btn-success btn-large'
+    = link_to "Become a Paid Member", subscribe_user_url, :class => 'btn btn-success btn-large'
 
 - if current_user.paid_member?
   = form_for(resource, :as => resource_name, :url => cancel_membership_path, :html => {:method => :post}, :class => "form-stacked") do |f|
