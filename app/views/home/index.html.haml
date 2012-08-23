@@ -32,9 +32,8 @@
     .thumbnail
       %img{:alt => "", :src => "http://placehold.it/488x294"}
         .caption
-          %h5 title
-          %p description
-          = link_with_icon("Listen Free Preview", "#", "icon-film icon-white", "btn btn-success btn-large")
+          %h5{:style => 'margin-bottom: 23px;'}= @featured_song.title
+          = link_with_icon("Listen Free Preview", song_url(@featured_song), "icon-play icon-white", "btn btn-success btn-large",  {:class => "play", :id => "play-#{@featured_song.id}", "data-song" => @featured_song.id})
 
   .span4
     %h3.heading Featured Album
@@ -43,4 +42,4 @@
         .caption
           %h5 title
           %p description
-          = link_with_icon("Listen Free Preview", "#", "icon-film icon-white", "btn btn-success btn-large")
+          = link_with_icon("Listen Free Preview", "#", "icon-play icon-white", "btn btn-success btn-large")
