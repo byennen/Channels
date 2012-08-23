@@ -18,7 +18,7 @@ class Admin::SongsController < Admin::ApplicationController
     logger.debug("params song song is #{params[:song]}")
     @song.title = params[:song][:song].original_filename
     if @song.save
-      Resque.enqueue(WaveformGenerator, @song.id)
+      Resque.enqueue(WaveformGenerator, :song_waveform, {:song_id => @song.id})
       respond_to do |format|
         format.html {
           render :json => [@song.to_jq_upload].to_json,
@@ -35,8 +35,13 @@ class Admin::SongsController < Admin::ApplicationController
   end
 
   def update
-    if @song.update_attributes(params[:song])
-      flash[:notice] = "Song was successfully updated."
+    if @song.attributes = params[:song]
+      if @song.changed.include?('preview')
+        Resque.enqueue(WaveformGenerator, :preview_waveform, {:song_id => @song.id})
+      end
+      if @song.save
+        flash[:notice] = "Song was successfully updated."
+      end
     end
     respond_with @song, :location => admin_channel_album_songs_url
   end

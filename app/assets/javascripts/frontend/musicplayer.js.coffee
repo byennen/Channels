@@ -6,6 +6,7 @@ $(document).on "ready pjax:success", ->
   window.player = new Player(el: "#player .container")
 
   $('.play').click ->
+    console.log("PLay Clicked")
     window.player.playSong($(this).attr("href"))
     $('#player_control_image').show()
     $("#player_control_image").addClass("playing").removeClass("paused")
@@ -97,11 +98,12 @@ class Player
       $("#player_control_image").addClass("paused").removeClass("playing")
       @status = true
 
-  updateInfo: (data) ->
+  updateInfo: (data, waveform) ->
+    console.log("waveform is " + waveform)
     $(".artist").html(data['artist_name'])
     $(".trackName").html(data['title'])
     $("#cover-art a img").attr("src", data['album_image'])
-    $("#waveform img").attr("src", data["waveform"])
+    $("#waveform img").attr("src", waveform)
 
   playSong: (url) ->
     status = $('meta[name="user_connected"]').attr('content')
@@ -111,8 +113,10 @@ class Player
       r = $.getJSON(url, (data) ->
         if status == "paid member"
           url = data["url"]
+          waveform = data["waveform"]
         else
           url = data["preview_url"]
+          waveform = data["preview_waveform"]
         $('#jplayer').jPlayer("setMedia", {
           mp3: url
         }).jPlayer("play")
@@ -121,7 +125,7 @@ class Player
         @status = true
         @intro = false
         $("#cover-art").addClass("paused").removeClass("playing")
-        player.updateInfo(data)
+        player.updateInfo(data, waveform)
         $.post("/songs/" + data["id"] + "/played", (data) ->
           played = data
         )

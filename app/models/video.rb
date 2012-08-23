@@ -41,6 +41,10 @@ class Video < ActiveRecord::Base
     published.recent.first
   end
   
+  def self.coming_soon(current_video)
+    Video.where("publish_on > ?", current_video.publish_on).order('publish_on ASC').limit(4)
+  end
+  
   def sources
     sources = []
     file_extension = filename.split('.').last

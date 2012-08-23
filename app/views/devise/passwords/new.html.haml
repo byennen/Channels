@@ -1,52 +1,5 @@
 - title "Sign up with Email"
 
-:css
-  #facebook_photos {
-    margin: 10px auto 0; 
-    float: none;
-    padding-left: 20px;
-  }
-  #forgot_email {
-    margin: 0 auto 0; 
-    float: none;
-  }
-  #forgot_email p {
-    text-align: center;
-    color: #575B61;
-    margin-bottom: 40px;
-  }
-  #forgot_email img.logo {
-    padding: 30px 0 5px 28px;
-  }
-  #forgot_email h2 {
-    text-align: center;
-  }
-  #forgot_email .btn {
-    margin-left: 114px;
-  }
-  #other_links {
-    margin: 0 auto;
-    float: none;
-  }
-  #other_links a {
-    font-weight: bold;
-  }
-  #other_links p {
-    margin: 20px 0 0;
-  }
-  .overlay {
-    background: rgba(255, 255, 255, .3); 
-    padding: 6px; 
-    -moz-border-radius: 5px; 
-    border-radius: 5px;
-  }
-  .overlay-inside {
-    background: white;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    padding-bottom: 50px;    
-  }
-
 .row
   .span6#forgot_email
     .overlay
@@ -56,10 +9,10 @@
         .row
           .span6#form
             %h2 Forgot your password?
-            = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post, :class => 'form-horizontal'}) do |f|
+            = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post, :class => 'well'}) do |f|
               = devise_error_messages!
-              = f.input :email, :required => true
-              = f.submit "Send me reset password instructions", :class => 'btn btn-primary'
+              = f.input :email, :required => true, :label => false, :placeholder => 'Email'
+              = f.submit "Send", :class => 'btn btn-primary'
         .row
           .span#other_links
             %p

@@ -1,6 +1,6 @@
-.row
+.row-fluid
   - @photo_albums.each do |album|
-    .span.thumbnail
+    .span3.thumbnail
       - if user_signed_in? && current_user.unpaid_member?
         = link_to image_tag(album.image.thumb('280x180#').url), 'javascript:;', :title => album.title, :class => 'unpaid_member_photos'
         .caption

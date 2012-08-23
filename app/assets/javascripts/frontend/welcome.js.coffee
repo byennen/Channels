@@ -10,16 +10,13 @@ $(document).on "ready pjax:success", ->
   #check for unpaid members
   if user_connected = $("meta[name=\"user_connected\"]").attr("content")
     console.log user_connected
-    $('#payments').modal('show')
-  else
-    #welcome first time visitors
-    $('#first_time_vistor').modal('show')
-    #save a cookie if they dont have facebook
-    $("#no_facebook_btn").click ->
-      $('#first_time_vistor').modal('hide')
-      $('#no_facebook_signup').modal('show')      
-      console.log("should have opened the new modal")
-      $.cookie "altimarc-vistor-no-facebook", "cookie_value", { expires: 365, useLocalStorage: false, domain: domain }
+    #$('#payments').modal('show')
+  #save a cookie if they dont have facebook
+  $("#no_facebook_btn").click ->
+    $('#first_time_vistor').modal('hide')
+    $('#no_facebook_signup').modal('show')
+    console.log("should have opened the new modal")
+    $.cookie "altimarc-vistor-no-facebook", "cookie_value", { expires: 365, useLocalStorage: false, domain: domain }
 
   #check for paid member
   if paid_member = $("meta[name=\"paid_member\"]").attr("content")
