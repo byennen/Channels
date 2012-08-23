@@ -9,7 +9,7 @@
   = render 'shared/videos/latest'
 - else
   .span
-    #slider.nivoSlider
+    #slideshow.nivoSlider
       - @channels.each do |channel|
         - if channel.active?
           = link_to image_tag(channel.banner_image.thumb('1600x505#').url), root_url(subdomain: channel.subdomain) if channel.banner_image
