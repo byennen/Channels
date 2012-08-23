@@ -36,11 +36,11 @@ $(document).on "ready pjax:success", ->
 
 
   #unpaid member -> wants to join
-  $(".become_a_member").click ->
-    console.log "Become a member!"
-    $('#unpaid_members_music_modal').modal('hide')
-    $('#unpaid_members_photos_modal').modal('hide')
-    $('#unpaid_members_videos_modal').modal('hide')
-    $('#payments').modal('show')
+  # $(".become_a_member").click ->
+  #   console.log "Become a member!"
+  #   $('#unpaid_members_music_modal').modal('hide')
+  #   $('#unpaid_members_photos_modal').modal('hide')
+  #   $('#unpaid_members_videos_modal').modal('hide')
+  #   $('#payments').modal('show')
     
 
