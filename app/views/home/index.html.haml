@@ -16,4 +16,31 @@
         - else
           = link_to image_tag(channel.banner_image.thumb('1600x505#').url), "#coming-soon!" if channel.banner_image
     -#= link_to image_tag('alive-at-brushy.jpg', :class => 'intro-photo'), root_url(:subdomain => "aliveatbrushy")
-  = render 'home/quote'
+  -#= render 'home/quote'
+.row-fluid{:style => 'margin-bottom: 40px;'}
+  .span4
+    %h3 Featured Video
+    .thumbnail
+      %img{:alt => "", :src => "http://placehold.it/488x294"}
+        .caption
+          %h5 title
+          %p description
+          = link_with_icon("Watch Free Trailer", "#", "icon-film icon-white", "btn btn-success")
+          
+  .span4
+    %h3 Featured Song
+    .thumbnail
+      %img{:alt => "", :src => "http://placehold.it/488x294"}
+        .caption
+          %h5 title
+          %p description
+          = link_with_icon("Listen Free Preview", "#", "icon-film icon-white", "btn btn-success")
+
+  .span4
+    %h3 Featured Album
+    .thumbnail
+      %img{:alt => "", :src => "http://placehold.it/488x294"}
+        .caption
+          %h5 title
+          %p description
+          = link_with_icon("Listen Free Preview", "#", "icon-film icon-white", "btn btn-success")

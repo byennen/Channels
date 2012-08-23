@@ -1,8 +1,8 @@
 .row-fluid.items
-  .span2
+  .span3
     .thumbnail
-      = link_to image_tag(post.image.thumb('130x120#').url), post_url(post)
-  .span6
+      = link_to image_tag(post.image.thumb('231x211#').url), post_url(post)
+  .span9
     %h4= link_to post.title, post_url(post)
     %p= post.publish_on.strftime('%m/%d/%Y')
     %p= post.description.truncate(280)

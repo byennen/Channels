@@ -9,26 +9,14 @@
     %meta{property: "og:site_name", content: "Altimarc"}
     %meta{property: "og:description", content: @video.description}
 
-  = render 'shared/videoplayer'
-
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
-  .content
-    .container
-      %h3 Recent Episodes
-      -#- if user_signed_in? && current_user.paid_member?
-        -#%h3 Recent Episodes
-      -#- else
-        -#%h3 Recent Episodes
-        -#%p
-          -#%span{:style => 'color:red;'}
-            -#(PREVIEWS ONLY)
-          -#= ' - '
-          -#= link_to 'become a member', 'javascript:;', :class => 'become_a_member'
-          -#for full episodes
-      -# TODO: add see all button and style see all page
-      -#= link_to "(See all)", channel_videos_url(@channel)
-
-      = render 'channels/videos'
+  .container-fluid.content
+    #slideshow
+      = image_tag @channel.banner_image.thumb('1600x505#').url if @channel.banner_image_uid    
+    .row-fluid
+      .span12
+        %h3 Recent Episodes
+        = render 'channels/videos'
 
       .row-fluid
         #posts.span8
@@ -65,8 +53,6 @@
             #description.span
               %p= @channel.description
 
-- if @video.present?
-  = render 'shared/video_playlist'
 
 -#twitter
 :javascript
