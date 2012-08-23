@@ -38,7 +38,13 @@
               .row-fluid
                 .span
                   %h2.heading Featured Video
-
+                  .thumbnail
+                    %img{:alt => "", :src => @featured_video.image.thumb('488x294#').url}
+                      .caption
+                        %h5= @featured_video.title
+                        %p= @featured_video.description
+                        = link_with_icon("Watch Free Trailer", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "btn btn-success btn-large")
+                        
               .row-fluid
                 .span
                   %h2.heading Featured Sponsor
