@@ -1,15 +1,15 @@
-.container
-  .row
+.container-fluid
+  .row-fluid
     #player
       #player_control_image
-      #inside_player
-        #cover-art.span
+      #inside_player.span12
+        #cover-art
           = link_to image_tag("http://placehold.it/70x70"), "javascript:;", :title => "title here"
-        #track-meta-data
-          %ul
+        #track-meta-data.span10
+          %ul{:style => 'margin: 0;'}
             %li= link_to "Track name here", "#link-to-album", :title => "title here", :class => "trackName"
             %li.divider /
             %li= link_to "Artist name here", "#link-to-artist", :title => "artist name here", :class => "artist"
-        #waveform
-          = image_tag('waveform.png')
+          #waveform
+            -#= image_tag('waveform.png')
         #jplayer.jp-player

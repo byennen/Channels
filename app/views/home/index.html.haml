@@ -8,10 +8,38 @@
   = render 'shared/music/latest'
   = render 'shared/videos/latest'
 - else
-  = link_to image_tag('alive-at-brushy.jpg', :class => 'intro-photo'), root_url(:subdomain => "aliveatbrushy")
-  = render 'home/quote'
-  .row{:style => "padding: 40px 0 20px;"}
-    .span6
-      = image_tag('sam-coming-soon.png')
-    .span6
-      = image_tag('randy-coming-soon.png')
+  .span
+    #slideshow.nivoSlider
+      - @channels.each do |channel|
+        - if channel.active?
+          = link_to image_tag(channel.banner_image.url), root_url(subdomain: channel.subdomain) if channel.banner_image
+        - else
+          = link_to image_tag(channel.banner_image.url), "#coming-soon!" if channel.banner_image
+    -#= link_to image_tag('alive-at-brushy.jpg', :class => 'intro-photo'), root_url(:subdomain => "aliveatbrushy")
+  -#= render 'home/quote'
+.row-fluid{:style => 'margin-top: 40px;'}
+  .span4
+    %h3.heading Featured Video
+    .thumbnail
+      %img{:alt => "", :src => "http://placehold.it/488x294"}
+        .caption
+          %h5 title
+          %p description
+          = link_with_icon("Watch Free Trailer", "#", "icon-film icon-white", "btn btn-success btn-large")
+          
+  .span4
+    %h3.heading Featured Song
+    .thumbnail
+      %img{:alt => "", :src => "http://placehold.it/488x294"}
+        .caption
+          %h5{:style => 'margin-bottom: 23px;'}= @featured_song.title
+          = link_with_icon("Listen Free Preview", song_url(@featured_song), "icon-play icon-white", "btn btn-success btn-large",  {:class => "play", :id => "play-#{@featured_song.id}", "data-song" => @featured_song.id})
+
+  .span4
+    %h3.heading Featured Album
+    .thumbnail
+      %img{:alt => "", :src => "http://placehold.it/488x294"}
+        .caption
+          %h5 title
+          %p description
+          = link_with_icon("Listen Free Preview", "#", "icon-play icon-white", "btn btn-success btn-large")

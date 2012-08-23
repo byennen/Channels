@@ -4,6 +4,12 @@
 @iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
 @iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
 
+.container-fluid {
+  max-width: 1560px;
+  min-width: 800px;
+  margin: 0 auto;
+}
+
 #flash_message .alert {
   position: absolute;
   top: 90 !important;
@@ -32,9 +38,15 @@
 a {
   outline: 0 none;
   -moz-outline: 0 none;
-  a:hover, a:active, a:focus {
-    outline: 0 none;
-    -moz-outline: 0 none;
-    text-decoration: none !important;
-  }
 }
+a:hover, a:active, a:focus {
+  outline: 0 none;
+  -moz-outline: 0 none;
+  text-decoration: none !important;
+}
+
+.help-block {
+  font-size: 12px;
+  color: #999;
+}
+

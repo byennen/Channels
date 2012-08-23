@@ -44,11 +44,10 @@
           $.backstretch("../../../../assets/mark-collie-login.jpg");
       - else
         .background-wrapper
-          .content
-            .container
-              .row
-                .span12
-                  = yield
+          .container-fluid.content
+            .row-fluid
+              .span12
+                = yield
       -# modals need to be inside of the data class
       = render 'layouts/frontend/modals'
 

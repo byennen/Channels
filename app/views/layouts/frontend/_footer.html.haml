@@ -1,8 +1,8 @@
 #pusher
 #footer
-  .container
-    .row
-      .span4
+  .container-fluid
+    .row-fluid
+      .span3
         %strong Company
         %ul.footer
           %li= link_to "Home", root_url, :class => 'pjax'
@@ -13,7 +13,7 @@
           -#%li= link_to "Jobs", jobs_url, :class => 'pjax'
           %li= link_to "Altimarc For Your Business", altimarc_for_your_business_url, :class => 'pjax'
           
-      .span4
+      .span3
         %strong Get Help
         %ul.footer
           -#%li= link_to "FAQ", faq_url, :class => 'pjax'
@@ -24,22 +24,22 @@
           %li= link_to "Safe Harbor", safe_harbor_url, :class => 'pjax'
           -#%li= link_to "Contact Us", "#", :class => 'pjax'
 
-      .span4
-        %strong Sign up for our Giveaways
-        %p and receive exclusive offers
-        = simple_form_for @giveaway, :url => enter_giveaway_path, :html => {:class => 'wellclear form-inline'} do |f|
-          = f.input :email, :input_html => {:class => "input-xlarge", :placeholder => "Email"}, :label => false
-          .row
-            .span
-              %button.btn.btn-danger{:type => "submit"} Sign up
-            .span.pull-right.social
-              %ul.footer
-                %li
-                  = link_to image_tag('layout/icons/facebook.png', :width => "30"), "http://facebook.com/altimarc"
-                  = link_to image_tag('layout/icons/twitter.png', :width => "30"), "http://twitter.com/altimarc"
-                  = link_to image_tag('layout/icons/pinterest.png', :width => "30"), "http://pinterest.com/altimarc"
-                  = link_to image_tag('layout/icons/googleplus.png', :width => "30"), "http://gplus.to/altimarc"
-        %p.copyright
+      .span6
+        -#%strong Sign up for our Giveaways
+        -#%p and receive exclusive offers
+        -#= simple_form_for @giveaway, :url => enter_giveaway_path, :html => {:class => 'wellclear form-inline'} do |f|
+          -#= f.input :email, :input_html => {:class => "input-xlarge", :placeholder => "Email"}, :label => false
+          -#.row
+            -#.span
+              -#%button.btn.btn-danger{:type => "submit"} Sign up
+        .span.pull-right.social
+          %ul.footer.pull-right
+            %li
+              = link_to image_tag('layout/icons/facebook.png', :width => "30"), "http://facebook.com/altimarc"
+              = link_to image_tag('layout/icons/twitter.png', :width => "30"), "http://twitter.com/altimarc"
+              = link_to image_tag('layout/icons/pinterest.png', :width => "30"), "http://pinterest.com/altimarc"
+              = link_to image_tag('layout/icons/googleplus.png', :width => "30"), "http://gplus.to/altimarc"
+        %p.copyright.pull-right
           &copy;
           = Time.now.year
           = link_to 'ALTIMARC, LLC.', root_url, :class => 'pjax'
