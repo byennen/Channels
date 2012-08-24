@@ -17,6 +17,7 @@
   .container-fluid.content{:style => 'padding-top: 30px;'}
     .row-fluid
       .span12
+        = render 'shared/breadcrumb'
         .thumbnail
           = image_tag(@post.image.thumb('1560x852#n').url)
     .row-fluid

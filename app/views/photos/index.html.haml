@@ -11,20 +11,20 @@
   -#%meta{property: "og:description", content: @video.description}
 
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
-  .content
-    .container
-      = render 'shared/breadcrumb'
-      %p
-        %button#start-slideshow.btn.btn-large.btn-success{"data-selector" => "#gallery a[rel=gallery]", "data-slideshow" => "5000", "data-target" => "#modal-gallery"} Start Slideshow
-        %button#toggle-fullscreen.btn.btn-large.btn-primary{"data-toggle" => "button"} Toggle Fullscreen
-      %hr
-      #gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
-        .row
-          - @photos.each do |photo|
-            .span.thumbnail
-              = link_to image_tag(photo.image.thumb('280x180#').url), photo.image.url, :rel => 'gallery', :title => photo.title, 'data-content' => photo.description
-              .caption
-                %h5= photo.title.truncate(30)
+  .container-fluid.content{:style => 'padding-top: 30px;'}
+    .row-fluid
+      .span12
+        = render 'shared/breadcrumb'
+    #gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
+      - @photos.each_slice(3) do |array|
+        .row-fluid
+          .span12
+            - array.each do |photo|
+              .span4.thumbnail
+                = image_tag photo.image.thumb('500x300#').url, :title => photo.title, 'data-content' => photo.description
+                -#= link_to image_tag(photo.image.thumb('280x180#').url), photo.image.url, :rel => 'gallery', :title => photo.title, 'data-content' => photo.description
+                .caption
+                  %h5= photo.title.truncate(30)
 
 #modal-gallery.modal.modal-gallery.hide.fade
   .modal-header
