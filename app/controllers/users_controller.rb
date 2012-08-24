@@ -31,6 +31,7 @@ class UsersController < ApplicationController
   def cancel
     if current_user.cancel_membership
       flash[:notice] = "Your membership has been canceled."
+      redirect_to edit_user_registration_url(subdomain: "www")
     end
   end
 
