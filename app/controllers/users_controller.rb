@@ -6,11 +6,12 @@ class UsersController < ApplicationController
   end
 
   def subscribe
-    
-    current_user.attributes = params[:user]
-    if current_user.save
-      respond_to do |format|
-        format.json { render :json => current_user }
+    if request.put?
+      current_user.attributes = params[:user]
+      if current_user.save
+        respond_to do |format|
+          format.html { redirect_to "http://#{current_channel.subdomain}.#{APP_CONFIG['domain']}" }
+        end
       end
     end
   end
@@ -29,6 +30,7 @@ class UsersController < ApplicationController
   
   def cancel
     if current_user.cancel_membership
+      flash[:notice] = "Your membership has been canceled."
       redirect_to edit_user_registration_url(subdomain: "www")
     end
   end

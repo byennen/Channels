@@ -1,40 +1,32 @@
 - title "Channels"
 
-.row
+.row-fluid
   .span12
-    %ul.breadcrumb.entry-title
-      %li.active= Channels
-
-.row
-  .span12
+    %h1.heading Channels
     %ul.thumbnails
       - @channels.each do |channel|
         - if channel.active?
           %li.span4
             .thumbnail
-              = link_to image_tag(channel.banner_image.thumb('301x170#').url), root_url(subdomain: channel.subdomain), class: 'pjax' if channel.banner_image
+              = link_to image_tag(channel.banner_image.thumb('507x265#').url), root_url(subdomain: channel.subdomain), class: 'pjax' if channel.banner_image
               .caption
                 %h5= channel.name
                 %p= truncate(channel.description, :length => 80, :omission =>  "...")
 
-.row
+.row-fluid
   .span12
-    %ul.breadcrumb.entry-title
-      %li.active Coming Soon
-
-.row
-  .span12
+    %h2.heading Coming Soon
     %ul.thumbnails
       - @channels.each do |channel|
         - unless channel.active?
           %li.span4
             .thumbnail
-              = link_to image_tag(channel.banner_image.thumb('301x170#').url), "#Coming-Soon!" if channel.banner_image
+              = link_to image_tag(channel.banner_image.thumb('507x265#').url), "#Coming-Soon!" if channel.banner_image
               .caption
                 %h5= channel.name
                 %p= truncate(channel.description, :length => 80, :omission =>  "...")
 
 
-.row
+.row-fluid
   .span12
     .space_filler{:style => 'padding: 0 0 34%;'}

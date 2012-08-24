@@ -5,8 +5,10 @@ class SessionsController < Devise::SessionsController
     sign_in(User, user)
     session[:user_id] = user.id
     if user.new_fb_user?
+      flash[:notice] = "Thank you for connecting via Facebook"      
       render :action => :new
     else
+      flash[:notice] = "Thank you for connecting via Facebook"       
       if channel = Channel.find_by_uuid(params[:state])
         redirect_to "http://#{channel.subdomain}.#{APP_CONFIG['domain']}"
       else

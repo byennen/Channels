@@ -1,39 +1,24 @@
 
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }, :class => 'form-stacked') do |f|
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }, :class => 'form-stacked') do |f|
   %fieldset
     %legend Edit #{resource_name.to_s.humanize}
     = devise_error_messages!
-    .clearfix
-      = f.label :first_name
-      .input
-        = f.text_field :first_name
-    .clearfix
-      = f.label :last_name
-      .input
-        = f.text_field :last_name
-    .clearfix
-      = f.label :email
-      .input
-        = f.email_field :email
-    .clearfix
-      = f.label :password
-      .input
-        = f.password_field :password
-        %i (leave blank if you don't want to change it)
-    .clearfix
-      = f.label :password_confirmation
-      .input
-        = f.password_field :password_confirmation
-    .clearfix
-      = f.label :current_password
-      .input
-        = f.password_field :current_password
-        %i (we need your current password to confirm your changes)
-    .actions
-      = f.submit "Update", :class => 'btn primary'
+    = f.input :first_name, :class => 'input-large'
+    = f.input :last_name
+    = f.input :email
+    = f.input :password
+    = f.input :password_confirmation, :hint => "Leave blank if you don't want to change it"
+    = f.input :current_password, :required => true, :hint => 'We need your current password to confirm your changes'
+    = f.submit "Update", :class => 'btn btn-primary btn-large', :style => 'margin-top: 20px;'
+
+.membership{:style => 'margin-top: 70px;'}
+- if current_user.unpaid_member?
+  %fieldset
+    %legend Membership
+    = link_to "Become a Paid Member", subscribe_user_url, :class => 'btn btn-success btn-large'
 
 - if current_user.paid_member?
   = form_for(resource, :as => resource_name, :url => cancel_membership_path, :html => {:method => :post}, :class => "form-stacked") do |f|
     %fieldset
-      %legend Cancel Membership
-      = f.submit "Cancel My Membership", :class => 'btn btn-danger primary'
+      %legend Membership
+      = f.submit "Please cancel my Membership", :class => 'btn btn-danger'

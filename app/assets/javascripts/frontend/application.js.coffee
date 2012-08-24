@@ -6,14 +6,15 @@
 #= require jquery.pjax
 #= require frontend/plugins/jquery.cookie
 #= require frontend/plugins/jquery.backstretch
-#= require frontend/plugins/jquery.jplayer.min
 #= require frontend/plugins/bootstrap
-#= require frontend/plugins/html5video
+#= require plugins/projekktor-1.1.00r107.min
+#= require plugins/jquery.nivo.slider.pack
 #= require frontend/facebook
 #= require frontend/home
 #= require frontend/musicplayer
 #= require frontend/channels
 #= require frontend/welcome
+#= require frontend/sessions
 
 
 $(document).on "ready pjax:success", ->

@@ -18,15 +18,13 @@
   .modal-body
     .row
       .span#form
-        %h3 Can you can help us?
         %p Become a member today and your hard earn money will go towards making altimarc better and us making you happy!
         %p As a member you will have access to live streaming concerts, prizes, and once in life time oppurtunities.
-        %p We promise to make you happy, or we'll try with a refund.
         %em ***Also, these pop up messages will go away, and you will have exclusive access to photos and more!
 
   .modal-footer
     %a#not_right_now_btn{"data-dismiss" => "modal"} Not right now
     %span or
-    %a.btn.btn-primary.btn-large.become_a_member
+    %a.btn.btn-primary.btn-large.become_a_member{href: "/subscribe"}
       %i.icon-ok.icon-white
       Become a member

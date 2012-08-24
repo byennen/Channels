@@ -5,68 +5,49 @@
     %meta{property: "og:title", content: @video.title}
     %meta{property: "og:type", content: "video.other"}
     %meta{property: "og:url",  content: video_url(@video)}
-    %meta{property: "og:image",content: "http://46qa.localtunnel.com/#{@video.image.url}"}
+    %meta{property: "og:image",content: @video.image.url(:host => "http://#{request.host}")}
     %meta{property: "og:site_name", content: "Altimarc"}
     %meta{property: "og:description", content: @video.description}
 
-  = render 'shared/videoplayer'
-
 .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
-  .content
-    .container
-      %h3 Recent Episodes
-      -#- if user_signed_in? && current_user.paid_member?
-        -#%h3 Recent Episodes
-      -#- else
-        -#%h3 Recent Episodes
-        -#%p
-          -#%span{:style => 'color:red;'}
-            -#(PREVIEWS ONLY)
-          -#= ' - '
-          -#= link_to 'become a member', 'javascript:;', :class => 'become_a_member'
-          -#for full episodes
-      -# TODO: add see all button and style see all page
-      -#= link_to "(See all)", channel_videos_url(@channel)
+  .container-fluid.content
+    #banner
+      = image_tag @channel.banner_image.thumb('1600x505#').url if @channel.banner_image_uid    
+    .row-fluid
+      .span8
+        %h2.heading Recent Webisodes 
+        = render 'channels/videos'
+        .row-fluid
+          .span
+            %h2.heading Recent Photo Albums
+            = render 'channels/photos'
+        .row-fluid
+          .span#posts
+            %h2.heading Recent Updates
+            = render :partial => 'post', :collection => @posts
 
-      = render 'channels/videos'
-
-      .row
-        #posts.span8
-          .tabbable
-            / Only required for left/right tabs
-            %ul.nav.nav-tabs
-              %li.active
-                %a{"data-toggle" => "tab", :href => "#tab1"} Latest
-              %li
-                %a{"data-toggle" => "tab", :href => "#tab2"} Music
-              %li
-                %a{"data-toggle" => "tab", :href => "#tab3"} Photos
-
-          .tab-content
-            #tab1.tab-pane.active
-              = render :partial => 'post', :collection => @posts
-              -# TODO: add pagination for posts
-              -#- if @posts.count > 4
-                -#%ul.pager
-                  -#%li
-                    -#%a{:href => "#"} ← Older
-                  -#%li
-                    -#%a{:href => "#"} Newer →
-            #tab2.tab-pane
-              = render 'channels/music'
-            #tab3.tab-pane{:style => "text-align:center"}
-              = render 'channels/photos'
-
-        .span4
-          .rightsidebar
-            %h1= @channel.name
+      .span4
+        .rightsidebar
+          .row-fluid
             .span
-            = render 'channels/social_media'
-            #description.span
-              %p= @channel.description
-
-- if @video.present?
-  = render 'shared/video_playlist'
+              %h1.heading= @channel.name
+              #description.span
+                %p= @channel.description
+              = render 'channels/social_media'
+            .row-fluid
+              .span
+                %h2.heading Featured Album
+                .thumbnail
+                  %img{:alt => "", :src => @featured_album.image.thumb('488x294#').url }
+                    .caption
+                      %h5= @featured_album.title
+                      %p= @featured_album.description
+                      = link_with_icon("Listen Free Preview", album_url(@featured_album), "icon-play icon-white", "btn btn-success btn-large")
+            .row-fluid
+              .span
+                %h2.heading Featured Sponsor
+                .thumbnail
+                  %img{:alt => "", :src => "http://placehold.it/488x294"}
 
 -#twitter
 :javascript
