@@ -3,6 +3,6 @@ class HomeController < ApplicationController
     @posts = Post.recent
     @featured_song = Song.recent.first
     @featured_video = Video.recent.first
-    @featured_album = Album.find_by_title('Brushy Mountain')
+    @featured_album = Album.first
   end
 end
