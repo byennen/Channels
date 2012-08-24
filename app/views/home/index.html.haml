@@ -21,7 +21,7 @@
   .span4
     %h3.heading Featured Video
     .thumbnail
-      %img{:alt => "", :src => @featured_video.image.thumb('488x294#').url if @featured_video.image}
+      %img{:alt => "", :src => @featured_video.image.thumb('488x294#').url}
         .caption
           %h5= @featured_video.title
           %p= @featured_video.description
@@ -30,7 +30,7 @@
   .span4
     %h3.heading Featured Song
     .thumbnail
-      %img{:alt => "", :src => @featured_song.album.image.thumb('488x294#').url if @feature_song.album.image}
+      %img{:alt => "", :src => @featured_song.album.image.thumb('488x294#').url}
         .caption
           %h5{:style => 'margin-bottom: 23px;'}= @featured_song.title
           = link_with_icon("Listen Free Preview", song_url(@featured_song), "icon-play icon-white", "btn btn-success btn-large",  {:class => "play", :id => "play-#{@featured_song.id}", "data-song" => @featured_song.id})
@@ -38,7 +38,7 @@
   .span4
     %h3.heading Featured Album
     .thumbnail
-      %img{:alt => "", :src => @featured_album.image.thumb('488x294#').url if @feature_album.image}
+      %img{:alt => "", :src => @featured_album.image.thumb('488x294#').url}
         .caption
           %h5= @featured_album.title
           %p= @featured_album.description
