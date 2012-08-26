@@ -31,6 +31,7 @@
               - else
                 %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
               %td.center= song.title
+              %td.center= @album.title
       .span4
         .rightsidebar
           .row-fluid
@@ -41,13 +42,13 @@
                   .caption
                     %h5= @featured_video.title
                     %p= @featured_video.description
-                    = link_with_icon("Watch Free Trailer", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "btn btn-success btn-large")
+                    = link_with_icon("Free Trailer", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "btn btn-success btn-large")
                     
           .row-fluid
             .span
               %h2.heading Featured Sponsor
               .thumbnail
-                %img{:alt => "", :src => "http://placehold.it/488x294"}
+                = link_to image_tag('layout/ad-holder.png'), altimarc_for_your_business_url
 
 
 -#twitter

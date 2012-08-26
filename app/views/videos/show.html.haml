@@ -75,11 +75,11 @@
                 .caption
                   %h5= @featured_album.title
                   %p= @featured_album.description
-                  = link_with_icon("Listen Free Preview", album_url(@featured_album), "icon-play icon-white", "btn btn-success btn-large")
+                  = link_with_icon("Free Preview", album_url(@featured_album), "icon-play icon-white", "btn btn-success btn-large")
         .row-fluid
           .span
             %h2.heading Featured Sponsor
             .thumbnail
-              %img{:alt => "", :src => "http://placehold.it/488x294"}
+              = link_to image_tag('layout/ad-holder.png'), altimarc_for_your_business_url
 
 = render 'shared/video_playlist'

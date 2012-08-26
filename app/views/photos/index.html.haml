@@ -10,21 +10,20 @@
   -#%meta{property: "og:site_name", content: "Altimarc"}
   -#%meta{property: "og:description", content: @video.description}
 
-.background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
-  .container-fluid.content{:style => 'padding-top: 30px;'}
+
+.row-fluid{:style => 'margin-top: 20px;'}
+  .span12
+    = render 'shared/breadcrumb'
+#gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
+  - @photos.each_slice(3) do |array|
     .row-fluid
       .span12
-        = render 'shared/breadcrumb'
-    #gallery{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
-      - @photos.each_slice(3) do |array|
-        .row-fluid
-          .span12
-            - array.each do |photo|
-              .span4.thumbnail
-                = image_tag photo.image.thumb('500x300#').url, :title => photo.title, 'data-content' => photo.description
-                -#= link_to image_tag(photo.image.thumb('280x180#').url), photo.image.url, :rel => 'gallery', :title => photo.title, 'data-content' => photo.description
-                .caption
-                  %h5= photo.title.truncate(30)
+        - array.each do |photo|
+          .span4.thumbnail
+            = image_tag photo.image.thumb('500x300#').url, :title => photo.title, 'data-content' => photo.description
+            -#= link_to image_tag(photo.image.thumb('280x180#').url), photo.image.url, :rel => 'gallery', :title => photo.title, 'data-content' => photo.description
+            .caption
+              %h5= photo.title.truncate(30)
 
 #modal-gallery.modal.modal-gallery.hide.fade
   .modal-header
