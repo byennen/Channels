@@ -43,6 +43,6 @@
                   = link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", "pjax", :id => "logout")
             - else
               - if current_channel
-                = link_with_icon("Login or Register", login_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid), "icon-user", "btn btn-primary pjax")
+                = link_with_icon("Login or Register", login_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid), "icon-user", "btn btn-primary disable-pjax")
               - else
                 = link_with_icon("Login or Register", login_url(subdomain: 'www', host: APP_CONFIG['domain']), "icon-user", "btn btn-primary pjax")

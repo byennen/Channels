@@ -34,6 +34,9 @@ $(document).on "ready pjax:success", ->
   $('.unpaid_members_videos').click ->
     $('#unpaid_members_videos_modal').modal('show')
 
+  $('.coming_soon').click ->
+    $('#coming_soon_modal').modal('show')
+
 
   #unpaid member -> wants to join
   # $(".become_a_member").click ->

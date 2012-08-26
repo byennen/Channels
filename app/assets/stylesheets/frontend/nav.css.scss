@@ -1,3 +1,21 @@
+.navbar-fixed-top, .navbar-fixed-bottom {
+  margin: auto;
+  max-width: 1600px;
+  min-width: 800px;
+  height: 60px
+}
+
+.navbar .btn {
+  margin-top: 2px !important;
+}
+
+.navbar .btn-group {
+  margin: 9px 0px 6px !important;
+  padding: 0 !important;
+}
+div.navbar div.navbar-inner {
+  height: 60px;
+}
 ////nav
 div.navbar div.navbar-inner {
   background: #EEE!important;
@@ -31,7 +49,7 @@ div.navbar div.navbar-inner {
     margin:0px;
     padding:0;
     display:block;
-    height:50px;
+    height:60px;
     background-color:transparent;
     list-style:none;
     font-family:"Trebuchet MS", sans-serif;
@@ -54,8 +72,8 @@ div.navbar div.navbar-inner {
   ul.ldd_menu > li > span{
     float:left;
     color:#fff;	
-    height:50px;
-    line-height:50px;
+    height:60px;
+    line-height:60px;
     cursor:default;
     padding:0px 20px;
     text-shadow:0px 0px 1px #888;

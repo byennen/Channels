@@ -5,14 +5,11 @@ html
 body
   margin: 0
   padding: 0
-  margin-top: 50px
   font-size: 14px
-  min-height: 100%
   background: #DBDADA
 
 .content
   background: white
-  padding-bottom: 50px
   -webkit-box-shadow: 0px 1px 5px 0px #4a4a4a
   -moz-box-shadow: 0px 1px 5px 0px #4a4a4a
   box-shadow: 0px 1px 5px 0px #4a4a4a
@@ -27,15 +24,18 @@ div.content div.container
   background: none repeat scroll 0 0 #FFFFFF
   padding: 20px
   clear: both
-    min-height: 100%
+    min-height: 100%
   height: auto !important
-    height: 100%
-    margin: 0 auto 150px
+    height: 100%
+    margin: 0 auto 150px
+
+
+#homeSlider, #footer
+  margin: 0 -20px 0 -20px
 
 .background-wrapper
   clear: both
   background: url(<%= asset_data_uri 'bg.png' %>) repeat-x #eee
-  padding-top: -30px
 
 .navbar
   background: #dbdada url(<%= asset_data_uri 'musicplayer/bg.gif' %>) repeat
@@ -166,7 +166,7 @@ img.intro-photo
   margin-bottom: 20px
 
 #push
-  height: 150px
+  margin-bottom: 50px
 
 abbr
   color: red

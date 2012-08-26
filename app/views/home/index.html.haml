@@ -1,22 +1,20 @@
 - @keywords = "music, music channels, music tv, watch live, live video production, stream music online, music broadcast, country music, music downloads, music videos, online music, games, free online games, free games, online games, video games, powerball, powerball numbers, powerball winning numbers"
 - @description = "Entertainment, Games, and once in a life time opportunities to meet celebrities. Join today!"
 
-- if @active_channels > 1
-  = render 'home/carousel'
-  = render 'home/quote'
-  = render 'home/new'
-  = render 'shared/music/latest'
-  = render 'shared/videos/latest'
-- else
+.row-fluid
   .span
-    #slideshow.nivoSlider
-      - @channels.each do |channel|
-        - if channel.active?
-          = link_to image_tag(channel.banner_image.url), root_url(subdomain: channel.subdomain) if channel.banner_image
-        - else
-          = link_to image_tag(channel.banner_image.url), "#coming-soon!" if channel.banner_image
-    -#= link_to image_tag('alive-at-brushy.jpg', :class => 'intro-photo'), root_url(:subdomain => "aliveatbrushy")
-  -#= render 'home/quote'
+    #homeSlider.carousel.slide
+      .carousel-inner
+        - @channels.each do |channel|
+          - if channel.active?
+            .item.active
+              = link_to image_tag(channel.banner_image.url), root_url(subdomain: channel.subdomain) if channel.banner_image
+          - else
+            .item
+              = link_to image_tag(channel.banner_image.url), "#coming-soon!", :class => "coming_soon" if channel.banner_image
+      %a.carousel-control.left{"data-slide" => "prev", :href => "#homeSlider"} ‹
+      %a.carousel-control.right{"data-slide" => "next", :href => "#homeSlider"} ›
+
 .row-fluid{:style => 'margin-top: 40px;'}
   .span4
     %h3.heading Featured Video
@@ -25,7 +23,7 @@
         .caption
           %h5= @featured_video.title
           %br
-          = link_with_icon("Watch Free Trailer", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "btn btn-success btn-large")
+          = link_with_icon("Free Trailer", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "btn btn-success btn-large")
           
   .span4
     %h3.heading Featured Song
@@ -34,7 +32,7 @@
         .caption
           %h5= @featured_song.title
           %br
-          = link_with_icon("Listen Free Preview", song_url(@featured_song), "icon-play icon-white", "btn btn-success btn-large",  {:class => "play", :id => "play-#{@featured_song.id}", "data-song" => @featured_song.id})
+          = link_with_icon("Free Preview", song_url(@featured_song), "icon-play icon-white", "btn btn-success btn-large",  {:class => "play", :id => "play-#{@featured_song.id}", "data-song" => @featured_song.id})
 
   .span4
     %h3.heading Featured Album
@@ -43,4 +41,4 @@
         .caption
           %h5= @featured_album.title
           %br
-          = link_with_icon("Listen Free Preview", album_url(@featured_album, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}" ), "icon-play icon-white", "btn btn-success btn-large")
+          = link_with_icon("Free Preview", album_url(@featured_album, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}" ), "icon-play icon-white", "btn btn-success btn-large")

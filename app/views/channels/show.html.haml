@@ -9,44 +9,43 @@
     %meta{property: "og:site_name", content: "Altimarc"}
     %meta{property: "og:description", content: @video.description}
 
-.background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
-  .container-fluid.content
-    #banner
-      = image_tag @channel.banner_image.thumb('1600x505#').url if @channel.banner_image_uid    
+
+#banner
+  = image_tag @channel.banner_image.url if @channel.banner_image_uid    
+.row-fluid
+  .span8
+    %h2.heading Recent Webisodes 
+    = render 'channels/videos'
     .row-fluid
-      .span8
-        %h2.heading Recent Webisodes 
-        = render 'channels/videos'
+      .span
+        %h2.heading Recent Photo Albums
+        = render 'channels/photos'
+    .row-fluid
+      .span#posts
+        %h2.heading Recent Updates
+        = render :partial => 'post', :collection => @posts
+
+  .span4
+    .rightsidebar
+      .row-fluid
+        .span
+          %h1.heading= @channel.name
+          #description.span
+            %p= @channel.description
+          = render 'channels/social_media'
         .row-fluid
           .span
-            %h2.heading Recent Photo Albums
-            = render 'channels/photos'
+            %h2.heading Featured Album
+            .thumbnail
+              %img{:alt => "", :src => @featured_album.image.thumb('488x294#').url }
+                .caption
+                  %h5= @featured_album.title
+                  = link_with_icon("Listen Free Preview", album_url(@featured_album), "icon-play icon-white", "btn btn-success btn-large")
         .row-fluid
-          .span#posts
-            %h2.heading Recent Updates
-            = render :partial => 'post', :collection => @posts
-
-      .span4
-        .rightsidebar
-          .row-fluid
-            .span
-              %h1.heading= @channel.name
-              #description.span
-                %p= @channel.description
-              = render 'channels/social_media'
-            .row-fluid
-              .span
-                %h2.heading Featured Album
-                .thumbnail
-                  %img{:alt => "", :src => @featured_album.image.thumb('488x294#').url }
-                    .caption
-                      %h5= @featured_album.title
-                      = link_with_icon("Listen Free Preview", album_url(@featured_album), "icon-play icon-white", "btn btn-success btn-large")
-            .row-fluid
-              .span
-                %h2.heading Featured Sponsor
-                .thumbnail
-                  %img{:alt => "", :src => "http://placehold.it/488x294"}
+          .span
+            %h2.heading Featured Sponsor
+            .thumbnail
+              %img{:alt => "", :src => "http://placehold.it/488x294"}
 
 -#twitter
 :javascript
