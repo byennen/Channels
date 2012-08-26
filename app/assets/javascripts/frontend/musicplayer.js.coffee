@@ -44,7 +44,7 @@ class Player
   playing: ->
     console.log("playing...")
     $("#player").animate({height: '93px'})
-    $("body").animate({'margin-top': '142px'})
+    $(".content").animate({'padding-top': '153px'})
 
   setClass: (name, className)->
     el = $("#player").find(className)

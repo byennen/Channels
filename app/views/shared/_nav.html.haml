@@ -24,7 +24,7 @@
                   -#= link_with_icon("Invite", giveaways_url(subdomain: "www"), "icon-plus icon-white", "btn btn-warning pjax")
 
         / /.nav-collapse
-      .span4
+      .span4{:style => 'height: 60px;'}
         .pull-right
           .btn-group
             - if user_signed_in?
