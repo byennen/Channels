@@ -24,7 +24,7 @@
       %img{:alt => "", :src => @featured_video.image.thumb('488x294#').url}
         .caption
           %h5= @featured_video.title
-          %p= @featured_video.description
+          %br
           = link_with_icon("Watch Free Trailer", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "btn btn-success btn-large")
           
   .span4
@@ -32,7 +32,8 @@
     .thumbnail
       %img{:alt => "", :src => @featured_song.album.image.thumb('488x294#').url}
         .caption
-          %h5{:style => 'margin-bottom: 23px;'}= @featured_song.title
+          %h5= @featured_song.title
+          %br
           = link_with_icon("Listen Free Preview", song_url(@featured_song), "icon-play icon-white", "btn btn-success btn-large",  {:class => "play", :id => "play-#{@featured_song.id}", "data-song" => @featured_song.id})
 
   .span4
@@ -41,5 +42,5 @@
       %img{:alt => "", :src => @featured_album.image.thumb('488x294#').url}
         .caption
           %h5= @featured_album.title
-          %p= @featured_album.description
+          %br
           = link_with_icon("Listen Free Preview", album_url(@featured_album, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}" ), "icon-play icon-white", "btn btn-success btn-large")
