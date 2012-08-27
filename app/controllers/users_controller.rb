@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def subscribe
+    @trail_end_time = Time.now + 1.month
     if request.put?
       current_user.attributes = params[:user]
       if current_user.save
