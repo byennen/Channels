@@ -43,7 +43,7 @@
     %a#no_facebook_btn{:href => "#"} I don't have Facebook
     %span or
     - if params[:state]
-      %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook?state=#{params[:state]}"}
+      %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook?state=#{params[:state]}", :host => "www.#{APP_CONFIG['domain']}"}
         %i.icon-facebook
         Sign in with Facebook
     - else
