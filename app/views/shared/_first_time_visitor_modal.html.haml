@@ -42,8 +42,8 @@
   .modal-footer
     %a#no_facebook_btn{:href => "#"} I don't have Facebook
     %span or
-    - if params[:state]
-      %a.btn.btn-primary.btn-large#login{:href => "http://www.#{APP_CONFIG['domain']}/auth/facebook?state=#{params[:state]}"}
+    - if current_channel
+      %a.btn.btn-primary.btn-large#login{:href => "http://www.#{APP_CONFIG['domain']}/auth/facebook?state=#{current_channel.uuid}"}
         %i.icon-facebook
         Sign in with Facebook
     - else
