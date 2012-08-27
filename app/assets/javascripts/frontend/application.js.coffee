@@ -15,6 +15,7 @@
 #= require frontend/channels
 #= require frontend/welcome
 #= require frontend/sessions
+#= require frontend/registrations
 
 
 $(document).on "ready pjax:success", ->

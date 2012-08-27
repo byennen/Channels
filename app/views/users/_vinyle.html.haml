@@ -27,7 +27,11 @@
           %li
             %strong -
           %li
-            %strong $6.95 a Month starting on
+            %strong 
+              $6.95 a Month starting on
+              %br
+              = @trail_end_time.strftime("%m-%d-%y")
     .plan-actions
-      %a.btn{:href => "javascript:;"} Subscribe
+      %a#subscribe.btn.btn-success{:href => "javascript:;"} Start my membership
+
 

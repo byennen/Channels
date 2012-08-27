@@ -1,23 +1,6 @@
-=javascript_include_tag "https://js.stripe.com/v1/", "frontend/registrations"
+=javascript_include_tag "https://js.stripe.com/v1/", "plugins/stripe"
 
 :css
-  #subscribe h3 {
-    background: #f0f1e8;
-    color: black;
-    padding: 10px;
-    border-bottom: #d5d5d5 1px solid;
-  }
-  #subscribe {
-    background: white;
-    margin: 100px 0;
-    -moz-box-shadow: 5px 8px 5px #888;
-    -webkit-box-shadow: 5px 8px 5px #888;
-    box-shadow: 5px 8px 5px #888;
-  }
-  #subscribe #form {
-    margin-left: 20px;
-    margin-right: -20px;
-  }
   .info {
     background: #FFC;
     border-top: 1px solid #ccc;
@@ -31,22 +14,36 @@
     padding: 20px 0;
   }
 
-.row-fluid{:style => 'margin-top: 20px;'}
-  .span12
-    .widget
-      .widget-header
-        %i.icon-th-large
-        %h3 Your Options
+#plan
+  .row-fluid{:style => 'margin-top: 20px;'}
+    .span12
+      .widget
+        .widget-header
+          %i.icon-th-large
+          %h3 Your Options
       .row-fluid
-        .widget-content
-          .span3
-            = render 'basic'
-          .span3
-            = render 'starter'
-          .span3
-            = render 'vinyle'
-          .span3
-            = render 'everything'
-      .widget-content
-        .pricing-plans.plans-4
+        .span12
+          %blockquote
+            %p As a member you will have access to all Channels, live streaming concerts, prizes, and once in life time oppurtunities.
+          .widget-content
+            .span3
+              = render 'basic'
+            .span3
+              = render 'starter'
+            .span3
+              = render 'vinyle'
+            .span3
+              = render 'everything'
+
+  .row-fluid{:style => 'margin-top: 20px;'}
+    .span12
+      //info
+      .span1
+      .info.span10
+        %p
+          %strong Your Altimarc billing cycle will be on
+          %strong= @trail_end_time.strftime("%m-%d-%y")
+          If you don't want to continue using Altimarc, just cancel before your billing cycle ends and you won't be charged. Otherwise, you'll pay just $6.95/month for the service as long as your account is open. You can cancel any time.
+      .span1
+#payment
 
