@@ -3,8 +3,8 @@ $(document).on "ready pjax:success", ->
   $("a#coupon_link").click ->
     $("#coupon_code").show()
 
-  stripeHandler = new StripeHandler
-  $('#subscribe_user').submit stripeHandler.handleSubmit
+stripeHandler = new StripeHandler
+$('#subscribe_user').submit stripeHandler.handleSubmit
 
 class StripeHandler
   constructor: ->
