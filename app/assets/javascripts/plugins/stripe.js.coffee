@@ -1,6 +1,7 @@
-stripeHandler = new StripeHandler
-$('#subscribe_user').submit stripeHandler.handleSubmit
-
+$(document).on "ready pjax:success", ->
+  stripeHandler = new StripeHandler
+  $('#subscribe_user').submit stripeHandler.handleSubmit
+  
 class StripeHandler
   constructor: ->
     Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
