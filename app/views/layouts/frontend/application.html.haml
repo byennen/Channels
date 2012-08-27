@@ -46,10 +46,6 @@
       -# TODO: each channel will have a custom background
       :javascript
         $.backstretch("../../../../assets/mark-collie-login.jpg");
-    - elsif params[:controller] == "users" && params[:action] == "subscribe"
-      .background-wrapper
-        .container-fluid
-          = yield
     - else
       .background-wrapper
         .container-fluid.content

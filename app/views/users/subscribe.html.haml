@@ -1,7 +1,7 @@
 =javascript_include_tag "https://js.stripe.com/v1/", "frontend/registrations"
 
 :css
-  #subscribe h2 {
+  #subscribe h3 {
     background: #f0f1e8;
     color: black;
     padding: 10px;
@@ -9,81 +9,44 @@
   }
   #subscribe {
     background: white;
-    margin: 50px 0;
+    margin: 100px 0;
+    -moz-box-shadow: 5px 8px 5px #888;
+    -webkit-box-shadow: 5px 8px 5px #888;
+    box-shadow: 5px 8px 5px #888;
+  }
+  #subscribe #form {
+    margin-left: 20px;
+    margin-right: -20px;
+  }
+  .info {
+    background: #FFC;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+  .info p {
+    margin: 15px 20px;
+    line-height: 1.3em;
+  }
+  .coupon_link {
+    padding: 20px 0;
   }
 
-
-.row-fluid
-  #subscribe.span7
-    %h2 You're just 60 seconds away from your new Altimarc account.
-    .row-fluid{:style => 'margin-top: 20px;'}
-      .span
-        = simple_form_for(current_user, :url => create_subscribe_user_path, :html => {:class => 'form-horizontal', :id => 'subscribe_user'}) do |f|
-          = f.error_notification
-
-          .stripe_error.error_explanation
-            %noscript JavaScript is not enabled and is required for this form. First enable it in your web browser settings.
-            .payment.span
-              .control-group.plans
-                = f.input :plan, :collection => [["$6.95 - no gifts", "695"],
-                                                 ["$11.95 - cd, t-shirt, one month free", "1195"],
-                                                 ["$19.95 - t-shirt vinyle, one month free", "1995"],
-                                                 ["$24.95 - t-shirt, vinyl, cd, one month free", "2495"]]
-            
-              .control-group.credit_card
-                %label.control-label{:for => "credit_card"} Credit Card
-                .controls
-                  %input#card_number.input-large{:type => "text"}
-                .span{:style => 'margin: 10px 0 0 157px;'}
-                  = image_tag('payments/icon-lock.png')
-                  %strong Secure
-                  = image_tag('payments/img-creditcards.png')
-
-              .control-group.security_code
-                %label.control-label{:for => "security_code"} Security Code on Card (CVV)
-                .controls
-                  %input#security_code.input-small{:type => "text", :size => '4', :maxlength => '4'}
-              .control-group.card_expiration 
-                %label.control-label{:for => "card_month"} Card Expiration
-                .controls
-                  = select_month nil, {add_month_numbers: true, :use_short_month => true}, {name: nil, id: "card_month", :class => 'input-small'}
-                  = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'input-small'}
-
-              = f.hidden_field :stripe_card_token
-
-            -#//coupon
-            = link_to "Got a Coupon Code?", "javascript:;", :id => "coupon_link"
-            .control-group#coupon_code
-              %label.control-label{:for => "input01"} Coupon Code
-              .controls
-                %input#input01.input-small{:type => "text"}
-
-            //info
-            .row-fluid
-              .info.span
-                %p
-                  %strong Your 24-hour free trial lasts until
-                  - trail_end_time = Time.now + 1.month
-                  %strong= trail_end_time.strftime("%I:%M%p %m-%d-%y")
-                  If you don't want to continue using Altimarc, just cancel before the trial ends and you won't be charged. Otherwise, you'll pay just $9.95/month for the service as long as your account is open. You can cancel any time.
-
-
-
-            .row-fluid
-              .span
-                %p
-                  By clicking Create my account you agree to the
-                  = link_to "Terms of Service,", terms_url(:subdomain => "www")
-                  = link_to "Privacy,", privacy_url(:subdomain => "www")
-                  %span and
-                  = succeed "." do
-                    = link_to "Refund policies", refund_url(:subdomain => "www")
-
-
-          .form-actions{:style => "background: none;"}
-            = f.submit "Create my account", :class => 'btn-primary btn-success btn-large'
-  .span3{:style => 'margin-top: 50px;'}
-    = image_tag('payments/thanks.png')
-  .span2
-    -#spacer
+.row-fluid{:style => 'margin-top: 20px;'}
+  .span12
+    .widget
+      .widget-header
+        %i.icon-th-large
+        %h3 Choose Your Plan
+      .row-fluid
+        .widget-content
+          .span3
+            = render 'basic'
+          .span3
+            = render 'starter'
+          .span3
+            = render 'vinyle'
+          .span3
+            = render 'everything'
+      .widget-content
+        .pricing-plans.plans-4
 

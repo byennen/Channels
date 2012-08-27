@@ -1,0 +1,37 @@
+.plan-container
+  .plan.yellow
+    .plan-header
+      .plan-title
+        CD
+      / /plan-title
+      .plan-price
+        %span.note> $
+        11.95
+        %span.term Today
+      / /plan-price
+    / /plan-header
+    .plan-features
+      %ul
+        %li
+          %strong 1 Month Free
+        %li
+          %strong 
+            ALive at Brushy
+            %br
+            Mountain CD
+        %li
+          %strong 
+            ALive at Brushy 
+            %br
+            Mountain T-shirt
+        %li
+          %strong -
+        %li
+          %strong 
+            $6.95 a Month starting on
+            %br
+            = trail_end_time.strftime("%I:%M%p %m-%d-%y")
+    / /plan-features
+    .plan-actions
+      %a.btn{:href => "javascript:;"} Subscribe
+
