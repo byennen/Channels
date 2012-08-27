@@ -4,3 +4,5 @@
     %meta{:content => "paid member", :name => "paid_member"}
   - if current_user.admin?
     %meta{:content => "admin", :name => "admin"}
+- else
+  %meta{:content => "user_not_connected", :name => "user_not_connected"}

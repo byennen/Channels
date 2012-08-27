@@ -6,6 +6,6 @@
         .caption
           %h5= album.title.truncate(30)
       - else
-        = link_to image_tag(album.image.thumb('280x180#').url), photo_album_photos_url(album), :title => album.title
+        = link_to image_tag(album.image.thumb('280x180#').url), photo_album_photos_url(album), :class => "connected", :title => album.title
         .caption
           %h5= album.title.truncate(30)

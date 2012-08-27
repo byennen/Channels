@@ -22,6 +22,7 @@ $(document).on "ready pjax:success", ->
   if paid_member = $("meta[name=\"paid_member\"]").attr("content")
     console.log paid_member
 
+
   #unpaid member - photos warnings
   $('.unpaid_member_photos').click ->
     $('#unpaid_members_photos_modal').modal('show')
@@ -36,14 +37,10 @@ $(document).on "ready pjax:success", ->
 
   $('.coming_soon').click ->
     $('#coming_soon_modal').modal('show')
-
-
-  #unpaid member -> wants to join
-  # $(".become_a_member").click ->
-  #   console.log "Become a member!"
-  #   $('#unpaid_members_music_modal').modal('hide')
-  #   $('#unpaid_members_photos_modal').modal('hide')
-  #   $('#unpaid_members_videos_modal').modal('hide')
-  #   $('#payments').modal('show')
+    
+  $('.connected').click ->
+    if not_connected = $("meta[name=\"user_not_connected\"]").attr("content")
+      $("#first_time_vistor").modal('show')  
+      return false;
     
 
