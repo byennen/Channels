@@ -17,7 +17,7 @@
 
 .row-fluid{:style => 'margin-top: 40px;'}
   .span4
-    %h3.heading Featured Video
+    %h3.heading_blue Featured Video
     .thumbnail
       %img{:alt => "", :src => @featured_video.image.thumb('488x294#').url}
         .caption
@@ -26,7 +26,7 @@
           = link_with_icon("Free Trailer", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "btn btn-success btn-large")
           
   .span4
-    %h3.heading Featured Song
+    %h3.heading_blue Featured Song
     .thumbnail
       %img{:alt => "", :src => @featured_song.album.image.thumb('488x294#').url}
         .caption
@@ -35,7 +35,7 @@
           = link_with_icon("Free Preview", song_url(@featured_song), "icon-play icon-white", "btn btn-success btn-large",  {:class => "play", :id => "play-#{@featured_song.id}", "data-song" => @featured_song.id})
 
   .span4
-    %h3.heading Featured Album
+    %h3.heading_blue Featured Album
     .thumbnail
       %img{:alt => "", :src => @featured_album.image.thumb('488x294#').url}
         .caption
