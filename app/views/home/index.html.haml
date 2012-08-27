@@ -23,7 +23,7 @@
         .caption
           %h5= @featured_video.title
           %br
-          = link_with_icon("Free Trailer", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "btn btn-success btn-large")
+          = link_with_icon("Free Trailer", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "connected btn btn-success btn-large")
           
   .span4
     %h3.heading_blue Featured Song
@@ -32,7 +32,7 @@
         .caption
           %h5= @featured_song.title
           %br
-          = link_with_icon("Free Preview", song_url(@featured_song), "icon-play icon-white", "btn btn-success btn-large",  {:class => "play", :id => "play-#{@featured_song.id}", "data-song" => @featured_song.id})
+          = link_with_icon("Free Preview", song_url(@featured_song), "icon-play icon-white", "connected btn btn-success btn-large",  {:class => "play", :id => "play-#{@featured_song.id}", "data-song" => @featured_song.id})
 
   .span4
     %h3.heading_blue Featured Album
