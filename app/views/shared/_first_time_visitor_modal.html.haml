@@ -47,6 +47,6 @@
         %i.icon-facebook
         Sign in with Facebook
     - else
-      %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook"}
+      %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook", :host => "www.#{APP_CONFIG['domain']}"}
         %i.icon-facebook
         Sign in with Facebook
