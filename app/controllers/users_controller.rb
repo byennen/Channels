@@ -11,7 +11,12 @@ class UsersController < ApplicationController
       current_user.attributes = params[:user]
       if current_user.save
         respond_to do |format|
-          format.html { redirect_to "http://#{current_channel.subdomain}.#{APP_CONFIG['domain']}" }
+          if current_channel
+            url =  "http://#{current_channel.subdomain}.#{APP_CONFIG['domain']}"
+          else
+            url = "http://www.#{APP_CONFIG['domain']}"
+          end
+          format.html { redirect_to url}
         end
       end
     end
