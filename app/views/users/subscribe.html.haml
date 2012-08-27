@@ -1,4 +1,5 @@
-=javascript_include_tag "https://js.stripe.com/v1/", "plugins/stripe"
+= javascript_include_tag "https://js.stripe.com/v1/"
+= javascript_include_tag "plugins/stripe"
 
 :css
   .info {
@@ -17,7 +18,9 @@
     margin: 0 -20px 0 -20px;
   }
 
-= image_tag('aliveatbrushy-payment-banner.jpg', :class => 'payment_banner')
+.row-fluid
+  .span
+    = image_tag('aliveatbrushy-payment-banner.jpg', :class => 'payment_banner')
 
 = simple_form_for(current_user, :url => create_subscribe_user_path, :html => {:class => 'form-horizontal', :id => 'subscribe_user'}) do |f|
   = f.error_notification
@@ -56,45 +59,53 @@
             %strong= @trail_end_time.strftime("%m-%d-%y")
             If you don't want to continue using Altimarc, just cancel before your billing cycle ends and you won't be charged. Otherwise, you'll pay just $6.95/month for the service as long as your account is open. You can cancel any time.
         .span1
-  #payment{:style => 'margin-top 50px;'}
-    .payment.span
-      .control-group.credit_card
-        %label.control-label{:for => "credit_card"} Credit Card
-        .controls
-          %input#card_number.input-large{:type => "text"}
-        -#.span
-          -#= image_tag('payments/icon-lock.png')
-        -#%strong Secure
-        -#= image_tag('payments/img-creditcards.png')
+  #payment
+    .row-fluid{:style => 'margin-top: 20px;'}
+      .span12
+        %h2.heading_blue You're just 60 seconds away from your new Altimarc account.
+        .row-fluid
+          .payment.span
+            .control-group.credit_card
+              .span5
+                %label.control-label{:for => "credit_card"} Credit Card
+                .controls
+                  %input#card_number.input-large{:type => "text"}
+          .row-fluid
+            .span{:style => 'margin: 0px 0 25px 159px;'}
+              = image_tag('payments/img-creditcards.png')
 
-      .control-group.security_code
-        %label.control-label{:for => "security_code"} Security Code on Card (CVV)
-        .controls
-          %input#security_code.input-small{:type => "text", :size => '4', :maxlength => '4'}
-      .control-group.card_expiration 
-        %label.control-label{:for => "card_month"} Card Expiration
-        .controls
-          = select_month nil, {add_month_numbers: true, :use_short_month => true}, {name: nil, id: "card_month", :class => 'input-small'}
-          = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'input-small'}
+            .control-group.security_code
+              %label.control-label{:for => "security_code"} Security Code on Card (CVV)
+              .controls
+                %input#security_code.input-small{:type => "text", :size => '4', :maxlength => '4'}
+            .control-group.card_expiration 
+              %label.control-label{:for => "card_month"} Card Expiration
+              .controls
+                = select_month nil, {add_month_numbers: true, :use_short_month => true}, {name: nil, id: "card_month", :class => 'input-small'}
+                = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'input-small'}
 
-      = f.hidden_field :stripe_card_token
+            = f.hidden_field :stripe_card_token
 
-    -#//coupon
-    = link_to "Got a Coupon Code?", "javascript:;", :id => "coupon_link"
-    .control-group#coupon_code
-      %label.control-label{:for => "input01"} Coupon Code
-      .controls
-        %input#input01.input-small{:type => "text"}
-    .row
-      .span
-        %p
-          By clicking Create my account you agree to the
-          = link_to "Terms of Service,", terms_url(:subdomain => "www")
-          = link_to "Privacy,", privacy_url(:subdomain => "www")
-          %span and
-          = succeed "." do
-            = link_to "Refund policies", refund_url(:subdomain => "www")
+          %hr
+          -#//coupon
+          .row-fluid
+            .span
+              = link_to "Got a Coupon Code?", "javascript:;", :id => "coupon_link"
+              .control-group#coupon_code
+                %label.control-label{:for => "input01"} Coupon Code
+                .controls
+                  %input#input01.input-small{:type => "text"}
 
+          .form-actions{:style => "background: none;"}
+            = f.submit "Create my account", :class => 'btn-primary btn-success btn-large'
 
-    .form-actions{:style => "background: none;"}
-      = f.submit "Create my account", :class => 'btn-primary btn-success btn-large'
+          .row-fluid
+            .span{:style => 'margin-left: 159px;'}
+              %p
+                By clicking Create my account you agree to the
+                = link_to "Terms of Service,", terms_url(:subdomain => "www")
+                = link_to "Privacy,", privacy_url(:subdomain => "www")
+                %span and
+                = succeed "." do
+                  = link_to "Refund policies", refund_url(:subdomain => "www")
+
