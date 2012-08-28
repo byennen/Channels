@@ -17,7 +17,7 @@ default_run_options[:pty] = true
 set :scm, "git"
 set :repository, "git@github.com:altimarc/Channels.git"
 set :deploy_via, :remote_cache
-set :rails_env, :staging
+set :rails_env, :production
 
 ssh_options[:forward_agent] = true
 
