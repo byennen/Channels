@@ -8,5 +8,13 @@ class MemberMailer < ActionMailer::Base
     headers['X-Campaign-Id'] = "UserSignup"
     mail(to: @email, subject: @subject)
   end
+  
+  def subscribed(user_id, amount, description)
+    @user = User.find(user_id)
+    @description = description
+    @amount = amount
+    @subject = "Subscription For - #{@user.email} - #{@description}}"
+    mail(to: "orders@altimarc.com", subject: @subject)
+  end
 
 end

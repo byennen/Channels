@@ -126,6 +126,9 @@ class User < ActiveRecord::Base
           :description => "Charge for #{email} - #{description}"
       )
     end
+    Resque.enqueue(MemberWorker, :send_subscribed, {"user_id" => self.id, 
+                                                    "amount" => amount,
+                                                    "description" => description})
   rescue Stripe::InvalidRequestError => e
     logger.error "Stripe error while creating customer: #{e.message}"
     errors.add :base, "There was a problem with your credit card."
