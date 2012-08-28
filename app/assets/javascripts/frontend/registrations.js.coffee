@@ -8,9 +8,12 @@ $(document).on "ready pjax:success", ->
   console.log("user plan is " + $("#user_plan").val())
   if $("#user_plan").val() == ""
     $("#payment").hide()
+    $("#address").hide()
   
   $("a#subscribe").click ->
     plan = $(this).data('plan')
     $("#plan").hide()
     $("#payment").show()
     $("#user_plan").val(plan)
+    if plan != "695"
+      $("#address").show()

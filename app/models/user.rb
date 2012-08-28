@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
   end
 
   belongs_to :channel
-
+  has_one :address
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, 
                                :remember_me, :role, :channel_id, :stripe_card_token, 
-                               :coupon, :plan
+                               :coupon, :plan, :address_attributes
 
   validates :role, :presence => true
   validates :channel, :presence => true, :if => :channel_master?
@@ -36,6 +37,8 @@ class User < ActiveRecord::Base
   after_validation :process_payment, :if => :stripe_card_token
   after_create :send_welcome_email
 
+  accepts_nested_attributes_for :address
+  
   #facebook login
   def self.from_omniauth(auth)
     if user = find_by_email(auth.info.email)

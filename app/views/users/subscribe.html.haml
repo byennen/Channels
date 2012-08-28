@@ -87,6 +87,30 @@
 
             = f.hidden_field :stripe_card_token
             = f.hidden_field :plan
+  #address
+    .row-fluid
+      = f.fields_for :address, current_user.build_address do |a|
+        .control-group.address
+          %label.control-label{:for => "user_address_address"} Address
+          .controls
+            = a.text_field :address
+        .control-group.address2
+          %label.control-label{:for => "user_address_address"} Address 2
+          .controls
+            = a.text_field :address2
+        .control-group.city
+          %label.control-label{:for => "user_address_city"} City
+          .controls
+            = a.text_field :city
+        .control-group.state
+          %label.control-label{:for => "user_address_city"} State
+          .controls
+            = a.select :state, us_states
+        .control-group.zip_code
+          %label.control-label{:for => "user_address_zip_code"} Zip Code
+          .controls
+            = a.text_field :zip_code         
+      
 
           %hr
           -#//coupon
