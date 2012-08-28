@@ -54,7 +54,7 @@
                     %p= video.description
                     %p
                       - if video.publish_on < Time.now
-                        = link_with_icon("Watch", video_path(video), "icon-film icon-white", "connected btn btn-info pjax")
+                        = link_with_icon("Free Preview", video_path(video), "icon-film icon-white", "connected btn btn-success")
                       - else
                         = link_with_icon("Coming Soon", "#", "icon-film icon-white", "btn btn-inverse")
 

@@ -1,8 +1,6 @@
 #flash_message
   - flash.each do |type, message|
     %div.alert.fade.in{ "data-alert" => "alert", :class => "alert-#{twitterized_type(type)}" }
-      .row-fluid
-        .span
-          %a.close{"data-dismiss" => "alert"} ×
-          %p
-            = message
+      %a.close{"data-dismiss" => "alert"} ×
+      %p
+        = message
