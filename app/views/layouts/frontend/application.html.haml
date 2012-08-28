@@ -28,34 +28,28 @@
     %link{:href => "ico/apple-touch-icon-72-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "72x72"}
     %link{:href => "ico/apple-touch-icon-57-precomposed.png", :rel => "apple-touch-icon-precomposed"}
   %body{:class => controller.controller_name}
-    - if params[:controller] == "channels" && params[:action] == "show" || params[:controller] == "videos" || params[:controller] == "photos" || params[:controller] == "posts" || params[:controller] == "albums"
-      .background-wrapper{ :style => "background: url('#{@channel.background_image.url if @channel.background_image_uid}') repeat-x ##{@channel.background_color};" }
-        .container-fluid.content
-          .navbar.navbar-fixed-top
-            = render 'shared/musicplayer'
-            #ribbon
-            = render 'shared/nav'
-          .data{"data-pjax-container" => ""}
-            = render :partial => "shared/flash_messages", :locals => {:flash => flash}
+    .background-wrapper{ :style => ("background: url('#{@channel.background_image.url}') repeat-x ##{@channel.background_color};" if @channel.present?) }
+      .container-fluid.content
+        .navbar.navbar-fixed-top
+          = render 'shared/musicplayer'
+          #ribbon
+          = render 'shared/nav'
+        .data{"data-pjax-container" => ""}
+          = render :partial => "shared/flash_messages", :locals => {:flash => flash}
+          - if params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" && params[:action] == "create" 
+            :css
+              .navbar, #footer {
+                display: none;
+              }
+              .content {
+                background: none;
+                box-shadow: none;
+              }
             = yield
-            = render 'layouts/frontend/footer'
-            = render 'layouts/frontend/modals'
-    - elsif params[:controller] == "registrations" || params[:controller] == "sessions" || params[:controller] == "devise/passwords" || params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" && params[:action] == "create" 
-      .data{"data-pjax-container" => ""}
-        = yield
-      -# TODO: each channel will have a custom background
-      :javascript
-        $.backstretch("../../../../assets/mark-collie-login.jpg");
-    - else
-      .background-wrapper
-        .container-fluid.content
-          .navbar.navbar-fixed-top
-            = render 'shared/musicplayer'
-            #ribbon
-            = render 'shared/nav'
-          .data{"data-pjax-container" => ""}
-            = render :partial => "shared/flash_messages", :locals => {:flash => flash}
+            -# TODO: each channel will have a custom background
+            :javascript
+              $.backstretch("../../../../assets/mark-collie-login.jpg");
+          - else
             = yield
-            = render 'layouts/frontend/footer'
-            = render 'layouts/frontend/modals'
-
+          = render 'layouts/frontend/footer'
+          = render 'layouts/frontend/modals'
