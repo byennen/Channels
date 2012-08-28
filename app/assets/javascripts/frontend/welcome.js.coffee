@@ -41,6 +41,11 @@ $(document).on "ready pjax:success", ->
   $('.connected').click ->
     if not_connected = $("meta[name=\"user_not_connected\"]").attr("content")
       $("#first_time_vistor").modal('show')  
-      return false;
+      return false
+
+  #unpaid member -> wants to join
+  $(".become_a_member").click ->
+    console.log "Become a member!"
+    $('.modal-backdrop').hide()
     
 
