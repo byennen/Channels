@@ -21,5 +21,9 @@ class MemberWorker
   def self.send_welcome(options={})
     MemberMailer.welcome(options["user_id"]).deliver
   end
+  
+  def self.send_subscribed(options={})
+    MemberMailer.subscribed(options["user_id"], options["amount"], options["description"])
+  end
 
 end
