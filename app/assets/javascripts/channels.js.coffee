@@ -1,2 +1,0 @@
-$().ajaxSuccess ->
-  VideoJS.setupAllWhenReady()
