@@ -10,6 +10,8 @@ class Photo < ActiveRecord::Base
   scope :published, where('photos.active IS NOT NULL AND photos.active = true')
   scope :recent, published.order(:created_at).limit(8)
 
+  acts_as_list :scope => :photo_album
+  
   #one convenient method to pass jq_upload the necessary information
   def to_jq_upload
     {
