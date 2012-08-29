@@ -3,6 +3,7 @@ class Photo < ActiveRecord::Base
 
   belongs_to :photo_album
 
+  before_create :set_title
   attr_accessible :id, :photo_album, :title, :description, :paid, :active, :image, :channel_id
   image_accessor :image
 
@@ -19,4 +20,10 @@ class Photo < ActiveRecord::Base
       "delete_type" => "DELETE"
     }
   end
+  
+  def set_title
+    title = self.title.split('.')
+    self.title = title[0].humanize
+  end
+  
 end
