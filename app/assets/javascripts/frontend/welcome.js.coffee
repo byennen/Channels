@@ -42,10 +42,10 @@ $(document).on "ready pjax:success", ->
     if not_connected = $("meta[name=\"user_not_connected\"]").attr("content")
       $("#first_time_vistor").modal('show')  
       return false
-
+  
   #unpaid member -> wants to join
-  #$(".become_a_member").click ->
-    #console.log "Become a member!"
-    #$('.modal-backdrop').hide()
-    
-
+  $(".become_a_member").click ->
+    console.log "Become a member!"
+    $('#unpaid_members_music_modal').modal('hide')
+    $('#unpaid_members_photos_modal').modal('hide')
+    $('#unpaid_members_videos_modal').modal('hide')
