@@ -44,8 +44,8 @@ $(document).on "ready pjax:success", ->
       return false
 
   #unpaid member -> wants to join
-  $(".become_a_member").click ->
-    console.log "Become a member!"
-    $('.modal-backdrop').hide()
+  #$(".become_a_member").click ->
+    #console.log "Become a member!"
+    #$('.modal-backdrop').hide()
     
 
