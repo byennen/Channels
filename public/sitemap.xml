@@ -4,21 +4,71 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 <url>
   <loc>http://altimarc.com/</loc>
-  <priority>1.00</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://altimarc.com/kentucky-derby-with-randy-owen</loc>
-  <priority>0.80</priority>
+  <loc>http://altimarc.com/channels</loc>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://altimarc.com/cma-fanfest-with-randy-owen</loc>
-  <priority>0.80</priority>
+  <loc>http://altimarc.com/giveaways</loc>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://altimarc.com/about</loc>
-  <priority>0.80</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://altimarc.com/press</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://altimarc.com/altimarc-for-your-business</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://altimarc.com/refund</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://altimarc.com/terms</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://altimarc.com/privacy</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://altimarc.com/safe-harbor</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://altimarc.com/users/sign_in</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://altimarc.com/giveaways/cma-fanfest</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://altimarc.com/giveaways/kentucky-derby-with-randy-owen</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://altimarc.com/signup</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://altimarc.com/users/password/new</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://altimarc.com/login</loc>
+  <changefreq>weekly</changefreq>
 </url>
 </urlset>
+
