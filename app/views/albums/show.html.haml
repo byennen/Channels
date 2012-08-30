@@ -41,7 +41,7 @@
                 %img{:alt => "", :src => @featured_video.image.thumb('488x294#').url}
                   .caption
                     %h5= @featured_video.title
-                    - if current_user.paid_member?
+                    - if user_signed_in? && current_user.paid_member?
                       = link_with_icon("Watch", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "btn btn-success")
                     - else 
                       = link_with_icon("Free Trailer", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "btn btn-success")
