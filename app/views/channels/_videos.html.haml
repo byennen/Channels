@@ -17,7 +17,7 @@
                         - else
                           = link_with_icon("Free Trailer", video_path(video), "icon-film icon-white", "connected btn btn-success")
                       - else
-                        = link_with_icon("Coming Soon", "#", "icon-film icon-white", "btn btn-inverse btn-large")
+                        = link_with_icon("Coming Soon", "#", "icon-film icon-white", "btn btn-inverse")
 
   - if @videos.size > 5
     %a.carousel-control.left{"data-slide" => "prev", :href => "#most_played_video"} ‹
