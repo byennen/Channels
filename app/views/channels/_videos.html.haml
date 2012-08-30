@@ -12,7 +12,10 @@
                     %h5= video.title.truncate(40)
                     %p
                       - if video.publish_on < Time.now
-                        = link_with_icon("Free Trailer", video_path(video), "icon-film icon-white", "connected btn btn-success btn-large")
+                        - if current_user.paid_member?
+                          = link_with_icon("Watch", video_path(video), "icon-film icon-white", "connected btn btn-success")
+                        - else
+                          = link_with_icon("Free Trailer", video_path(video), "icon-film icon-white", "connected btn btn-success")
                       - else
                         = link_with_icon("Coming Soon", "#", "icon-film icon-white", "btn btn-inverse btn-large")
 
