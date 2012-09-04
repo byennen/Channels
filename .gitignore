@@ -67,3 +67,5 @@ tmp/*
 
 #ec2
 *.pem
+
+.idea
