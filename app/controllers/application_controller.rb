@@ -33,6 +33,9 @@ class ApplicationController < ActionController::Base
 
   def load_channel
     @channel = Channel.find_by_domain_or_subdomain(request.domain, request.subdomains)
+    if request.domain != APP_CONFIG['domain']
+      redirect_to "http://#{@channel.subdomain}.#{APP_CONFIG['domain']}"
+    end
   end
 
   def current_channel
