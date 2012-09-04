@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     if request.put?
       current_user.attributes = params[:user]
       if current_user.save
+        flash[:notice] = "Thank you for becoming a paid member."
         respond_to do |format|
           if current_channel
             url =  "http://#{current_channel.subdomain}.#{APP_CONFIG['domain']}"
