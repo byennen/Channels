@@ -12,6 +12,8 @@ class Photo < ActiveRecord::Base
 
   acts_as_list :scope => :photo_album
   
+  default_scope :order => 'position ASC'
+  
   #one convenient method to pass jq_upload the necessary information
   def to_jq_upload
     {
