@@ -1,8 +1,9 @@
 source 'http://rubygems.org'
 
-gem 'rake'
+ruby '1.9.3'
 gem 'rails', '3.2.8'
 gem 'pg'
+gem 'rake'
 
 gem 'jquery-rails'
 gem 'haml', '>= 3.1.6'
@@ -18,7 +19,7 @@ gem 'uuid'
 gem 'acts_as_list'
 
 #login
-gem 'devise', '2.0.4'
+gem 'devise'
 gem 'cancan'
 gem 'omniauth-facebook'
 
