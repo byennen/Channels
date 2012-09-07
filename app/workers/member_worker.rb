@@ -7,7 +7,7 @@ class MemberWorker
   end
 
   def self.share_listen(options={})
-    User.put_fb_connection(options["user_id"], "#{APP_CONFIG['fb_namespace']}:listen", {song: options["song_url"]})
+    User.put_fb_connection(options["user_id"], "#{APP_CONFIG['fb_namespace']}:heard", {song: options["song_url"]})
   end
 
   def self.share_view(options={})
