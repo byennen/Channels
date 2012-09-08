@@ -1,6 +1,10 @@
 = render 'shared/first_time_visitor_modal'
-= render 'shared/unpaid_members_videos_modal'
 = render 'shared/unpaid_members_photos_modal'
 = render 'shared/unpaid_members_music_modal'
 = render 'shared/no_facebook_signup_modal'
 = render 'shared/coming_soon_modal'
+
+-#hide video popup for paid members
+- unless current_user && current_user.paid_member?
+  = render 'shared/unpaid_members_videos_modal'
+  
