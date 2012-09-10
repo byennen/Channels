@@ -70,10 +70,11 @@
           #description.span
             %p= @channel.description
           = render 'channels/social_media'
-        .row-fluid
-          .span
-            %h2.heading Featured Album
-            = render 'channels/featured_album'
+        - if @featured_album
+          .row-fluid
+            .span
+              %h2.heading Featured Album
+              = render 'channels/featured_album'
         .row-fluid
           .span
             %h2.heading Featured Sponsor
