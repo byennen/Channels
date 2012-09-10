@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.published.find(params[:id])
     if current_user && current_user.facebook
-      Resque.enqueue(MemberWorker, :share_read, {"user_id" => current_user.id, "article_url" => "http://4n7f.localtunnel.com" + post_path(@post)})
+      Resque.enqueue(MemberWorker, :share_read, {"user_id" => current_user.id, "article_url" => post_url(@post)})
     end
   end
   
