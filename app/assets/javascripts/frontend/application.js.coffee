@@ -40,6 +40,7 @@ $(document).on "ready pjax:success", ->
     fjs.parentNode.insertBefore js, fjs
   ) document, "script", "facebook-jssdk"
 
+
 # debugging
 $(document).on "pjax:success", ->
   console.log "pjax!"
