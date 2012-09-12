@@ -7,7 +7,7 @@
 #= require frontend/plugins/jquery.cookie
 #= require frontend/plugins/jquery.backstretch
 #= require frontend/plugins/bootstrap
-#= require plugins/projekktor-1.1.00r107.min
+#= require plugins/projekktor.min
 #= require plugins/jquery.nivo.slider.pack
 #= require frontend/facebook
 #= require frontend/home
