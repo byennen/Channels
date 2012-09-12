@@ -1,5 +1,5 @@
 after :users, :channels, :albums do
-  album = Album.find_by_title('Alive At Brusy Mountain')
+  album = Album.find_by_title('Alive at Brushy Mountain State Penitentiary')
 
   full_song_dir = Rails.root.join('db', 'seeds', 'assets', 'albums', 'brushy_mountain', 'full')
   preview_song_dir = Rails.root.join('db', 'seeds', 'assets', 'albums', 'brushy_mountain', 'preview')

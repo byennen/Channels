@@ -6,7 +6,7 @@ after :users, :channels do
   puts "***CREATING PHOTO ALBUMS***"
 
   PhotoAlbum.create(
-    :channel => channel, :title => "Alive At Brusy Mountain", :description => "Demo",
+    :channel => channel, :title => "Alive at Brushy Mountain State Penitentiary", :description => "Demo",
     :image => File.new(File.join(album_dir, 'brushy_mountain/mark-collie.png'))
   )
 
