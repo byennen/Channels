@@ -9,7 +9,7 @@
               .thumbnail
                 %img{:alt => "", :src => video.image.thumb('355x236').url}
                   .caption
-                    %h5= video.title.truncate(40)
+                    %h5= video.title.truncate(30)
                     %p
                       - if video.publish_on < Time.now
                         - if user_signed_in? && current_user.paid_member?
