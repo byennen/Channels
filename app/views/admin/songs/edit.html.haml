@@ -1,3 +1,5 @@
+- javascript 'admin/musicplayer'
+
 .row-fluid
   .span12
     .box.grad_colour_dark_blue
@@ -12,7 +14,11 @@
             = simple_form_for [:admin, @channel, @album, @song], :html => { :multipart => true, :class => 'form-horizontal', :style => "clear:both;" } do |f|
               = f.input :title, :input_html => {:class => "input-xlarge"}
               = f.input :price, :input_html => {:class => "input-xlarge"}
-              = f.input :preview, as: :file  
+              = f.input :preview, as: :file
+              - if @song.preview.present?
+                .div{:style => 'margin-left: 160px; padding: 10px 0 20px;'}
+                  = link_to '', "#{@song.song}", :class => 'sm2_button'
+                  = @song.title
               = f.input :active, as: :boolean
               .form-actions
                 = f.button :submit, :class => 'btn-primary'

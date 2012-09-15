@@ -1,3 +1,6 @@
+- javascript 'admin/musicplayer'
+- stylesheet 'admin/musicplayer'
+
 .row-fluid
   .span12
     .box.grad_colour_dark_blue
@@ -18,7 +21,9 @@
               - @songs.each do |song|
                 - unless song.new_record?
                   %tr
-                    %td= song.title
+                    %td
+                      = link_to '', "#{song.song}", :class => 'sm2_button'
+                      = song.title
                     %td= song.price
                     %td= song.active
                     %td
