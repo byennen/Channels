@@ -7,7 +7,7 @@ class Admin::SongsController < Admin::ApplicationController
   respond_to :html, :json
 
   def index
-    @songs = @album.songs
+    @songs = @album.songs.order("position")
   end
 
   def edit; end
@@ -49,6 +49,13 @@ class Admin::SongsController < Admin::ApplicationController
   def destroy
     @song.destroy
     redirect_to admin_channel_album_songs_url
+  end
+
+  def sort
+    params[:song].each_with_index do |id, index|
+      Song.update_all({position: index+1}, {id: id})
+    end
+    render nothing: true
   end
 
 end
