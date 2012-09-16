@@ -17,6 +17,7 @@ gem 'money', :git => 'https://github.com/collectiveidea/money.git'
 gem 'seedbank'
 gem 'uuid'
 gem 'acts_as_list'
+gem 'soundmanager-rails', :git => 'git://github.com/glaszig/soundmanager-rails.git'
 
 #login
 gem 'devise'

@@ -3,4 +3,4 @@
 #= require jquery-ui
 #= require twitter/bootstrap
 #= require admin/plugins/jquery.cookie
-#= require plugins/soundmanager2
+#= require soundmanager
