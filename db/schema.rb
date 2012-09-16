@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120829171000) do
+ActiveRecord::Schema.define(:version => 20120916041357) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -168,6 +168,7 @@ ActiveRecord::Schema.define(:version => 20120829171000) do
     t.string   "preview"
     t.string   "song"
     t.string   "slug"
+    t.integer  "position"
   end
 
   add_index "songs", ["slug"], :name => "index_songs_on_slug"

@@ -94,13 +94,14 @@ Channels::Application.routes.draw do
       resources :videos
       resources :posts
       resources :albums do
-        resources :songs
+        resources :songs do
+          collection { post :sort }
+        end
       end
     end
     match "/pages/channels-help" => "pages#channel_help", :as => "channel_help"
     root :to => "dashboard#index"
   end
-
 
   root :to => "channels#show", constraints: lambda {|r| (r.subdomain.present? && r.subdomain != 'www') || !r.host.in?(%w(altimarc.com channels.dev localhost www.channels.dev altimarc-staging.com www.altimarc-staging.com www.altimarc.com altimarc.com))}
   root :to => "home#index"
