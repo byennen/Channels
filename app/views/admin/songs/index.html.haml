@@ -58,8 +58,8 @@
             .span8
               .row-fluid
                 .span12{:style => 'margin: 20px 20px 0 0;'}
-                  %h1 Title
-                  %p Description
+                  %h1= @album.title
+                  %p= @album.description
 
 
           .row-fluid
@@ -67,7 +67,7 @@
               ------
               %blockquote
                 %p
-                  Song Uploader widget with multiple file selection, and drag&drop support!
+                  Song Uploader with multiple file selection, and drag&drop.
 
               = form_for Song.new, :url => admin_channel_album_songs_path(@channel, @album), :html => { :multipart => true, :id => "fileupload"  } do |f|
                 .row-fluid.fileupload-buttonbar
