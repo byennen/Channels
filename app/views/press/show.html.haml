@@ -48,9 +48,9 @@
               %h4= video.title
              
               %video.projekktor{:controls => "", :height => "504", :poster => "#{video.image.url}", :title => "this is Projekktor", :width => "768", :id => video.id}
-                %source{:src => "#{video.preview}", :type => "video/ogg"}/
-                %source{:src => "#{video.preview}", :type => "video/mp4"}/
-                %source{:src => "#{video.preview}", :type => "video/webm"}/
+                - video.sources.each do |source|
+                  %source{:src => "#{source[:src]}", :type => source[:type]}/
+
               %hr
           #music.tab-pane
             %ul#songs
