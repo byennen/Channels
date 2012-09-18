@@ -21,36 +21,61 @@
       %h2= @channel.name
       %p= @channel.description
 
+.row-fluid{:style => 'margin-top: 40px;'}
+  .span
+    .tabbable
+      %ul.nav.nav-tabs
+        %li.active
+          %a{"data-toggle" => "tab", :href => "#webisodes"} Webisodes
+        %li
+          %a{"data-toggle" => "tab", :href => "#teasers"} Teasers
+        %li
+          %a{"data-toggle" => "tab", :href => "#music"} Music
+        %li
+          %a{"data-toggle" => "tab", :href => "#photos"} Photos
+      .tab-content
+        #webisodes.tab-pane.active
+          - @videos.each do |video|
+            %h4= video.title
+           
+            %video.projekktor{:controls => "", :height => "385", :poster => "#{video.image.url}", :title => "this is Projekktor", :width => "640", :id => video.id}
+              %source{:src => "#{video.video}.ogv", :type => "video/ogg"}/
+              %source{:src => "#{video.video}.mp4", :type => "video/mp4"}/
+              %source{:src => "#{video.video}.webm", :type => "video/webm"}/
+        #teasers.tab-pane
+          - @videos.each do |video|
+            %h4= video.title
+           
+            %video.projekktor{:controls => "", :height => "385", :poster => "#{video.image.url}", :title => "this is Projekktor", :width => "640", :id => video.id}
+              %source{:src => "#{video.preview}.ogv", :type => "video/ogg"}/
+              %source{:src => "#{video.preview}.mp4", :type => "video/mp4"}/
+              %source{:src => "#{video.preview}.webm", :type => "video/webm"}/
 
-%h3.heading Webisodes
+        #music.tab-pane
+          %ul#songs
+            - @songs.each do |song|
+              = content_tag_for :li, song do
+                .span
+                  .span9
+                    = link_to '', "#{song.song}", :class => 'sm2_button'
+                    %strong= song.title
 
-- @videos.each do |video|
-  %h3= video.title
- 
-  %video.projekktor{:controls => "", :height => "385", :poster => "#{video.image.url}", :title => "this is Projekktor", :width => "640", :id => video.id}
-    %source{:src => "#{video.video}.ogv", :type => "video/ogg"}/
-    %source{:src => "#{video.video}.mp4", :type => "video/mp4"}/
-    %source{:src => "#{video.video}.webm", :type => "video/webm"}/
+        #photos.tab-pane
+          - @photos.each_slice(3) do |array|
+            .row-fluid
+              .span12
+                - array.each do |photo|
+                  .span4{:style => 'margin-bottom: 20px;'}
+                    .thumbnail
+                      = image_tag photo.image.thumb('500x300#').url, :title => photo.title, 'data-content' => photo.description
 
-%h3.heading Music
-%ul#songs
-  - @songs.each do |song|
-    = content_tag_for :li, song do
-      .span
-        .span9
-          = link_to '', "#{song.song}", :class => 'sm2_button'
-          %strong= song.title
-
-%h3.heading Photos
-- @photos.each_slice(3) do |array|
-  .row-fluid
-    .span12
-      - array.each do |photo|
-        .span4{:style => 'margin-bottom: 20px;'}
-          .thumbnail
-            = image_tag photo.image.thumb('500x300#').url, :title => photo.title, 'data-content' => photo.description
-
-
+.row-fluid{:style => 'margin-top: 40px;'}
+  .span12
+    .well
+      %h3 Notes
+      %p
+        If you have questions please email
+        = mail_to "press@altimarc.com"
 
 :javascript
   $(document).ready(function() {

@@ -8,7 +8,7 @@ class PressController < ApplicationController
     @channel = Channel.find(params[:id])
     @videos = @channel.videos.all(:limit => 4)
     @album = @channel.albums.first
-    @songs = @album.songs.all
+    @songs = @album.songs.all(:order => "position")
     @photos = @channel.photos.all
 
     #@channel = Channel.find_by_subdomain('aliveatbrushy')
