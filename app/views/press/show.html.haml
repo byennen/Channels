@@ -48,7 +48,7 @@
               %h4= video.title
              
               %video.projekktor{:controls => "", :height => "504", :poster => "#{video.image.url}", :title => "this is Projekktor", :width => "768", :id => video.id}
-                - video.sources.each do |source|
+                - video.video_previews.sources.each do |source|
                   %source{:src => "#{source[:src]}", :type => source[:type]}/
 
               %hr
