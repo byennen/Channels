@@ -1,10 +1,14 @@
 Channels::Application.routes.draw do
 
+  get "press/index"
+
+  get "press/show"
+
   #static pages
   match "about" => "pages#about"
   #match "jobs" => "pages#jobs"
   #match "our-team" => "pages#our_team", :as => "our_team"
-  match "press" => "pages#press"
+  #match "press" => "pages#press"
   #match "faq" => "pages#faq"
   #match "customer-support" => "pages#customer_support", :as => "customer_support"
   match "safe-harbor" => "pages#safe_harbor", :as => "safe_harbor"
@@ -15,7 +19,7 @@ Channels::Application.routes.draw do
   match "copyrights" => "pages#copyrights", :as => "copyrights"
   match "randy-owen-altimarc-coming-soon-video" => "pages#randy_owen_coming_soon_video", :as => "randy_owen_video"
 
-  resources :press_only, :only => [:show]
+  resources :press, :only => [:index, :show]
 
   #old giveaways
   match "giveaways/kentucky-derby-with-randy-owen" => "giveaways#derby", :as => "derby"

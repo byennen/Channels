@@ -1,5 +1,8 @@
-class PressOnlyController < ApplicationController
-  before_filter :verifies_press_only_user
+class PressController < ApplicationController
+  before_filter :verifies_press_only_user, :only => [:show]
+  
+  def index
+  end
 
   def show
     @channel = Channel.find(params[:id])
@@ -21,5 +24,4 @@ class PressOnlyController < ApplicationController
       end
     end
   end
-  
 end
