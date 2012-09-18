@@ -16,6 +16,7 @@
 #= require frontend/welcome
 #= require frontend/sessions
 #= require frontend/registrations
+#= require soundmanager
 
 
 $(document).on "ready pjax:success", ->

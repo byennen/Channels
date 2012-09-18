@@ -1,0 +1,2 @@
+module PressOnlyHelper
+end

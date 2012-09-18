@@ -1,0 +1,13 @@
+- title "Press Only"
+
+.row-fluid
+  .span12
+    %h1.heading Press Only
+    %ul.thumbnails
+      - @channels.each do |channel|
+        - if channel.active?
+          %li.span4
+            .thumbnail
+              = link_to image_tag(channel.banner_image.thumb('507x265#').url), press_only(channel)
+              .caption
+                %h5= channel.name

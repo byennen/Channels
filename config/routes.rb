@@ -1,4 +1,5 @@
 Channels::Application.routes.draw do
+
   #static pages
   match "about" => "pages#about"
   #match "jobs" => "pages#jobs"
@@ -13,6 +14,8 @@ Channels::Application.routes.draw do
   match "terms" => "pages#terms", :as => "terms"
   match "copyrights" => "pages#copyrights", :as => "copyrights"
   match "randy-owen-altimarc-coming-soon-video" => "pages#randy_owen_coming_soon_video", :as => "randy_owen_video"
+
+  resources :press_only, :only => [:show]
 
   #old giveaways
   match "giveaways/kentucky-derby-with-randy-owen" => "giveaways#derby", :as => "derby"
