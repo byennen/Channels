@@ -1,9 +1,5 @@
 Channels::Application.routes.draw do
 
-  get "press/index"
-
-  get "press/show"
-
   #static pages
   match "about" => "pages#about"
   #match "jobs" => "pages#jobs"

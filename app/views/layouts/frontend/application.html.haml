@@ -31,7 +31,7 @@
     :javascript
       var _sf_startpt=(new Date()).getTime()
   %body{:class => controller.controller_name}
-    .background-wrapper{ :style => ("background: url('#{@channel.background_image.url}') repeat-x ##{@channel.background_color};" if @channel.present?) }
+    .background-wrapper{ :style => ("background: url('#{@channel.background_image.url}') repeat-x ##{@channel.background_color};" if @channel.present? && !@channel.background_image.nil?) }
       .container-fluid.content
         .navbar.navbar-fixed-top
           = render 'shared/musicplayer'

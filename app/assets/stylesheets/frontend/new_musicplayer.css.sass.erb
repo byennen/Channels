@@ -1,0 +1,58 @@
+a.sm2_button
+  position: relative
+  display: inline-block
+  width: 18px
+  height: 18px
+  text-indent: -9999px
+  overflow: hidden
+  vertical-align: middle
+  border-radius: 6px
+  margin: -1px 10px 0 0
+  -webkit-transition-property: hover
+  -webkit-transition: all 0.2s ease-in-out
+  -moz-transition: all 0.2s ease-in-out 0s
+  -o-transition-property: background-color
+  -o-transition-duration: 0.15s
+  *text-indent: 0px
+  *line-height: 99em
+  *vertical-align: top
+  &:focus
+    outline: none
+    /* maybe evil, but don't show the slight border outline on focus.
+  background-color: #000
+  background-image: url(../image/arrow-right-white.png)
+  /* where possible, use data: and skip the HTTP request. Fancy-pants. Would use short-hand background: for above, but IE 8 doesn't override background-image.
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAYAAABmBXS+AAAAbklEQVQY02NgQAL//v1jZMAF/v//vwuIs9HEUBUBTbj4HwIeA3EGVsVAxtn/qOAVUGM8uknIiv4hsV8A5ZKxKfoLVvnvHwifAzLtMKwDSQLBVSBti27dJajkcSD2RJODO3wtkOOMz/tMSJJYAxMA5dmsL0IfubQAAAAASUVORK5CYII=)
+  *background-image: url(../image/arrow-right-white.gif)
+  /* IE 6+7 don't do DATA: URIs
+  background-repeat: no-repeat
+  background-position: 5px 50%
+  *background-position: 5px 4px
+  /* IE 6 again
+  &.sm2_paused:hover
+    background-color: #3399cc
+    background-image: url(../image/arrow-right-white.png)
+    /* where possible, use data: and skip the HTTP request. Fancy-pants. Would use short-hand background: for above, but IE 8 doesn't override background-image.
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAYAAABmBXS+AAAAbklEQVQY02NgQAL//v1jZMAF/v//vwuIs9HEUBUBTbj4HwIeA3EGVsVAxtn/qOAVUGM8uknIiv4hsV8A5ZKxKfoLVvnvHwifAzLtMKwDSQLBVSBti27dJajkcSD2RJODO3wtkOOMz/tMSJJYAxMA5dmsL0IfubQAAAAASUVORK5CYII=)
+    *background-image: url(../image/arrow-right-white.gif)
+    /* IE 6+7 don't do DATA: URIs
+    background-repeat: no-repeat
+    background-position: 5px 50%
+    *background-position: 5px 4px
+    /* IE 6 again
+  &:hover
+    background-color: #cc3333
+  &.sm2_playing
+    background-color: #cc3333
+    &:hover
+      background-color: #cc3333
+      -moz-transform: rotate(90deg)
+      -webkit-transform: rotate(90deg)
+      -ms-transform: rotate(90deg)
+    -moz-transform: rotate(90deg)
+    -webkit-transform: rotate(90deg)
+    -ms-transform: rotate(90deg)
+  &.sm2_paused
+    background-color: #666
+    &:hover
+      background-color: #666
