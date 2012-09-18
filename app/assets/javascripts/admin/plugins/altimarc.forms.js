@@ -1,3 +1,27 @@
+// JavaScript Document
+$(document).ready(function(){
+	// Chosen multiselect
+	$(".chzn-select").chosen();
+	
+	// activate typeahead
+	$('.typeahead').typeahead();	
+
+	// jQuery UI radio / checkbox buttons
+	$('.radioset_on,.checkboxset_on').buttonset();
+	
+	// file input
+	$('#fileInputUI').customFileInput({
+        button_position : 'right'
+    });
+	
+	// Uniform
+	$(".uniform_on").uniform();
+	
+	// Jquery UI Datepicker
+	$(".datepicker_on").datepicker();	
+	
+	// daterange picker 
+	$('.daterange_on').daterangepicker();
 	$('.daterange_duo_on_1,.daterange_duo_on_2').daterangepicker();
 	
 	// slider examples
