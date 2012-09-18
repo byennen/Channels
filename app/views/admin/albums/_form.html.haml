@@ -1,8 +1,15 @@
+:javascript
+  $(document).ready(function(){
+  	// Jquery UI Datepicker
+  	$(".datepicker_on").datepicker();	
+  });
 = simple_form_for [:admin, @channel, @album], :html => {:multipart => true, :class => 'form-horizontal'} do |f|
   = f.input :title, :input_html => {:class => "input-xlarge"}
   = f.input :image, :as => :file, :label => "Image"
   = image_tag @album.image.thumb('100x100#').url if @album.image
   = f.input :description, :input_html => {:class => "input-xlarge"}
+  - publish_date = f.object.publish_at.nil? ? nil : f.object.publish_on.strftime('%m/%d/%Y')      
+  = f.input :publish_at, :as => :string, :input_html => { :class => 'datepicker_on', :value => publish_date } 
   -# = f.input :active
   .form-actions
     = f.button :submit, :class => 'btn-primary'

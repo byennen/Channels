@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20120916041357) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.string   "slug"
+    t.datetime "publish_at"
   end
 
   add_index "albums", ["slug"], :name => "index_albums_on_slug"
@@ -168,6 +169,7 @@ ActiveRecord::Schema.define(:version => 20120916041357) do
     t.string   "preview"
     t.string   "song"
     t.string   "slug"
+    t.datetime "publish_at"
     t.integer  "position"
   end
 
