@@ -35,6 +35,10 @@ class UsersController < ApplicationController
     end
   end
   
+  def downloads
+    @songs = current_user.orders.collect(:song)
+  end
+  
   def cancel
     if current_user.cancel_membership
       flash[:notice] = "Your membership has been canceled."
