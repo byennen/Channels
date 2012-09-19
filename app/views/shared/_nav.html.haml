@@ -37,10 +37,10 @@
               %a.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                 %span.caret
               %ul.dropdown-menu
-                %li
-                  = link_with_icon("Edit account", edit_user_registration_url(subdomain: "www"), "icon-pencil", "pjax")
-                %li
-                  = link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", :id => "logout")
+                %li= link_with_icon("My Downloads", downloads_user_url(subdomain: "www"), "icon-download-alt", "pjax")
+                %li= link_with_icon("Edit account", edit_user_registration_url(subdomain: "www"), "icon-pencil", "pjax")
+                %li= link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", :id => "logout")
+
             - else
               - if current_channel
                 = link_with_icon("Login or Register", login_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid), "icon-user icon-white", "btn btn-primary")

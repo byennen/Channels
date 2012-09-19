@@ -50,7 +50,7 @@ class SongsController < ApplicationController
       Resque.enqueue(MemberWorker, :purchased_song, {:order_id => @order.id})
       respond_to do |format|
         flash[:notice] = "Thank you for purchasing - #{@song.title}"
-        format.html { redirect_to :action => :show, :song => @song }
+        format.html { redirect_to downloads_user_url }
       end
     end
      

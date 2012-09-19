@@ -1,0 +1,12 @@
+%h1.heading My Downloads
+.row-fluid
+  .span
+    %table.table.table-striped
+      %thead
+      %tbody
+        - @songs.each do |song|
+          %tr
+            %td= song.title
+            %td= link_to 'Download', '#'
+          
+

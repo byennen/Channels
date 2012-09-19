@@ -66,6 +66,8 @@ Channels::Application.routes.draw do
   get '/subscribe' => 'users#subscribe', :as => "subscribe_user"
   put '/subscribe' => "users#subscribe", :as => "create_subscribe_user"
   post '/user/cancel' => "users#cancel", :as => "cancel_membership"
+  get '/downloads' => "users#downloads", :as => "downloads_user"
+  
   
   devise_scope :user do
     get "/login" => "sessions#new"
