@@ -1,6 +1,115 @@
+= javascript_include_tag "https://js.stripe.com/v1/"
+= javascript_include_tag "plugins/stripe"
+
+
+:css
+  .info {
+    background: #FFC;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+  .info p {
+    margin: 15px 20px;
+    line-height: 1.3em;
+  }
+  .coupon_link {
+    padding: 20px 0;
+  }
+  .payment_banner {
+    margin: 0 -20px 0 -20px;
+  }
+  .modal-backdrop {
+    display: none;
+  }
+
+
 - content_for :open_graph do
   %meta{:property => "og:title", :content => @song.title}
   %meta{:property => "og:image", :content => @song.album.image.thumb('70x70').url(:host => "http://#{request.host}")}
   %meta{:property => "og:url", :content => song_url(@song)}
   %meta{:property => "og:type", :content => "#{APP_CONFIG['fb_namespace']}:song"}
   %meta{:property => "music:musician", :content => @song.album.channel.name }
+
+.row-fluid
+  .span12{:style => 'margin-bottom: 40px;'}
+    .row-fluid
+      .span4
+        .thumbnail{:style => 'margin-top: 20px;'}
+          = image_tag @album.image.thumb('488x400#').url
+      .span8
+        %h1.heading.span= @album.title
+        %p= @channel.description
+        .row-fluid
+          .span
+            %table.table.table-striped
+              %thead
+                %tbody
+                  - if user_signed_in? && current_user.unpaid_member?
+                    %td.center= link_with_icon("Play", song_url(@song), "icon-play icon-white", "btn btn-info unpaid_members_music",  {:class => "play", :id => "play-#{@song.id}", "data-song" => @song.id})
+                  - else
+                    %td.center= link_with_icon("Play", song_url(@song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{@song.id}", "data-song" => @song.id})
+                  %td.center= @song.title
+                  %td.center= @album.title
+
+        -#.row-fluid{:style => 'margin-top: 30px;'}
+          -#.span2
+            -#%a.twitter-follow-button{"data-show-count" => "false", "data-show-screen-name" => "false", :href => "https://twitter.com/#{@channel.twitter_id}", :target => "_blank"} Follow
+          -#.span2
+            -#.fb-like{"data-font" => "arial", "data-href" => "http://facebook.com/#{@channel.facebook_page}", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "50"}
+          -#.span2
+            -#.g-plusone{"data-href" => "https://plus.google.com/109799687634302877687", "data-size" => "medium"}
+    .row-fluid
+      .span
+        = simple_form_for(current_user, :url => buy_song_path(@song), :html => {:class => 'form-horizontal', :id => 'subscribe_user', :method => :post}) do |f|
+          = f.error_notification
+
+          .stripe_error.error_explanation
+            %noscript JavaScript is not enabled and is required for this form. First enable it in your web browser settings.
+
+          #song_payment
+            .row-fluid{:style => 'margin-top: 20px;'}
+              .span12
+                .row-fluid
+                  .payment.span
+                    .control-group.credit_card
+                      .span5
+                        %label.control-label{:for => "credit_card"} Credit Card
+                        .controls
+                          %input#card_number.input-large{:type => "text"}
+                  .row-fluid
+                    .span{:style => 'margin: 0px 0 25px 159px;'}
+                      = image_tag('payments/img-creditcards.png')
+
+                    .control-group.security_code
+                      %label.control-label{:for => "security_code"} Security Code on Card (CVV)
+                      .controls
+                        %input#security_code.input-small{:type => "text", :size => '4', :maxlength => '4'}
+                    .control-group.card_expiration 
+                      %label.control-label{:for => "card_month"} Card Expiration
+                      .controls
+                        = select_month nil, {add_month_numbers: true, :use_short_month => true}, {name: nil, id: "card_month", :class => 'input-small'}
+                        = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'input-small'}
+
+                    = f.hidden_field :stripe_card_token
+
+                  %hr
+                  -#//coupon
+                  .row-fluid
+                    .span
+                      = link_to "Got a Coupon Code?", "javascript:;", :id => "coupon_link"
+                      .control-group#coupon_code
+                        %label.control-label{:for => "input01"} Coupon Code
+                        .controls
+                          %input#input01.input-small{:type => "text"}
+
+                  .form-actions{:style => "background: none;"}
+                    = f.submit "Buy Song", :class => 'btn-primary btn-success btn-large'
+
+
+
+-#twitter
+:javascript
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+-#google plus
+%script{:src => "https://apis.google.com/js/plusone.js", :type => "text/javascript"}

@@ -57,6 +57,7 @@ Channels::Application.routes.draw do
     get :next_song, :on => :collection
     get :intro, :on => :collection
     post :played, :on => :member
+    post :buy, :on => :member
   end
 
   #users

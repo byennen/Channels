@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
 
   belongs_to :channel
   has_one :address
+  has_many :orders
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -100,13 +101,23 @@ class User < ActiveRecord::Base
     end
   end
   
+  def create_stripe_customer(stripe_card_token, plan=nil)
+    logger.debug("stripe card token is #{stripe_card_token}")
+    stripe_data = {:email => email, :card => stripe_card_token}
+    if plan
+      p = plan == "695" ? "basic" : "plus"
+      stripe_data.merge!(:plan => p)
+    end
+    customer = Stripe::Customer.create(stripe_data)
+    self.stripe_customer_token = customer.id
+    self.stripe_plan = p
+    self.save!
+  end
+
   private
 
   def process_payment
-    p = plan == "695" ? "basic" : "plus"
-    customer = Stripe::Customer.create(:email => email, :plan => p, :card => stripe_card_token)
-    self.stripe_customer_token = customer.id
-    self.stripe_plan = p
+    create_stripe_customer(stripe_card_token, plan)
     if plan != "695"
       case plan
       when "1195"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120916041357) do
+ActiveRecord::Schema.define(:version => 20120918212258) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -104,6 +104,21 @@ ActiveRecord::Schema.define(:version => 20120916041357) do
     t.datetime "updated_at",                    :null => false
   end
 
+  create_table "line_items", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "song_id"
+    t.integer  "price"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "stripe_invoice"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "performances", :force => true do |t|
     t.integer  "video_id"
     t.string   "video"
@@ -169,8 +184,8 @@ ActiveRecord::Schema.define(:version => 20120916041357) do
     t.string   "preview"
     t.string   "song"
     t.string   "slug"
-    t.datetime "publish_at"
     t.integer  "position"
+    t.datetime "publish_at"
   end
 
   add_index "songs", ["slug"], :name => "index_songs_on_slug"
