@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end
   
   def downloads
-    @songs = current_user.orders.collect(:song)
+    @songs = current_user.orders.collect(&:song)
   end
   
   def cancel
