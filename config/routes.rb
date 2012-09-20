@@ -49,8 +49,6 @@ Channels::Application.routes.draw do
       post :buy, :on => :member
     end
   end
-
-  end
   resources :photo_albums do
     resources :photos, :only => [:index]
   end
