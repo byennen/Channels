@@ -33,12 +33,12 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
     if current_user && current_user.facebook?
       Resque.enqueue(MemberWorker, :share_listen, {:user_id  => current_user.id,
-                       :song_url => song_url(@song)})
+                       :song_url => album_song_url(@song.album, @song)})
 
     end
     render :text => ""
   end
-  
+
   def buy
     @song = Song.find(params[:id])
     @order = current_user.orders.new
@@ -53,7 +53,7 @@ class SongsController < ApplicationController
         format.html { redirect_to downloads_user_url }
       end
     end
-     
+
 
   end
 

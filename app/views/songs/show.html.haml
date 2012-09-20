@@ -26,7 +26,7 @@
 - content_for :open_graph do
   %meta{:property => "og:title", :content => @song.title}
   %meta{:property => "og:image", :content => @song.album.image.thumb('70x70').url(:host => "http://#{request.host}")}
-  %meta{:property => "og:url", :content => song_url(@song)}
+  %meta{:property => "og:url", :content => album_song_url(@song.album, @song)}
   %meta{:property => "og:type", :content => "#{APP_CONFIG['fb_namespace']}:song"}
   %meta{:property => "music:musician", :content => @song.album.channel.name }
 
@@ -70,6 +70,32 @@
             #song_payment
               .row-fluid{:style => 'margin-top: 20px;'}
                 .span12
+                .row-fluid
+                  .payment.span
+                    .control-group.credit_card
+                      .span5
+                        %label.control-label{:for => "credit_card"} Credit Card
+                        .controls
+                          %input#card_number.input-large{:type => "text"}
+                  .row-fluid
+                    .span{:style => 'margin: 0px 0 25px 159px;'}
+                      = image_tag('payments/img-creditcards.png')
+
+                    .control-group.security_code
+                      %label.control-label{:for => "security_code"} Security Code on Card (CVV)
+                      .controls
+                        %input#security_code.input-small{:type => "text", :size => '4', :maxlength => '4'}
+                    .control-group.card_expiration
+                      %label.control-label{:for => "card_month"} Card Expiration
+                      .controls
+                        = select_month nil, {add_month_numbers: true, :use_short_month => true}, {name: nil, id: "card_month", :class => 'input-small'}
+                        = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'input-small'}
+
+                    = f.hidden_field :stripe_card_token
+
+                  %hr
+                  -#//coupon
+>>>>>>> updates to include album friendly_id in route for songs.
                   .row-fluid
                     .payment.span
                       .control-group.credit_card
