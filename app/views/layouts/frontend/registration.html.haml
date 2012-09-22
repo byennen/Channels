@@ -31,15 +31,23 @@
     :javascript
       var _sf_startpt=(new Date()).getTime()
   %body{:class => controller.controller_name}
-    .background-wrapper{ :style => ("background: url('#{@channel.background_image.url}') repeat-x ##{@channel.background_color};" if @channel.present? && !@channel.background_image.nil?) }
-      .container-fluid.content
-        .navbar.navbar-fixed-top
-          = render 'shared/musicplayer'
-          #ribbon
-          = render 'shared/nav'
-        .container-content
-          = render :partial => "shared/flash_messages", :locals => {:flash => flash}
-          = yield
-          = render 'layouts/frontend/footer'
-          = render 'layouts/frontend/modals'
-          = render 'shared/analytics'
+    .container-fluid
+      .navbar.navbar-fixed-top
+        .navbar-inner
+          .container-fluid
+            %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            %a.brand{:href => "./"}
+              Base Admin
+            .nav-collapse
+              %ul.nav.pull-right
+                - if params[:controller] == "sessions"
+                  %li= link_to "Create an Account", signup_url
+                %li= link_with_icon "Back to Homepage", root_path, 'icon-chevron-left', ''
+
+      = render :partial => "shared/flash_messages", :locals => {:flash => flash}
+      = yield
+      = render 'shared/analytics'
+

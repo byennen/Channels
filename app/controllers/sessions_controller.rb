@@ -1,4 +1,5 @@
 class SessionsController < Devise::SessionsController
+  layout 'frontend/registration'
 
   def create
     user = User.from_omniauth(env["omniauth.auth"])

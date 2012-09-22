@@ -1,76 +1,40 @@
-- title "Login"
+- title "Sign In"
 
-- if params[:action] == 'new' || !current_user
-  .row
-    .span6#signup_box
-      .overlay
-        .overlay-inside
-          = image_tag('logo-login.png', :class => 'logo')
-          %p Entertainment and once in a life time opportunities!
-          .row
-            .span#facebook
-              - if params[:state]
-                %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook?state=#{params[:state]}"}
-                  %i.icon-facebook
-                  Sign in with Facebook
-              - else
-                %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook"}
-                  %i.icon-facebook
-                  Sign in with Facebook
-              
-          .row
-            .span#other_links
-              %p
-                = link_to "Sign up with email", signup_url, :id => "with_email_link", :class => "pjax"
-              %p
-                Been here before?
-                = link_to "Sign In", "#", :id => "here_before_link", :class => "disable-pjax"
-  .row
-    .span6#here_before
-      .overlay
-        .overlay-inside
-          = image_tag('logo-login.png', :class => 'logo')
-          %p Entertainment and once in a life time opportunities!
-          .row
-            .span#form
-              = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'well'}) do |f|
-                = f.email_field :email, :placeholder => "Email", :class => "input-xlarge focused", :id => "focusedInput"
-                = f.password_field :password, :placeholder => "Password", :class => "input-xlarge"
-                .control-group
-                  .controls
-                    - if devise_mapping.rememberable?
-                      %label.checkbox
-                        Remember me
-                        = f.check_box :remember_me
-                    = f.submit "Sign In", :class => 'btn btn-success'
+.account-container
+  .content.clearfix
+    %h1 Sign In
+    .login-social
+      %p Sign in using social network:
+      -#.row
+        -#.span5#facebook_photos
+          -#.fb-facepile{"data-max-rows" => "1", "data-width" => "340", "data-colorscheme" => "light", "app_id" => "505364239479743"}
 
-          .row
-            .span#other_links
-              %p
-                = link_to "Forgot your password?", new_user_password_url, :class => "pjax"
-              %p
-                = link_to "Sign up with email", signup_url, :id => "with_email_link", :class => "pjax"
-              %p
-                = link_to "Sign In with Facebook", "#", :id => "with_facebook_link"
+      - if params[:state]
+        %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook?state=#{params[:state]}"}
+          %i.icon-facebook
+          Sign in with Facebook
+      - else
+        %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook"}
+          %i.icon-facebook
+          Sign in with Facebook
 
+    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+      .login-fields
+        %p Sign in using your registered account:
+        = f.email_field :email, :placeholder => "Username", :class => 'login username-field'
+        = f.password_field :password, :placeholder => "Password", :class => "login password-field"
+      .login-actions
+        %span.login-checkbox 
+          - if devise_mapping.rememberable?
+            = f.check_box :remember_me, :class => 'choice'
+            %label.choice
+              Keep me signed in
 
-  .row
-    .span6#facebook_photos
-      .fb-facepile{"data-href" => "http://facebook.com/altimarc", "data-max-rows" => "1", "data-width" => "448", "data-colorscheme" => "dark"}
+        = f.submit "Sign In", :class => 'btn btn-danger btn-large button'
 
-- else
-  .row
-    .span6#create_password
-      .overlay
-        .overlay-inside
-          = image_tag('logo-login.png', :class => 'logo')
-          %p Entertainment and once in a life time opportunities!
-          %h2 Create Password
-          = simple_form_for(current_user, :url => create_password_path, :html => {:class => "form-horizontal"}) do |f|
-            = f.error_notification
-            = f.input :password, :required => true, :class => "input-xlarge"
-            = f.input :password_confirmation, :required => true, :class => "input-xlarge"
-            .control-group
-              .controls
-                = f.submit "Create Password", :class => 'btn btn-success btn-large'
-
+.login-extra
+  Don't have an account?
+  = link_to "Sign Up", signup_url
+  %br/
+  Remind
+  = link_to "Password", new_user_password_url
