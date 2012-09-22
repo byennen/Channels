@@ -42,6 +42,7 @@
                 %li= link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", :id => "logout")
 
             - else
+              = link_to "Login or Register", "#"              
               - if current_channel
                 = link_with_icon("Login or Register", login_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid), "icon-user icon-white", "btn btn-primary")
               - else
