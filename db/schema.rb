@@ -153,6 +153,11 @@ ActiveRecord::Schema.define(:version => 20120918212258) do
     t.integer  "position"
   end
 
+  create_table "plans", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "posts", :force => true do |t|
     t.integer  "channel_id"
     t.datetime "created_at",  :null => false
@@ -184,8 +189,8 @@ ActiveRecord::Schema.define(:version => 20120918212258) do
     t.string   "preview"
     t.string   "song"
     t.string   "slug"
-    t.integer  "position"
     t.datetime "publish_at"
+    t.integer  "position"
   end
 
   add_index "songs", ["slug"], :name => "index_songs_on_slug"

@@ -41,7 +41,14 @@ Channels::Application.routes.draw do
 
   resources :posts, :only => [:show]
   resources :videos, :only => [:show]
-  resources :albums, :only => [:show]
+  resources :albums, :only => [:show] do
+    resources :songs, :only => [:show] do
+      get :next_song, :on => :collection
+      get :intro, :on => :collection
+      post :played, :on => :member
+      post :buy, :on => :member
+    end
+  end
   resources :photo_albums do
     resources :photos, :only => [:index]
   end
@@ -54,10 +61,6 @@ Channels::Application.routes.draw do
   get "/ads/next" => "ads#next"
 
   resources :songs, :only => [:index, :show] do
-    get :next_song, :on => :collection
-    get :intro, :on => :collection
-    post :played, :on => :member
-    post :buy, :on => :member
   end
 
   #users
@@ -67,8 +70,7 @@ Channels::Application.routes.draw do
   put '/subscribe' => "users#subscribe", :as => "create_subscribe_user"
   post '/user/cancel' => "users#cancel", :as => "cancel_membership"
   get '/downloads' => "users#downloads", :as => "downloads_user"
-  
-  
+
   devise_scope :user do
     get "/login" => "sessions#new"
     delete '/logout' => 'sessions#destroy'

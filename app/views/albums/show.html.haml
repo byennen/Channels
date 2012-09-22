@@ -32,6 +32,7 @@
                 %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
               %td.center= song.title
               %td.center= @album.title
+              %td.center= link_to "Buy Now", album_song_url(@album, song)
       .span4
         .rightsidebar
           .row-fluid
@@ -43,7 +44,7 @@
                     %h5= @featured_video.title
                     - if user_signed_in? && current_user.paid_member?
                       = link_with_icon("Watch", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "btn btn-success")
-                    - else 
+                    - else
                       = link_with_icon("Free Trailer", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "btn btn-success")
 
           .row-fluid
