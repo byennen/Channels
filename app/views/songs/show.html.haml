@@ -61,7 +61,7 @@
     = unless current_user.orders.map(&:song).include?(@song)
       .row-fluid
         .span
-          = simple_form_for(current_user, :url => buy_song_path(@song), :html => {:class => 'form-horizontal', :id => 'subscribe_user', :method => :post}) do |f|
+          = simple_form_for(current_user, :url => buy_album_song_path(@song), :html => {:class => 'form-horizontal', :id => 'subscribe_user', :method => :post}) do |f|
             = f.error_notification
 
             .stripe_error.error_explanation
