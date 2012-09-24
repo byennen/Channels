@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/byennen/projekktor-rails.git
+  revision: 6eb0a463d079ad1fb71c1a03ccbe59e026ea3f5a
+  specs:
+    projekktor-rails (0.0.1)
+
+GIT
   remote: git://github.com/glaszig/soundmanager-rails.git
   revision: 4ed8e8d170f7ea9b2bc94b70cbea9079ad0f4be0
   specs:
@@ -387,6 +393,7 @@ DEPENDENCIES
   newrelic_rpm
   omniauth-facebook
   pg
+  projekktor-rails!
   pry-rails
   rack-cache
   rack-mini-profiler
