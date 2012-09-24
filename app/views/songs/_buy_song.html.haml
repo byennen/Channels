@@ -1,0 +1,50 @@
+- if current_user.present?
+  #buy_album.modal.hide{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    .modal-body
+      .row-fluid
+        .span
+          = simple_form_for(current_user, :url => buy_album_song_path(@song), :html => {:class => 'form-horizontal', :id => 'subscribe_user', :method => :post}) do |f|
+            = f.error_notification
+
+            .stripe_error.error_explanation
+              %noscript JavaScript is not enabled and is required for this form. First enable it in your web browser settings.
+
+            #song_payment
+              .row-fluid
+                .payment.span
+                  .control-group.credit_card
+                    .span
+                      %label.control-label{:for => "credit_card"} Credit Card
+                      .controls
+                        %input#card_number.input-large{:type => "text"}
+                .row-fluid
+                  .span{:style => 'padding: 0px 0 25px 159px;'}
+                    = image_tag('payments/img-creditcards.png')
+
+                  .control-group.security_code
+                    %label.control-label{:for => "security_code"} Security Code on Card (CVV)
+                    .controls
+                      %input#security_code.input-small{:type => "text", :size => '4', :maxlength => '4'}
+                  .control-group.card_expiration
+                    %label.control-label{:for => "card_month"} Card Expiration
+                    .controls
+                      = select_month nil, {add_month_numbers: true, :use_short_month => true}, {name: nil, id: "card_month", :class => 'input-small'}
+                      = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'input-small'}
+
+                  = f.hidden_field :stripe_card_token
+
+                -#%hr
+                -#-#//coupon
+                -#.row-fluid
+                  -#.span
+                    -#= link_to "Got a Coupon Code?", "javascript:;", :id => "coupon_link"
+                    -#.control-group#coupon_code
+                      -#%label.control-label{:for => "input01"} Coupon Code
+                      -#.controls
+                        -#%input#input01.input-small{:type => "text"}
+                .row-fluid
+                  .span{:style => 'padding: 0px 0 25px 159px;'}
+                    = f.submit "Buy Song", :class => 'btn-primary btn-success btn-large'
+
