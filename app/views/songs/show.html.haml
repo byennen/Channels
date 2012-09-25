@@ -14,6 +14,7 @@
 
 #album_details.row-fluid
   #inside_album_details.span
+    %h1= @album.title    
     #price.row-fluid
       .span
         %p.download
@@ -29,15 +30,11 @@
           - if current_user.orders.map(&:song).include?(@song)
             = link_to "My Downloads", downloads_url
           - else
-            = link_to "Buy Album", "#buy_album_song_path", "data-toggle" => "modal", :href => "#buy_album", :role => "button", :class => "btn btn-success btn-large"
+            = link_to "Buy Song", "#buy_album_song_path", "data-toggle" => "modal", :href => "#buy_album", :role => "button", :class => "btn btn-success btn-large"
+            = link_to "Buy Album", album_url(@album), :class => "btn btn-large"
         - else
-          = link_to "Buy Album", "#buy_album_song_path", :class => "btn btn-success btn-large connected"
-    
-    %h1= @album.title
-    %p 
-      %strong
-        Release date:
-    %p= @album.description
+          = link_to "Buy Song", "#buy_album_song_path", :class => "btn btn-success btn-large connected"
+          = link_to "Buy Album", album_url(@album), :class => "btn btn-large"
 
     .row-fluid
       .span
@@ -49,7 +46,6 @@
               - else
                 %td.center= link_with_icon("Play", song_url(@song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{@song.id}", "data-song" => @song.id})
               %td.center= @song.title
-              %td= link_to "Buy Song", "#", :class => 'btn pull-right'
 
 
     -#.row-fluid{:style => 'margin-top: 30px;'}

@@ -1,62 +1,72 @@
-.row-fluid
-  .span12{:style => 'margin-bottom: 40px;'}
+= javascript_include_tag "https://js.stripe.com/v1/"
+= javascript_include_tag "plugins/stripe"
+
+-#- content_for :open_graph do
+  -#%meta{:property => "og:title", :content => @song.title}
+  -#%meta{:property => "og:image", :content => @song.album.image.thumb('70x70').url(:host => "http://#{request.host}")}
+  -#%meta{:property => "og:url", :content => album_song_url(@song.album, @song)}
+  -#%meta{:property => "og:type", :content => "#{APP_CONFIG['fb_namespace']}:song"}
+  -#%meta{:property => "music:musician", :content => @song.album.channel.name }
+
+#cover.row-fluid
+  .span
+    = image_tag(@album.image.thumb('490x440#').url, :class => 'img-rounded img-polaroid')
+
+#album_details.row-fluid
+  #inside_album_details.span
+    #price.row-fluid
+      .span
+        %p.download
+          Instant Download
+        %p
+          %span.price
+            $1.88
+          %sup.exclusive
+            (Altimarc Exclusive)
+    #buy_now.row-fluid
+      .span
+        - if current_user.present?
+          - if current_user.orders.map(&:song).include?(@song)
+            = link_to "My Downloads", downloads_url
+          - else
+            = link_to "Buy Album", "#buy_album_song_path", "data-toggle" => "modal", :href => "#buy_album", :role => "button", :class => "btn btn-success btn-large"
+        - else
+          = link_to "Buy Album", "#buy_album_song_path", :class => "btn btn-success btn-large connected"
+    
+    %h1= @album.title
+    %p 
+      %strong
+        Release date:
+    %p= @album.description
+
     .row-fluid
-      .span4
-        .thumbnail{:style => 'margin-top: 20px;'}
-          = image_tag @album.image.thumb('488x400#').url
-          -#= image_tag current_channel.banner_image.thumb('1600x505#').url if @channel.banner_image_uid
-          -#= image_tag('http://placehold.it/350x300')
-      .span8
-        %h1.heading.span= @album.title
-        %p= @channel.description
-        .row-fluid{:style => 'margin-top: 30px;'}
-          .span2
-            %a.twitter-follow-button{"data-show-count" => "false", "data-show-screen-name" => "false", :href => "https://twitter.com/#{@channel.twitter_id}", :target => "_blank"} Follow
-          .span2
-            .fb-like{"data-font" => "arial", "data-href" => "http://facebook.com/#{@channel.facebook_page}", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "50"}
-          .span2
-            .g-plusone{"data-href" => "https://plus.google.com/109799687634302877687", "data-size" => "medium"}
-.row-fluid
-  .span12
-    .row-fluid
-      .span8{:style => 'margin-top: 23px;'}
+      .span
         %table.table.table-striped
           %thead
-          %tbody
-          - @album.songs.each do |song|
-            %tr
-              -#%td= image_tag(song.album.image.thumb('50x50#').url
-              - if user_signed_in? && current_user.unpaid_member?
-                %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info unpaid_members_music",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
-              - else
-                %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
-              %td.center= song.title
-              %td.center= @album.title
-              %td.center= link_to "Buy Now", album_song_url(@album, song)
-      .span4
-        .rightsidebar
-          .row-fluid
-            .span
-              %h2.heading Featured Video
-              .thumbnail
-                %img{:alt => "", :src => @featured_video.image.thumb('488x294#').url}
-                  .caption
-                    %h5= @featured_video.title
-                    - if user_signed_in? && current_user.paid_member?
-                      = link_with_icon("Watch", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "btn btn-success")
-                    - else
-                      = link_with_icon("Free Trailer", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "btn btn-success")
+            %tbody
+              - @album.songs.each do |song|
+                %tr
+                  -#%td= image_tag(song.album.image.thumb('50x50#').url
+                  - if user_signed_in? && current_user.unpaid_member?
+                    %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info unpaid_members_music",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
+                  - else
+                    %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
+                  %td.center= song.title
+                  %td= link_to "Buy Song", album_song_url(@album, song), :class => 'btn pull-right'
 
-          .row-fluid
-            .span
-              %h2.heading Featured Sponsor
-              .thumbnail
-                = link_to image_tag('layout/ad-holder.png'), altimarc_for_your_business_url
+    -#.row-fluid{:style => 'margin-top: 30px;'}
+      -#.span2
+        -#%a.twitter-follow-button{"data-show-count" => "false", "data-show-screen-name" => "false", :href => "https://twitter.com/#{@channel.twitter_id}", :target => "_blank"} Follow
+      -#.span2
+        -#.fb-like{"data-font" => "arial", "data-href" => "http://facebook.com/#{@channel.facebook_page}", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "50"}
+      -#.span2
+        -#.g-plusone{"data-href" => "https://plus.google.com/109799687634302877687", "data-size" => "medium"}
 
 
--#twitter
+-#= render 'songs/buy_song'
+
 :javascript
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
 -#google plus
-%script{:src => "https://apis.google.com/js/plusone.js", :type => "text/javascript"}
+%script{:src => "https://apis.google.com/js/plusone.js", :type => "text/javascript"}  
