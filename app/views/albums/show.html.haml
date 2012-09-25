@@ -1,5 +1,7 @@
 = javascript_include_tag "https://js.stripe.com/v1/"
 = javascript_include_tag "plugins/stripe"
+- javascript 'frontend/new_musicplayer'
+- stylesheet 'frontend/new_musicplayer'
 
 -#- content_for :open_graph do
   -#%meta{:property => "og:title", :content => @song.title}
@@ -41,18 +43,27 @@
 
     .row-fluid
       .span
-        %table.table.table-striped
-          %thead
-            %tbody
-              - @album.songs.each do |song|
-                %tr
-                  -#%td= image_tag(song.album.image.thumb('50x50#').url
-                  - if user_signed_in? && current_user.unpaid_member?
-                    %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info unpaid_members_music",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
-                  - else
-                    %td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
-                  %td.center= song.title
-                  %td= link_to "Buy Song", album_song_url(@album, song), :class => 'btn pull-right'
+        %ul#songs
+          - @songs.each do |song|
+            = content_tag_for :li, song do
+              .span
+                .span9
+                  = link_to '', "#{song.song}", :class => 'sm2_button'
+                  %strong= song.title
+                  = link_to "Buy Song", album_song_url(@album, song), :class => 'btn pull-right'
+
+        -#%table.table.table-striped
+          -#%thead
+            -#%tbody
+              -#- @album.songs.each do |song|
+                -#%tr
+                  -#-#%td= image_tag(song.album.image.thumb('50x50#').url
+                  -#- if user_signed_in? && current_user.unpaid_member?
+                    -#%td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info unpaid_members_music",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
+                  -#- else
+                    -#%td.center= link_with_icon("Play", song_url(song), "icon-play icon-white", "btn btn-info",  {:class => "play", :id => "play-#{song.id}", "data-song" => song.id})
+                  -#%td.center= song.title
+                  -#%td= link_to "Buy Song", album_song_url(@album, song), :class => 'btn pull-right'
 
     -#.row-fluid{:style => 'margin-top: 30px;'}
       -#.span2
