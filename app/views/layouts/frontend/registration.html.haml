@@ -39,10 +39,10 @@
               %span.icon-bar
               %span.icon-bar
               %span.icon-bar
-            %a.brand{:href => "./"}
-              Base Admin
+            %a.brand{:href => root_url}
+              Altimarc
             .nav-collapse
-              %ul.nav.pull-right
+              %ul.nav.pull-right.sessions
                 - if params[:controller] == "sessions"
                   %li= link_to "Create an Account", signup_url
                 %li= link_with_icon "Back to Homepage", root_path, 'icon-chevron-left', ''

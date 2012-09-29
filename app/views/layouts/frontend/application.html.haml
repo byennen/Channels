@@ -34,8 +34,6 @@
     .background-wrapper{ :style => ("background: url('#{@channel.background_image.url}') repeat-x ##{@channel.background_color};" if @channel.present? && !@channel.background_image.nil? && !params[:controller] == "albums") }
       .container-fluid.content
         .navbar.navbar-fixed-top
-          = render 'shared/musicplayer'
-          #ribbon
           = render 'shared/nav'
         .container-content
           = render :partial => "shared/flash_messages", :locals => {:flash => flash}
