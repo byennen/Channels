@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120918212258) do
+ActiveRecord::Schema.define(:version => 20120928225727) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -35,13 +35,16 @@ ActiveRecord::Schema.define(:version => 20120918212258) do
     t.integer  "channel_id"
     t.string   "title"
     t.text     "description"
-    t.decimal  "price",       :precision => 8, :scale => 2
+    t.integer  "price_in_cents"
     t.string   "image_uid"
     t.boolean  "active"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
     t.string   "slug"
     t.datetime "publish_at"
+    t.boolean  "preorder"
+    t.integer  "preorder_price_in_cents"
+    t.date     "release_date"
   end
 
   add_index "albums", ["slug"], :name => "index_albums_on_slug"
@@ -106,10 +109,11 @@ ActiveRecord::Schema.define(:version => 20120918212258) do
 
   create_table "line_items", :force => true do |t|
     t.integer  "order_id"
-    t.integer  "song_id"
+    t.integer  "purchasable_id"
     t.integer  "price"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "purchasable_type"
   end
 
   create_table "orders", :force => true do |t|
