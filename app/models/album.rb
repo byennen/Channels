@@ -7,6 +7,8 @@ class Album < ActiveRecord::Base
                   :active, :price, :publish_at, :preorder, :preorder_price,
                   :release_date
 
+  validates :title, :description, :image, :price, :publish_at, :release_date
+
   image_accessor :image
 
   extend FriendlyId
