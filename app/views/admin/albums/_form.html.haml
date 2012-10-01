@@ -8,7 +8,7 @@
   = f.input :image, :as => :file, :label => "Image"
   = f.input :preorder, :as => :boolean
   = f.input :preorder_price
-  = f.input :price
+  = f.input :price, :input_html => {:value => f.object.read_attribute(:price) }
   = image_tag @album.image.thumb('100x100#').url if @album.image
   = f.input :description, :input_html => {:class => "input-xlarge"}
   - publish_date = f.object.publish_at.nil? ? nil : f.object.publish_at.strftime('%m/%d/%Y')
