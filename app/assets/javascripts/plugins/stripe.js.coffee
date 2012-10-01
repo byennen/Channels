@@ -1,4 +1,4 @@
-$(document).on "ready pjax:success", ->
+$(document).ready ->
   stripeHandler = new StripeHandler
   $('#subscribe_user').submit stripeHandler.handleSubmit
   

@@ -1,7 +1,7 @@
 class LineItem < ActiveRecord::Base
 
   belongs_to :order
-  belongs_to :song
+  belongs_to :purchasable, :polymorphic => true
 
 end
 

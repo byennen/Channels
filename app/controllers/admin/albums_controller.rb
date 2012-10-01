@@ -24,7 +24,10 @@ class Admin::AlbumsController < Admin::ApplicationController
   end
 
   def update
-    if @album.update_attributes(params[:album])
+    @album.attributes = params[:album]
+    @album.publish_at = DateTime.strptime(params[:album][:publish_at], '%m/%d/%Y').to_time 
+    @album.release_date = DateTime.strptime(params[:album][:release_date], '%m/%d/%Y').to_date
+    if @album.save
       flash[:notice] = 'Album was successfully updated.'
     end
     respond_with @album, :location => admin_channel_albums_url

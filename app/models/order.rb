@@ -10,7 +10,11 @@ class Order < ActiveRecord::Base
   end
 
   def song
-    line_items.first.song
+    if line_items.first.purchasable.kind_of?(Song)
+      line_items.first.purchasable
+    else
+      line_items.first.purchasable.songs.first
+    end
   end
 
   def charge!

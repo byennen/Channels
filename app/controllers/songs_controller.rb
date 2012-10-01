@@ -42,8 +42,8 @@ class SongsController < ApplicationController
   def buy
     @song = Song.find(params[:id])
     @order = current_user.orders.new
-    @order.line_items << LineItem.new(:song_id => @song, :price => 100)
-    unless current_user.stripe_card_token
+    @order.line_items << LineItem.new(:purchasable => @song, :price => 100)
+    unless current_user.stripe_customer_token
       current_user.create_stripe_customer(params[:user][:stripe_card_token])
     end
     if @order.save && @order.charge!

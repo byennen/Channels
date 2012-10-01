@@ -9,8 +9,7 @@
     %meta{:content => "ALTIMARC, LLC", :name => "author"}
     %meta{:content => "index,follow", :name => "robots"}
     %meta{:property => "fb:app_id", :content => APP_CONFIG['facebook_app_id']}
-    - if current_user && current_user.unpaid_member?
-      %meta{:name => "stripe-key", :content => "#{APP_CONFIG['stripe_public_key']}"}    
+    %meta{:name => "stripe-key", :content => "#{APP_CONFIG['stripe_public_key']}"}    
     = render 'layouts/frontend/meta'
     = yield :open_graph
     = csrf_meta_tags
