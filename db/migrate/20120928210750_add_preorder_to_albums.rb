@@ -7,7 +7,7 @@ class AddPreorderToAlbums < ActiveRecord::Migration
     rename_column :albums, :price, :price_in_cents
     change_column :albums, :price_in_cents, :integer
     Album.all.each do |album|
-      album.price_in_cents = (album.price_in_cents*100).to_i
+      album.price_in_cents = (album.price_in_cents*100).to_i unless nil
       album.save
     end
   end
