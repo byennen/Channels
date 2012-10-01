@@ -35,30 +35,9 @@
             %li= link_with_icon("Edit account", edit_user_registration_url(subdomain: "www"), "icon-pencil", "pjax")
             %li= link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", :id => "logout")
       - else
-        %li= link_to "Sign Up", signup_url      
-        %li= link_to "Log In", login_url
-
-
--#- if user_signed_in?
-  -#%a.btn.btn-plain{"data-toggle" => "dropdown", :href => "#"}
-    -#%i.icon-user.icon-white
-    -#- if current_user.first_name.present?
-      -#= current_user.first_name
-    -#- else
-      -#Me
-  -#%a.btn.btn-plain.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-    -#%span.caret
-  -#%ul.dropdown-menu
-    -#%li= link_with_icon("My Downloads", downloads_user_url(subdomain: "www"), "icon-download-alt", "pjax")
-    -#%li= link_with_icon("Edit account", edit_user_registration_url(subdomain: "www"), "icon-pencil", "pjax")
-    -#%li= link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", :id => "logout")
-
--# else
-  -#= link_to "Log In", "#"
-  -#= link_to "Sign Up", "#"
-
-
-  -#- if current_channel
-    -#= link_with_icon("Login or Register", login_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid), "icon-user", "btn btn-plain")
-  -#- else
-    -#= link_with_icon("Login or Register", login_url(subdomain: 'www', host: APP_CONFIG['domain']), "icon-user", "btn btn-plain")
+        - if current_channel
+          %li= link_to "Sign Up", signup_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid)
+          %li= link_to "Log In", login_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid)
+        - else
+          %li= link_to "Sign Up", signup_url(subdomain: 'www', host: APP_CONFIG['domain'])
+          %li= link_to "Log In", login_url(subdomain: 'www', host: APP_CONFIG['domain'])
