@@ -10,6 +10,7 @@ class Album < ActiveRecord::Base
   validates :title, :presence => true
   validates :description, :presence => true
   validates :image, :presence => true
+  validates :price, :presence => true
   validates :publish_at, :date => { :after => Time.now, :before => Time.now + 1.year }
   validates :release_date, :date => { :after => :publish_at }
 
