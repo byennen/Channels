@@ -19,7 +19,7 @@ gem 'uuid'
 gem 'acts_as_list'
 gem 'soundmanager-rails', :git => 'git://github.com/glaszig/soundmanager-rails.git'
 gem 'projekktor-rails', :git => 'git://github.com/byennen/projekktor-rails.git'
-
+gem 'date_validator'
 
 #login
 gem 'devise'

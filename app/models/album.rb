@@ -7,7 +7,12 @@ class Album < ActiveRecord::Base
                   :active, :price, :publish_at, :preorder, :preorder_price,
                   :release_date
 
-  validates :title, :description, :image, :price, :publish_at, :release_date
+  validates :title, :presence => true
+  validates :description, :presence => true
+  validates :image, :presence => true
+  validates :publish_at, :date => { :after => Time.now, :before => Time.now + 1.year }
+  validates :release_date, :date => { :after => :publish_at }
+
 
   image_accessor :image
 

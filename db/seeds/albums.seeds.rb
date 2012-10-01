@@ -7,6 +7,7 @@ after :users, :channels do
 
   Album.create(
     :channel => channel, :title => "Alive at Brushy Mountain State Penitentiary", :description => "Demo", :price => "9.99", :active => true,
+    :publish_at => 1.days.ago, :release_date => 0.days.ago,
     :image => File.new(File.join(album_dir, 'brushy_mountain/mark-collie.png'))
   )
 
