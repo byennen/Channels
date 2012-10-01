@@ -1,30 +1,32 @@
 - title "Channels"
 
-.row-fluid
-  .span12
-    %h1.heading Channels
-    %ul.thumbnails
-      - @channels.each do |channel|
-        - if channel.active?
-          %li.span4
-            .thumbnail
-              = link_to image_tag(channel.banner_image.thumb('507x265#').url), root_url(subdomain: channel.subdomain), class: 'pjax' if channel.banner_image
-              .caption
-                %h5= channel.name
+.content-border
 
-.row-fluid
-  .span12
-    %h2.heading Coming Soon
-    %ul.thumbnails
-      - @channels.each do |channel|
-        - unless channel.active?
-          %li.span4
-            .thumbnail
-              = link_to image_tag(channel.banner_image.thumb('507x265#').url), "#Coming-Soon!", :class => 'coming_soon' if channel.banner_image
-              .caption
-                %h5= channel.name
+  .row-fluid
+    .span12
+      %h1.heading Channels
+      %ul.thumbnails
+        - @channels.each do |channel|
+          - if channel.active?
+            %li.span4
+              .thumbnail
+                = link_to image_tag(channel.banner_image.thumb('507x265#').url), root_url(subdomain: channel.subdomain), class: 'pjax' if channel.banner_image
+                .caption
+                  %h5= channel.name
+
+  .row-fluid
+    .span12
+      %h2.heading Coming Soon
+      %ul.thumbnails
+        - @channels.each do |channel|
+          - unless channel.active?
+            %li.span4
+              .thumbnail
+                = link_to image_tag(channel.banner_image.thumb('507x265#').url), "#Coming-Soon!", :class => 'coming_soon' if channel.banner_image
+                .caption
+                  %h5= channel.name
 
 
-.row-fluid
-  .span12
-    .space_filler{:style => 'padding: 0 0 34%;'}
+  .row-fluid
+    .span12
+      .space_filler{:style => 'padding: 0 0 34%;'}

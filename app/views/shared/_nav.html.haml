@@ -1,13 +1,14 @@
-.navbar-inner
+.navbar-inner{:style => 'min-width: 798px;'}
   .container-fluid
     = link_to "Altimarc", root_url(subdomain: "www"), :class => "brand pjax"
     %ul.nav
-      %li.what_is_altimarc
-        %a{:href => about_url}
-          %strong
-            What is
-            %br
-            Altimarc?
+      - unless user_signed_in?      
+        %li.what_is_altimarc
+          %a{:href => about_url}
+            %strong
+              What is
+              %br
+              Altimarc?
       %li.discover_great_channels
         %a{:href => channels_url}
           %strong Discover

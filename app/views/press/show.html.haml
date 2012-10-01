@@ -11,82 +11,84 @@
   }
 
 - if @channel.active?
-  %h1.heading Press Only
+  .content-border
+    %h1.heading Press Only
 
-  .row-fluid
-    .span
-      .span4
-        .thumbnail
-          = image_tag @album.image.thumb('488x400#').url
-      .span8
-        %h2= @channel.name
-        %p= @channel.description
+    .row-fluid
+      .span
+        .span4
+          .thumbnail
+            = image_tag @album.image.thumb('488x400#').url
+        .span8
+          %h2= @channel.name
+          %p= @channel.description
 
-  .row-fluid{:style => 'margin-top: 40px;'}
-    .span
-      .tabbable
-        %ul.nav.nav-tabs
-          %li.active
-            %a{"data-toggle" => "tab", :href => "#webisodes"} Webisodes
-          %li
-            %a{"data-toggle" => "tab", :href => "#teasers"} Teasers
-          %li
-            %a{"data-toggle" => "tab", :href => "#music"} Music
-          %li
-            %a{"data-toggle" => "tab", :href => "#photos"} Photos
-        .tab-content
-          #webisodes.tab-pane.active
-            - @videos.each do |video|
-              %h4= video.title
-             
-              %video.projekktor{:controls => "", :height => "504", :poster => "#{video.image.url}", :title => "this is Projekktor", :width => "768", :id => video.id}
-                - video.sources.each do |source|
-                  %source{:src => "#{source[:src]}", :type => source[:type]}/
-              %hr
-          #teasers.tab-pane
-            - @videos.each do |video|
-              %h4= video.title
-             
-              %video.projekktor{:controls => "", :height => "504", :poster => "#{video.image.url}", :title => "this is Projekktor", :width => "768", :id => video.id}
-                - video.video_preview.sources.each do |source|
-                  %source{:src => "#{source[:src]}", :type => source[:type]}/
+    .row-fluid{:style => 'margin-top: 40px;'}
+      .span
+        .tabbable
+          %ul.nav.nav-tabs
+            %li.active
+              %a{"data-toggle" => "tab", :href => "#webisodes"} Webisodes
+            %li
+              %a{"data-toggle" => "tab", :href => "#teasers"} Teasers
+            %li
+              %a{"data-toggle" => "tab", :href => "#music"} Music
+            %li
+              %a{"data-toggle" => "tab", :href => "#photos"} Photos
+          .tab-content
+            #webisodes.tab-pane.active
+              - @videos.each do |video|
+                %h4= video.title
+               
+                %video.projekktor{:controls => "", :height => "504", :poster => "#{video.image.url}", :title => "this is Projekktor", :width => "768", :id => video.id}
+                  - video.sources.each do |source|
+                    %source{:src => "#{source[:src]}", :type => source[:type]}/
+                %hr
+            #teasers.tab-pane
+              - @videos.each do |video|
+                %h4= video.title
+               
+                %video.projekktor{:controls => "", :height => "504", :poster => "#{video.image.url}", :title => "this is Projekktor", :width => "768", :id => video.id}
+                  - video.video_preview.sources.each do |source|
+                    %source{:src => "#{source[:src]}", :type => source[:type]}/
 
-              %hr
-          #music.tab-pane
-            %ul#songs
-              - @songs.each do |song|
-                = content_tag_for :li, song do
-                  .span
-                    .span9
-                      = link_to '', "#{song.song}", :class => 'sm2_button'
-                      %strong= song.title
+                %hr
+            #music.tab-pane
+              %ul#songs
+                - @songs.each do |song|
+                  = content_tag_for :li, song do
+                    .span
+                      .span9
+                        = link_to '', "#{song.song}", :class => 'sm2_button'
+                        %strong= song.title
 
-          #photos.tab-pane
-            - @photos.each_slice(3) do |array|
-              .row-fluid
-                .span12
-                  - array.each do |photo|
-                    .span4{:style => 'margin-bottom: 20px;'}
-                      .thumbnail
-                        = image_tag photo.image.thumb('500x300#').url, :title => photo.title, 'data-content' => photo.description
+            #photos.tab-pane
+              - @photos.each_slice(3) do |array|
+                .row-fluid
+                  .span12
+                    - array.each do |photo|
+                      .span4{:style => 'margin-bottom: 20px;'}
+                        .thumbnail
+                          = image_tag photo.image.thumb('500x300#').url, :title => photo.title, 'data-content' => photo.description
 
-- else
-  %h1.heading Coming Soon
-  %strong{:style => 'padding: 20px;'} For Media Inquiries, Customer Service Issues, Speaker or Sponsorship Requests, Drop us a Line!
-  .row-fluid{:style => 'padding: 20px;'}
-    .span
-      %p
-        = link_with_icon("Contact Us", "mailto:press@altimarc.com", "icon-question-sign icon-white", "btn btn-large btn-warning")
-        %span{:style => 'padding-left: 10px;'} or
-        = link_to "Back to Press", press_url, :style => 'padding-left: 10px;'
+  - else
+    .content-border
+      %h1.heading Coming Soon
+      %strong{:style => 'padding: 20px;'} For Media Inquiries, Customer Service Issues, Speaker or Sponsorship Requests, Drop us a Line!
+      .row-fluid{:style => 'padding: 20px;'}
+        .span
+          %p
+            = link_with_icon("Contact Us", "mailto:press@altimarc.com", "icon-question-sign icon-white", "btn btn-large btn-warning")
+            %span{:style => 'padding-left: 10px;'} or
+            = link_to "Back to Press", press_url, :style => 'padding-left: 10px;'
 
-.row-fluid{:style => 'margin-top: 40px;'}
-  .span12
-    .well
-      %h3 Notes
-      %p
-        If you have questions please email
-        = mail_to "press@altimarc.com"
+      .row-fluid{:style => 'margin-top: 40px;'}
+        .span12
+          .well
+            %h3 Notes
+            %p
+              If you have questions please email
+              = mail_to "press@altimarc.com"
 
 
 :javascript

@@ -4,26 +4,27 @@
     font-size: 2em;
     padding: 20px 0;
   }
-.row-fluid{:style => 'margin-top: 20px;'}
-  .span4
-    = image_tag('altimarc-press-logo.png', :style => 'padding: 30px 0 0 20px;')    
-  .span8{:style => 'padding: 0 0 200px;'}
-    %h1.heading Press
-    %strong{:style => 'padding: 20px;'} For Media Inquiries, Customer Service Issues, Speaker or Sponsorship Requests, Drop us a Line!
-    .row-fluid
-      .span{:style => 'padding: 20px;'}
-        = link_with_icon("Contact Us", "mailto:press@altimarc.com", "icon-question-sign icon-white", "btn btn-large btn-warning")
+.content-border
+  .row-fluid{:style => 'margin-top: 20px;'}
+    .span4
+      = image_tag('altimarc-press-logo.png', :style => 'padding: 30px 0 0 20px;')    
+    .span8{:style => 'padding: 0 0 200px;'}
+      %h1.heading Press
+      %strong{:style => 'padding: 20px;'} For Media Inquiries, Customer Service Issues, Speaker or Sponsorship Requests, Drop us a Line!
+      .row-fluid
+        .span{:style => 'padding: 20px;'}
+          = link_with_icon("Contact Us", "mailto:press@altimarc.com", "icon-question-sign icon-white", "btn btn-large btn-warning")
 
-    %h2.heading Press only links
-    %ul#press-links
-      - @channels.each do |channel|
-        %li= link_to(channel.name, pres_path(channel))
+      %h2.heading Press only links
+      %ul#press-links
+        - @channels.each do |channel|
+          %li= link_to(channel.name, pres_path(channel))
 
 
-.row-fluid{:style => 'margin-top: 40px;'}
-  .span12
-    .well
-      %h3 Notes
-      %p
-        Links are for Press only. If you have questions please email
-        = mail_to "press@altimarc.com"
+  .row-fluid{:style => 'margin-top: 40px;'}
+    .span12
+      .well
+        %h3 Notes
+        %p
+          Links are for Press only. If you have questions please email
+          = mail_to "press@altimarc.com"
