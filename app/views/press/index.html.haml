@@ -9,13 +9,13 @@
     .span4
       = image_tag('altimarc-press-logo.png', :style => 'padding: 30px 0 0 20px;')    
     .span8{:style => 'padding: 0 0 200px;'}
-      %h1.heading Press
+      %h1.page-heading Press
       %strong{:style => 'padding: 20px;'} For Media Inquiries, Customer Service Issues, Speaker or Sponsorship Requests, Drop us a Line!
       .row-fluid
         .span{:style => 'padding: 20px;'}
           = link_with_icon("Contact Us", "mailto:press@altimarc.com", "icon-question-sign icon-white", "btn btn-large btn-warning")
 
-      %h2.heading Press only links
+      %h2.page-heading Press only links
       %ul#press-links
         - @channels.each do |channel|
           %li= link_to(channel.name, pres_path(channel))
