@@ -18,11 +18,9 @@
       = render 'channels/videos'
       .row-fluid
         .span
-          %h2.heading Recent Photo Albums
           = render 'channels/photos'
       .row-fluid
         .span#posts
-          %h2.heading Recent Updates
           = render :partial => 'post', :collection => @posts
 
     .span4
@@ -35,7 +33,6 @@
             = render 'channels/social_media'
           .row-fluid
             .span
-              %h2.heading Featured Album
               = render 'channels/featured_album'
           .row-fluid
             .span

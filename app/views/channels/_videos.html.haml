@@ -1,24 +1,25 @@
-#most_played_video.carousel.slide
-  / Carousel items
-  .carousel-inner
-    - @videos.each_slice(4) do |videos|
-      .item{class: carousel_class(@videos, videos)}
-        %ul.thumbnails
-          - videos.each do |video|
-            %li.span3
-              .thumbnail
-                %img{:alt => "", :src => video.image.thumb('355x236').url}
-                  .caption
-                    %h5= video.title.truncate(30)
-                    %p
-                      - if video.publish_on < Time.now
-                        - if user_signed_in? && current_user.paid_member?
-                          = link_with_icon("Watch", video_path(video), "icon-film icon-white", "connected btn btn-success")
+- if @videos.present?
+  #most_played_video.carousel.slide
+    / Carousel items
+    .carousel-inner
+      - @videos.each_slice(4) do |videos|
+        .item{class: carousel_class(@videos, videos)}
+          %ul.thumbnails
+            - videos.each do |video|
+              %li.span3
+                .thumbnail
+                  %img{:alt => "", :src => video.image.thumb('355x236').url}
+                    .caption
+                      %h5= video.title.truncate(30)
+                      %p
+                        - if video.publish_on < Time.now
+                          - if user_signed_in? && current_user.paid_member?
+                            = link_with_icon("Watch", video_path(video), "icon-film icon-white", "connected btn btn-success")
+                          - else
+                            = link_with_icon("Free Trailer", video_path(video), "icon-film icon-white", "connected btn btn-success")
                         - else
-                          = link_with_icon("Free Trailer", video_path(video), "icon-film icon-white", "connected btn btn-success")
-                      - else
-                        = link_with_icon("Coming Soon", "#", "icon-film icon-white", "btn btn-inverse")
+                          = link_with_icon("Coming Soon", "#", "icon-film icon-white", "btn btn-inverse")
 
-  - if @videos.size > 5
-    %a.carousel-control.left{"data-slide" => "prev", :href => "#most_played_video"} ‹
-    %a.carousel-control.right{"data-slide" => "next", :href => "#most_played_video"} ›
+    - if @videos.size > 5
+      %a.carousel-control.left{"data-slide" => "prev", :href => "#most_played_video"} ‹
+      %a.carousel-control.right{"data-slide" => "next", :href => "#most_played_video"} ›

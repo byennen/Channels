@@ -1,8 +1,10 @@
-.thumbnail
-  %img{:alt => "", :src => @featured_album.image.thumb('488x294#').url}
-    .caption
-      %h5= @featured_album.title
-      - if user_signed_in? && current_user.paid_member?
-        = link_with_icon("Listen", album_url(@featured_album), "icon-play icon-white", "btn btn-success")
-      - else
-        = link_with_icon("Free Preview", album_url(@featured_album), "icon-play icon-white", "btn btn-success")
+- if @featured_album.present?
+  %h2.heading Featured Album
+  .thumbnail
+    %img{:alt => "", :src => @featured_album.image.thumb('488x294#').url}
+      .caption
+        %h5= @featured_album.title
+        - if user_signed_in? && current_user.paid_member?
+          = link_with_icon("Listen", album_url(@featured_album), "icon-play icon-white", "btn btn-success")
+        - else
+          = link_with_icon("Free Preview", album_url(@featured_album), "icon-play icon-white", "btn btn-success")
