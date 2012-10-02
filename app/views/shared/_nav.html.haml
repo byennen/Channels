@@ -1,6 +1,9 @@
 .navbar-inner{:style => 'min-width: 798px;'}
   .container-fluid
-    = link_to "Altimarc", root_url(subdomain: "www"), :class => "brand pjax"
+    - if params[:controller] == "channels" && params[:action] == "show"
+      = link_to "Altimarc", root_url(subdomain: "www"), :class => "brand brand-channel pjax"
+    - else
+      = link_to "Altimarc", root_url(subdomain: "www"), :class => "brand pjax"
     %ul.nav
       - unless user_signed_in?      
         %li.what_is_altimarc.border
