@@ -3,18 +3,18 @@
     = link_to "Altimarc", root_url(subdomain: "www"), :class => "brand pjax"
     %ul.nav
       - unless user_signed_in?      
-        %li.what_is_altimarc
+        %li.what_is_altimarc.border
           %a{:href => about_url}
             %strong
               What is
               %br
               Altimarc?
-      %li.discover_great_channels
+      %li.discover_great_channels.border
         %a{:href => channels_url}
           %strong Discover
           %br
           unique channels
-      %li.win_amazing_giveaways
+      %li.win_amazing_giveaways.border
         %a{:href => giveaways_url}
           %strong Win
           %br

@@ -12,14 +12,15 @@
   .posts .date {
     margin: 0 0 20px;
   }
-
-.row-fluid{:style => 'padding-top: 20px;'}
-  .span12
-    = render 'shared/breadcrumb'
-    .thumbnail
-      = image_tag(@post.image.thumb('1560x852#n').url)
-.row-fluid
-  .span12
-    %h1.heading= @post.title
-    .date= @post.publish_on.strftime('%m/%d/%Y')
-    .post= @post.description
+.content-border
+  .row-fluid{:style => 'padding-top: 20px;'}
+    .span12
+      = render 'shared/breadcrumb'
+  .row-fluid
+    .span6
+      .thumbnail
+        = image_tag(@post.image.thumb('733x404#n').url)
+    .span6
+      %h1.heading= @post.title
+      .date= @post.publish_on.strftime('%m/%d/%Y')
+      .post= @post.description

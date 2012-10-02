@@ -37,7 +37,7 @@
         .container-content
           = render :partial => "shared/flash_messages", :locals => {:flash => flash}
           = yield
-          - if params[:controller] == "home" || params[:controller] == "pages" || params[:controller] == "press"
-            = render 'layouts/frontend/footer'
-          = render 'layouts/frontend/modals'
-          = render 'shared/analytics'
+      #push
+    = render 'layouts/frontend/footer'
+    = render 'layouts/frontend/modals'
+    = render 'shared/analytics'

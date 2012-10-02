@@ -1,25 +1,20 @@
 - title "Giveaways"
-.content-border
-  .row-fluid
-    .span12
-      %h1.heading Current Giveaways
-      %p{:style => "padding: 20px 0 150px;text-align: center;"} Sorry, we currently have no Giveaways. Please come back soon!
+.row-fluid
+  .span12
+    %h1.page-heading Current Giveaways
+    %p{:style => "padding: 20px 0 150px;"} Sorry, we currently have no Giveaways. Please come back soon!
 
-  .row-fluid
-    .span12
-      %h2.heading Past Giveaways
-      %ul.thumbnails
-        %li.span4
-          .thumbnail
-            = link_to image_tag('cma-banner-icon.png'), cma_url
-            .caption
-              %h5 CMA Music Festival Nashville
-        %li.span4
-          .thumbnail
-            = link_to image_tag('derby-banner-icon.png'), derby_url
-            .caption
-              %h5 Kentucky Derby Giveaway
-
-  .row-fluid
-    .span12
-      .space_filler{:style => 'padding: 0 0 22%;'}
+.row-fluid
+  .span12
+    %h2.page-heading Past Giveaways
+    %ul.thumbnails
+      %li.span4
+        .thumbnail
+          = link_to image_tag('cma-banner-icon.png'), cma_url
+          .caption
+            %h5 CMA Music Festival Nashville
+      %li.span4
+        .thumbnail
+          = link_to image_tag('derby-banner-icon.png'), derby_url
+          .caption
+            %h5 Kentucky Derby Giveaway

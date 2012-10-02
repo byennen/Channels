@@ -14,14 +14,15 @@
     = image_tag @channel.banner_image.url if @channel.banner_image_uid    
   .row-fluid
     .span8
-      %h2.heading Recent Webisodes 
       = render 'channels/videos'
       .row-fluid
         .span
           = render 'channels/photos'
       .row-fluid
         .span#posts
-          = render :partial => 'post', :collection => @posts
+          - if @posts.present?
+            %h2.heading Recent Updates
+            = render :partial => 'post', :collection => @posts
 
     .span4
       .rightsidebar

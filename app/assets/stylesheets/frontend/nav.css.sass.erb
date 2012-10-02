@@ -1,4 +1,4 @@
-.navbar-inner
+.navbar .navbar-inner
   filter: none
   height: 60px
   -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.5)
@@ -22,10 +22,10 @@
         background: url(<%= asset_data_uri 'layout/logo-hover.png' %>) no-repeat scroll 0px 0px transparent
 
   .nav
-    li
+    li.border
       border-right: #ddd 1px solid
-      a
-        color: #999
+    a
+      color: #999
     .what_is_altimarc
       font-weight: bold
       font-size: 1.1em
@@ -70,6 +70,7 @@
   a.me
     font-size: 1.1em
     padding-right: 5px
+    color: black
     .icon
       margin-top: 3px
       margin-left: 5px
