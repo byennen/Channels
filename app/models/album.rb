@@ -11,8 +11,8 @@ class Album < ActiveRecord::Base
   validates :description, :presence => true
   validates :image, :presence => true
   validates :price, :presence => true
-  validates :publish_at, :date => { :after => Time.now, :before => Time.now + 1.year }
-  validates :release_date, :date => { :after => :publish_at }
+  validates :publish_at, :date => { :before => Time.now + 1.year }
+  validates :release_date, :date => { :after => :publish_at}
 
 
   image_accessor :image
