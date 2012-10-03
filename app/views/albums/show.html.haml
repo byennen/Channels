@@ -10,6 +10,20 @@
   -#%meta{:property => "og:type", :content => "#{APP_CONFIG['fb_namespace']}:song"}
   -#%meta{:property => "music:musician", :content => @song.album.channel.name }
 
+:css
+  .albums #songs {
+    color: black;
+  }
+  .albums a.not-released {
+    color: #999;
+  }
+  .albums  p.release-price {
+    color: black;
+    text-decoration: line-through;
+    padding: 0;
+    margin: 0;
+  }
+
 #cover.row-fluid
   .span
     = image_tag(@album.image.thumb('490x440#').url, :class => 'img-rounded img-polaroid')
@@ -25,6 +39,9 @@
             $#{@album.current_price}
           %sup.exclusive
             (Altimarc Exclusive)
+        %p.release-price
+          Release Price: 
+          $#{@album.price}
     #buy_now.row-fluid
       .span
         - if current_user.present?
@@ -48,7 +65,7 @@
     %p= @album.description
 
     .row-fluid
-      .span
+      #songs.span
         %table.table.table-striped
           %thead
             %tbody
@@ -60,9 +77,9 @@
                     %td= link_to "Buy Song", album_song_url(@album, song), :class => 'btn pull-right'
                 - else
                   %tr
-                    %td= link_to '', "#", :class => 'sm2_button'
+                    %td
                     %td= song.title
-                    %td= link_to "Coming Soon", "#coming-soon", :class => 'btn pull-right'
+                    %td= link_to "Coming Soon", "#coming-soon", :class => 'not-released pull-right'
 
 
         -#%table.table.table-striped
@@ -87,7 +104,7 @@
         -#.g-plusone{"data-href" => "https://plus.google.com/109799687634302877687", "data-size" => "medium"}
 
 
--#= render 'songs/buy_song'
+= render 'albums/buy_album'
 
 :javascript
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");

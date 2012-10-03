@@ -1,3 +1,3 @@
 - @albums.each do |album|
-  = link_to image_tag(album.image.thumb('50x50#').url), album_path(album)
-  = link_to album.title, album_path(album)
+  .span4
+    = link_to image_tag(album.image.thumb('290x240#').url, :class => 'img-rounded img-polaroid'), album_path(album)
