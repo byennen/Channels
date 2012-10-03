@@ -13,8 +13,8 @@
   = f.input :description, :input_html => {:class => "input-xlarge"}
   - publish_date = f.object.publish_at.nil? ? nil : f.object.publish_at.strftime('%m/%d/%Y')
   - release_date = f.object.release_date.nil? ? nil : f.object.release_date.strftime('%m/%d/%Y')
+  = f.input :publish_at, :as => :string, :input_html => { :class => 'datepicker_on', :value => publish_date }
   = f.input :release_date, :as => :string, :input_html => {:class => 'datepicker_on', :value => release_date }
-  = f.input :publish_at, :as => :string, :input_html => { :class => 'datepicker_on', :value => publish_date } 
   -# = f.input :active
   .form-actions
     = f.button :submit, :class => 'btn-primary'

@@ -41,7 +41,7 @@ Channels::Application.routes.draw do
 
   resources :posts, :only => [:show]
   resources :videos, :only => [:show]
-  resources :albums, :only => [:show] do
+  resources :albums, :only => [:show, :index] do
     resources :songs, :only => [:show] do
       get :next_song, :on => :collection
       get :intro, :on => :collection

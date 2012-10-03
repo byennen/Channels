@@ -35,64 +35,79 @@
     });
   });
 
-#featured.row-fluid
-  .span6
-    %a{:href => song_url(@featured_song)}
-      .thumbnail
-        .overlay
-        %img{:alt => "", :src => @featured_song.album.image.thumb('753x592#').url}
-        .information
-          %h1{:style => ''} Featured Channel
-          %h2= @featured_song.title
-          %h3
-            - if user_signed_in? && current_user.paid_member?
-              %i.icon.icon-play.icon-white
-              Listen
-            - else
-              Free Preview
-          
-        -#%br
-        -#- if user_signed_in? && current_user.paid_member?
-          -#= link_with_icon("Listen", song_url(@featured_song), "icon-play icon-white", "connected btn btn-success btn-large")
-        -#- else
-          -#= link_with_icon("Free Preview", song_url(@featured_song), "icon-play icon-white", "connected btn btn-success btn-large")
-  .span6
-    %h1 Featured Song
-    .thumbnail
-      %img{:alt => "", :src => @featured_song.album.image.thumb('753x592#').url}
-        .caption
-          %h5= @featured_song.title
-          %br
-          - if user_signed_in? && current_user.paid_member?
-            = link_with_icon("Listen", song_url(@featured_song), "icon-play icon-white", "connected btn btn-success btn-large")
-          - else
-            = link_with_icon("Free Preview", song_url(@featured_song), "icon-play icon-white", "connected btn btn-success btn-large")
+#intro.row-fluid
+  .span12{:style => 'text-align: center; margin: 0 0 40px;'}
+    %h1 Digital Entertainment Network
+    %h2 Starting at $6.95/month
+    = link_to "Join Now", "#", :class => 'btn btn-large btn-success'
+
+#channels.row-fluid
+  .span2
+    = link_to "Alive at Brushy", root_url(:subdomain => 'aliveatbrushy')
+  .span2
+    = link_to "Randy Owen", root_url(:subdomain => 'save-american-jobs')
+  .span2
+    = link_to "Father of Rock'n'Roll", root_url(:subdomain => 'fatherofrocknroll')
+    Sam Phillips Music
+  .span2
+    = link_to "Rock/Pop", "#", :class => 'coming_soon'
+  .span2
+    = link_to "Live Concerts", "#", :class => 'coming_soon'
+  .span2
+    = link_to "Young Guns of Country", "#", :class => 'coming_soon'
 
 
-.row-fluid{:style => 'margin: 60px 0;'}
-  .span6
-    %h1{:style => ''} Featured Video
-    .thumbnail
-      %img{:alt => "", :src => @featured_video.image.thumb('753x592#').url}
-        .caption
-          %h5= @featured_video.title
-          %br
-          - if user_signed_in? && current_user.paid_member?
-            = link_with_icon("Watch", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "connected btn btn-success btn-large")
-          - else
-            = link_with_icon("Free Trailer", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "connected btn btn-success btn-large")
+-##featured.row-fluid
+  -#.span3
+    -#%a{:href => song_url(@featured_song)}
+      -#.thumbnail
+        -#.overlay
+        -#%img{:alt => "", :src => @featured_song.album.image.thumb('753x592#').url}
+        -#.information
+          -#%h5{:style => ''} Featured Channel
+          -#%p= @featured_song.title
+          -#%p
+            -#- if user_signed_in? && current_user.paid_member?
+              -#%i.icon.icon-play.icon-white
+              -#Listen
+            -#- else
+              -#Free Preview
+  -#.span3
+    -#%h1 Featured Song
+    -#.thumbnail
+      -#%img{:alt => "", :src => @featured_song.album.image.thumb('753x592#').url}
+        -#.caption
+          -#%h5= @featured_song.title
+          -#%br
+          -#- if user_signed_in? && current_user.paid_member?
+            -#= link_with_icon("Listen", song_url(@featured_song), "icon-play icon-white", "connected btn btn-success btn-large")
+          -#- else
+            -#= link_with_icon("Free Preview", song_url(@featured_song), "icon-play icon-white", "connected btn btn-success btn-large")
 
-  .span6
-    %h1 Featured Album
-    .thumbnail
-      %img{:alt => "", :src => @featured_album.image.thumb('753x592#').url}
-        .caption
-          %h5= @featured_album.title
-          %br
-          - if user_signed_in? && current_user.paid_member?
-            = link_with_icon("Listen", album_url(@featured_album, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}" ), "icon-play icon-white", "btn btn-success btn-large")            
-          - else
-            = link_with_icon("Free Preview", album_url(@featured_album, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}" ), "icon-play icon-white", "btn btn-success btn-large")
+
+  -#.span3
+    -#%h1{:style => ''} Featured Video
+    -#.thumbnail
+      -#%img{:alt => "", :src => @featured_video.image.thumb('753x592#').url}
+        -#.caption
+          -#%h5= @featured_video.title
+          -#%br
+          -#- if user_signed_in? && current_user.paid_member?
+            -#= link_with_icon("Watch", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "connected btn btn-success btn-large")
+          -#- else
+            -#= link_with_icon("Free Trailer", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "connected btn btn-success btn-large")
+
+  -#.span3
+    -#%h1 Featured Album
+    -#.thumbnail
+      -#%img{:alt => "", :src => @featured_album.image.thumb('753x592#').url}
+        -#.caption
+          -#%h5= @featured_album.title
+          -#%br
+          -#- if user_signed_in? && current_user.paid_member?
+            -#= link_with_icon("Listen", album_url(@featured_album, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}" ), "icon-play icon-white", "btn btn-success btn-large")            
+          -#- else
+            -#= link_with_icon("Free Preview", album_url(@featured_album, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}" ), "icon-play icon-white", "btn btn-success btn-large")
 
 
 

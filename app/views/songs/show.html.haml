@@ -16,7 +16,17 @@
 
 #album_details.row-fluid
   #inside_album_details.span
-    %h1= @album.title    
+    %h1= @album.title 
+
+    .row-fluid
+      .span
+        %table.table.table-striped
+          %thead
+            %tbody
+              %td= link_to '', "#{@song.song}", :class => 'sm2_button'
+              %td= @song.title
+
+
     #price.row-fluid
       .span
         %p.download
@@ -38,14 +48,7 @@
           = link_to "Buy Song", "#buy_album_song_path", :class => "btn btn-success btn-large connected"
           = link_to "Buy Album", album_url(@album), :class => "btn btn-large"
 
-    .row-fluid
-      .span
-        %ul#songs
-          %li
-            .span
-              .span9
-                = link_to '', "#{@song.song}", :class => 'sm2_button'
-                %strong= @song.title
+
 
         -#%table.table.table-striped
           -#%thead

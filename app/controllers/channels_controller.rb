@@ -8,17 +8,25 @@ class ChannelsController < ApplicationController
   end
 
   def show
-    @featured_album = current_channel.albums.first
-    @posts = @channel.posts.recent(:limit => 4)
-    @songs = @channel.songs.all
-    @video = @channel.videos.current_episode    
-    @photo_albums = @channel.photo_albums.all
-    if @video.present?
-      @videos = recent_videos
-      logger.debug("videos size is #{@videos.size}")
-      @next_video = Video.coming_soon(@video).first
+    if current_user.present?
+      if current_user.paid_member?
+        @featured_album = current_channel.albums.first
+        @posts = @channel.posts.recent(:limit => 4)
+        @songs = @channel.songs.all
+        @video = @channel.videos.current_episode    
+        @photo_albums = @channel.photo_albums.all
+        if @video.present?
+          @videos = recent_videos
+          logger.debug("videos size is #{@videos.size}")
+          @next_video = Video.coming_soon(@video).first
+        end
+        logger.debug("Next Video is #{@next_video.inspect}")
+      else
+        redirect_to subscribe_user_url
+      end
+    else
+      redirect_to signup_url(:subdomain => 'www')
     end
-    logger.debug("Next Video is #{@next_video.inspect}")
   end
 
   def next_song

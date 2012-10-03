@@ -7,18 +7,18 @@
     %ul.nav
       - unless user_signed_in?      
         %li.what_is_altimarc.border
-          %a{:href => about_url}
+          %a{:href => about_url(subdomain: "www")}
             %strong
               What is
               %br
               Altimarc?
       %li.discover_great_channels.border
-        %a{:href => channels_url}
+        %a{:href => channels_url(subdomain: "www")}
           %strong Discover
           %br
           unique channels
       %li.win_amazing_giveaways.border
-        %a{:href => giveaways_url}
+        %a{:href => giveaways_url(subdomain: "www")}
           %strong Win
           %br
           fan experiences
@@ -39,9 +39,9 @@
             %li= link_with_icon("Edit account", edit_user_registration_url(subdomain: "www"), "icon-pencil", "pjax")
             %li= link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", :id => "logout")
       - else
-        - if current_channel
-          %li= link_to "Sign Up", signup_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid)
-          %li= link_to "Log In", login_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid)
-        - else
-          %li= link_to "Sign Up", signup_url(subdomain: 'www', host: APP_CONFIG['domain'])
-          %li= link_to "Log In", login_url(subdomain: 'www', host: APP_CONFIG['domain'])
+        -#- if current_channel
+          -#%li= link_to "Sign Up", signup_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid)
+          -#%li= link_to "Log In", login_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid)
+        -#- else
+        %li= link_to "Sign Up", signup_url(subdomain: 'www', host: APP_CONFIG['domain'])
+        %li= link_to "Log In", login_url(subdomain: 'www', host: APP_CONFIG['domain'])
