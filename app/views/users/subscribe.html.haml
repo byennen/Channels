@@ -47,12 +47,13 @@
                 .widget-content
                   .span3
                     = render 'basic'
-                  .span3
-                    = render 'starter'
-                  .span3
-                    = render 'vinyle'
-                  .span3
-                    = render 'everything'
+                  - if current_channel.id == 2
+                    .span3
+                      = render 'starter'
+                    .span3
+                      = render 'vinyle'
+                    .span3
+                      = render 'everything'
 
         .row-fluid{:style => 'margin: 20px 0 60px;'}
           .span12
