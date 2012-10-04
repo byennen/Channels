@@ -14,6 +14,8 @@ $(document).on "ready pjax:success", ->
     plan = $(this).data('plan')
     $("#plan").hide()
     $("#payment").show()
+    $("#actions").show()
     $("#user_plan").val(plan)
-    if plan != "695"
-      $("#address").show()
+    console.log("Plan is " + plan)
+    if plan == "695"
+      $("#address").hide()
