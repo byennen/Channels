@@ -23,8 +23,10 @@
         %table.table.table-striped
           %thead
             %tbody
-              %td= link_to '', "#{@song.song}", :class => 'sm2_button'
-              %td= @song.title
+              %tr
+                %td.play-button= link_to '', "#{@song.song}", :class => 'sm2_button'
+                %td
+                  %p.title= @song.title
 
 
     #price.row-fluid
@@ -43,9 +45,11 @@
             = link_to "My Downloads", downloads_url
           - else
             = link_to "Buy Song", "#buy_album_song_path", "data-toggle" => "modal", :href => "#buy_album", :role => "button", :class => "btn btn-success btn-large"
+            or
             = link_to "Buy Album", album_url(@album), :class => "btn btn-large"
         - else
           = link_to "Buy Song", "#buy_album_song_path", :class => "btn btn-success btn-large connected"
+          or
           = link_to "Buy Album", album_url(@album), :class => "btn btn-large"
 
 
