@@ -10,20 +10,6 @@
   -#%meta{:property => "og:type", :content => "#{APP_CONFIG['fb_namespace']}:song"}
   -#%meta{:property => "music:musician", :content => @song.album.channel.name }
 
-:css
-  .albums #songs {
-    color: black;
-  }
-  .albums a.not-released {
-    color: #999;
-  }
-  .albums  p.release-price {
-    color: black;
-    text-decoration: line-through;
-    padding: 0;
-    margin: 0;
-  }
-
 #cover.row-fluid
   .span
     = image_tag(@album.image.thumb('490x440#').url, :class => 'img-rounded img-polaroid')
@@ -72,14 +58,16 @@
               - @album.songs.each do |song|
                 - if song.active?
                   %tr
-                    %td= link_to '', "#{song.song}", :class => 'sm2_button'
-                    %td= song.title
-                    %td= link_to "Buy Song", album_song_url(@album, song), :class => 'btn pull-right'
+                    %td.play-button= link_to '', "#{song.song}", :class => 'sm2_button'
+                    %td
+                      %p.title=song.title
+                    %td.buy-button= link_to "Buy Song", album_song_url(@album, song), :class => 'btn pull-right'
                 - else
                   %tr
-                    %td
-                    %td= song.title
-                    %td= link_to "Coming Soon", "#coming-soon", :class => 'not-released pull-right'
+                    %td.play-button
+                      %td
+                        %p.title= song.title
+                    %td.coming-soon= link_to "Coming Soon", "#coming-soon", :class => 'not-released pull-right'
 
 
         -#%table.table.table-striped
