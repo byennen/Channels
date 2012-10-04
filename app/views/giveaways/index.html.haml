@@ -2,7 +2,12 @@
 .row-fluid
   .span12
     %h1.page-heading Current Giveaways
-    %p{:style => "padding: 20px 0 150px;"} Sorry, we currently have no Giveaways. Please come back soon!
+    %ul.thumbnails
+      %li.span4
+        .thumbnail
+          = link_to image_tag('tshirt-banner-icon.jpg'), tshirt_url(:subdomain => 'www')
+          .caption
+            %h5 Free Altimarc T-shirt
 
 .row-fluid
   .span12
@@ -10,11 +15,11 @@
     %ul.thumbnails
       %li.span4
         .thumbnail
-          = link_to image_tag('cma-banner-icon.png'), cma_url
+          = link_to image_tag('cma-banner-icon.png'), cma_url(:subdomain => 'www')
           .caption
             %h5 CMA Music Festival Nashville
       %li.span4
         .thumbnail
-          = link_to image_tag('derby-banner-icon.png'), derby_url
+          = link_to image_tag('derby-banner-icon.png'), derby_url(:subdomain => 'www')
           .caption
             %h5 Kentucky Derby Giveaway

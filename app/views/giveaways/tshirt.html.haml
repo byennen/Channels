@@ -1,0 +1,21 @@
+- title "Free Altimarc T-shirt"
+
+.content-border
+  = image_tag("tshirt-banner.jpg")
+
+  .inside.giveaway
+    %h1 WEEKLY WINNERS
+    %h2 Like Altimarc on Facebook to enter!
+  .row-fluid
+    .span{:style => 'margin: 0 auto; float: none; width: 340px;'}
+      .div{:style => 'padding: 20px;'}
+        .fb-like{"data-font" => "arial", "data-href" => "http://facebook.com/altimarc", "data-send" => "false", "data-show-faces" => "false", "data-width" => "300"}
+
+:javascript
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=505364239479743";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));

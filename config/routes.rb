@@ -23,6 +23,8 @@ Channels::Application.routes.draw do
   match "giveaways/cma-fanfest" => "giveaways#cma", :as => "cma"
   match "cma-fanfest-with-randy-owen" => redirect("/giveaways/cma-fanfest")
   match "giveaways/thank-you" => "giveaways#thankyou", :as => "thankyou"
+  match "t-shirt" => redirect("/giveaways/t-shirt")
+  match "giveaways/t-shirt" => "giveaways#tshirt", :as => "tshirt"
 
   #giveaways email
   match "enter-giveaways(/:id)" => "giveaways#enter_giveaway", :as => 'enter_giveaway'

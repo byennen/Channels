@@ -8,6 +8,9 @@ class GiveawaysController < ApplicationController
   def cma
   end
 
+  def tshirt
+  end
+
   def thankyou
   end
 
