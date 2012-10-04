@@ -47,7 +47,7 @@
                 .widget-content
                   .span3
                     = render 'basic'
-                  - if current_channel.id == 2
+                  - if current_channel && current_channel.id == 2
                     .span3
                       = render 'starter'
                     .span3
