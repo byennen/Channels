@@ -25,6 +25,7 @@ Channels::Application.routes.draw do
   match "giveaways/thank-you" => "giveaways#thankyou", :as => "thankyou"
   match "t-shirt" => redirect("/giveaways/t-shirt")
   match "giveaways/t-shirt" => "giveaways#tshirt", :as => "tshirt"
+  match "giveaways/1965-chevrolet-chevelle" => "giveaways#car", :as => "car"
 
   #giveaways email
   match "enter-giveaways(/:id)" => "giveaways#enter_giveaway", :as => 'enter_giveaway'

@@ -5,6 +5,11 @@
     %ul.thumbnails
       %li.span4
         .thumbnail
+          = link_to image_tag('car-banner-icon.jpg'), car_url(:subdomain => 'www')
+          .caption
+            %h5 1965 CHEVROLET CHEVELLE
+      %li.span4
+        .thumbnail
           = link_to image_tag('tshirt-banner-icon.jpg'), tshirt_url(:subdomain => 'www')
           .caption
             %h5 Free Altimarc T-shirt

@@ -11,6 +11,9 @@ class GiveawaysController < ApplicationController
   def tshirt
   end
 
+  def car
+  end
+
   def thankyou
   end
 

@@ -1,0 +1,29 @@
+- title "CMA FanFest Nashville"
+
+.content-border
+  .row-fluid
+    .span
+      = image_tag("car-banner.jpg")
+  .row-fluid
+    .span
+      .inside.giveaway
+        %h1 1965 CHEVROLET CHEVELLE FROM ALTIMARC.COM!
+        = form_for(@giveaway, :url => "enter_giveaway", :html => {:class => "well form-inline"}) do |f|
+          - if @giveaway.errors.any?
+            - @giveaway.errors.messages.each do |message|
+              .message= message.last.last.html_safe
+          .row-fluid
+            .span4{:style => 'margin: 0 auto; float: none;'}
+              = simple_form_for @giveaway, :url => enter_giveaway_path, :html => {:class => 'wellclear form-inline'} do |f|
+                .span{:style => 'width: 270px;padding-top: 2px;'}
+                  = f.input :email, :input_html => {:class => "input-xlarge", :placeholder => "Email"}, :label => false
+                .span{:style => 'width: 133px; margin-left: 20px;'}
+                  %button.btn.btn-danger{:type => "submit"} Sign Up To Win!
+
+        %div
+          %h3 SOME AUTOMOBILES ARE LEGENDS.  THERE ARE SOME BRANDS THAT CONTINUE TO FASCINATE EVEN THE MOST HARD CORE COLLECTORS.  FINDING SUCH A CAR IN THIS DAY AND AGE IS PROVING MORE DIFFICULT.  AND THEN, WHEN YOU FIND IT, IT MAY TAKE THOUSANDS OF DOLLARS TO GET IT CLOSE TO ITS ORIGINAL CONDITION.
+          %p SOME SAY SUCH A CAR DOESN’T EXIST UNLESS YOU HAVE THE BUCKS TO SHELL OUT.  SOME SAY IT’S IMPOSSIBLE TO OWN.  ALTIMARC.COM HAS SUCH A CAR AND WE’RE ON A MISSION TO FIND THE PERFECT OWNER.
+          %p THE CAR IS A ONE OF KIND, COMPLETELY RESTORED 1965 CHEVROLET CHEVELLE.  IT’S BRANDY WINE WITH TAN INTERIOR.  IT HAS ONLY 2000 MILES.  THAT’S RIGHT, 2000 MILES!  A SIMPLY STUNNING, DROP DEAD GORGEOUS KANDY BRANDYWINE SS WITH A STRAIGHT AS AN ARROW BODY.  PLENTY OF POWER UNDER THE HOOD.  A STATE OF THE ART SOUND SYSTEM.  OVER $10,000 INVESTED UNDER THE HOOD ALONE!
+          %p NOW, IT NEEDS AN OWNER.  ARE YOU THAT PERSON?  CAN YOU HANDLE SUCH AN INVESTMENT?  IF SO, CHECK BACK SOON BECAUSE THIS IS A ONCE IN A LIFETIME OPPORTUNITY FROM ALTIMARC.COM
+          %p DETAILS ARE COMING SOON ON HOW YOU CAN WIN .   IN 2013, YOU COULD BE THE OWNER OF THIS 1965 CHEVROLET CHEVELLE FROM ALTIMARC.COM!
+
