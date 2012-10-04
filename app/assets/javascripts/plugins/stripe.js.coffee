@@ -9,7 +9,10 @@ class StripeHandler
   handleSubmit: (e)=>
     e.preventDefault()
     $('input[type=submit]').attr 'disabled', true
-    @processCard()
+    if $('#card_number').val() == 'undefined'
+      $('form#subscribe_user')[0].submit()
+    else
+      @processCard()
 
   processCard: =>
     card =
@@ -21,6 +24,7 @@ class StripeHandler
 
   handleStripeResponse: (status, response)=>
     @clearErrors()
+    console.log("status is " + status)
     if status == 200
       $('#user_stripe_card_token').val response.id
       $('form#subscribe_user')[0].submit()

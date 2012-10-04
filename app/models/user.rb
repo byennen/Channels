@@ -117,38 +117,40 @@ class User < ActiveRecord::Base
   private
 
   def process_payment
-    create_stripe_customer(stripe_card_token, plan)
-    if plan != "695"
-      case plan
-      when "1195"
-        amount = 1195
-        description = "cd, t-shirt, one month free"
-      when "1995"
-        amount = 1995
-        description = "t-shirt vinyle, one free month"
-      when "2495"
-        amount = 2495
-        description = "t-shirt, vinyl, cd, one free month"
+    unless paid_member?
+      create_stripe_customer(stripe_card_token, plan)
+      if plan != "695"
+        case plan
+        when "1195"
+          amount = 1195
+          description = "cd, t-shirt, one month free"
+        when "1995"
+          amount = 1995
+          description = "t-shirt vinyle, one free month"
+        when "2495"
+          amount = 2495
+          description = "t-shirt, vinyl, cd, one free month"
+        end
+        Stripe::Charge.create(
+            :amount => amount,
+            :currency => "usd",
+            :customer => customer.id,
+            :description => "Charge for #{email} - #{description}"
+        )
       end
-      Stripe::Charge.create(
-          :amount => amount,
-          :currency => "usd",
-          :customer => customer.id,
-          :description => "Charge for #{email} - #{description}"
-      )
+      Resque.enqueue(MemberWorker, :send_subscribed, {"user_id" => self.id, 
+                                                      "amount" => amount,
+                                                      "description" => description})
     end
-    Resque.enqueue(MemberWorker, :send_subscribed, {"user_id" => self.id, 
-                                                    "amount" => amount,
-                                                    "description" => description})
-  rescue Stripe::InvalidRequestError => e
-    logger.error "Stripe error while creating customer: #{e.message}"
-    errors.add :base, "There was a problem with your credit card."
-    false
-  rescue Stripe::CardError => e
-    logger.error "Stripe error for card"
-    errors.add :base, "There was a problem with your credit card"
+    rescue Stripe::InvalidRequestError => e
+      logger.error "Stripe error while creating customer: #{e.message}"
+      errors.add :base, "There was a problem with your credit card."
+      false
+    rescue Stripe::CardError => e
+      logger.error "Stripe error for card"
+      errors.add :base, "There was a problem with your credit card"
   end
-  
+
   def add_member_role
     if self.role.blank?
       if stripe_card_token 

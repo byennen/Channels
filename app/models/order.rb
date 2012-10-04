@@ -5,6 +5,10 @@ class Order < ActiveRecord::Base
   belongs_to :user
   has_many :line_items
 
+  def total
+    line_items.map(&:price).sum
+  end
+
   def amount
     line_items.first.price
   end
@@ -18,8 +22,9 @@ class Order < ActiveRecord::Base
   end
 
   def charge!
+    logger.debug("total is " + total.to_s)
     Stripe::Charge.create(
-          :amount => amount,
+          :amount => total,
           :currency => "usd",
           :customer => user.stripe_customer_token,
           :description => "Charge for #{user.email} - #{song.title}"

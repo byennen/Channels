@@ -24,15 +24,11 @@ class Album < ActiveRecord::Base
   money :preorder_price 
 
   def current_price
-    if preorder? && !released?
-      return preorder_price
-    elsif released?
-      return read_attribute(:price)
-    end
+    preorder? && !released? ? preorder_price : price
   end
 
   def current_price_in_cents
-    current_price*100
+    preorder? && !released? ? preorder_price_in_cents : price_in_cents
   end
 
   def released?
