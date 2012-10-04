@@ -24,7 +24,10 @@
           %thead
             %tbody
               %tr
-                %td.play-button= link_to '', "#{@song.song}", :class => 'sm2_button'
+                - if current_user && current_user.paid_member?
+                  %td.play-button= link_to '', "#{@song.song}", :class => 'sm2_button'
+                - else
+                  %td.play-button= link_to '', "#{@song.preview}", :class => 'sm2_button'
                 %td
                   %p.title= @song.title
 

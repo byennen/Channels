@@ -58,7 +58,10 @@
               - @album.songs.each do |song|
                 - if song.active?
                   %tr
-                    %td.play-button= link_to '', "#{song.song}", :class => 'sm2_button'
+                    - if current_user && current_user.paid_member?
+                      %td.play-button= link_to '', "#{song.song}", :class => 'sm2_button'
+                    - else
+                      %td.play-button= link_to '', "#{song.preview}", :class => 'sm2_button'
                     %td
                       %p.title=song.title
                     %td.buy-button= link_to "Buy Song", album_song_url(@album, song), :class => 'btn pull-right'
