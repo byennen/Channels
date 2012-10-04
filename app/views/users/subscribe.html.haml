@@ -116,27 +116,27 @@
             .controls
               = a.text_field :zip_code         
         
+    #actions
+      %hr
+      -#//coupon
+      .row-fluid
+        .span
+          = link_to "Got a Coupon Code?", "javascript:;", :id => "coupon_link"
+          .control-group#coupon_code
+            %label.control-label{:for => "input01"} Coupon Code
+            .controls
+              %input#input01.input-small{:type => "text"}
 
-            %hr
-            -#//coupon
-            .row-fluid
-              .span
-                = link_to "Got a Coupon Code?", "javascript:;", :id => "coupon_link"
-                .control-group#coupon_code
-                  %label.control-label{:for => "input01"} Coupon Code
-                  .controls
-                    %input#input01.input-small{:type => "text"}
+      .form-actions{:style => "background: none;"}
+        = f.submit "Create my account", :class => 'btn-primary btn-success btn-large'
 
-            .form-actions{:style => "background: none;"}
-              = f.submit "Create my account", :class => 'btn-primary btn-success btn-large'
-
-            .row-fluid
-              .span{:style => 'margin-left: 159px;'}
-                %p
-                  By clicking Create my account you agree to the
-                  = link_to "Terms of Service,", terms_url(:subdomain => "www")
-                  = link_to "Privacy,", privacy_url(:subdomain => "www")
-                  %span and
-                  = succeed "." do
-                    = link_to "Refund policies", refund_url(:subdomain => "www")
+      .row-fluid
+        .span{:style => 'margin-left: 159px;'}
+          %p
+            By clicking Create my account you agree to the
+            = link_to "Terms of Service,", terms_url(:subdomain => "www")
+            = link_to "Privacy,", privacy_url(:subdomain => "www")
+            %span and
+            = succeed "." do
+              = link_to "Refund policies", refund_url(:subdomain => "www")
 
