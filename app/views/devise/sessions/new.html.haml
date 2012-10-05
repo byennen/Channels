@@ -9,14 +9,14 @@
         -#.span5#facebook_photos
           -#.fb-facepile{"data-max-rows" => "1", "data-width" => "340", "data-colorscheme" => "light", "app_id" => "505364239479743"}
 
-      - if params[:state]
-        %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook?state=#{params[:state]}"}
-          %i.icon-facebook
-          Sign in with Facebook
-      - else
-        %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook"}
-          %i.icon-facebook
-          Sign in with Facebook
+      -#- if params[:state]
+        -#%a.btn.btn-primary.btn-large#login{:href => "/auth/facebook?state=#{params[:state]}"}
+          -#%i.icon-facebook
+          -#Sign in with Facebook
+      -#- else
+      %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook"}
+        %i.icon-facebook
+        Sign in with Facebook
 
     = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
       .login-fields
