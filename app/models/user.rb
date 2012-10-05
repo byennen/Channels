@@ -73,7 +73,9 @@ class User < ActiveRecord::Base
   end
   
   def preview_member?
-    unpaid_member? && preview_started_at < preview_started_at+1.day
+    if preview_started_at.present?
+      unpaid_member? && preview_started_at < preview_started_at+1.day
+    end
   end
 
   def paid_member?
