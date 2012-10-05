@@ -72,6 +72,10 @@ class User < ActiveRecord::Base
     oauth_token? && oauth_expires_at > Time.now
   end
   
+  def preview_member?
+    unpaid_member? && preview_started_at < preview_started_at+1.day
+  end
+
   def paid_member?
     !stripe_customer_token.nil? && !stripe_plan.nil?
   end

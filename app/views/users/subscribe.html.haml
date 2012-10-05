@@ -65,6 +65,9 @@
                 %strong= @trail_end_time.strftime("%m-%d-%y")
                 If you don't want to continue using Altimarc, just cancel before your billing cycle ends and you won't be charged. Otherwise, you'll pay just $6.95/month for the service as long as your account is open. You can cancel any time.
             .span1
+          .row-fluid{:style => 'margin-top: 20px'}
+            .span12
+              %p{:style => "text-align: center; margin-top: 20px;"}= link_to "Get A Free Preview", preview_user_path, :method => :post
     #payment
       .row-fluid{:style => 'margin-top: 20px;'}
         .span12

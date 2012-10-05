@@ -9,7 +9,7 @@ class ChannelsController < ApplicationController
 
   def show
     if current_user.present?
-      if current_user.paid_member?
+      if current_user.paid_member? || current_user.preview_member?
         @featured_album = current_channel.albums.first
         @posts = @channel.posts.recent(:limit => 4)
         @songs = @channel.songs.all

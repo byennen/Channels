@@ -46,4 +46,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def preview
+    current_user.preview_started_at = Time.now
+    if current_user.save
+      flash[:notice] = "Your free preview will expire in 1 day"
+      if current_channel
+        url =  "http://#{current_channel.subdomain}.#{APP_CONFIG['domain']}"
+      else
+        url = "http://www.#{APP_CONFIG['domain']}"
+      end
+      redirect_to url
+    end
+  end
+
 end
