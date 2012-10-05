@@ -9,7 +9,8 @@ $(document).on "ready pjax:success", ->
   if $("#user_plan").val() == ""
     $("#payment").hide()
     $("#address").hide()
-  
+    $("#actions").hide()
+
   $("a#subscribe").click ->
     plan = $(this).data('plan')
     $("#plan").hide()
