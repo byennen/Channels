@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120928225727) do
+ActiveRecord::Schema.define(:version => 20121005022343) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -244,6 +244,7 @@ ActiveRecord::Schema.define(:version => 20120928225727) do
     t.datetime "oauth_expires_at"
     t.boolean  "new_fb_user",            :default => false
     t.string   "stripe_plan"
+    t.datetime "preview_started_at"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

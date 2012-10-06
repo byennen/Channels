@@ -10,12 +10,18 @@ class ChannelsController < ApplicationController
   def show
     if current_user.present?
       if current_user.paid_member? || current_user.preview_member?
-        @featured_album = current_channel.albums.first
-        @posts = @channel.posts.recent(:limit => 4)
-        @songs = @channel.songs.all
-        @video = @channel.videos.current_episode    
-        @photo_albums = @channel.photo_albums.all
+        @featured_album = Album.find_by_title('Alive at Brushy Mountain State Penitentiary')
+        if @posts.present?
+          @posts = @channel.posts.recent(:limit => 4)
+        end
+        if @songs.present?
+          @songs = @channel.songs.all
+        end
+        if @photo_albums.present?
+          @photo_albums = @channel.photo_albums.all
+        end
         if @video.present?
+          @video = @channel.videos.current_episode
           @videos = recent_videos
           logger.debug("videos size is #{@videos.size}")
           @next_video = Video.coming_soon(@video).first

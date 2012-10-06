@@ -27,7 +27,7 @@ after :users do
 
   puts "***CREATING SAM PHILLIPS***"
   Channel.create(
-    :name => "Sam Phillips", :subdomain => "samphillips", :background_color => "FFFFFF", 
+    :name => "Sam Phillips", :subdomain => "fatherofrocknroll", :background_color => "FFFFFF", 
     :banner_image => File.new(File.join(banner_dir, 'sam-phillips.jpg')), 
     :description => "Legendary music entrepreneur, and Sun records founder, Sam Phillips believed in music with no limits.  
     Tearing down racial barriers and launching careers for great artists such as BB King, Howlin Wolf, Elvis Presley, 

@@ -2,164 +2,72 @@
 - @description = "Entertainment, Games, and once in a life time opportunities to meet celebrities. Join today!"
 
 :css
-  #featured .information {
-    text-align: center;
-    position: absolute;
-    top: 40px;
-    color: white;
-    margin: 5px auto;
-    width: 100%
+  #channels p {
+    color: black;
+    padding-top: 10px;
   }
-  .large-spot:hover {
-    opacity: 0.5;
-  }
-  #featured .overlay {
-    background: black;
-    display: none;
-    width: 100%;
-    height: 100%;
-    max-width: 741px;
-    max-height: 580px;
-    position: absolute;
-    opacity: .7;
-  }
-  #featured .thumbnail {
-    position: relative;
-  }
+
 :javascript
-  $(function() {
-    $("#featured .information").hide();
-    $("#featured a").hover(function(){
-      $("#featured .information").fadeIn(100);
-      $("#featured .overlay").show();
-    });
+  $(document).ready(function() {
+    $('.featured-popover').popover({trigger: 'hover', placement: 'top', selector: 'img'});
   });
+
 
 #intro.row-fluid
   .span12{:style => 'text-align: center; margin: 0 0 40px;'}
     %h1 Digital Entertainment Network
     %h2 Starting at $6.95/month
-    = link_to "Join Now", "#", :class => 'btn btn-large btn-success'
+    = link_to "Join Now", subscribe_user_url(:subdomain => 'www'), :class => 'btn btn-large btn-success'
 
 #channels.row-fluid
   .span2
-    = link_to "Alive at Brushy", root_url(:subdomain => 'aliveatbrushy')
+    %a{:href => root_url(:subdomain => 'aliveatbrushy')}
+      .thumbnail
+        = image_tag @aliveatbrushy.banner_image.thumb('222x175#').url if @aliveatbrushy.banner_image_uid
+        %p= @aliveatbrushy.name
+        
   .span2
-    = link_to "Randy Owen", root_url(:subdomain => 'save-american-jobs')
+    %a{:href => "#coming-soon", :class => 'coming_soon'}
+      .thumbnail
+        = image_tag @randyowen.image.thumb('222x175#').url if @randyowen.image_uid
+        %p= @randyowen.title
   .span2
-    = link_to "Father of Rock'n'Roll", root_url(:subdomain => 'fatherofrocknroll')
-    Sam Phillips Music
+    %a{:href => root_url(:subdomain => 'fatherofrocknroll')}
+      .thumbnail
+        = image_tag @samphillips.banner_image.thumb('222x175#').url if @samphillips.banner_image_uid
+        %p= @samphillips.name
   .span2
-    = link_to "Rock/Pop", "#", :class => 'coming_soon'
+    %a{:href => "#coming-soon", :class => 'coming_soon'}
+      .thumbnail
+        = image_tag 'rock-pop.jpg', :style => 'width: 222px; height: 175px;'
+        %p Rock/Pop
+
   .span2
-    = link_to "Live Concerts", "#", :class => 'coming_soon'
+    %a{:href => "#coming-soon", :class => 'coming_soon'}
+      .thumbnail
+        = image_tag 'live-concerts.jpg', :style => 'width: 222px; height: 175px;'
+        %p Live Concerts
   .span2
-    = link_to "Young Guns of Country", "#", :class => 'coming_soon'
+    %a{:href => "#coming-soon", :class => 'coming_soon'}
+      .thumbnail
+        = image_tag 'young-guns.jpg', :style => 'width: 222px; height: 175px;'        
+        %p Young Guns of Country
+
+#featured.row-fluid{:style => 'margin: 60px 0;'}
+  .span3
+    %a.featured-popover{:href => root_url(:subdomain => "#{@featured_channel.subdomain}"), "data-content" =>  "#{@featured_channel.name}", "data-original-title" => "Featured Channel", :rel => "popover"}
+      = image_tag(@featured_channel.banner_image.thumb('753x592#').url, :class => 'img-rounded img-polaroid')
+
+  .span3
+    %a.featured-popover{:href => song_url(@featured_song), "data-content" =>  "#{@featured_song.title}", "data-original-title" => "Featured Song", :rel => "popover"}
+      = image_tag(@featured_song.album.image.thumb('753x592#').url, :class => 'img-rounded img-polaroid')
+
+  .span3
+    %a.featured-popover{:href => video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "data-content" =>  "#{@featured_video.title}", "data-original-title" => "Featured Video", :rel => "popover"}
+      = image_tag(@featured_video.image.thumb('753x592#').url, :class => 'img-rounded img-polaroid')
+
+  .span3
+    %a.featured-popover{:href => album_url(@featured_album, :host => "#{@featured_album.channel.subdomain}.#{APP_CONFIG['domain']}"), "data-content" =>  "#{@featured_album.title}", "data-original-title" => "Featured Album", :rel => "popover"}
+      = image_tag(@featured_album.image.thumb('753x592#').url, :class => 'img-rounded img-polaroid')
 
 
--##featured.row-fluid
-  -#.span3
-    -#%a{:href => song_url(@featured_song)}
-      -#.thumbnail
-        -#.overlay
-        -#%img{:alt => "", :src => @featured_song.album.image.thumb('753x592#').url}
-        -#.information
-          -#%h5{:style => ''} Featured Channel
-          -#%p= @featured_song.title
-          -#%p
-            -#- if user_signed_in? && current_user.paid_member?
-              -#%i.icon.icon-play.icon-white
-              -#Listen
-            -#- else
-              -#Free Preview
-  -#.span3
-    -#%h1 Featured Song
-    -#.thumbnail
-      -#%img{:alt => "", :src => @featured_song.album.image.thumb('753x592#').url}
-        -#.caption
-          -#%h5= @featured_song.title
-          -#%br
-          -#- if user_signed_in? && current_user.paid_member?
-            -#= link_with_icon("Listen", song_url(@featured_song), "icon-play icon-white", "connected btn btn-success btn-large")
-          -#- else
-            -#= link_with_icon("Free Preview", song_url(@featured_song), "icon-play icon-white", "connected btn btn-success btn-large")
-
-
-  -#.span3
-    -#%h1{:style => ''} Featured Video
-    -#.thumbnail
-      -#%img{:alt => "", :src => @featured_video.image.thumb('753x592#').url}
-        -#.caption
-          -#%h5= @featured_video.title
-          -#%br
-          -#- if user_signed_in? && current_user.paid_member?
-            -#= link_with_icon("Watch", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "connected btn btn-success btn-large")
-          -#- else
-            -#= link_with_icon("Free Trailer", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "connected btn btn-success btn-large")
-
-  -#.span3
-    -#%h1 Featured Album
-    -#.thumbnail
-      -#%img{:alt => "", :src => @featured_album.image.thumb('753x592#').url}
-        -#.caption
-          -#%h5= @featured_album.title
-          -#%br
-          -#- if user_signed_in? && current_user.paid_member?
-            -#= link_with_icon("Listen", album_url(@featured_album, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}" ), "icon-play icon-white", "btn btn-success btn-large")            
-          -#- else
-            -#= link_with_icon("Free Preview", album_url(@featured_album, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}" ), "icon-play icon-white", "btn btn-success btn-large")
-
-
-
-
--#.content-border
-  -#.row-fluid
-    -#.span
-      -##homeSlider.carousel.slide
-        -#.carousel-inner
-          -#- @channels.each do |channel|
-            -#- if channel.active?
-              -#.item.active
-                -#= link_to image_tag(channel.banner_image.url), root_url(subdomain: channel.subdomain) if channel.banner_image
-            -#- else
-              -#.item
-                -#= link_to image_tag(channel.banner_image.url), "#coming-soon!", :class => "coming_soon" if channel.banner_image
-        -#%a.carousel-control.left{"data-slide" => "prev", :href => "#homeSlider"} ‹
-        -#%a.carousel-control.right{"data-slide" => "next", :href => "#homeSlider"} ›
-
-  -#.row-fluid{:style => 'margin-top: 40px;'}
-    -#.span4
-      -#%h3.heading_blue Featured Video
-      -#.thumbnail
-        -#%img{:alt => "", :src => @featured_video.image.thumb('488x294#').url}
-          -#.caption
-            -#%h5= @featured_video.title
-            -#%br
-            -#- if user_signed_in? && current_user.paid_member?
-              -#= link_with_icon("Watch", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "connected btn btn-success btn-large")
-            -#- else
-              -#= link_with_icon("Free Trailer", video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "icon-film icon-white", "connected btn btn-success btn-large")
-            
-    -#.span4
-      -#%h3.heading_blue Featured Song
-      -#.thumbnail
-        -#%img{:alt => "", :src => @featured_song.album.image.thumb('488x294#').url}
-          -#.caption
-            -#%h5= @featured_song.title
-            -#%br
-            -#- if user_signed_in? && current_user.paid_member?
-              -#= link_with_icon("Listen", song_url(@featured_song), "icon-play icon-white", "connected btn btn-success btn-large",  {:class => "play", :id => "play-#{@featured_song.id}", "data-song" => @featured_song.id})
-            -#- else
-              -#= link_with_icon("Free Preview", song_url(@featured_song), "icon-play icon-white", "connected btn btn-success btn-large",  {:class => "play", :id => "play-#{@featured_song.id}", "data-song" => @featured_song.id})
-
-    -#.span4
-      -#%h3.heading_blue Featured Album
-      -#.thumbnail
-        -#%img{:alt => "", :src => @featured_album.image.thumb('488x294#').url}
-          -#.caption
-            -#%h5= @featured_album.title
-            -#%br
-            -#- if user_signed_in? && current_user.paid_member?
-              -#= link_with_icon("Listen", album_url(@featured_album, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}" ), "icon-play icon-white", "btn btn-success btn-large")            
-            -#- else
-              -#= link_with_icon("Free Preview", album_url(@featured_album, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}" ), "icon-play icon-white", "btn btn-success btn-large")

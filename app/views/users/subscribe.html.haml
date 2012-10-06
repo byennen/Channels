@@ -22,9 +22,10 @@
   }
 
 .content-border
-  .row-fluid
-    .span
-      = image_tag('aliveatbrushy-payment-banner.jpg', :class => 'payment_banner')
+  - if current_channel && current_channel.id == 2
+    .row-fluid
+      .span
+        = image_tag('aliveatbrushy-payment-banner.jpg', :class => 'payment_banner')
 
   = simple_form_for(current_user, :url => create_subscribe_user_path, :html => {:class => 'form-horizontal', :id => 'subscribe_user'}) do |f|
     = f.error_notification
