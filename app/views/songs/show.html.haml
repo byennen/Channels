@@ -45,7 +45,7 @@
       .span
         - if current_user.present?
           - if current_user.orders.map(&:song).include?(@song)
-            = link_to "My Downloads", downloads_url
+            = link_to "My Downloads", downloads_user_url
           - else
             = link_to "Buy Song", "#buy_album_song_path", "data-toggle" => "modal", :href => "#buy_album", :role => "button", :class => "btn btn-success btn-large"
             or
