@@ -24,18 +24,18 @@
   .span2
     %a{:href => root_url(:subdomain => 'aliveatbrushy')}
       .thumbnail
-        = image_tag @aliveatbrushy.banner_image.thumb('222x175#').url if @aliveatbrushy.banner_image_uid
+        = image_tag @aliveatbrushy.banner_image.thumb('222x175#').url, :style => 'width: 222px; height: 175px;' if @aliveatbrushy.banner_image_uid
         %p= @aliveatbrushy.name
         
   .span2
     %a{:href => "#coming-soon", :class => 'coming_soon'}
       .thumbnail
-        = image_tag @randyowen.banner_image.thumb('222x175#').url if @randyowen.banner_image_uid
+        = image_tag @randyowen.banner_image.thumb('222x175#').url, :style => 'width: 222px; height: 175px;' if @randyowen.banner_image_uid
         %p= @randyowen.name
   .span2
     %a{:href => root_url(:subdomain => 'fatherofrocknroll')}
       .thumbnail
-        = image_tag @samphillips.banner_image.thumb('222x175#').url if @samphillips.banner_image_uid
+        = image_tag @samphillips.banner_image.thumb('222x175#').url, :style => 'width: 222px; height: 175px;' if @samphillips.banner_image_uid
         %p= @samphillips.name
   .span2
     %a{:href => "#coming-soon", :class => 'coming_soon'}
@@ -56,19 +56,19 @@
 
 #featured.row-fluid{:style => 'margin: 60px 0;'}
   .span3
-    %a.featured-popover{:href => root_url(:subdomain => "#{@featured_channel.subdomain}"), "data-content" =>  "#{@featured_channel.name}", "data-original-title" => "Featured Channel", :rel => "popover"}
-      = image_tag(@featured_channel.banner_image.thumb('753x592#').url, :class => 'img-rounded img-polaroid')
+    %a.featured-popover{:href => root_url(:subdomain => "#{@featured_channel.subdomain}"), "data-content" =>  "#{@featured_channel.name}", :rel => "popover"}
+      = image_tag(@featured_channel.banner_image.thumb('753x592#').url, :class => 'img-rounded img-polaroid', "data-original-title" => "Featured Channel")
 
   .span3
-    %a.featured-popover{:href => song_url(@featured_song), "data-content" =>  "#{@featured_song.title}", "data-original-title" => "Featured Song", :rel => "popover"}
-      = image_tag(@featured_song.album.image.thumb('753x592#').url, :class => 'img-rounded img-polaroid')
+    %a.featured-popover{:href => song_url(@featured_song), "data-content" =>  "#{@featured_song.title}", :rel => "popover"}
+      = image_tag(@featured_song.album.image.thumb('753x592#').url, :class => 'img-rounded img-polaroid', "data-original-title" => "Featured Song", )
 
   .span3
-    %a.featured-popover{:href => video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "data-content" =>  "#{@featured_video.title}", "data-original-title" => "Featured Video", :rel => "popover"}
-      = image_tag(@featured_video.image.thumb('753x592#').url, :class => 'img-rounded img-polaroid')
+    %a.featured-popover{:href => video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "data-content" =>  "#{@featured_video.title}", :rel => "popover"}
+      = image_tag(@featured_video.image.thumb('753x592#').url, :class => 'img-rounded img-polaroid', "data-original-title" => "Featured Video")
 
   .span3
-    %a.featured-popover{:href => album_url(@featured_album, :host => "#{@featured_album.channel.subdomain}.#{APP_CONFIG['domain']}"), "data-content" =>  "#{@featured_album.title}", "data-original-title" => "Featured Album", :rel => "popover"}
-      = image_tag(@featured_album.image.thumb('753x592#').url, :class => 'img-rounded img-polaroid')
+    %a.featured-popover{:href => album_url(@featured_album, :host => "#{@featured_album.channel.subdomain}.#{APP_CONFIG['domain']}"), "data-content" =>  "#{@featured_album.title}", :rel => "popover"}
+      = image_tag(@featured_album.image.thumb('753x592#').url, :class => 'img-rounded img-polaroid', "data-original-title" => "Featured Album")
 
 
