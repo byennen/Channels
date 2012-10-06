@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     @featured_video = Video.recent.first
     @featured_album = Album.find_by_title('Alive at Brushy Mountain State Penitentiary')
     @aliveatbrushy = Channel.find_by_subdomain('aliveatbrushy')
-    @randyowen = Album.find_by_title('American Jobs')
+    @randyowen = Channel.find_by_subdomain('randyowen')
     @samphillips = Channel.find_by_subdomain('fatherofrocknroll')
   end
 end
