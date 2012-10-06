@@ -10,7 +10,7 @@ class ChannelsController < ApplicationController
   def show
     if current_user.present?
       if current_user.paid_member? || current_user.preview_member?
-        @channel = Channel.find_by_subdomain(:subdomain)
+        @channel = Channel.find_by_subdomain!(request.subdomain)
         @featured_album = Album.find_by_title('Alive at Brushy Mountain State Penitentiary')
         @posts = @channel.posts.recent(:limit => 4)
         @songs = @channel.songs.all
