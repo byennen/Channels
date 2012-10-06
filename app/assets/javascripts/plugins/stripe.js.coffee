@@ -9,7 +9,8 @@ class StripeHandler
   handleSubmit: (e)=>
     e.preventDefault()
     $('input[type=submit]').attr 'disabled', true
-    if $('#card_number').val() == 'undefined'
+    console.log("Card number is " + $('#card_number').val())
+    if $('#card_number').val() == undefined
       $('form#subscribe_user')[0].submit()
     else
       @processCard()
