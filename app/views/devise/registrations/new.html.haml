@@ -5,14 +5,14 @@
     %h1 Create Your Account
     .login-social
       %p Sign in using social network:
-      -#- if params[:state]
-        -#%a.btn.btn-primary.btn-large#login{:href => "/auth/facebook?state=#{params[:state]}"}
-          -#%i.icon-facebook
-          -#Sign in with Facebook
-      -#- else
-      %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook"}
-        %i.icon-facebook
-        Sign in with Facebook
+      - if params[:state]
+        %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook?state=#{params[:state]}"}
+          %i.icon-facebook
+          Sign in with Facebook
+      - else
+        %a.btn.btn-primary.btn-large#login{:href => "/auth/facebook"}
+          %i.icon-facebook
+          Sign in with Facebook
     .login-fields
       %p Create your free account:
       = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|

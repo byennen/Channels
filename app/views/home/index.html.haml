@@ -13,11 +13,12 @@
   });
 
 
-#intro.row-fluid
-  .span12{:style => 'text-align: center; margin: 0 0 40px;'}
-    %h1 Digital Entertainment Network
-    %h2 Starting at $6.95/month
-    = link_to "Join Now", subscribe_user_url(:subdomain => 'www'), :class => 'btn btn-large btn-success'
+- unless current_user.present? && current_user.paid_member?
+  #intro.row-fluid
+    .span12{:style => 'text-align: center; margin: 0 0 40px;'}
+      %h1 Digital Entertainment Network
+      %h2 Starting at $6.95/month
+      = link_to "Join Now", subscribe_user_url(:subdomain => 'www'), :class => 'btn btn-large btn-success'
 
 #channels.row-fluid
   .span2
