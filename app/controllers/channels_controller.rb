@@ -15,8 +15,8 @@ class ChannelsController < ApplicationController
         @posts = @channel.posts.recent(:limit => 4)
         @songs = @channel.songs.all
         @photo_albums = @channel.photo_albums.all
+        @video = @channel.videos.current_episode
         if @video.present?
-          @video = @channel.videos.current_episode
           @videos = recent_videos
           logger.debug("videos size is #{@videos.size}")
           @next_video = Video.coming_soon(@video).first
