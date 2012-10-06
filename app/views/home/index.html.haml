@@ -29,7 +29,7 @@
   .span2
     %a{:href => "#coming-soon", :class => 'coming_soon'}
       .thumbnail
-        = image_tag @randyowen.image.thumb('222x175#').url if @randyowen.image_uid
+        = image_tag @randyowen.banner_image.thumb('222x175#').url if @randyowen.banner_image_uid
         %p= @randyowen.title
   .span2
     %a{:href => root_url(:subdomain => 'fatherofrocknroll')}
