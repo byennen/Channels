@@ -36,7 +36,12 @@ class UsersController < ApplicationController
   end
   
   def downloads
-    @songs = current_user.orders.collect(&:song)
+    @songs = []
+    @albums = []
+    current_user.orders.each do |order|
+      order.line_items.song.map(&:purchasable).each { |s| @songs << s }
+      order.line_items.album.map(&:purchasable).each { |a| @albums << a}
+    end
   end
   
   def cancel

@@ -21,8 +21,15 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def album?
+    line_items.first.purchasable.kind_of?(Album)
+  end
+
+  def song?
+    line_items.first.purchasable.kind_of?(Song)
+  end
+
   def charge!
-    logger.debug("total is " + total.to_s)
     Stripe::Charge.create(
           :amount => total,
           :currency => "usd",
