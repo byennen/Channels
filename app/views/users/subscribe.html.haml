@@ -14,19 +14,20 @@
   .coupon_link {
     padding: 20px 0;
   }
-  .payment_banner {
-    margin: 0 -20px 0 -20px;
-  }
+
   .modal-backdrop {
     display: none;
   }
 
-.content-border
-  - if current_channel && current_channel.id == 2
-    .row-fluid
-      .span
-        = image_tag('aliveatbrushy-payment-banner.jpg', :class => 'payment_banner')
+.row-fluid
+  .span
+    - if current_channel && current_channel.id == 2
+      = image_tag('aliveatbrushy-payment-banner.jpg', :class => 'payment_banner')
+    - else
+      = image_tag('fatherofrocknroll-payment-banner.jpg', :class => 'payment_banner')
 
+
+.content-border
   = simple_form_for(current_user, :url => create_subscribe_user_path, :html => {:class => 'form-horizontal', :id => 'subscribe_user'}) do |f|
     = f.error_notification
 
@@ -46,15 +47,19 @@
                 %blockquote
                   %p As a member you will have access to all Channels, live streaming concerts, prizes, and once in life time oppurtunities.
                 .widget-content
-                  .span3
-                    = render 'basic'
                   - if current_channel && current_channel.id == 2
+                    .span3
+                      = render 'basic'
                     .span3
                       = render 'starter'
                     .span3
                       = render 'vinyle'
                     .span3
                       = render 'everything'
+                  - else
+                    .span3
+                      = render 'sam_basic'
+
 
         .row-fluid{:style => 'margin: 20px 0 60px;'}
           .span12
