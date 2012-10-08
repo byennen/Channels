@@ -13,11 +13,6 @@
               %tr
                 %td= song.title
                 %td= link_to 'Download', '#'
-          
-      .widget-content
-        %table.table.table-striped
-          %thead
-          %tbody
             - @albums.each do |album|
               %tr
                 %td= album.title
