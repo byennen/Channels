@@ -67,6 +67,10 @@ BasicMP3Player = ->
       pl.removeClass @_data.oLink, @_data.className
       @_data.className = pl.css.sPlaying
       pl.addClass @_data.oLink, @_data.className
+      console.log("POsting to FB")
+      console.log(pl)
+      playedURL = pl.sounds[0]._data.oLink.getAttribute("data-url")
+      pl.postToFB(playedURL)
 
     stop: ->
       pl.removeClass @_data.oLink, @_data.className
@@ -102,6 +106,12 @@ BasicMP3Player = ->
    else (e) ->
     e.target
   )
+
+  @postToFB = (url) ->
+    $.post(url, (data) -> 
+      played = data
+    ) 
+
   @handleClick = (e) ->
     
     # a sound link was clicked
@@ -120,6 +130,7 @@ BasicMP3Player = ->
     return true  unless self.classContains(o, self.includeClass)
     sm._writeDebug "handleClick()"
     soundURL = (o.href)
+    console.log(o.getAttribute("data-url"))
     thisSound = self.getSoundByURL(soundURL)
     if thisSound
       
