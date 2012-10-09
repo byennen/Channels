@@ -110,6 +110,7 @@ Channels::Application.routes.draw do
       resources :albums do
         resources :songs do
           collection { post :sort }
+          member     { post :played }
         end
       end
     end
