@@ -81,6 +81,7 @@ Channels::Application.routes.draw do
     delete '/logout' => 'sessions#destroy'
     get '/logout' => 'sessions#destroy'
     get '/signup' => 'registrations#new'
+    get '/join' => 'registrations#new', :as => 'join'
     #match 'logout', to: 'sessions#destroy', as: 'logout'
 
     #facebook
