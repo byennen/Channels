@@ -158,11 +158,6 @@ ActiveRecord::Schema.define(:version => 20121011202400) do
     t.integer  "position"
   end
 
-  create_table "plans", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "play_counts", :force => true do |t|
     t.integer  "plays"
     t.string   "playable_type"
