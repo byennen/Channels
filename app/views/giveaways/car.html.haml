@@ -8,17 +8,17 @@
     .span
       .inside.giveaway
         %h1 1965 CHEVROLET CHEVELLE FROM ALTIMARC.COM!
-        = form_for(@giveaway, :url => "enter_giveaway", :html => {:class => "well form-inline"}) do |f|
-          - if @giveaway.errors.any?
-            - @giveaway.errors.messages.each do |message|
-              .message= message.last.last.html_safe
-          .row-fluid
-            .span4{:style => 'margin: 0 auto; float: none;'}
-              = simple_form_for @giveaway, :url => enter_giveaway_path, :html => {:class => 'wellclear form-inline'} do |f|
-                .span{:style => 'width: 270px;padding-top: 2px;'}
-                  = f.input :email, :input_html => {:class => "input-xlarge", :placeholder => "Email"}, :label => false
-                .span{:style => 'width: 133px; margin-left: 20px;'}
-                  %button.btn.btn-danger{:type => "submit"} Sign Up To Win!
+        - if @giveaway.errors.any?
+          - @giveaway.errors.messages.each do |message|
+            .message= message.last.last.html_safe
+        .row-fluid
+          .span4{:style => 'margin: 0 auto; float: none;'}
+            = simple_form_for @giveaway, :url => enter_giveaway_path, :html => {:class => 'wellclear form-inline'} do |f|
+              = f.input :car, :as => :hidden, :input_html => {:value => 1}
+              .span{:style => 'width: 270px;padding-top: 2px;'}
+                = f.input :email, :input_html => {:class => "input-xlarge", :placeholder => "Email"}, :label => false
+              .span{:style => 'width: 133px; margin-left: 20px;'}
+                %button.btn.btn-danger{:type => "submit"} Sign Up To Win!
 
         %div
           %h3 SOME AUTOMOBILES ARE LEGENDS.  THERE ARE SOME BRANDS THAT CONTINUE TO FASCINATE EVEN THE MOST HARD CORE COLLECTORS.  FINDING SUCH A CAR IN THIS DAY AND AGE IS PROVING MORE DIFFICULT.  AND THEN, WHEN YOU FIND IT, IT MAY TAKE THOUSANDS OF DOLLARS TO GET IT CLOSE TO ITS ORIGINAL CONDITION.

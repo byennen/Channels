@@ -28,7 +28,8 @@ Channels::Application.routes.draw do
   match "giveaways/1965-chevrolet-chevelle" => "giveaways#car", :as => "car"
 
   #giveaways email
-  match "enter-giveaways(/:id)" => "giveaways#enter_giveaway", :as => 'enter_giveaway'
+  #match "enter-giveaways(/:id)" => "giveaways#enter_giveaway", :as => 'enter_giveaway'
+  match "enter-giveaways" => "giveaways#enter_giveaway", :as => 'enter_giveaway'
 
   #zencoder
   post "zencoder-callback" => "zencoder_callback#create", :as => "zencoder_callback"
