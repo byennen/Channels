@@ -1,10 +1,10 @@
 module VideosHelper
   def video_playlist(video)
-    if video.class == Video
-      sources = current_user && current_user.paid_member? ? video.sources : video.video_preview.sources
-    else
+    #if video.class == Video
+      #sources = current_user && current_user.paid_member? ? video.sources : video.video_preview.sources
+    #else
       sources = video.sources
-    end
+    #end
     logger.debug("sources are #{sources.inspect}")
     s = []
     sources.each_with_index do |source, index|
