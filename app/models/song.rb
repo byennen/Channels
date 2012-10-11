@@ -2,7 +2,7 @@ class Song < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
   belongs_to :album
-  has_many :uploads, as: :uploadable
+  has_many :play_counts, :as => :playable
   acts_as_list
 
   attr_accessible :id, :album_id, :title, :price, :active, :album, :song, :preview
@@ -32,6 +32,14 @@ class Song < ActiveRecord::Base
 
   def filename
     read_attribute :song
+  end
+
+  def played
+    unless play_count = play_counts.where('played_on' => Date.today).first
+      play_count = play_counts.create({:played_on => Date.today, :plays => 0 })
+    end
+    play_count.plays += 1
+    play_count.save
   end
 
   def get_url
