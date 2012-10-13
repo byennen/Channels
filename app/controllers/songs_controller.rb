@@ -6,8 +6,9 @@ class SongsController < ApplicationController
   #end
 
   def show
-    @song = Song.find(params[:id], :include => {:album => :channel})
-    @album = @song.album
+    @album = Album.find(params[:album_id])
+    @song = @album.songs.find(params[:id])
+    logger.debug("Song is #{@song.song}")
     @channel = @album.channel
     if @song.present?
       respond_to do |format|
