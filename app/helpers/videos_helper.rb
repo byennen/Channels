@@ -14,7 +14,7 @@ module VideosHelper
   end
   
   def include_next_episode_preview(current_user, next_video)
-    if current_user && current_user.paid_member? && next_video.present?
+    if current_user && current_user.paid_member? && next_video.present? && !next_video.preview.nil?
       s = video_playlist(next_video.video_preview)
       return ",{#{s}, config: {title: \"#{next_video.title}\",className: 'postad',disallowSkip: true}}"
     end
