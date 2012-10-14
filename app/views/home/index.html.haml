@@ -60,7 +60,7 @@
       = image_tag(@featured_channel.banner_image.thumb('753x592#').url, :class => 'img-rounded img-polaroid', "data-original-title" => "Featured Channel")
 
   .span3
-    %a.featured-popover{:href => song_url(@featured_song), "data-content" =>  "#{@featured_song.title}", :rel => "popover"}
+    %a.featured-popover{:href =>  album_song_url(@featured_album, @featured_song), "data-content" =>  "#{@featured_song.title}", :rel => "popover"}
       = image_tag(@featured_song.album.image.thumb('753x592#').url, :class => 'img-rounded img-polaroid', "data-original-title" => "Featured Song", )
 
   .span3
