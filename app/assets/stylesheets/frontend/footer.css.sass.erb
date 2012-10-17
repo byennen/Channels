@@ -1,23 +1,14 @@
 #push
   height: 140px
 div#footer
-  overflow: auto
-  position: relative
-  width: 100%
   bottom: -21px
   clear: both
-  height: 140px
   background: none repeat scroll 0 0 white
   color: #575555
-  padding: 20px 0 0
+  padding: 20px 0
   -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.5)
   -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.5)
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5)
-  .container-fluid
-    min-width: 768px
-    max-width: 1560px
-    margin: 0 auto
-
   ul
     margin: 5px 0 0 0
     list-style: none
@@ -29,3 +20,10 @@ div#footer
       margin: 52px 0 0px
   a
     color: #575555
+
+@media (max-width: 767px)
+  div#footer
+    text-align: center
+    .social, .copyright
+      float: right
+      text-align: right

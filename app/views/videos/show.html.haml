@@ -130,9 +130,9 @@
           }
         },
         {
-          #{raw video_playlist(@video) }
-          ,
+          #{raw video_playlist(@video) },
           config: {
+            poster: "#{@video.image.url}",
             title: "#{@video.title}",
             className: 'postad',
             disallowSkip: true

@@ -3,7 +3,7 @@
   %head
     %meta{:charset => "utf-8"}
     %title= content_for?(:title) ? yield(:title) : "Altimarc - Entertainment. Elevated. - Beta"
-    %meta{:content => "width=device-width", :name => "viewport"}
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %meta{:content => "#{@description}", :name => "description"}
     %meta{:content => "#{@keywords}", :name => "keywords"}
     %meta{:content => "ALTIMARC, LLC", :name => "author"}
@@ -31,13 +31,13 @@
       var _sf_startpt=(new Date()).getTime()
   %body{:class => controller.controller_name}
     .background-wrapper{ :style => ("background: url('#{@channel.background_image.url}') repeat-x ##{@channel.background_color};" if @channel.present? && !@channel.background_image.nil? && !params[:controller] == "albums") }
-      .container-fluid.content
-        .navbar.navbar-fixed-top
-          = render 'shared/nav'
-        .container-content
-          = render :partial => "shared/flash_messages", :locals => {:flash => flash}
-          = yield
-      #push
-      = render 'layouts/frontend/footer'
+      .content
+        = render 'shared/nav'
+        .container-fluid
+          .container-content
+            = render :partial => "shared/flash_messages", :locals => {:flash => flash}
+            = yield
+        #push
+        = render 'layouts/frontend/footer'
     = render 'layouts/frontend/modals'
     = render 'shared/analytics'

@@ -1,47 +1,53 @@
-.navbar-inner{:style => 'min-width: 798px;'}
-  .container-fluid
-    - if params[:controller] == "channels" && params[:action] == "show"
-      = link_to "Altimarc", root_url(subdomain: "www"), :class => "brand brand-channel pjax"
-    - else
-      = link_to "Altimarc", root_url(subdomain: "www"), :class => "brand pjax"
-    %ul.nav
-      - unless user_signed_in?      
-        %li.what_is_altimarc.border
-          %a{:href => about_url(subdomain: "www")}
-            %strong
-              What is
-              %br
-              Altimarc?
-      %li.discover_great_channels.border
-        %a{:href => channels_url(subdomain: "www")}
-          %strong Discover
-          %br
-          unique channels
-      %li.win_amazing_giveaways.border
-        %a{:href => giveaways_url(subdomain: "www")}
-          %strong Win
-          %br
-          fan experiences
-    %ul.nav.pull-right
-      - if user_signed_in?
-        %li
-          %a{:href => '', "data-toggle" => "dropdown", :class => 'me'}
-            %strong
-              - if current_user.first_name.present?
-                = current_user.first_name
-              - else
-                Me
-            %i.icon.icon-chevron-down
-
-
-          %ul.dropdown-menu
-            %li= link_with_icon("My Downloads", downloads_user_url(subdomain: "www"), "icon-download-alt", "pjax")
-            %li= link_with_icon("Edit account", edit_user_registration_url(subdomain: "www"), "icon-pencil", "pjax")
-            %li= link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", :id => "logout")
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container-fluid
+      %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      - if params[:controller] == "channels" && params[:action] == "show"
+        = link_to "Altimarc", root_url(subdomain: "www"), :class => "brand brand-channel pjax"
       - else
-        -#- if current_channel
-          -#%li= link_to "Sign Up", signup_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid)
-          -#%li= link_to "Log In", login_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid)
-        -#- else
-        %li= link_to "Sign Up", signup_url(subdomain: 'www', host: APP_CONFIG['domain'])
-        %li= link_to "Log In", login_url(subdomain: 'www', host: APP_CONFIG['domain'])
+        = link_to "Altimarc", root_url(subdomain: "www"), :class => "brand pjax"
+      .nav-collapse
+        %ul.nav
+          - unless user_signed_in?      
+            %li.what_is_altimarc.border
+              %a{:href => about_url(subdomain: "www")}
+                %strong
+                  What is
+                  %br
+                  Altimarc?
+          %li.discover_great_channels.border
+            %a{:href => channels_url(subdomain: "www")}
+              %strong Discover
+              %br
+              unique channels
+          %li.win_amazing_giveaways.border
+            %a{:href => giveaways_url(subdomain: "www")}
+              %strong Win
+              %br
+              fan experiences
+        %ul.nav.pull-right
+          - if user_signed_in?
+            %li
+              %a{:href => '', "data-toggle" => "dropdown", :class => 'me'}
+                %strong
+                  - if current_user.first_name.present?
+                    = current_user.first_name
+                  - else
+                    Me
+                %i.icon.icon-chevron-down
+
+
+              %ul.dropdown-menu
+                %li= link_with_icon("My Downloads", downloads_user_url(subdomain: "www"), "icon-download-alt", "pjax")
+                %li= link_with_icon("Edit account", edit_user_registration_url(subdomain: "www"), "icon-pencil", "pjax")
+                %li= link_with_icon("Logout", logout_url(subdomain: "www"), "icon-lock", :id => "logout")
+          - else
+            -#- if current_channel
+              -#%li= link_to "Sign Up", signup_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid)
+              -#%li= link_to "Log In", login_url(subdomain: 'www', host: APP_CONFIG['domain'], :state => current_channel.uuid)
+            -#- else
+            %li= link_to "Sign Up", signup_url(subdomain: 'www', host: APP_CONFIG['domain'])
+            %li= link_to "Log In", login_url(subdomain: 'www', host: APP_CONFIG['domain'])

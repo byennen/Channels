@@ -179,9 +179,13 @@ span.login-checkbox
   .twitter
     display: block
     margin-bottom: 1em
-  .register .login-fields input
-    width: 204px
-    padding-left: 6px
+  .register
+    .login-fields input,
+    .login-fields input[type="text"],
+    .login-fields input[type="email"],
+    .login-fields input[type="password"]
+      width: 204px
+      padding-left: 6px
 
 #signup_box, #create_password
   margin: 160px auto 0

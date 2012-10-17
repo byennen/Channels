@@ -1,4 +1,5 @@
 @import "twitter/bootstrap/bootstrap";
+@import "twitter/bootstrap/responsive";
 
 // Set the correct sprite paths
 @iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
@@ -8,13 +9,19 @@
 /*@navbarLinkColorHover: #999;*/
 /*@navbarLinkColorActive: #000;*/
 
-.container-content {
-  max-width: 1560px;
-  min-width: 768px;
-  margin: 65px auto 0;
-}
 .container-fluid {
-  padding: 0;
+  max-width: 1560px;
+  margin: 0 auto;
+}
+
+.container-content {
+  margin-top: 65px;
+}
+
+@media (max-width: 1000px) {
+  .container-content {
+    margin: 0px auto 0;
+  }
 }
 
 a {
@@ -45,7 +52,27 @@ a:hover, a:active, a:focus {
   min-height: 40px;
   font-size: 12px;
 }
+.thumbnails {
+  margin-left: 0px;
+}
 
 .btn-large [class^="icon-"] {
   margin-top: 5px;
+}
+
+.navbar .btn-navbar {
+  padding: 16px 10px;
+}
+.navbar-fixed-top, .navbar-fixed-bottom {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.navbar .navbar-fixed-top .container-fluid {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.nav-collapse {
+  background: #eee;
+  z-index:900;
 }
