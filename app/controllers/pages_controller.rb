@@ -35,7 +35,4 @@ class PagesController < ApplicationController
   def copyrigths
   end
 
-  def randy_owen_coming_soon_video
-  end
-
 end

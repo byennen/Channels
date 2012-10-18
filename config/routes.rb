@@ -13,7 +13,7 @@ Channels::Application.routes.draw do
   match "refund" => "pages#refund", :as => "refund"
   match "terms" => "pages#terms", :as => "terms"
   match "copyrights" => "pages#copyrights", :as => "copyrights"
-  match "randy-owen-altimarc-coming-soon-video" => "pages#randy_owen_coming_soon_video", :as => "randy_owen_video"
+  match "randy-owen-altimarc-coming-soon-video" => root_url
 
   resources :press, :only => [:index, :show]
 
