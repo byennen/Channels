@@ -7,26 +7,53 @@
     padding-top: 10px;
   }
   .ticket {
-    height: 600px;
     background: white;
+    max-height: 700px;
+    min-height: 300px;
+    height: 100%;
+
+  }
+  @media (max-width: 750px) {
+    .thumbnails {
+      margin: 20px;
+      padding-left: 20px;
+    }
+  }
+  @media (min-width: 900px) {
+    .ticket {
+      height: 700px !important;
+    }
+    .ticket-border {
+      height: 670px !important;
+    }
   }
   .ticket-inside {
     padding: 10px;
   }
+  .ticket-inside h3 {
+    text-align: center;
+    margin-top: 20px;
+  }
   .ticket-border {
     border: 2px solid #ddd;
     padding: 5px;
-    height: 550px;
+    max-height: 670px;
+    min-height: 270px;
+    height: 100%;
   }
-  .ticket-top {
+  .ticket-top, .ticket-bottom {
     width: 100%;
     height: 40px;
   }
-  
+  .featured {
+    text-align: center;
+  }
 
 :javascript
   $(document).ready(function() {
-    $('.featured-popover').popover({trigger: 'hover', placement: 'top', selector: 'img'});
+    $('.carousel').carousel({
+      interval: 5000
+    });
   });
 
 
@@ -39,59 +66,91 @@
 
 .row-fluid
   %ul.thumbnails
-    %li.span3
-      %a{:href => root_url(:subdomain => 'aliveatbrushy')}
-        = image_tag 'ticket-top.png', :class => 'ticket-top'
-        .ticket
-          .ticket-inside
-            .ticket-border
-              = image_tag @aliveatbrushy.banner_image.url if @aliveatbrushy.banner_image_uid
-              %p= @aliveatbrushy.name
+    - @channels.each do |channel|
+      - if channel.active?
+        %li.span3
+          %a{:href => root_url(:subdomain => channel.subdomain)}
+            = image_tag 'ticket-top.png', :class => 'ticket-top'
+            .ticket
+              .ticket-inside
+                .ticket-border
+                  .carousel.slide{:id => "ticketSlider-#{channel.id}"}
+                    .carousel-inner
+                      - channel.photos.each do |photo, index|
+                        .item
+                          = image_tag photo.image.thumb('750x500#').url, :title => photo.title
+                    %h3= channel.name
 
-    %li.span3
-      %a{:href => root_url(:subdomain => 'fatherofrocknroll')}
-        = image_tag 'ticket-top.png', :class => 'ticket-top'
-        .ticket
-          .ticket-inside
-            .ticket-border
-              = image_tag @samphillips.banner_image.thumb('260x180#').url if @samphillips.banner_image_uid
-              %p= @samphillips.name
+            = image_tag 'ticket-bottom.png', :class => 'ticket-bottom'
+      - else
+        %li.span3
+          %a.coming_soon{:href => "#coming-soon"}
+            = image_tag 'ticket-top.png', :class => 'ticket-top'
+            .ticket
+              .ticket-inside
+                .ticket-border
+                  .carousel.slide{:id => "ticketSlider-#{channel.id}"}
+                    .carousel-inner
+                      - channel.photos.each do |photo, index|
+                        .item
+                          = image_tag photo.image.thumb('750x500#').url, :title => photo.title
+                    %h3= channel.name
 
-    %li.span3.ticket
-      %a{:href => "#coming-soon", :class => 'coming_soon'}
-        .thumbnail
-          = image_tag 'live-concerts.jpg', :style => 'width: 260px; height: 180px;'
-          %p Live Concerts
-    %li.span3.ticket
-      %a{:href => "#coming-soon", :class => 'coming_soon'}
-        .thumbnail
-          = image_tag 'young-guns.jpg', :style => 'width: 260px; height: 180px;'        
-          %p Young Guns of Country
+            = image_tag 'ticket-bottom.png', :class => 'ticket-bottom'
+
+
+
+
+    -#%li.span3
+      -#%a{:href => "#coming-soon", :class => 'coming_soon'}
+        -#= image_tag 'ticket-top.png', :class => 'ticket-top'
+        -#.ticket
+          -#.ticket-inside
+            -#.ticket-border
+              -#= image_tag 'live-concerts.jpg', :style => 'max-width: 750px; max-height: 500px; min-width: 100px; width: 100%;'
+              -#%p Live Concerts
+        -#= image_tag 'ticket-bottom.png', :class => 'ticket-bottom'
+
+    -#%li.span3
+      -#%a{:href => "#coming-soon", :class => 'coming_soon'}
+        -#= image_tag 'ticket-top.png', :class => 'ticket-top'
+        -#.ticket
+          -#.ticket-inside
+            -#.ticket-border
+              -#= image_tag 'young-guns.jpg', :style => 'max-width: 750px; max-height: 500px; min-width: 100px; width: 100%;'
+              -#%p Young Guns of Country
+        -#= image_tag 'ticket-bottom.png', :class => 'ticket-bottom'
 
 %hr
 
 .row-fluid
   .span{:style => 'text-align: center;'}
     %h3 Featured Channel
-    %h4= @featured_channel.name
-    
 .row-fluid
   .span
-    %a{:href => root_url(:subdomain => "#{@featured_channel.subdomain}")}
+    %a{:href => root_url(:subdomain => @featured_channel.subdomain)}
       = image_tag(@featured_channel.banner_image.url, :class => 'img-rounded img-polaroid')
 %hr
 
-.row
-  .span6
-    %a.featured-popover{:href =>  album_song_url(@featured_album, @featured_song), "data-content" =>  "#{@featured_song.title}", :rel => "popover"}
-      = image_tag(@featured_song.album.image.thumb('753x592#').url, :class => 'img-rounded img-polaroid', "data-original-title" => "Featured Song", )
+.row-fluid.featured
+  .span4
+    %a{:href => album_song_url(@featured_album, @featured_song)}
+      = image_tag(@featured_song.album.image.thumb('753x592#').url, :class => 'img-rounded img-polaroid')
+      %h4 Featured Song
+      %p= @featured_song.title
 
-  .span6
-    %a.featured-popover{:href => video_url(@featured_video, :host => "#{@featured_video.channel.subdomain}.#{APP_CONFIG['domain']}"), "data-content" =>  "#{@featured_video.title}", :rel => "popover"}
-      = image_tag(@featured_video.image.thumb('753x592#').url, :class => 'img-rounded img-polaroid', "data-original-title" => "Featured Video")
-
-  .span6
-    %a.featured-popover{:href => album_url(@featured_album, :host => "#{@featured_album.channel.subdomain}.#{APP_CONFIG['domain']}"), "data-content" =>  "#{@featured_album.title}", :rel => "popover"}
-      = image_tag(@featured_album.image.thumb('753x592#').url, :class => 'img-rounded img-polaroid', "data-original-title" => "Featured Album")
-
+  .span4
+    %a{:href => video_url(@featured_video, :subdomain => @featured_video.channel.subdomain)}
+      = image_tag(@featured_video.image.thumb('753x592#').url, :class => 'img-rounded img-polaroid')
+      %h4 Featured Video
+      %p= @featured_video.title
+  .span4
+    %a.featured-popover{:href => album_url(@featured_album, :subdomain => @featured_album.channel.subdomain)}
+      = image_tag(@featured_album.image.thumb('753x592#').url, :class => 'img-rounded img-polaroid')
+      %h4 Featured Album
+      %p= @featured_album.title
+-#%hr
+-#.row-fluid
+  -#.span{:style => 'text-align: center;'}
+    -#%h3 Featured Giveaway
 
