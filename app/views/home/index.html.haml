@@ -78,7 +78,7 @@
                     .carousel-inner
                       - channel.photos.each do |photo, index|
                         .item
-                          = image_tag photo.image.url, :title => photo.title
+                          = image_tag photo.image.thumb('750x500#').url, :title => photo.title
                     %h3= channel.name
 
             = image_tag 'ticket-bottom.png', :class => 'ticket-bottom'
@@ -93,7 +93,7 @@
                     .carousel-inner
                       - channel.photos.each do |photo, index|
                         .item
-                          = image_tag photo.image.url, :title => photo.title
+                          = image_tag photo.image.thumb('750x500#').url, :title => photo.title
                     %h3= channel.name
 
             = image_tag 'ticket-bottom.png', :class => 'ticket-bottom'
