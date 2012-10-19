@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121011202400) do
+ActiveRecord::Schema.define(:version => 20121019000320) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(:version => 20121011202400) do
     t.integer  "photo_id"
     t.integer  "video_id"
     t.string   "slug"
+    t.datetime "publish_at"
   end
 
   add_index "posts", ["slug"], :name => "index_posts_on_slug"
