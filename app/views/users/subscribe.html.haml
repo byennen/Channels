@@ -46,18 +46,14 @@
               .span12
                 %blockquote
                   %p As a member you will have access to all Channels, live streaming concerts, prizes, and once in life time oppurtunities.
-                .widget-content
-                  - if current_channel && current_channel.id == 2
-                    .span3
+                .row-fluid
+                  .plans
+                    - if current_channel && current_channel.id == 2
                       = render 'basic'
-                    .span3
                       = render 'starter'
-                    .span3
                       = render 'vinyle'
-                    .span3
                       = render 'everything'
-                  - else
-                    .span3
+                    - else
                       = render 'sam_basic'
 
 
