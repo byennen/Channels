@@ -1,0 +1,56 @@
+.videoplayer
+  background: url(<%= asset_data_uri 'html5video/watch-area-bg.png' %>) repeat-x
+  padding: 40px 0
+  margin: 0 -20px
+  .projekktor_background
+    min-height: 0px
+    min-width: 0px
+    width: 100%
+    height: 100%
+    position: relative
+    z-index: 0
+    margin: 0 auto
+    -moz-box-shadow: 0 0 10px 5px black
+    -webkit-box-shadow: 0 0 10px 5px black
+    box-shadow: 0 0 10px 5px black
+  #player
+    margin: 0 auto
+    height: 100%
+    width: 100%
+    background: black
+    .projekktor
+      min-height: 0px
+      min-width: 0px
+      width: 100%
+      height: 100%
+      background-color: #000
+      font-size: 12px
+      font-weight: bold
+      text-align: center
+      text-transform: uppercase
+      text-shadow: 0 1px 1px #0c0c0c
+      margin: 0px
+      padding: 0
+      display: block
+      position: relative
+      overflow: hidden
+  .projekktor_background, .projekktor
+    /* Large desktop */
+    @media (min-width: 979px)
+      max-height: 504px
+      max-width: 896px
+    /* Portrait tablet to landscape and desktop */
+    @media (min-width: 768px) and (max-width: 979px)
+      max-height: 304px
+      max-width: 696px
+    /* Landscape phone to portrait tablet */
+    @media (max-width: 767px)
+      max-height: 304px
+      max-width: 696px
+    /* Landscape phones and down */
+    @media (max-width: 480px)
+      max-height: 304px
+      max-width: 696px
+
+
+

@@ -1,0 +1,40 @@
+#ticket.row-fluid
+  %ul.thumbnails
+    - @channels.each do |channel|
+      - if channel.active?
+        %li.span3
+          %a{:href => root_url(:subdomain => channel.subdomain)}
+            = image_tag 'ticket-top.png', :class => 'ticket-top'
+            .ticket
+              .ticket-inside
+                .ticket-border
+                  .carousel.slide{:id => "ticketSlider-#{channel.id}"}
+                    .carousel-inner
+                      - channel.photos.limit(5).each do |photo, index|
+                        .item
+                          = image_tag photo.image.thumb('750x500#n').url, :title => photo.title
+                    %h3= channel.name
+
+            = image_tag 'ticket-bottom.png', :class => 'ticket-bottom'
+      - else
+        %li.span3
+          %a.coming_soon{:href => "#coming-soon"}
+            = image_tag 'ticket-top.png', :class => 'ticket-top'
+            .ticket
+              .ticket-inside
+                .ticket-border
+                  .carousel.slide{:id => "ticketSlider-#{channel.id}"}
+                    .carousel-inner
+                      .item
+                        = image_tag channel.banner_image.thumb('750x500#n').url
+                    %h3= channel.name
+
+            = image_tag 'ticket-bottom.png', :class => 'ticket-bottom'
+
+:javascript
+  $(document).ready(function() {
+    $('.carousel').carousel({
+      interval: 5000
+    });
+  });
+
