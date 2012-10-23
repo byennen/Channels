@@ -6,7 +6,5 @@ class HomeController < ApplicationController
     @featured_album = Album.find_by_title('Alive at Brushy Mountain State Penitentiary')
     @aliveatbrushy = Channel.find_by_subdomain('aliveatbrushy')
     @randyowen = Channel.find_by_subdomain('randyowen')
-    @samphillips = Channel.find_by_subdomain('fatherofrocknroll')
-    @channel_photos = Channel.photos.all(:limit => 5)
   end
 end

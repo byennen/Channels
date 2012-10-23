@@ -79,7 +79,7 @@
                 .ticket-border
                   .carousel.slide{:id => "ticketSlider-#{channel.id}"}
                     .carousel-inner
-                      - @channel_photos.each do |photo, index|
+                      - channel.photos.limit(5).each do |photo, index|
                         .item
                           = image_tag photo.image.thumb('750x500#n').url, :title => photo.title
                     %h3= channel.name
