@@ -199,8 +199,8 @@ ActiveRecord::Schema.define(:version => 20121019000320) do
     t.string   "preview"
     t.string   "song"
     t.string   "slug"
-    t.integer  "position"
     t.datetime "publish_at"
+    t.integer  "position"
   end
 
   add_index "songs", ["slug"], :name => "index_songs_on_slug"

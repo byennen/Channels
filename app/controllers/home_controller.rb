@@ -7,5 +7,6 @@ class HomeController < ApplicationController
     @aliveatbrushy = Channel.find_by_subdomain('aliveatbrushy')
     @randyowen = Channel.find_by_subdomain('randyowen')
     @samphillips = Channel.find_by_subdomain('fatherofrocknroll')
+    @channel_photos = Channel.photos.all(:limit => 5)
   end
 end

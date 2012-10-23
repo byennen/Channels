@@ -2,6 +2,9 @@
 - @description = "Entertainment, Games, and once in a life time opportunities to meet celebrities. Join today!"
 
 :css
+  #intro {
+    padding-top: 20px;
+  }
   #channels p {
     color: black;
     padding-top: 10px;
@@ -76,7 +79,7 @@
                 .ticket-border
                   .carousel.slide{:id => "ticketSlider-#{channel.id}"}
                     .carousel-inner
-                      - channel.photos.each do |photo, index|
+                      - @channel_photos.each do |photo, index|
                         .item
                           = image_tag photo.image.thumb('750x500#n').url, :title => photo.title
                     %h3= channel.name
