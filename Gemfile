@@ -45,7 +45,7 @@ gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.11'
 gem 'fog'
 gem 'aws-s3', :require => 'aws/s3'
-gem 'carrierwave'
+gem 'carrierwave', "~> 0.6.2"
 gem 'zencoder'
 gem 'waveform'
 gem 'chunky_png'
