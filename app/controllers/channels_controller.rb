@@ -8,26 +8,19 @@ class ChannelsController < ApplicationController
   end
 
   def show
-    if current_user.present?
-      if current_user.paid_member? || current_user.preview_member?
-        @channel = Channel.find_by_subdomain!(request.subdomain)
-        @featured_album = Album.find_by_title('Alive at Brushy Mountain State Penitentiary')
-        @posts = @channel.posts.recent(:limit => 4)
-        @songs = @channel.songs.all
-        @photo_albums = @channel.photo_albums.all
-        @video = @channel.videos.current_episode
-        if @video.present?
-          @videos = recent_videos
-          logger.debug("videos size is #{@videos.size}")
-          @next_video = Video.coming_soon(@video).first
-        end
-        logger.debug("Next Video is #{@next_video.inspect}")
-      else
-        redirect_to subscribe_user_url
-      end
-    else
-      redirect_to signup_url(:subdomain => 'www')
+    @channel = Channel.find_by_subdomain!(request.subdomain)
+    @featured_album = Album.find_by_title('Alive at Brushy Mountain State Penitentiary')
+    @posts = @channel.posts.recent(:limit => 4)
+    @songs = @channel.songs.all
+    @photo_albums = @channel.photo_albums.all
+    @video = @channel.videos.current_episode
+    if @video.present?
+      @videos = recent_videos
+      logger.debug("videos size is #{@videos.size}")
+      @next_video = Video.coming_soon(@video).first
     end
+    logger.debug("Next Video is #{@next_video.inspect}")
+    @demo_video = @channel.videos.first
   end
 
   def next_song

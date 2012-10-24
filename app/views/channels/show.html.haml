@@ -10,33 +10,72 @@
     %meta{property: "og:description", content: @video.description}
 
 .content-border
-  #banner
-    = image_tag @channel.banner_image.url if @channel.banner_image_uid    
-  .row-fluid
-    .span8
-      = render 'channels/videos'
-      .row-fluid
-        .span
-          = render 'channels/photos'
-      .row-fluid
-        .span#posts
-          - if @posts.present?
-            %h2.heading Recent Updates
-            = render :partial => 'post', :collection => @posts
-
-    .span4
-      .rightsidebar
+  - if current_user && current_user.paid_member?
+    #banner
+      = image_tag @channel.banner_image.url if @channel.banner_image_uid    
+    .row-fluid
+      .span8
+        = render 'channels/videos'
         .row-fluid
           .span
+            = render 'channels/photos'
+        .row-fluid
+          .span#posts
+            - if @posts.present?
+              %h2.heading Recent Updates
+              = render :partial => 'post', :collection => @posts
+
+      .span4
+        .rightsidebar
+          .row-fluid
+            .span
+              %h1.heading= @channel.name
+              #description.span
+                %p= @channel.description
+              = render 'channels/social_media'
+            .row-fluid
+              .span
+                = render 'channels/featured_album'
+            .row-fluid
+              .span
+                %h2.heading Featured Sponsor
+                .thumbnail
+                  = link_to image_tag('layout/ad-holder.png'), altimarc_for_your_business_url
+  - else
+    .row-fluid
+      .span12
+        .videoplayer
+          .projekktor_background
+            #video
+            #player
+              %video.projekktor{:controls => "", :poster => "#{@demo_video.image.url}", :title => @demo_video.title}
+                - @demo_video.sources.each do |source|
+                  %source{:src => "#{source[:src]}", :type => source[:type]}
+                  
+        #intro.row-fluid
+          .span12{:style => 'text-align: center; margin: 0 0 40px;'}
             %h1.heading= @channel.name
-            #description.span
+            .span7{:style => 'margin: 0 auto 40px; float: none;'}
               %p= @channel.description
-            = render 'channels/social_media'
-          .row-fluid
-            .span
-              = render 'channels/featured_album'
-          .row-fluid
-            .span
-              %h2.heading Featured Sponsor
-              .thumbnail
-                = link_to image_tag('layout/ad-holder.png'), altimarc_for_your_business_url
+              -#= render 'channels/social_media'
+            = link_to "Join Now", subscribe_user_url(:subdomain => 'www'), :class => 'btn btn-large btn-success'
+
+
+    :javascript
+      $(document).ready(function() {
+        var player = projekktor('.projekktor', {
+          poster: "#{@demo_video.image.url}",
+          controls: true,
+          autoplay: true,
+          enableFullScreen: true,
+          playerFlashMP4: 'http://www.altimarc.com/jarisplayer.swf',
+          plugin_display: {
+            logoImage: "../../../../assets/html5video/logo.png",
+            logoPosition: "tr"
+          };
+        });
+      });
+
+        
+        
+
