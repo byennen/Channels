@@ -9,66 +9,137 @@
 <url>
   <loc>http://altimarc.com/</loc>
   <changefreq>weekly</changefreq>
+  <priority>1.00</priority>
 </url>
 <url>
-  <loc>http://altimarc.com/channels</loc>
+  <loc>http://altimarc.com/albums/alive-at-brushy-mountain-state-penitentiary/songs/heaven-bound</loc>
   <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://altimarc.com/giveaways</loc>
-  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://altimarc.com/about</loc>
   <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://altimarc.com/press</loc>
   <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://altimarc.com/altimarc-for-your-business</loc>
   <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://altimarc.com/refund</loc>
   <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://altimarc.com/terms</loc>
   <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://altimarc.com/privacy</loc>
   <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://altimarc.com/safe-harbor</loc>
   <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://altimarc.com/users/sign_in</loc>
   <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://altimarc.com/giveaways/cma-fanfest</loc>
+  <loc>http://altimarc.com/albums/alive-at-brushy-mountain-state-penitentiary</loc>
   <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://altimarc.com/giveaways/kentucky-derby-with-randy-owen</loc>
-  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>http://altimarc.com/signup</loc>
   <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>http://altimarc.com/users/password/new</loc>
   <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://altimarc.com/albums/alive-at-brushy-mountain-state-penitentiary/songs/folsom-prison-blues</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://altimarc.com/albums/alive-at-brushy-mountain-state-penitentiary/songs/reckless-companion</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://altimarc.com/albums/alive-at-brushy-mountain-state-penitentiary/songs/gospel-train</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://altimarc.com/albums/alive-at-brushy-mountain-state-penitentiary/songs/one-more-second-chance</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://altimarc.com/albums/alive-at-brushy-mountain-state-penitentiary/songs/i-could-ve-gone-right</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://altimarc.com/albums/alive-at-brushy-mountain-state-penitentiary/songs/maybe-mexico</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://altimarc.com/albums/alive-at-brushy-mountain-state-penitentiary/songs/got-a-feelin-for-ya</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://altimarc.com/albums/alive-at-brushy-mountain-state-penitentiary/songs/on-the-day-i-die</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://altimarc.com/albums/alive-at-brushy-mountain-state-penitentiary/songs/dead-man-runs-before-he-walks</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://altimarc.com/albums/alive-at-brushy-mountain-state-penitentiary/songs/rose-covered-garden</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://altimarc.com/albums/alive-at-brushy-mountain-state-penitentiary/songs/why-me-lord</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://altimarc.com/albums/alive-at-brushy-mountain-state-penitentiary/songs/do-as-i-say</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://altimarc.com/albums/alive-at-brushy-mountain-state-penitentiary/songs/someday-my-luck-will-change-featuring-gatemouth-brown</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>http://altimarc.com/login</loc>
   <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
 </url>
 </urlset>
 
