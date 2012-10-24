@@ -21,7 +21,7 @@
               - else
                 - @video.video_preview.sources.each do |source|
                   %source{:src => "#{source[:src]}", :type => source[:type]}
-        #video_info{:style => 'max-width: 940px; margin: 0 auto;'}
+        #video_info
           .row-fluid#video_info_inside
             .span12
               .row-fluid
@@ -39,8 +39,8 @@
                 .span4.pull-right
                   #small_ad.pull-right
                     = image_tag('ads/sample-ad.png')
-          #details.row
-            .span
+          #details.row-fluid
+            .span12
               %p= @video.description
       
 
