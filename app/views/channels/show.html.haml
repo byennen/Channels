@@ -53,7 +53,7 @@
                   %source{:src => "#{source[:src]}", :type => source[:type]}
                   
         #intro.row-fluid
-          .span12{:style => 'text-align: center; margin: 0 0 40px;'}
+          .span12{:style => 'text-align: center; margin: 20px 0 40px;'}
             = link_to "Join Now", subscribe_user_url(:subdomain => "#{@channel.subdomain}"), :class => 'btn btn-large btn-success'
             %h1.heading= @channel.name
             .span7{:style => 'margin: 0 auto 40px; float: none;'}
