@@ -15,8 +15,12 @@
           #video
           #player
             %video.projekktor{:controls => "", :poster => "#{@video.image.url}", :title => @video.title}
-              - @video.sources.each do |source|
-                %source{:src => "#{source[:src]}", :type => source[:type]}/
+              - if current_user && current_user.paid_member?
+                - @video.sources.each do |source|
+                  %source{:src => "#{source[:src]}", :type => source[:type]}
+              - else
+                - @video.video_preview.sources.each do |source|
+                  %source{:src => "#{source[:src]}", :type => source[:type]}
         #video_info{:style => 'max-width: 940px; margin: 0 auto;'}
           .row-fluid#video_info_inside
             .span12

@@ -24,20 +24,21 @@
     color: #b8b8b8;
   }
 
-#first_time_vistor.modal.hide{:style => "width: 670px; margin: -250px 0 0 -330px; display: none;"}
+#first_time_vistor.modal.hide
   .modal-header
     %a.close{"data-dismiss" => "modal"} ×
     %h4 Welcome to the new Altimarc! Here's how it works...
   .modal-body
-    .span4{:style => 'margin-left: 10px;'}
-      = image_tag('get-started-artist.png')
-      %h4 Entertainment. Elevated.
-      %p Connect and experience custom video, prizes and unique fan experiences.
+    .row-fluid
+      .span6
+        = image_tag('get-started-artist.png')
+        %h4 Entertainment. Elevated.
+        %p Connect and experience custom video, prizes and unique fan experiences.
 
-    .span4
-      = image_tag('get-started-social.png', :class => 'get-started-social')
-      %h4 Follow, Share, Discover
-      %p Friends will love what you're watching, hearing and winning!
+      .span6
+        = image_tag('get-started-social.png', :class => 'get-started-social')
+        %h4 Follow, Share, Discover
+        %p Friends will love what you're watching, hearing and winning!
         
   .modal-footer
     %a#no_facebook_btn{:href => "#"} I don't have Facebook
