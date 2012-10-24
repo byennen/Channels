@@ -45,7 +45,7 @@
       
 
   .row-fluid
-    .span8
+    .span12
       %h2.heading All Webisodes
       #all_videos.carousel.slide
       - @videos.each_slice(4) do |videos|
@@ -54,7 +54,7 @@
             - videos.each do |video|
               %li.span3
                 .thumbnail
-                  %img{:alt => "", :src => video.image.thumb('260x180').url}
+                  %img{:alt => "", :src => video.image.thumb('360x280').url}
                     .caption
                       %h5= video.title.truncate(30)                    
                       %p
@@ -67,24 +67,6 @@
                           = link_with_icon("Coming Soon", "#", "icon-film icon-white", "btn btn-inverse")
 
 
-    .span4
-      .rightsidebar
-        .row-fluid
-          .span
-            %h1.heading= @channel.name
-            #description.span
-              %p= @channel.description
-            = render 'channels/social_media'
-          - if @featured_album
-            .row-fluid
-              .span
-                %h2.heading Featured Album
-                = render 'channels/featured_album'
-          .row-fluid
-            .span
-              %h2.heading Featured Sponsor
-              .thumbnail
-                = link_to image_tag('layout/ad-holder.png'), altimarc_for_your_business_url
 
 
 :javascript
