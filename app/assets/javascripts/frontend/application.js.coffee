@@ -21,15 +21,6 @@
 
 $(document).on "ready pjax:success", ->
 
-  #enable pjax
-  $('.content a').pjax('[data-pjax-container]')
-  $('.pjax').pjax('[data-pjax-container]')
-
-  #disable pjax
-  $(".disable-pjax").click ->
-    return false
-    console.log "disable pjax"
-
   #facebook sdk
   ((d, s, id) ->
     js = undefined
