@@ -49,7 +49,7 @@
             #video
             #player
               %video.projekktor{:controls => "", :poster => "#{@demo_video.image.url}", :title => @demo_video.title}
-                - @demo_video.sources.each do |source|
+                - @demo_video.video_preview.sources.each do |source|
                   %source{:src => "#{source[:src]}", :type => source[:type]}
                   
         #intro.row-fluid
