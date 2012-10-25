@@ -4,7 +4,7 @@
     %h3 Sign up
   .modal-body
     .row
-      .span7#form
+      .span5#form
         = simple_form_for(User.new, :as => "user", :url => registration_path("user"), :html => {:class => 'form-horizontal'}) do |f|
           = f.error_notification
 
