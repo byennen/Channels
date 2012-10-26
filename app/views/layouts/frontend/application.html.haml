@@ -4,8 +4,8 @@
     %meta{:charset => "utf-8"}
     %title= content_for?(:title) ? yield(:title) : "Altimarc - Entertainment. Elevated. - Beta"
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-    %meta{:content => "#{@description}", :name => "description"}
-    %meta{:content => "#{@keywords}", :name => "keywords"}
+    %meta{:content => "#{@description || 'Webisodes, Music, Videos, and Live Entertainment from your favorite celebrities!'}", :name => "description"}
+    %meta{:content => "#{@keywords || 'music, music channels, music tv, watch live, live video production, stream music online, music broadcast, country music, music downloads, music videos, online music, giveaways, music givaways, celebrities giveaways, alive at brushy, aliveatbrushy, mark collie, sam phillips, father of rocknroll'}", :name => "keywords"}
     %meta{:content => "ALTIMARC, LLC", :name => "author"}
     %meta{:content => "index,follow", :name => "robots"}
     %meta{:property => "fb:app_id", :content => APP_CONFIG['facebook_app_id']}
